@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 import 'zone.js';
-import * as $ from 'jquery';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
+import 'jquery';
+import Popper from 'popper.js';
+
 import 'bootstrap';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

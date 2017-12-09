@@ -60,3 +60,6 @@ typings/
 # dotenv environment variables file
 .env
 
+run-dev.bat
+ClientApp/dist/main-server.js
+ClientApp/dist/main-server.js
