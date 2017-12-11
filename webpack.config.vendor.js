@@ -21,7 +21,13 @@ const nonTreeShakableModules = [
     'es6-shim',
     'event-source-polyfill',
     'jquery',
+<<<<<<< HEAD
     'font-awesome/css/font-awesome.css'
+=======
+    'font-awesome/css/font-awesome.min.css',
+    'bootstrap/',
+    'bootstrap/dist/js/bootstrap.js'
+>>>>>>> origin/Doan-branch
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 

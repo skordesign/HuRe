@@ -63,3 +63,7 @@ typings/
 run-dev.bat
 ClientApp/dist/main-server.js
 ClientApp/dist/main-server.js
+ClientApp/dist/main-server.js
+ClientApp/dist/main-server.js
+ClientApp/dist/vendor-manifest.json
+ClientApp/dist/vendor.js
