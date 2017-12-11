@@ -7,10 +7,12 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { CoreModule } from './modules/core/core.module';
 import { DirectiveModule } from './modules/common/directives/directive.module';
+import { FooterComponent } from "./components/footer/footer.component";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        FooterComponent
     ],
     imports: [
         CommonModule,
