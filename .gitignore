@@ -67,3 +67,6 @@ ClientApp/dist/main-server.js
 ClientApp/dist/main-server.js
 ClientApp/dist/vendor-manifest.json
 ClientApp/dist/vendor.js
+ClientApp/dist/main-server.js
+obj/
+bin/
