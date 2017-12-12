@@ -7,18 +7,20 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { CoreModule } from './modules/core/core.module';
 import { DirectiveModule } from './modules/common/directives/directive.module';
-import { FooterComponent } from "./components/footer/footer.component";
+import { ServiceModule } from './modules/common/services/service.module';
+import { UIModule } from './modules/common/ui/ui.module';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        FooterComponent
+        AppComponent
     ],
-    imports: [
+    imports: [ 
         CommonModule,
+        ServiceModule,
         CoreModule,
         HttpModule,
         DirectiveModule,
+        UIModule,
         FormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },

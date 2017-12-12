@@ -6,9 +6,9 @@ import { ConfirmService } from '../../common/services/frontend/confirm.service';
 
 
 @Component({
-    selector: 'app-confirmDialog',
-    templateUrl: './confirmDialog.component.html',
-    styleUrls:['./confirmDialog.component.css'], animations: [
+    selector: 'hure-confirm-dlg',
+    templateUrl: './confirmDlg.component.html',
+    styleUrls:['./confirmDlg.component.css'], animations: [
         trigger('confirmDialogChanged', [
             state('active', style({opacity: '*'})),
             transition('void => *', [
@@ -71,3 +71,8 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
         this.close()
     }
 }
+
+
+
+
+

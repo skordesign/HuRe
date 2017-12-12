@@ -1,4 +1,4 @@
-<div class='container-fluid'>
+<!-- <div class='container-fluid'>
     <hure-nav></hure-nav>
 </div>
 <div class="row">
@@ -10,6 +10,18 @@
     </div>
     <div class='col-sm-9 body-content'>
         <router-outlet></router-outlet>
+        
+<hure-confirm-dlg></hure-confirm-dlg>
     </div>
 </div>
-<footer> </footer>
+<hure-footer> </hure-footer> -->
+<div class='container-fluid'>
+    <hure-nav></hure-nav>
+    <div class='row'>
+        <div class='col-sm-9 body-content'>
+            <button class="btn btn-primary" (click)="showDlg()">Click</button>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<hure-confirm-dlg></hure-confirm-dlg>
