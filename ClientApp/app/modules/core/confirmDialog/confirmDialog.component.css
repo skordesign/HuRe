@@ -1,0 +1,15 @@
+.modal{
+    display:block !important;
+    position:fixed;
+}
+.overlay{
+    background: #000000;
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding: 0;
+    transition: opacity .5s;
+}
