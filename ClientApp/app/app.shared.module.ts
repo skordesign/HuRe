@@ -8,6 +8,7 @@ import { AppComponent } from './components/app/app.component';
 import { CoreModule } from './modules/core/core.module';
 import { DirectiveModule } from './modules/common/directives/directive.module';
 import { FooterComponent } from "./components/footer/footer.component";
+import { UIModule } from './modules/common/ui/ui.module';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { FooterComponent } from "./components/footer/footer.component";
     imports: [
         CommonModule,
         CoreModule,
+        UIModule,
         HttpModule,
         DirectiveModule,
         FormsModule,
