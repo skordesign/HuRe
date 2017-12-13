@@ -9,11 +9,13 @@ import { CoreModule } from './modules/core/core.module';
 import { DirectiveModule } from './modules/common/directives/directive.module';
 import { HomeComponent } from "./components/home/home.component";
 import { routing } from "./app.router";
+import { IntroduceComponent } from "./components/introduce/introduce.component";
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        IntroduceComponent
     ],
     imports: [
         CommonModule,
@@ -21,10 +23,6 @@ import { routing } from "./app.router";
         HttpModule,
         DirectiveModule,
         FormsModule,
-        RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: '**', redirectTo: 'home' }
-        ]),
         routing
     ]
 })
