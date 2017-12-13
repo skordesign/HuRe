@@ -1,4 +1,4 @@
-
+@import "../../../../util/color-define.scss";
 .navlogo{
     position: relative;
     background-color:white;
@@ -21,7 +21,7 @@
     line-height: 8vw;
 }
 .navul a{
-    color: #006CB5;
+    color: $background-color;
     font-size: 16px;
     font-weight: bold;
 }
