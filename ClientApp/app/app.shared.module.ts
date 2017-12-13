@@ -7,10 +7,13 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { CoreModule } from './modules/core/core.module';
 import { DirectiveModule } from './modules/common/directives/directive.module';
+import { HomeComponent } from "./components/home/home.component";
+import { routing } from "./app.router";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HomeComponent
     ],
     imports: [
         CommonModule,
@@ -21,7 +24,8 @@ import { DirectiveModule } from './modules/common/directives/directive.module';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: '**', redirectTo: 'home' }
-        ])
+        ]),
+        routing
     ]
 })
 export class AppModuleShared {
