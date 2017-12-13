@@ -1,7 +1,6 @@
 .modal{
     display:block !important;
-    position:fixed;
-    z-index: 999999;
+    z-index: 9999999;
 }
 .overlay{
     background: #000000;

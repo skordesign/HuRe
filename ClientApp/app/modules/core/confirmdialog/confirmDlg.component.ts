@@ -5,33 +5,34 @@ import { ConfirmService } from '../../common/services/frontend/confirm.service';
 
 
 
+
 @Component({
     selector: 'hure-confirm-dlg',
     templateUrl: './confirmDlg.component.html',
-    styleUrls:['./confirmDlg.component.css'], animations: [
+    styleUrls: ['./confirmDlg.component.css'], animations: [
         trigger('confirmDialogChanged', [
-            state('active', style({opacity: '*'})),
+            state('active', style({ opacity: '*' })),
             transition('void => *', [
-              style({opacity: 0 }),
-              animate(250, style({opacity: '*'}))
+                style({ opacity: 0 }),
+                animate(250, style({ opacity: '*' }))
             ]),
             transition('* => void', [
-              style({opacity: '*'}),
-              animate(250, style({opacity: 0}))
+                style({ opacity: '*' }),
+                animate(250, style({ opacity: 0 }))
             ]),
-           
+
         ]),
         trigger('confirmDialogChangedOverlay', [
-            state('active', style({opacity: '*'})),
+            state('active', style({ opacity: '*' })),
             transition('void => *', [
-              style({opacity:0 }),
-              animate(250, style({opacity: '*'}))
+                style({ opacity: 0 }),
+                animate(250, style({ opacity: '*' }))
             ]),
             transition('* => void', [
-              style({opacity: '*'}),
-              animate(250, style({opacity: 0}))
+                style({ opacity: '*' }),
+                animate(250, style({ opacity: 0 }))
             ]),
-           
+
         ])
     ]
 })
@@ -40,7 +41,7 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
         this.subcription.unsubscribe();
     }
     isActivated = false;
-    action: any;
+    actions: Action[]
     subcription: Subscription;
     title = "";
     message = "";
@@ -50,7 +51,7 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
     ngOnInit() {
 
         this.subcription = this.confirm.confirmChanged.subscribe((body: any) => {
-            this.action = body.action;
+            this.actions = body.actions;
             this.title = body.title;
             this.message = body.message;
             this.showDialog();
@@ -62,17 +63,14 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
     showDialog() {
         this.isActivated = true;
     }
-    close() {
-        this.action = null;
+    exec(action: any) {
+        let act = action as Action;
+        act.func();
         this.isActivated = false;
-    }
-    ok() {
-        this.action()
-        this.close()
     }
 }
 
-
-
-
-
+interface Action {
+    func: () => void;
+    text: string;
+}
