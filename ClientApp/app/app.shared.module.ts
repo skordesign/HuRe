@@ -10,12 +10,14 @@ import { HomeComponent } from "./components/home/home.component";
 import { routing } from "./app.router";
 import { IntroduceComponent } from "./components/introduce/introduce.component";
 import { UIModule } from './modules/common/ui/ui.module';
+import { ContactComponent } from "./components/contact/contact.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
-        IntroduceComponent
+        IntroduceComponent,
+        ContactComponent
     ],
     imports: [
         CommonModule,
