@@ -11,7 +11,6 @@ import { ConfirmService } from '../../common/services/frontend/confirm.service';
     templateUrl: './confirmDlg.component.html',
     styleUrls: ['./confirmDlg.component.css'], animations: [
         trigger('confirmDialogChanged', [
-            state('active', style({ opacity: '*' })),
             transition('void => *', [
                 style({ opacity: 0 }),
                 animate(250, style({ opacity: '*' }))
@@ -22,18 +21,6 @@ import { ConfirmService } from '../../common/services/frontend/confirm.service';
             ]),
 
         ]),
-        trigger('confirmDialogChangedOverlay', [
-            state('active', style({ opacity: '*' })),
-            transition('void => *', [
-                style({ opacity: 0 }),
-                animate(250, style({ opacity: '*' }))
-            ]),
-            transition('* => void', [
-                style({ opacity: '*' }),
-                animate(250, style({ opacity: 0 }))
-            ]),
-
-        ])
     ]
 })
 export class ConfirmDialogComponent implements OnInit, OnDestroy {
@@ -45,7 +32,6 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
     subcription: Subscription;
     title = "";
     message = "";
-    state = "inactive";
     constructor(private confirm: ConfirmService) { }
 
     ngOnInit() {
@@ -56,9 +42,6 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
             this.message = body.message;
             this.showDialog();
         });
-        if (this.state == "inactive") {
-            setTimeout(() => this.state = "active")
-        }
     }
     showDialog() {
         this.isActivated = true;

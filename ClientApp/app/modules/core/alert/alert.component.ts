@@ -1,16 +1,29 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { AlertService } from '../../common/services/frontend/alert.service';
-
+import { trigger, state, style, transition, animate, group } from '@angular/animations';
 @Component({
     selector: 'hure-alert',
     templateUrl: './alert.component.html',
-    styles: [``]
+    styles: [``],
+    animations: [
+        trigger('alertShowChanged', [
+            transition('void => *', [
+                style({ opacity: 0 }),
+                animate(250, style({ opacity: '*' }))
+            ]),
+            transition('* => void', [
+                style({ opacity: '*' }),
+                animate(250, style({ opacity: 0 }))
+            ]),
+
+        ])
+    ]
 })
 export class AlertComponent implements OnInit, OnDestroy {
     subcription: Subscription;
     isActivated: boolean;
-    alertList: Alert[] =[];
+    alertList: Alert[] = [];
     ngOnDestroy(): void {
         this.subcription.unsubscribe();
     }
