@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace HuRe.Models
 {
-    public class Company
+    public class Company : Base
     {
         public long Id { get; set; }
         public string Name { get; set; }

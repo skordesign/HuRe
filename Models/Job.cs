@@ -1,6 +1,6 @@
 namespace HuRe.Models
 {
-    public class Job
+    public class Job:Base
     {
         
     }
