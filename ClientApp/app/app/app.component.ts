@@ -16,8 +16,4 @@ export class AppComponent {
             text: "OK", func: () => { console.log("OK") }
         }])
     }
-    public showAlert(){
-        this.alertSvc.showInfo("Hello");
-        this.alertSvc.showError("Hello");
-    }
 }

@@ -5,7 +5,7 @@ import { trigger, state, style, transition, animate, group } from '@angular/anim
 @Component({
     selector: 'hure-alert',
     templateUrl: './alert.component.html',
-    styles: [``],
+    styleUrls: ['./alert.component.scss'],
     animations: [
         trigger('alertShowChanged', [
             transition('void => *', [
@@ -29,7 +29,6 @@ export class AlertComponent implements OnInit, OnDestroy {
     }
     constructor(private alertService: AlertService) {
     }
-
     ngOnInit() {
         this.subcription = this.alertService.alertChanged.subscribe((body: any) => {
             let alert = body as Alert;
@@ -46,12 +45,12 @@ export class AlertComponent implements OnInit, OnDestroy {
         setTimeout(() => {
             this.alertList.shift();
             this.showAlert(this.alertList[0])
-        }, 1000);
+        }, 3000);
     }
 }
 
 interface Alert {
     message: string;
     action: () => void;
-    type: string;
+    title: string;
 }

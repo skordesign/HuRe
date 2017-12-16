@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TabComponent } from './tab/tab.component';
 
 @Component({
-    selector: 'app-tabbed',
+    selector: 'hure-tabbed',
     templateUrl: './tabbed.component.html'
 })
 export class TabbedComponent implements OnInit {

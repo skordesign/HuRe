@@ -8,14 +8,8 @@ import { AlertService } from '../../modules/common/services/frontend/alert.servi
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    constructor(private _httpService: Http,private confirmSvc: ConfirmService, private alertSvc:AlertService) { }
-    apiValues: string[] = [];
+    constructor(private confirmSvc: ConfirmService, private alertSvc:AlertService) { }
     ngOnInit() {
-        this._httpService.get('/api/values').subscribe(values => {
-            console.log(values);
-            this.apiValues = values.json() as string[];
-            console.log(this.apiValues);
-        });
     }
 
     public showDlg() {
@@ -24,7 +18,6 @@ export class HomeComponent implements OnInit {
         }])
     }
     public showAlert() {
-        this.alertSvc.showInfo("Hello");
-        this.alertSvc.showError("Hello");
+        this.alertSvc.show("Hello", "What is your name?");
     }
 }
