@@ -1,0 +1,80 @@
+.blog-component{
+    display: inline-block;
+    float: none;
+    margin: 0 -4px 0 0;
+    vertical-align: top;
+}
+.cs-blog {
+    margin-bottom: 30px;
+}
+.cs-blog .cs-media figure {
+    position: relative;
+}
+a {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+.cs-blog .cs-media figure img{
+    border-radius: 4px;
+}
+.cs-blog figure img{
+    width: 100%;
+}
+img {
+    vertical-align: middle;
+    border: 0;
+}
+.cs-blog .cs-media ~ .blog-text {
+    margin-top: 0px;
+    padding: 0;
+}
+.cs-blog .cs-inner-bolg {
+    padding: 22px 0 0 0;
+}
+.cs-blog .post-option {
+    margin-bottom: 13px;
+    line-height: normal;
+    margin: 0 0 10px;
+}
+.cs-blog .post-option span {
+    margin-right: 12px;
+    display: inline-block;
+    text-transform: lowercase;
+}
+.cs-blog .post-option a {
+    color: #797979!important;
+    font-size: 14px;
+}
+h5 {
+    font: Normal 16px/25px "Varela Round", sans-serif !important;
+    letter-spacing: 1px !important;
+    text-transform: none !important;
+    color: #424242 !important;
+}
+.cs-blog .cs-post-title h5 a {
+    outline: none;
+    text-decoration: none;
+    box-shadow: none;
+    border: none;
+    text-transform: uppercase !important;
+    font-weight: 500!important;
+    color: #000!important;
+}
+.cs-blog .blog-text p {
+    margin-bottom: 18px;
+}
+.cs-blog .read-more {
+    display: inline-block;
+    outline: none;
+    font-size: 12px;
+    text-decoration: none;
+    box-shadow: none;
+    border: none;
+    text-transform: uppercase;
+    color: #f26522 !important;
+}
+.cs-blog:after {
+    clear: both;
+    content: '';
+    display: block;
+}

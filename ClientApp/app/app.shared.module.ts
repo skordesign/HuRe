@@ -9,14 +9,14 @@ import { routing } from "./app.router";
 import { UIModule } from './modules/common/ui/ui.module';
 import { ServiceModule } from "./modules/common/services/service.module";
 import { AppComponent } from './app/app.component';
-
 @NgModule({
     declarations: [AppComponent
     ],
-    imports: [ 
+    imports: [
         CommonModule,
         ServiceModule,
         CoreModule,
+        UIModule,
         HttpModule,
         DirectiveModule,
         UIModule,
