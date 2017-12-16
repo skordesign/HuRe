@@ -3,11 +3,13 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const AotPlugin = require('@ngtools/webpack').AotPlugin;
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (env) => {
     // Configuration in common to both client-side and server-side bundles
     const isDevBuild = !(env && env.prod);
     const sharedConfig = {
+        //entry:['ClientApp'],
         stats: { modules: false },
         context: __dirname,
         resolve: { extensions: ['.js', '.ts'] },
@@ -21,14 +23,32 @@ module.exports = (env) => {
                 { test: /\.html$/, use: 'html-loader?minimize=false' },
                 { test: /\.css$/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize'] },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
-                {
-                    test: /\.scss$/,
-                    exclude: /node_modules/,
-                    loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
-                }
+                { test: /\.scss$/, use: ['raw-loader', 'sass-loader']}
+                // {
+                //     test: /\.scss$/,
+                //     exclude: /node_modules/,
+                //     use: ['to-string-loader'].concat(ExtractTextPlugin.extract({
+                //         fallback:'style-loader',
+                //         use: [{
+                //             loader:'css-loader',
+                //             options: {
+                //                 // If you are having trouble with urls not resolving add this setting.
+                //                 // See https://github.com/webpack-contrib/css-loader#url
+                //                 url: false,
+                //                 minimize: true,
+                //                 sourceMap: true
+                //             }
+                //         },{
+                //             loader:'sass-loader',
+                //             options: {
+                //                 sourceMap: true
+                //             }
+                //         }]
+                //     })) // sass-loader not scss-loader
+                // }
             ]
         },
-        plugins: [new CheckerPlugin()]
+        plugins: [new CheckerPlugin(), new ExtractTextPlugin("style.css")]
     };
 
     // Configuration for client-side bundle suitable for running in browsers

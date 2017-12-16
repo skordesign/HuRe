@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ConfirmService } from '../../modules/common/services/frontend/confirm.service';
-import { AlertService } from '../../modules/common/services/frontend/alert.service';
+import { ConfirmService } from '../modules/common/services/frontend/confirm.service';
+import { AlertService } from '../modules/common/services/frontend/alert.service';
 
 @Component({
     selector: 'app',

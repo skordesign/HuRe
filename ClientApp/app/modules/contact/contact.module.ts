@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 
 import { ContactComponent } from './contact.component';
+import { contactRouter } from './contact.router';
 
 @NgModule({
-    imports: [],
+    imports: [contactRouter],
     exports: [],
     declarations: [ContactComponent],
     providers: [],
