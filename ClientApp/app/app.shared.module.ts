@@ -6,19 +6,12 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { CoreModule } from './modules/core/core.module';
 import { DirectiveModule } from './modules/common/directives/directive.module';
-import { HomeComponent } from "./components/home/home.component";
 import { routing } from "./app.router";
-import { IntroduceComponent } from "./components/introduce/introduce.component";
 import { UIModule } from './modules/common/ui/ui.module';
-import { ContactComponent } from "./components/contact/contact.component";
 import { ServiceModule } from "./modules/common/services/service.module";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        IntroduceComponent,
-        ContactComponent
+    declarations: [AppComponent
     ],
     imports: [ 
         CommonModule,
