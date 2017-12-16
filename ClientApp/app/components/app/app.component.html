@@ -1,15 +1,11 @@
 <div class='container-fluid'>
     <hure-nav></hure-nav>
-    <div class='row'>
-        <div class='col-sm-9 body-content'>
-            <button class="btn btn-primary" (click)="showDlg()">Click</button>
-            <button class="btn btn-primary" (click)="showAlert()">Click</button>
-            <router-outlet></router-outlet>
-        </div>
+    <div class='body-content'>
+        <button class="btn btn-primary" (click)="showDlg()">Click</button>
+        <button class="btn btn-primary" (click)="showAlert()">Click</button>
+        <router-outlet></router-outlet>
     </div>
     <hure-footer> </hure-footer>
 </div>
-</div>
 <hure-confirm-dlg></hure-confirm-dlg>
 <hure-alert></hure-alert>
-
