@@ -5,20 +5,22 @@ using System.Threading.Tasks;
 
 namespace HuRe.Models
 {
-    public class TaiKhoan:Base 
+    public class TaiKhoan
     {
-        public string tai_khoan { get; set; }
-        public string lop { get; set; }
-        public string ho { get; set; }
-        public string ten { get; set; }
-        public string email { get; set; }
-        public bool gioi_tinh { get; set; }
-        public DateTime ngay_sinh { get; set; }
-        public string so_dien_thoai { get; set; }
-        public string dia_chi { get; set; }
-        public string mat_khau { get; set; }
-        public string anh_dai_dien { get; set; }
-        public int phan_quyen_id { get; set; }
+        public Guid Guid { get; set; }
+        public string TenTaiKhoan { get; set; }
+        public string Top { get; set; }
+        public string Ho { get; set; }
+        public string Ten { get; set; }
+        public string Email { get; set; }
+        public bool GioiTinh { get; set; }
+        public DateTime NgaySinh { get; set; }
+        public string SDT { get; set; }
+        public string DiaChi { get; set; }
+        public string MatKhau { get; set; }
+        public string Salt { get; set; }
+        public string AnhDaiDien { get; set; }
+        public int PhanQuyenId { get; set; }
         public virtual PhanQuyen PhanQuyen { get; set; }
 
     }

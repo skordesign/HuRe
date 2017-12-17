@@ -7,7 +7,7 @@ using HuRe.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace Service.Repositories
+namespace HuRe.Repositories
 {
     public interface IRepository<T> where T : class
     {

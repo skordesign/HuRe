@@ -7,12 +7,12 @@ namespace HuRe.Models
 {
     public class SuKien:Base
     {
-        public string ten_su_kien { get; set; }
-        public string tieu_de { get; set; }
-        public string mo_ta_ngan { get; set; }
-        public string noi_dung { get; set; }
-        public string dia_diem { get; set; }
-        public DateTime thoi_gian_bat_dau { get; set; }
-        public DateTime thoi_gian_ket_thuc { get; set; }
+        public string Ten { get; set; }
+        public string TieuDe { get; set; }
+        public string MoTaNgan { get; set; }
+        public string NoiDung { get; set; }
+        public string DiaDiem { get; set; }
+        public DateTime ThoiGianBatDau { get; set; }
+        public DateTime ThoiGianKetThuc { get; set; }
     }
 }

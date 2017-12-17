@@ -7,8 +7,8 @@ namespace HuRe.Models
 {
     public class PhanQuyen:Base
     {
-        public string ten_phan_quyen { get; set; }
-        public string mo_ta { get; set; }
+        public string Ten { get; set; }
+        public string MoTa { get; set; }
         public ICollection<PhanQuyen> PhanQuyens { get; set; }
     }
 }

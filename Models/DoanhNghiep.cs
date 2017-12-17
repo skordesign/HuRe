@@ -7,16 +7,16 @@ namespace HuRe.Models
 {
     public class DoanhNghiep :Base
     {
-        public string ten_doanh_nghiep { get; set; }
-        public string ten_viet_tat { get; set; }
-        public string dia_chi { get; set; }
-        public string so_dien_thoai { get; set; }
-        public string website { get; set; }
-        public string quy_mo { get; set; }
-        public string urlLogo { get; set; }
-        public string nguoi_dai_dien { get; set; }
-        public string mo_ta { get; set; }
-        public int nhom_viec_id { get; set; }
+        public string TenDoanhNghiep { get; set; }
+        public string TenVietTat { get; set; }
+        public string DiaChi { get; set; }
+        public string SoDienThoai { get; set; }
+        public string Website { get; set; }
+        public string QuyMo { get; set; }
+        public string URLLogo { get; set; }
+        public string NguoiDaiDien { get; set; }
+        public string MoTa { get; set; }
+        public int NhomViecId { get; set; }
         public virtual NhomViec NhomViec { get; set; }
     }
 }
