@@ -9,8 +9,9 @@ import { ServiceModule } from '../common/services/service.module';
 import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert/alert.component';
 import { LoadingComponent } from './loading/loading.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
-    imports: [CommonModule, DirectiveModule],
+    imports: [CommonModule, DirectiveModule, RouterModule],
     declarations: [NavComponent, SearchComponent, FooterComponent, AlertComponent,
         ConfirmDialogComponent,SlideComponent, LoadingComponent],
     exports: [NavComponent, SearchComponent, FooterComponent, ConfirmDialogComponent, AlertComponent,SlideComponent,

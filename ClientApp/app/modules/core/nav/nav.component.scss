@@ -1,76 +1,124 @@
 @import "../../../../util/color-define.scss";
-.navlogo{
+.navlogo {
     position: relative;
-    background-color:white;
+    background-color: #f8f9fa;
+    margin: 0;
+}
 
-   margin:0;
+.counter {
+    position: fixed;
+    top: 120px;
 }
-.mainnav{
-    margin:auto;
-    margin-bottom: 5px;
+
+.mainnav {
+    margin: auto;
+    margin-bottom: 2px;
 }
-.IMG_LOGO{
+.nav-fixed{
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    transition: all 0.5s ease-in;
+}
+
+.IMG_LOGO {
     padding: 10px;
+    margin: 8px 16px 0px 16px;
 }
-.INTRO_LOGO{
-    color:RED;
+
+.INTRO_LOGO {
+    color: RED;
+    font-family: $font-family;
     font-size: 2vw;
-    font-weight: bold;
-    text-align: center;
-    z-index: 888;
-    line-height: 8vw;
-}
-.navul a{
-    color: $background-color;
-    font-size: 16px;
-    font-weight: bold;
-}
-.navul-list-item{
-    width:100%;
     margin: auto;
 }
-.mr-auto>li{
-    margin:auto;
+
+.navul a {
+    color: $background-color;
+    font-weight: bold;
+    font-size: 1em;
+    @media screen and (max-width: 1205px) and (min-width: 1063px) {
+        font-size: 0.8em;
+    }
+    @media screen and (max-width: 1063px) and (min-width: 992px) {
+        font-size: 0.7em;
+    }
+    @media screen and (max-width: 992px) and (min-width: 992px) {
+        font-size: 0.65em;
+    }
+}
+.navul{
+    position: relative;
+    z-index: 100;
+    border-bottom: solid 1px rgba($color: black, $alpha: 0.2);
+}
+.navul-list-item {
+    width: 100%;
+    margin: auto;
 }
 
-.navsearchbox{
+.mr-auto>li {
+    margin: auto;
+}
+
+.navsearchbox {
     display: none;
 }
-.item-in-list{
+
+.item-in-list {
     text-align: left;
 }
+
 .dropdown:hover>.dropdown-menu {
     display: block;
 }
-.dropdown-menu>a:hover{
-    background-color:#006CB5;
-    color:white;
+
+.dropdown-menu>a:hover {
+    background-color: #006CB5;
+    color: white;
 }
-@media screen and (max-width: 880px) {
-   
-}
+
+@media screen and (max-width: 880px) {}
+
 @media screen and (max-width: 780px) {
-   
-    .INTRO_LOGO{
+    .INTRO_LOGO {
         line-height: 10vw;
     }
- }
- @media screen and (max-width:991px){
-    .mr-auto>li{
-        width:100%;
-        border-bottom:1px solid lightgray;
+}
+
+@media screen and (max-width:991px) {
+    .mr-auto>li {
+        width: 100%;
+        border-bottom: 1px solid lightgray;
     }
-    .navsearchbox{
+    .navsearchbox {
         display: block;
     }
- }
- @media screen and (max-width: 575.5px) {
-    .INTRO_LOGO{
+}
+
+@media screen and (max-width: 575.5px) {
+    .INTRO_LOGO {
         line-height: normal;
         font-size: 2.5vw;
     }
-    .IMG_LOGO{
-        width:288px;
-        margin:auto;
+    .IMG_LOGO {
+        width: 288px;
+        margin: auto;
     }
- }
+}
+
+.navul {
+    padding: 0px 16px;
+    .nav-item {
+        padding: 8px 16px;
+        margin: 0px auto;
+    }
+    .active {
+        background: rgba($color: #000000, $alpha: 0.1)
+    }
+}
+
+.navbar-toggler {
+    border: 0;
+}
