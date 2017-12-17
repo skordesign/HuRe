@@ -7,15 +7,15 @@ namespace HuRe.Models
 {
     public class HoSoCaNhan:Base
     {
-        public string vi_tri_tim_viec { get; set; }
-        public string dia_diem_lam_viec { get; set; }
-        public string trinh_do_hoc_van { get; set; }
-        public string kinh_nghiem { get; set; }
-        public int tai_khoan_id { get; set; }
+        public string ViTriTimViec { get; set; }
+        public string DiaDiem { get; set; }
+        public string TrinhDo { get; set; }
+        public string KinhNghiem { get; set; }
+        public Guid TaiKhoanId { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
-        public int hinh_thuc_lam_viec_id { get; set; }
+        public int HinhThucLamViecId { get; set; }
         public virtual HinhThucLamViec HinhThucLamViec { get; set; }
-        public int nhom_viec_id { get; set; }
+        public int NhomViecId { get; set; }
         public virtual NhomViec NhomViec { get; set; }
 
 

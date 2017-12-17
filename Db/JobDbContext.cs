@@ -25,42 +25,42 @@ namespace HuRe.Db
         protected override void OnModelCreating(ModelBuilder builder)
         {
             //set khóa chính
-            builder.Entity<PhanQuyen>().HasKey(k => k.id);
-            builder.Entity<TaiKhoan>().HasKey(k => k.id);
+            builder.Entity<PhanQuyen>().HasKey(k => k.Id);
+            builder.Entity<TaiKhoan>().HasKey(k => k.Guid);
             builder.Entity<TaiKhoan>()
               .HasOne(o => o.PhanQuyen)
               .WithMany()
-              .HasForeignKey(o => o.phan_quyen_id);
-            builder.Entity<HoSoCaNhan>().HasKey(k => new { k.id,k.tai_khoan_id});
+              .HasForeignKey(o => o.PhanQuyenId);
+            builder.Entity<HoSoCaNhan>().HasKey(k => new { k.Id,k.TaiKhoanId});
             builder.Entity<HoSoCaNhan>()
                .HasOne(o => o.TaiKhoan)
                .WithMany()
-               .HasForeignKey(o => o.tai_khoan_id);
+               .HasForeignKey(o => o.TaiKhoanId);
             builder.Entity<HoSoCaNhan>()
              .HasOne(o => o.NhomViec)
              .WithMany()
-             .HasForeignKey(o => o.nhom_viec_id);
+             .HasForeignKey(o => o.NhomViecId);
             builder.Entity<HoSoCaNhan>()
              .HasOne(o => o.HinhThucLamViec)
              .WithMany()
-             .HasForeignKey(o => o.hinh_thuc_lam_viec_id);
-            builder.Entity<NhomViec>().HasKey(k => k.id);
-            builder.Entity<HinhThucLamViec>().HasKey(k => k.id);
-            builder.Entity<SuKien>().HasKey(k => k.id);
-            builder.Entity<DoanhNghiep>().HasKey(k => k.id);
+             .HasForeignKey(o => o.HinhThucLamViecId);
+            builder.Entity<NhomViec>().HasKey(k => k.Id);
+            builder.Entity<HinhThucLamViec>().HasKey(k => k.Id);
+            builder.Entity<SuKien>().HasKey(k => k.Id);
+            builder.Entity<DoanhNghiep>().HasKey(k => k.Id);
             builder.Entity<DoanhNghiep>()
               .HasOne(o => o.NhomViec)
               .WithMany()
-              .HasForeignKey(o => o.nhom_viec_id);
-            builder.Entity<CongViec>().HasKey(k => k.id);
+              .HasForeignKey(o => o.NhomViecId);
+            builder.Entity<CongViec>().HasKey(k => k.Id);
             builder.Entity<CongViec>()
             .HasOne(o => o.HinhThucLamViec)
             .WithMany()
-            .HasForeignKey(o => o.hinh_thuc_lam_viec_id);
+            .HasForeignKey(o => o.HinhThucLamViecId);
             builder.Entity<CongViec>()
            .HasOne(o => o.DoanhNghiep)
            .WithMany()
-           .HasForeignKey(o => o.doanh_nghiep_id);
+           .HasForeignKey(o => o.DoanhNghiepId);
         }
     }
 }

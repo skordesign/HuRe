@@ -7,8 +7,8 @@ namespace HuRe.Models
   {
       [Required]
       [Key]
-      public int id {get;set;}
-      public DateTime ngay_tao {get;set;}=DateTime.Now;
-      public DateTime ngay_sua {get;set;}=DateTime.Now;
+      public int Id {get;set;}
+      public DateTime NgayTao {get;set;}=DateTime.Now;
+      public DateTime NgaySua  {get;set;}=DateTime.Now;
   }
 }
