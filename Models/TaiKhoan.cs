@@ -9,7 +9,7 @@ namespace HuRe.Models
     {
         public Guid Guid { get; set; }
         public string TenTaiKhoan { get; set; }
-        public string Top { get; set; }
+        public string Lop { get; set; }
         public string Ho { get; set; }
         public string Ten { get; set; }
         public string Email { get; set; }
@@ -18,7 +18,6 @@ namespace HuRe.Models
         public string SDT { get; set; }
         public string DiaChi { get; set; }
         public string MatKhau { get; set; }
-        public string Salt { get; set; }
         public string AnhDaiDien { get; set; }
         public int PhanQuyenId { get; set; }
         public virtual PhanQuyen PhanQuyen { get; set; }
