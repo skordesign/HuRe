@@ -43,9 +43,12 @@ export class AlertComponent implements OnInit, OnDestroy {
             return;
         }
         setTimeout(() => {
-            this.alertList.shift();
-            this.showAlert(this.alertList[0])
+            this.close(alert);
         }, 3000);
+    }
+    close(alert: Alert) {
+        let alertIndex = this.alertList.indexOf(alert);
+        this.alertList.splice(alertIndex, 1);
     }
 }
 
