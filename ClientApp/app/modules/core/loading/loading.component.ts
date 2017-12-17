@@ -7,7 +7,7 @@ import { LoadingService } from '../../common/services/frontend/loading.service';
 @Component({
     selector: 'hure-loading',
     templateUrl: './loading.component.html',
-    //styleUrls: ['./loading.component.scss'], // not resolve yet because it need sass-loader
+    styleUrls: ['./loading.component.scss'], // not resolve yet because it need sass-loader
     animations: [
         trigger('confirmDialogChanged', [
             transition('void => *', [

@@ -9,7 +9,7 @@ import { ConfirmService } from '../../common/services/frontend/confirm.service';
 @Component({
     selector: 'hure-confirm-dlg',
     templateUrl: './confirmDlg.component.html',
-    styleUrls: ['./confirmDlg.component.css'], animations: [
+    styleUrls: ['./confirmDlg.component.scss'], animations: [
         trigger('confirmDialogChanged', [
             transition('void => *', [
                 style({ opacity: 0 }),

@@ -8,11 +8,13 @@ import { ConfirmDialogComponent } from './confirmdialog/confirmDlg.component';
 import { ServiceModule } from '../common/services/service.module';
 import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert/alert.component';
+import { LoadingComponent } from './loading/loading.component';
 @NgModule({
     imports: [CommonModule, DirectiveModule],
     declarations: [NavComponent, SearchComponent, FooterComponent, AlertComponent,
-        ConfirmDialogComponent,SlideComponent],
-    exports: [NavComponent, SearchComponent, FooterComponent, ConfirmDialogComponent, AlertComponent,SlideComponent]
+        ConfirmDialogComponent,SlideComponent, LoadingComponent],
+    exports: [NavComponent, SearchComponent, FooterComponent, ConfirmDialogComponent, AlertComponent,SlideComponent,
+    LoadingComponent]
 })
 export class CoreModule {
 

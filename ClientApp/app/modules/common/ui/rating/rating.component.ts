@@ -2,7 +2,7 @@ import { Component, Output, Input } from "@angular/core";
 
 @Component({
     selector: 'hure-rating-bar',
-    templateUrl: './ratingBar.component.html',
+    templateUrl: './rating.component.html',
     styles: [`
         .fill{
             background: black;

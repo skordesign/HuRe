@@ -7,10 +7,11 @@ import { DropdownItemComponent } from './dropdown/dropdownItem/dropdownItem.comp
 import { TabComponent } from './tabbed/tab/tab.component';
 import { JobComponent } from './job/job.component';
 import { BlogComponent } from './blog/blog.component';
+import { RatingBarComponent } from './rating/rating.component';
 @NgModule({
-    declarations: [GroupComponent, TabbedComponent, DropdownComponent, DropdownItemComponent, TabComponent, JobComponent, BlogComponent],
+    declarations: [GroupComponent, TabbedComponent, DropdownComponent, DropdownItemComponent, TabComponent, JobComponent, BlogComponent, RatingBarComponent],
     imports: [CommonModule],
-    exports: [GroupComponent, TabbedComponent, DropdownComponent, DropdownItemComponent, TabComponent, JobComponent, BlogComponent],
+    exports: [GroupComponent, TabbedComponent, DropdownComponent, DropdownItemComponent, TabComponent, JobComponent, BlogComponent, RatingBarComponent],
     providers: [],
 })
 export class UIModule { }
