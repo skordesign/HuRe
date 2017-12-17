@@ -30,5 +30,9 @@ namespace HuRe.Models
         public decimal muc_luong_thap_nhat { get; set; }
         public decimal muc_luong_cao_nhat { get; set; }
         public string thong_tin_khac { get; set; }
+        public int doanh_nghiep_id { get; set; }
+        public virtual DoanhNghiep DoanhNghiep { get; set; }
+        public int hinh_thuc_lam_viec_id { get; set; }
+        public virtual HinhThucLamViec HinhThucLamViec { get; set; }
     }
 }
