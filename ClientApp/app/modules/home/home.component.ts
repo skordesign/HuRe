@@ -2,20 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from "@angular/http";
 import { ConfirmService } from '../../modules/common/services/frontend/confirm.service';
 import { AlertService } from '../../modules/common/services/frontend/alert.service';
+import { CommonHttpService } from '../common/services/backend/common-http.service';
+import { LoadingService } from '../common/services/frontend/loading.service';
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    constructor(private _httpService: Http,private confirmSvc: ConfirmService, private alertSvc:AlertService) { }
-    apiValues: string[] = [];
+    constructor(private confirmSvc: ConfirmService, private alertSvc: AlertService, private http: CommonHttpService<any>,
+        private loadingSvc: LoadingService) { }
     ngOnInit() {
-        this._httpService.get('/api/values').subscribe(values => {
-            console.log(values);
-            this.apiValues = values.json() as string[];
-            console.log(this.apiValues);
-        });
+        this.http.get<any>("http://jsonplaceholder.typicode.com/posts").subscribe(data => {
+            console.log(data)
+            this.loadingSvc.showLoading(false);
+        })
     }
 
     public showDlg() {
@@ -24,7 +25,6 @@ export class HomeComponent implements OnInit {
         }])
     }
     public showAlert() {
-        this.alertSvc.showInfo("Hello");
-        this.alertSvc.showError("Hello");
+        this.alertSvc.show("Hello", "What is your name?");
     }
 }

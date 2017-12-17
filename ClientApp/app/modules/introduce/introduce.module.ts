@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 
 import { IntroduceComponent } from './introduce.component';
+import { introRouter } from './introduce.router';
 
 @NgModule({
-    imports: [],
+    imports: [introRouter],
     exports: [],
     declarations: [IntroduceComponent],
     providers: [],

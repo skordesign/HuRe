@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DropdownItemComponent } from './dropdownItem/dropdownItem.component';
 
 @Component({
-    selector: 'app-dropdown',
+    selector: 'hure-dropdown',
     templateUrl: './dropdown.component.html'
 })
 export class DropdownComponent implements OnInit {

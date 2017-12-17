@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TabbedComponent } from '../tabbed.component';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
 @Component({
-    selector: 'app-tab',
+    selector: 'hure-tab',
     templateUrl: './tab.component.html',
     animations: [
         trigger('tabChanged', [
