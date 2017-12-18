@@ -1,26 +1,23 @@
-<div class="row navlogo">
-    <div class="col-xs-6 col-sm-4 col-md-2 IMG_LOGO">
-        <img src="img/logo.png" alt="Hutech_Logo" width="100%" class="Hutech_Logo" />
+<div class="row hures-nav">
+    <div class="d-xs-none d-sm-none d-md-none d-lg-none d-xl-block col-2 hures-logo-container">
+        <img src="img/logo.png" alt="Hutech_Logo"   class="text-center align-middle hures-logo" />
     </div>
-    <p class="col-xs-6 col-sm-8 col-md-9 INTRO_LOGO text-center">TRUNG TÂM QUAN HỆ DOANH NGHIỆP</p>
-</div>
-<div class="row mainnav">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light col-xs-12 col-sm-12 col-md-12 col-lg-12 navul">
-        <a class="navbar-brand danhmuc" href="#"> </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="col-12 col-xl-10">
+        <nav class="navbar navbar-expand-lg align-middle navbar-light navul">
+            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse navul-list"   id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto navul-list-item d-flex justify-content-center">
-                <li *ngFor="let item of navMenu" class="nav-item dropdown" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link text-uppercase  text-center" [routerLink]="item.link" 
-                    >{{ item.text }}</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse navul-list" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto navul-list-item d-flex justify-content-center">
+                    <li *ngFor="let item of navMenu" class="nav-item dropdown" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link text-uppercase  text-center" [routerLink]="item.link">{{ item.text }}</a>
+                    </li>
+                </ul>
 
-        </div>
-    </nav>
+            </div>
+        </nav>
+    </div>
 
 </div>
