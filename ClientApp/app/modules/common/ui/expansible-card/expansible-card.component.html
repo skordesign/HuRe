@@ -1,0 +1,6 @@
+<div class="card" style="width: 20rem;">
+    <div [@expandChanged]="isExpanded" class="card-body app-card">
+        <ng-content></ng-content>
+    </div>
+    <button class="btn btn-primary text-capitalize" (click)="isExpanded=!isExpanded"> {{ isExpanded?'Collapse':'Expand' }}</button>
+</div>

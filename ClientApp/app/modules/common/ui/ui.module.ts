@@ -8,10 +8,16 @@ import { TabComponent } from './tabbed/tab/tab.component';
 import { JobComponent } from './job/job.component';
 import { BlogComponent } from './blog/blog.component';
 import { RatingBarComponent } from './rating/rating.component';
+import { ExpansibleCardComponent } from './expansible-card/expansible-card.component';
+import { PopoverComponent } from './popover/popover.component';
 @NgModule({
-    declarations: [GroupComponent, TabbedComponent, DropdownComponent, DropdownItemComponent, TabComponent, JobComponent, BlogComponent, RatingBarComponent],
+    declarations: [GroupComponent, TabbedComponent, DropdownComponent, 
+        DropdownItemComponent, TabComponent, JobComponent, BlogComponent, 
+        RatingBarComponent, ExpansibleCardComponent, PopoverComponent],
     imports: [CommonModule],
-    exports: [GroupComponent, TabbedComponent, DropdownComponent, DropdownItemComponent, TabComponent, JobComponent, BlogComponent, RatingBarComponent],
+    exports: [GroupComponent, TabbedComponent, DropdownComponent, 
+        DropdownItemComponent, TabComponent, JobComponent, 
+        BlogComponent, RatingBarComponent, ExpansibleCardComponent, PopoverComponent],
     providers: [],
 })
 export class UIModule { }
