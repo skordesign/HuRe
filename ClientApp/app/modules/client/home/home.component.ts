@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     constructor(private confirmSvc: ConfirmService, private alertSvc: AlertService, private http: CommonHttpService<any>,
         private loadingSvc: LoadingService) { }
     ngOnInit() {
-        this.http.get<any>("http://jsonplaceholder.typicode.com/posts").subscribe(data => {
+        this.http.get<any>("api/test").subscribe(data => {
             console.log(data)
             this.loadingSvc.showLoading(false);
         })

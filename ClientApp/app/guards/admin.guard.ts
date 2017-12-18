@@ -8,7 +8,7 @@ export class AdminGuard implements CanActivate {
     constructor(private _router: Router) { }
 
     public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (typeof window !== "undefined") {
+        if (typeof window !== "undefined") { // check if not localStorage is not defined
             var jwt = new JwtHelper();
             var token = localStorage.getItem('token');
             if (token) {

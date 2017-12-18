@@ -1,0 +1,8 @@
+<div class="card">
+    <div [@expandChanged]="isExpanded" class="card-body hure-card">
+        <ng-content></ng-content>
+    </div>
+    <span class="hure-btn-transparent text-center" (click)="isExpanded=!isExpanded"> {{ isExpanded?'Collapse':'See more' }}
+        <i class="fa" [class.fa-chevron-down]="!isExpanded" [class.fa-chevron-up]="isExpanded"></i>
+    </span>
+</div>

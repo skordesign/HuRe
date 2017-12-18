@@ -1,62 +1,23 @@
-<div class="row navlogo">
-    <div class="col-xs-6 col-sm-4 col-md-3 IMG_LOGO">
-        <img src="img/logo.png" alt="Hutech_Logo" width="100%" class="Hutech_Logo" />
+<div class="row hures-nav">
+    <div class="d-xs-none d-sm-none d-md-none d-lg-none d-xl-block col-2 hures-logo-container">
+        <img src="img/logo.png" alt="Hutech_Logo"   class="text-center align-middle hures-logo" />
     </div>
-    <div class="col-xs-6 col-sm-8 col-md-9 INTRO_LOGO">TRUNG TÂM QUAN HỆ DOANH NGHIỆP</div>
-</div>
-<div class="row mainnav">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light col-xs-12 col-sm-12 col-md-12 col-lg-12 navul">
-        <a class="navbar-brand danhmuc" href="#"> </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="col-12 col-xl-10">
+        <nav class="navbar navbar-expand-lg align-middle navbar-light navul">
+            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse navul-list" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto navul-list-item">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">TRANG CHỦ<span class="sr-only">(current)</span></a>
-                </li>
+            <div class="collapse navbar-collapse navul-list" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto navul-list-item d-flex justify-content-center">
+                    <li *ngFor="let item of navMenu" class="nav-item dropdown" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link text-uppercase  text-center" [routerLink]="item.link">{{ item.text }}</a>
+                    </li>
+                </ul>
 
-                <li class="nav-item dropdown">
-                    <a href="/about">GIỚI THIỆU</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">THỰC TẬP</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">VIỆC LÀM</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">DOANH NGHIỆP</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">ĐỐI TÁC</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">SỰ KIỆN</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#">KỸ NĂNG</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="/contact">LIÊN HỆ</a>
-                </li>
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                  DOANH NGHIỆP
-                </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>-->
-            </ul>
-
-        </div>
-    </nav>
+            </div>
+        </nav>
+    </div>
 
 </div>

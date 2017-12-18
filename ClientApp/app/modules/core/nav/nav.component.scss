@@ -1,76 +1,89 @@
 @import "../../../../util/color-define.scss";
-.navlogo{
-    position: relative;
-    background-color:white;
+.hures-nav {
+    padding: 16px !important;
+    margin: 0;
+    align-items: center;
 
-   margin:0;
+    .hures-logo-container {
+        padding: 8px;
+        .hures-logo {
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+    }
 }
-.mainnav{
-    margin:auto;
-    margin-bottom: 5px;
-}
-.IMG_LOGO{
-    padding: 10px;
-}
-.INTRO_LOGO{
-    color:RED;
-    font-size: 2vw;
-    font-weight: bold;
-    text-align: center;
-    z-index: 888;
-    line-height: 8vw;
-}
-.navul a{
+
+.navul a {
     color: $background-color;
-    font-size: 16px;
     font-weight: bold;
+    font-size: 0.8em;
+    @media screen and (max-width: 1205px) and (min-width: 1063px) {
+        font-size: 0.8em;
+    }
+    @media screen and (max-width: 1063px) and (min-width: 992px) {
+        font-size: 0.7em;
+    }
+    @media screen and (max-width: 992px) and (min-width: 992px) {
+        font-size: 0.65em;
+    }
 }
-.navul-list-item{
-    width:100%;
+
+.navul-list-item {
+    width: 100%;
     margin: auto;
 }
-.mr-auto>li{
-    margin:auto;
+
+.mr-auto>li {
+    margin: auto;
 }
 
-.navsearchbox{
+.navsearchbox {
     display: none;
 }
-.item-in-list{
+
+.item-in-list {
     text-align: left;
 }
+
 .dropdown:hover>.dropdown-menu {
     display: block;
 }
-.dropdown-menu>a:hover{
-    background-color:#006CB5;
-    color:white;
+
+.dropdown-menu>a:hover {
+    background-color: #006CB5;
+    color: white;
 }
-@media screen and (max-width: 880px) {
-   
+
+.navul {
+    .nav-item {
+        padding: 8px 16px;
+        margin: 0px auto;
+    }
+    .active {
+        border-radius: 40em;
+        background: #006CB5;
+        a{
+            color: #FFFFFF;
+        }
+    }
 }
-@media screen and (max-width: 780px) {
-   
-    .INTRO_LOGO{
-        line-height: 10vw;
+
+.navbar-toggler {
+    border: 0;
+}
+
+
+@media screen and (max-width: 991px)  {
+    .active{
+        background: #006CB5 !important;
+        margin: 0 !important;
+        border-radius: 0px !important;
+        width: 100% ;
+        a{
+            color: #FFFFFF;
+
+        }
     }
- }
- @media screen and (max-width:991px){
-    .mr-auto>li{
-        width:100%;
-        border-bottom:1px solid lightgray;
-    }
-    .navsearchbox{
-        display: block;
-    }
- }
- @media screen and (max-width: 575.5px) {
-    .INTRO_LOGO{
-        line-height: normal;
-        font-size: 2.5vw;
-    }
-    .IMG_LOGO{
-        width:288px;
-        margin:auto;
-    }
- }
+}

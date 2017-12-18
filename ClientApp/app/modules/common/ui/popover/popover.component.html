@@ -1,0 +1,10 @@
+
+    <button class="btn btn-primary" (click)="change()" #buttonChild>Open</button>
+    <div [@menuChanged]="state" class="popover bs-popover-bottom bs-popover-bottom-docs app-popover" 
+    [style.left.px]="left" [style.top.px]="top">
+        <div class="arrow"></div>
+        <h3 class="popover-header text-center">{{ header | uppercase }}</h3>
+        <div class="popover-body">
+            <ng-content></ng-content>
+        </div>
+    </div>

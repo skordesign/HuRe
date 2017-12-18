@@ -5,6 +5,8 @@ const AotPlugin = require('@ngtools/webpack').AotPlugin;
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
+
 module.exports = (env) => {
     // Configuration in common to both client-side and server-side bundles
     const isDevBuild = !(env && env.prod);
@@ -12,7 +14,11 @@ module.exports = (env) => {
         //entry:['ClientApp'],
         stats: { modules: false },
         context: __dirname,
-        resolve: { extensions: ['.js', '.ts'] },
+        resolve: {
+            extensions: ['.js', '.ts'], plugins: [
+                new TsConfigPathsPlugin()
+            ]
+        },
         output: {
             filename: '[name].js',
             publicPath: 'dist/' // Webpack dev middleware, if enabled, handles requests for this URL prefix
@@ -23,7 +29,7 @@ module.exports = (env) => {
                 { test: /\.html$/, use: 'html-loader?minimize=false' },
                 { test: /\.css$/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize'] },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
-                { test: /\.scss$/, use: ['raw-loader', 'sass-loader']}
+                { test: /\.scss$/, use: ['raw-loader', 'sass-loader'] }
                 // {
                 //     test: /\.scss$/,
                 //     exclude: /node_modules/,
