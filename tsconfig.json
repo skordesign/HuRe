@@ -29,7 +29,8 @@
       ],
       "@directives/*": [
         "app/modules/common/directives/*"
-      ]
+      ],
+      "@models/*":["app//modules/common/models/*"]
     }
   },
   "exclude": [

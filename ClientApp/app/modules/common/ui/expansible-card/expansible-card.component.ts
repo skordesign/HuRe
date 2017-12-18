@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
 @Component({
-    selector: 'app-expansible-card',
+    selector: 'hure-expansible-card',
     templateUrl: 'expansible-card.component.html',
     styleUrls: ['./expansible-card.component.scss'],
     animations: [

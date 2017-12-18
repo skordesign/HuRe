@@ -7,7 +7,7 @@ import { AlertService } from '../frontend/alert.service';
 
 @Injectable()
 export class CommonHttpService<T> {
-    constructor(private httpClient: HttpClient, private loadingSvc:LoadingService, private alertSvc:AlertService) { }
+    constructor(protected httpClient: HttpClient, protected loadingSvc:LoadingService, protected alertSvc:AlertService) { }
     get<T>(url: string): Observable<T> {
         try{
             this.loadingSvc.showLoading(true);
