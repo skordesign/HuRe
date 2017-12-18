@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from "@angular/http";
-import { ConfirmService } from '../../modules/common/services/frontend/confirm.service';
-import { AlertService } from '../../modules/common/services/frontend/alert.service';
-import { CommonHttpService } from '../common/services/backend/common-http.service';
-import { LoadingService } from '../common/services/frontend/loading.service';
+import { ConfirmService } from "../../common/services/frontend/confirm.service";
+import { AlertService } from "../../common/services/frontend/alert.service";
+import { CommonHttpService } from "../../common/services/backend/common-http.service";
+import { LoadingService } from "../../common/services/frontend/loading.service";
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',

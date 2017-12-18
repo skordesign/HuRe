@@ -16,7 +16,7 @@ namespace HuRe.Models
         public string URLLogo { get; set; }
         public string NguoiDaiDien { get; set; }
         public string MoTa { get; set; }
-        public int NhomViecId { get; set; }
+        public long NhomViecId { get; set; }
         public virtual NhomViec NhomViec { get; set; }
     }
 }

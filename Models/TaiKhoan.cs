@@ -19,7 +19,7 @@ namespace HuRe.Models
         public string DiaChi { get; set; }
         public string MatKhau { get; set; }
         public string AnhDaiDien { get; set; }
-        public int PhanQuyenId { get; set; }
+        public long PhanQuyenId { get; set; }
         public virtual PhanQuyen PhanQuyen { get; set; }
 
     }

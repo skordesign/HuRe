@@ -3,11 +3,10 @@ import { ModuleWithProviders } from "@angular/core";
 import { AppComponent } from "./app/app.component";
 export const routes: Routes = [
     {
-        path: '', loadChildren: './modules/home/home.module#HomeModule'
-    },{
-        path:'contact', loadChildren:'./modules/contact/contact.module#ContactModule'
-    },{
-        path:'about', loadChildren: './modules/introduce/introduce.module#IntroduceModule'
+        path: '', loadChildren: './modules/client/client.module#ClientModule'
+    },
+    {
+        path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule'
     },
     { path: '**', redirectTo: '' }
 ]

@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using HuRe.Models.ActionModel;
+using HuRe.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -16,14 +17,16 @@ namespace HuRe.Controllers
     public class AuthController : Controller
     {
         private readonly ITaiKhoanRepository _taiKhoanRepo;
-        public AuthController(ITaiKhoanRepository taiKhoanRepo)
+        private readonly IPhanQuyenRepository _phanQuyenRepo;
+        public AuthController(ITaiKhoanRepository taiKhoanRepo, IPhanQuyenRepository phanQuyenRepo)
         {
             _taiKhoanRepo = taiKhoanRepo;
+            _phanQuyenRepo = phanQuyenRepo;
         }
         [AllowAnonymous]
         [HttpPost]
         [Route("api/login")]
-        public IActionResult Login([FromBody]LoginActionModel model)
+        public async Task<IActionResult> LoginAsync([FromBody]LoginActionModel model)
         {
             if (ModelState.IsValid)
             {
@@ -33,12 +36,14 @@ namespace HuRe.Controllers
                 {
                     return BadRequest("Tài khoản không tồn tại");
                 }
-                var claims = new[]
+                var claims = new List<Claim>
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, model.username),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
                  };
+                var role = await _phanQuyenRepo.GetAsync(user.PhanQuyenId);
+                claims.Add(new Claim(ClaimTypes.Role, role.Ten.ToString()));
                 //get role bỏ vào token
                 var token = new JwtSecurityToken
                 (

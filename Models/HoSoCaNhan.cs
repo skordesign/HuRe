@@ -13,9 +13,9 @@ namespace HuRe.Models
         public string KinhNghiem { get; set; }
         public Guid TaiKhoanId { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
-        public int HinhThucLamViecId { get; set; }
+        public long HinhThucLamViecId { get; set; }
         public virtual HinhThucLamViec HinhThucLamViec { get; set; }
-        public int NhomViecId { get; set; }
+        public long NhomViecId { get; set; }
         public virtual NhomViec NhomViec { get; set; }
 
 

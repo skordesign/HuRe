@@ -29,9 +29,9 @@ namespace HuRe.Models
         public decimal MucLuongThapNhat { get; set; }
         public decimal MucLuongCaoNhat { get; set; }
         public string ThongTinKhac { get; set; }
-        public int DoanhNghiepId { get; set; }
+        public long DoanhNghiepId { get; set; }
         public virtual DoanhNghiep DoanhNghiep { get; set; }
-        public int HinhThucLamViecId { get; set; }
+        public long HinhThucLamViecId { get; set; }
         public virtual HinhThucLamViec HinhThucLamViec { get; set; }
     }
 }
