@@ -8,6 +8,12 @@ const router: Routes = [
         children: [
             {
                 path: '', loadChildren: './home/home.module#HomeModule'
+            },
+            {
+                path:'about', loadChildren: './introduce/introduce.module#IntroduceModule'
+            },
+            {
+                path:'contact', loadChildren: './contact/contact.module#ContactModule'
             }
         ]
     }

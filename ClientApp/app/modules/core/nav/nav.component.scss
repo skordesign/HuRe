@@ -18,15 +18,15 @@
 .navul a {
     color: $background-color;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.75em;
     @media screen and (max-width: 1205px) and (min-width: 1063px) {
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
     @media screen and (max-width: 1063px) and (min-width: 992px) {
-        font-size: 0.7em;
+        font-size: 0.65em;
     }
     @media screen and (max-width: 992px) and (min-width: 992px) {
-        font-size: 0.65em;
+        font-size: 0.6em;
     }
 }
 
@@ -58,7 +58,7 @@
 
 .navul {
     .nav-item {
-        padding: 8px 16px;
+        padding: 8px;
         margin: 0px auto;
     }
     .active {
