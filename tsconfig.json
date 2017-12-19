@@ -18,19 +18,27 @@
     ],
     "baseUrl": "ClientApp",
     "paths": {
+      "@app/*": [
+        "app/app/*"
+      ],
       "@core/*": [
-        "app/modules/core/*"
+        "app/core/*"
       ],
       "@services/*": [
-        "app/modules/common/services/*"
+        "app/shared/services/*"
       ],
       "@ui/*": [
-        "app/modules/common/ui/*"
+        "app/shared/ui/*"
       ],
       "@directives/*": [
-        "app/modules/common/directives/*"
+        "app/shared/directives/*"
       ],
-      "@models/*":["app//modules/common/models/*"]
+      "@models/*": [
+        "app/shared/models/*"
+      ],
+      "@guards/*": [
+        "app/shared/guards/*"
+      ],"@shared/*":["app/shared/*"]
     }
   },
   "exclude": [

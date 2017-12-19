@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
-import { ConfirmService } from '../../common/services/frontend/confirm.service';
+import { ConfirmService } from '@services/frontend/confirm.service';
 
 
 

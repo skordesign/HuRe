@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
-import { ProgressService } from '../../common/services/frontend/progress.service';
+import { ProgressService } from '@services/frontend/progress.service';
 @Component({
     selector: 'app-progress',
     templateUrl: './progressBar.component.html',

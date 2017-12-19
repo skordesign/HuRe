@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { AlertService } from '../../common/services/frontend/alert.service';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
+import { AlertService } from '@services/frontend/alert.service';
 @Component({
     selector: 'hure-alert',
     templateUrl: './alert.component.html',

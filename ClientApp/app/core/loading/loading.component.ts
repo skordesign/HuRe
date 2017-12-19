@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
-import { LoadingService } from '../../common/services/frontend/loading.service';
+import { LoadingService } from '@services/frontend/loading.service';
 
 @Component({
     selector: 'hure-loading',

@@ -3,10 +3,10 @@ import { ModuleWithProviders } from "@angular/core";
 import { AppComponent } from "./app/app.component";
 export const routes: Routes = [
     {
-        path: '', loadChildren: './modules/client/client.module#ClientModule'
+        path: '', loadChildren: './app/end-user/end-user.module#EndUserModule'
     },
     {
-        path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule'
+        path: 'admin', loadChildren: './app/admin/admin.module#AdminModule'
     },
     { path: '**', redirectTo: '' }
 ]

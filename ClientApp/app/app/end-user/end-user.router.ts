@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { ClientComponent } from "./client.component";
+import {EndUserComponent} from '@app/end-user/end-user.component';
 const router: Routes = [
     {
         path: '',
-        component: ClientComponent,
+        component: EndUserComponent,
         children: [
             {
                 path: '', loadChildren: './home/home.module#HomeModule'
@@ -19,4 +19,4 @@ const router: Routes = [
     }
 ];
 
-export const clientRouter = RouterModule.forChild(router);
+export const endUserRouter = RouterModule.forChild(router);

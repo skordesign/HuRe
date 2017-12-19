@@ -17,7 +17,10 @@ module.exports = (env) => {
         resolve: {
             extensions: ['.js', '.ts'], plugins: [
                 new TsConfigPathsPlugin()
-            ]
+            ],
+            alias:{
+                styles: path.join(__dirname, 'ClientApp', 'styles')
+            }
         },
         output: {
             filename: '[name].js',

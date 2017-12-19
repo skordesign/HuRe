@@ -1,9 +1,8 @@
-@import "../../../../util/color-define.scss";
+@import "~styles/variables.scss";
 .hures-nav {
     padding: 16px !important;
     margin: 0;
     align-items: center;
-
     .hures-logo-container {
         padding: 8px;
         .hures-logo {
