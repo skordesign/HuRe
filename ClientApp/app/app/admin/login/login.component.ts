@@ -13,18 +13,18 @@ export class LoginComponent implements OnInit {
 
     }
     signIn(form: any) {
-        console.log(form);
-        // if (form.valid) {
-        //     let loginModel = form.value;
-        //     console.log(loginModel);
-
-        //     this._auth.login(loginModel).then(result => {
-        //         if (result) {
-        //             console.log('Thành công');
-        //         } else {
-        //             console.log('Thất bại');
-        //         }
-        //     })
-        // }
+        console.log(form.value);
+        if (form.valid) {
+            let loginModel = form.value;
+            console.log(loginModel);
+            this._auth.login(loginModel).then(result => {
+                if (result) {
+                    console.log('Thành công');
+                    console.log(this._auth.isLogged());
+                } else {
+                    console.log('Thất bại');
+                }
+            })
+        }
     }
 }
