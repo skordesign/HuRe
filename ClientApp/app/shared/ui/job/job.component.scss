@@ -1,0 +1,599 @@
+@media screen and (min-width: 1201px) {
+    .job-component{
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+        width: 100%;
+        .job-holder{
+            line-height: normal;
+            display: block;
+            padding: 10px 18px 10px 22px;
+        }
+        .jobs-type{
+            margin: 0 31px 0 0;
+            display: inline-block;
+            a{
+                color: #424242;
+                font: 400 14px/20px "Varela Round", sans-serif;
+                text-transform: unset;
+                color: #32bea6;
+            }
+        }
+        .jobtype-btn{
+            border: 1px solid;
+            border-radius: 2px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin: -18px 0 0 !important;
+            outline: none;
+            padding: 8px 14px;
+            right: 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #f26522;
+            top: 50%;
+            position: static;
+            display: inline-block;
+        }
+        .jobs-content{
+            background: none;
+            border-top: 0;
+        }
+        .cs-media{
+            display: inline-block;
+            width: 62px;
+            margin: 0 30px 0 0;
+            vertical-align: middle;
+            float: none;
+        }
+        a{
+            box-shadow: none;
+            color: #424242;
+            font: 700 14px/20px "Raleway", sans-serif;
+            letter-spacing: 1px;
+            outline: none;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        figure{
+            width: auto;
+            img{
+                box-shadow: none;
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+        .cs-text{
+            display: inline-block;
+            vertical-align: middle;
+            min-width: 320px;
+            padding: 9px 0;
+            width: 55%;
+        }
+        .cs-post-title{
+            display: inline-block;
+            vertical-align: middle;
+            h5{
+                margin: 0 !important;
+                a{
+                    text-decoration: none;
+                    display: block;
+                    outline: none;
+                    border: 0;
+                    font: 400 14px/20px "Varela Round", sans-serif!important;
+                }
+            }
+        }
+        .post-options{
+            margin: 0;
+            ul{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                position: relative;
+                list-style: none;
+                display: inline-block;
+                color: #6d6d6d;
+                font-size: 12px;
+                margin: 0 5px 0 0 !important;
+                letter-spacing: 1px;
+                span{
+                    text-decoration: none;
+                    outline: none;
+                    border: 0;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font: 700 14px/20px "Raleway", sans-serif;
+                }
+                ::after{
+                    clear: both;
+                    content: '';
+                    display: block;
+                }
+            }
+        }
+    }
+    .cs-color{
+        color: #f26522 !important;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+    .job-component{
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+        width: 100%;
+        .job-holder{
+            line-height: normal;
+            display: block;
+            padding: 10px 18px 10px 22px;
+        }
+        .jobs-type{
+            margin: 0 31px 0 0;
+            display: inline-block;
+            a{
+                color: #424242;
+                font: 400 14px/20px "Varela Round", sans-serif;
+                text-transform: unset;
+                color: #32bea6;
+            }
+        }
+        .jobtype-btn{
+            border: 1px solid;
+            border-radius: 2px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin: -18px 0 0 !important;
+            outline: none;
+            padding: 8px 14px;
+            right: 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #f26522;
+            top: 50%;
+            position: static;
+            display: inline-block;
+        }
+        .jobs-content{
+            background: none;
+            border-top: 0;
+        }
+        .cs-media{
+            display: inline-block;
+            width: 62px;
+            margin: 0 30px 0 0;
+            vertical-align: middle;
+            float: none;
+        }
+        a{
+            box-shadow: none;
+            color: #424242;
+            font: 700 14px/20px "Raleway", sans-serif;
+            letter-spacing: 1px;
+            outline: none;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        figure{
+            width: auto;
+            img{
+                box-shadow: none;
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+        .cs-text{
+            display: inline-block;
+            vertical-align: middle;
+            min-width: 320px;
+            padding: 9px 0;
+            width: 55%;
+        }
+        .cs-post-title{
+            display: inline-block;
+            vertical-align: middle;
+            h5{
+                margin: 0 !important;
+                a{
+                    text-decoration: none;
+                    display: block;
+                    outline: none;
+                    border: 0;
+                    font: 400 14px/20px "Varela Round", sans-serif!important;
+                }
+            }
+        }
+        .post-options{
+            margin: 0;
+            ul{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                position: relative;
+                list-style: none;
+                display: inline-block;
+                color: #6d6d6d;
+                font-size: 12px;
+                margin: 0 5px 0 0 !important;
+                letter-spacing: 1px;
+                span{
+                    text-decoration: none;
+                    outline: none;
+                    border: 0;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font: 700 14px/20px "Raleway", sans-serif;
+                }
+                ::after{
+                    clear: both;
+                    content: '';
+                    display: block;
+                }
+            }
+        }
+    }
+    .cs-color{
+        color: #f26522 !important;
+    }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+    .job-component{
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+        width: 100%;
+        .job-holder{
+            line-height: normal;
+            display: block;
+            padding: 10px 18px 10px 22px;
+        }
+        .jobs-type{
+            margin: 0 31px 0 0;
+            display: inline-block;
+            a{
+                color: #424242;
+                font: 400 14px/20px "Varela Round", sans-serif;
+                text-transform: unset;
+                color: #32bea6;
+            }
+        }
+        .jobtype-btn{
+            border: 1px solid;
+            border-radius: 2px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin: -18px 0 0 !important;
+            outline: none;
+            padding: 8px 14px;
+            right: 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #f26522;
+            top: 50%;
+            position: static;
+            display: inline-block;
+        }
+        .jobs-content{
+            background: none;
+            border-top: 0;
+        }
+        .cs-media{
+            display: inline-block;
+            width: 62px;
+            margin: 0 30px 0 0;
+            vertical-align: middle;
+            float: none;
+        }
+        a{
+            box-shadow: none;
+            color: #424242;
+            font: 700 14px/20px "Raleway", sans-serif;
+            letter-spacing: 1px;
+            outline: none;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        figure{
+            width: auto;
+            img{
+                box-shadow: none;
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+        .cs-text{
+            display: inline-block;
+            vertical-align: middle;
+            min-width: 320px;
+            padding: 9px 0;
+            width: 55%;
+        }
+        .cs-post-title{
+            display: inline-block;
+            vertical-align: middle;
+            h5{
+                margin: 0 !important;
+                a{
+                    text-decoration: none;
+                    display: block;
+                    outline: none;
+                    border: 0;
+                    font: 400 14px/20px "Varela Round", sans-serif!important;
+                }
+            }
+        }
+        .post-options{
+            margin: 0;
+            ul{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                position: relative;
+                list-style: none;
+                display: inline-block;
+                color: #6d6d6d;
+                font-size: 12px;
+                margin: 0 5px 0 0 !important;
+                letter-spacing: 1px;
+                span{
+                    text-decoration: none;
+                    outline: none;
+                    border: 0;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font: 700 14px/20px "Raleway", sans-serif;
+                }
+                ::after{
+                    clear: both;
+                    content: '';
+                    display: block;
+                }
+            }
+        }
+    }
+    .cs-color{
+        color: #f26522 !important;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 576px) {
+    .job-component{
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+        width: 100%;
+        .job-holder{
+            line-height: normal;
+            display: block;
+            padding: 10px 18px 10px 22px;
+        }
+        .jobs-type{
+            margin: 0 31px 0 0;
+            display: inline-block;
+            a{
+                color: #424242;
+                font: 400 14px/20px "Varela Round", sans-serif;
+                text-transform: unset;
+                color: #32bea6;
+            }
+        }
+        .jobtype-btn{
+            border: 1px solid;
+            border-radius: 2px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin: -18px 0 0 !important;
+            outline: none;
+            padding: 8px 14px;
+            right: 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #f26522;
+            top: 50%;
+            position: static;
+            display: inline-block;
+        }
+        .jobs-content{
+            background: none;
+            border-top: 0;
+        }
+        .cs-media{
+            display: inline-block;
+            width: 62px;
+            margin: 0 30px 0 0;
+            vertical-align: middle;
+            float: none;
+        }
+        a{
+            box-shadow: none;
+            color: #424242;
+            font: 700 14px/20px "Raleway", sans-serif;
+            letter-spacing: 1px;
+            outline: none;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        figure{
+            width: auto;
+            img{
+                box-shadow: none;
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+        .cs-text{
+            display: inline-block;
+            vertical-align: middle;
+            min-width: 320px;
+            padding: 9px 0;
+            width: 55%;
+        }
+        .cs-post-title{
+            display: inline-block;
+            vertical-align: middle;
+            h5{
+                margin: 0 !important;
+                a{
+                    text-decoration: none;
+                    display: block;
+                    outline: none;
+                    border: 0;
+                    font: 400 14px/20px "Varela Round", sans-serif!important;
+                }
+            }
+        }
+        .post-options{
+            margin: 0;
+            ul{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                position: relative;
+                list-style: none;
+                display: inline-block;
+                color: #6d6d6d;
+                font-size: 12px;
+                margin: 0 5px 0 0 !important;
+                letter-spacing: 1px;
+                span{
+                    text-decoration: none;
+                    outline: none;
+                    border: 0;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font: 700 14px/20px "Raleway", sans-serif;
+                }
+                ::after{
+                    clear: both;
+                    content: '';
+                    display: block;
+                }
+            }
+        }
+    }
+    .cs-color{
+        color: #f26522 !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .job-component{
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+        width: 100%;
+        .job-holder{
+            line-height: normal;
+            display: block;
+            padding: 10px 18px 10px 22px;
+        }
+        .jobs-type{
+            margin: 0 31px 0 0;
+            display: inline-block;
+            a{
+                color: #424242;
+                font: 400 14px/20px "Varela Round", sans-serif;
+                text-transform: unset;
+                color: #32bea6;
+            }
+        }
+        .jobtype-btn{
+            border: 1px solid;
+            border-radius: 2px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin: -18px 0 0 !important;
+            outline: none;
+            padding: 8px 14px;
+            right: 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #f26522;
+            top: 50%;
+            position: static;
+            display: inline-block;
+        }
+        .jobs-content{
+            background: none;
+            border-top: 0;
+        }
+        .cs-media{
+            display: inline-block;
+            width: 62px;
+            margin: 0 30px 0 0;
+            vertical-align: middle;
+            float: none;
+        }
+        a{
+            box-shadow: none;
+            color: #424242;
+            font: 700 14px/20px "Raleway", sans-serif;
+            letter-spacing: 1px;
+            outline: none;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        figure{
+            width: auto;
+            img{
+                box-shadow: none;
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+        .cs-text{
+            display: inline-block;
+            vertical-align: middle;
+            min-width: 320px;
+            padding: 9px 0;
+            width: 55%;
+        }
+        .cs-post-title{
+            display: inline-block;
+            vertical-align: middle;
+            h5{
+                margin: 0 !important;
+                a{
+                    text-decoration: none;
+                    display: block;
+                    outline: none;
+                    border: 0;
+                    font: 400 14px/20px "Varela Round", sans-serif!important;
+                }
+            }
+        }
+        .post-options{
+            margin: 0;
+            ul{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                position: relative;
+                list-style: none;
+                display: inline-block;
+                color: #6d6d6d;
+                font-size: 12px;
+                margin: 0 5px 0 0 !important;
+                letter-spacing: 1px;
+                span{
+                    text-decoration: none;
+                    outline: none;
+                    border: 0;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font: 700 14px/20px "Raleway", sans-serif;
+                }
+                ::after{
+                    clear: both;
+                    content: '';
+                    display: block;
+                }
+            }
+        }
+    }
+    .cs-color{
+        color: #f26522 !important;
+    }
+}
