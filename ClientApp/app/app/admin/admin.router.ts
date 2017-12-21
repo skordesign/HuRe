@@ -14,16 +14,9 @@ const router: Routes = [
         ]
     },
     {
-<<<<<<< HEAD
-        path : 'login',
-        component : LoginAdminComponent
-    }
-=======
         path: 'login',
-        component: LoginComponent
-    },
-
->>>>>>> 4b2aa8c2a4c252b08ce34a254adac09eb82d730f
+        component: LoginAdminComponent
+    }
 ];
 
 export const adminRouter = RouterModule.forChild(router);

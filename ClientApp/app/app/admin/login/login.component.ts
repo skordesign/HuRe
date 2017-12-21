@@ -1,19 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "@services/backend/auth.service";
 @Component({
-    selector: 'login',
+    selector: 'admin-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-<<<<<<< HEAD
-export class LoginAdminComponent implements OnInit {
-    ngOnInit(): void {
-        
-=======
 export class LoginComponent implements OnInit {
     constructor(private _auth: AuthService) {
-
->>>>>>> 4b2aa8c2a4c252b08ce34a254adac09eb82d730f
     }
     ngOnInit(): void {
 
