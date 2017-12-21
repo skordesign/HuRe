@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HuRe.Db;
+using HuRe.Models;
 using HuRe.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -43,6 +44,8 @@ namespace HuRe
             // This method gets called by the runtime. Use this method to add services to the container.
             services.AddTransient<ITaiKhoanRepository, TaiKhoanRepository>();
             services.AddTransient<IPhanQuyenRepository, PhanQuyenRepository>();
+            services.AddTransient<IRepository<CongViec>, Repository<CongViec>>();
+            services.AddTransient<IRepository<DoanhNghiep>,Repository<DoanhNghiep>>();
             //
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(jwtBearerOptions =>

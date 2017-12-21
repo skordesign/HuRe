@@ -10,11 +10,12 @@ import { BlogComponent } from './blog/blog.component';
 import { RatingBarComponent } from './rating/rating.component';
 import { ExpansibleCardComponent } from './expansible-card/expansible-card.component';
 import { PopoverComponent } from './popover/popover.component';
+import { DirectiveModule } from '@directives/directive.module';
 @NgModule({
     declarations: [GroupComponent, TabbedComponent, DropdownComponent, 
         DropdownItemComponent, TabComponent, JobComponent, BlogComponent, 
         RatingBarComponent, ExpansibleCardComponent, PopoverComponent],
-    imports: [CommonModule],
+    imports: [CommonModule, DirectiveModule],
     exports: [GroupComponent, TabbedComponent, DropdownComponent, 
         DropdownItemComponent, TabComponent, JobComponent, 
         BlogComponent, RatingBarComponent, ExpansibleCardComponent, PopoverComponent],

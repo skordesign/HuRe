@@ -1,11 +1,9 @@
-.hure-card{
-    padding: 16px;
-    display: block;
-    overflow: hidden;
-    
-}
-.hure-btn-transparent {
-    background: #f8f9fa;
-    border-radius: 0 !important;
-    cursor: pointer;
+.app-card-container {
+    border-radius: 0 0 20px 20px;
+    .app-card {
+        padding: 16px;
+        display: block;
+        overflow: hidden;
+        background: var(--light);
+    }
 }

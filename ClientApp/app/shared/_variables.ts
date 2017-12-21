@@ -19,3 +19,6 @@ export const NAV_MENU = [
         link: "/contact", text: "liên hệ"
     }
 ]
+export class UrlVariable {
+    public static readonly URL_LOGIN = 'api/login'
+}

@@ -1,11 +1,11 @@
 <div class="row hures-nav">
     <div class="d-none d-sm-none d-md-none d-lg-none d-xl-block col-xl-2 hures-logo-container">
-        <img src="img/logo.png" alt="Hutech_Logo"   class="text-center align-middle hures-logo" />
+        <img src="img/logo.png" alt="Hutech_Logo" class="text-center align-middle hures-logo" />
     </div>
-    <div class="col-12 col-xl-10">
-        <nav class="navbar navbar-expand-lg align-middle navbar-light navul">
-            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
+    <div class="col-10 col-xl-9">
+        <nav class="navbar navbar-expand-lg align-middle navbar-light hures-nav-menu">
+            <button class="navbar-toggler hures-nav-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -19,5 +19,10 @@
             </div>
         </nav>
     </div>
-
+    <hure-popover  class="col-2 col-xl-1">
+        <span class="hures-icon-container" button> 
+            <i class="fa fa-sign-in hures-login-icon" ></i>
+        </span>
+        <hure-login popover></hure-login>
+    </hure-popover>
 </div>

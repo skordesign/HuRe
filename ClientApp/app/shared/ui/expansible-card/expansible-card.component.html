@@ -1,8 +1,6 @@
-<div class="card">
-    <div [@expandChanged]="isExpanded" class="card-body hure-card">
+<div class="card app-card-container" style="width: 20rem;">
+    <div [@expandChanged]="isExpanded" class="card-body app-card">
         <ng-content></ng-content>
     </div>
-    <span class="hure-btn-transparent text-center" (click)="isExpanded=!isExpanded"> {{ isExpanded?'Collapse':'See more' }}
-        <i class="fa" [class.fa-chevron-down]="!isExpanded" [class.fa-chevron-up]="isExpanded"></i>
-    </span>
+    <button class="btn btn-primary text-capitalize" (click)="isExpanded=!isExpanded" rippleEffect> {{ isExpanded?'Collapse':'Expand' }}</button>
 </div>

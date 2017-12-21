@@ -1,8 +1,19 @@
-.btn{
-    border-radius: 40px !important;
-    min-width: 100px;
-}
-html,body
-{
-    overflow-x: hidden; 
-}
+ a,
+ input[type], button[type] {
+     font-family: Montserrat;
+ }
+
+ .btn {
+     border-radius: 40px !important;
+     min-width: 100px;
+ }
+
+ html,
+ body {
+     overflow-x: hidden;
+ }
+
+ @font-face {
+     font-family: Montserrat;
+     src: url(fonts/Montserrat-Regular.otf);
+ }

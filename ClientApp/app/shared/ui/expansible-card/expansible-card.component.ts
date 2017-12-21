@@ -10,7 +10,7 @@ import { trigger, state, style, transition, animate, group } from '@angular/anim
                 height: '200px'
             })),
             state('1', style({
-                height: 'auto'
+                height: 'auto', 
             })),
             transition('1 => 0', [
                 style({ height: '*' }),

@@ -4,11 +4,19 @@ import { catchError } from 'rxjs/operators';
 import { CommonHttpService } from '@services/backend/common-http.service';
 import { LoadingService } from '@services/frontend/loading.service';
 import { AlertService } from '@services/frontend/alert.service';
+import { URL } from '@services/service.variables';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 
 @Injectable()
-export class JobService extends CommonHttpService<Job> {
-    constructor(protected httpClient: HttpClient,
-        protected loadingSvc: LoadingService,
-        protected alertSvc: AlertService) { super(httpClient, loadingSvc, alertSvc); }
-
+export class JobService {
+    private readonly URL = URL.JOB_URL;
+    constructor(private http: CommonHttpService<Job[]>) { }
+    private getJobsObserver: Observable<Job[]>
+    getJobs(): Observable<Job[]> {
+        if (!this.getJobsObserver) {
+            this.getJobsObserver = this.http.get<Job[]>(this.URL).share();
+        }
+        return this.getJobsObserver;
+    }
 }

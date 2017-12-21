@@ -8,11 +8,4 @@ import { AlertService } from '@services/frontend/alert.service';
 })
 export class AppComponent {
     constructor(private confirmSvc: ConfirmService, private alertSvc:AlertService) { }
-
-
-    public showDlg() {
-        this.confirmSvc.showConfirm("Help", "Me", [{
-            text: "OK", func: () => { console.log("OK") }
-        }])
-    }
 }

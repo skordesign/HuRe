@@ -1,10 +1,9 @@
 @import "~styles/variables.scss";
 .hures-nav {
-    padding: 16px !important;
     margin: 0;
     align-items: center;
     .hures-logo-container {
-        padding: 8px;
+        padding: 8px 48px;
         .hures-logo {
             margin: 0 auto;
             max-width: 100%;
@@ -12,77 +11,52 @@
             display: block;
         }
     }
-}
-
-.navul a {
-    color: $background-color;
-    font-weight: bold;
-    font-size: 0.75em;
-    @media screen and (max-width: 1205px) and (min-width: 1063px) {
-        font-size: 0.75em;
+    .hures-nav-menu {
+        a {
+            color: $background-color;
+            font-weight: bold;
+            font-size: 0.65em;
+        }
     }
-    @media screen and (max-width: 1063px) and (min-width: 992px) {
-        font-size: 0.65em;
+    .navul-list-item {
+        width: 100%;
+        margin: auto;
     }
-    @media screen and (max-width: 992px) and (min-width: 992px) {
-        font-size: 0.6em;
+    .hures-nav-menu {
+        .nav-item {
+            padding: 4px;
+            margin: 0px auto;
+        }
+        .active {
+            border-radius: 40em;
+            background: #006CB5;
+            a {
+                color: #FFFFFF;
+            }
+        }
+        .hures-nav-toggle {
+            border: 0;
+        }
     }
-}
-
-.navul-list-item {
-    width: 100%;
-    margin: auto;
-}
-
-.mr-auto>li {
-    margin: auto;
-}
-
-.navsearchbox {
-    display: none;
-}
-
-.item-in-list {
-    text-align: left;
-}
-
-.dropdown:hover>.dropdown-menu {
-    display: block;
-}
-
-.dropdown-menu>a:hover {
-    background-color: #006CB5;
-    color: white;
-}
-
-.navul {
-    .nav-item {
-        padding: 8px;
-        margin: 0px auto;
-    }
-    .active {
-        border-radius: 40em;
-        background: #006CB5;
-        a{
-            color: #FFFFFF;
+    .hures-icon-container {
+        padding: 2px;
+        .hures-login-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            color: $background-color;
         }
     }
 }
 
-.navbar-toggler {
-    border: 0;
-}
-
-
-@media screen and (max-width: 991px)  {
-    .active{
+@media screen and (max-width: 991px) {
+    .active {
         background: #006CB5 !important;
         margin: 0 !important;
         border-radius: 0px !important;
-        width: 100% ;
-        a{
+        width: 100%;
+        transition: all 1s ease-out;
+        a {
             color: #FFFFFF;
-
         }
     }
 }

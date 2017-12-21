@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import {EndUserComponent} from '@app/end-user/end-user.component';
+import { EndUserComponent } from '@app/end-user/end-user.component';
+import { ErrorComponent } from '@app/end-user/error/error.component';
 const router: Routes = [
     {
         path: '',
@@ -10,10 +11,13 @@ const router: Routes = [
                 path: '', loadChildren: './home/home.module#HomeModule'
             },
             {
-                path:'about', loadChildren: './introduce/introduce.module#IntroduceModule'
+                path: 'about', loadChildren: './introduce/introduce.module#IntroduceModule'
             },
             {
-                path:'contact', loadChildren: './contact/contact.module#ContactModule'
+                path: 'contact', loadChildren: './contact/contact.module#ContactModule'
+            },
+            {
+                path: '**', component: ErrorComponent
             }
         ]
     }

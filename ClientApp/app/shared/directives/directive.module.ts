@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HoverEffect } from './hoverEffect.directive';
-import { ClickOutsideDirective } from './clickOutside.directive';
+import { RippleDirective } from '@directives/ripple.directive';
+import { ClickOutsideDirective } from '@directives/clickOutside.directive';
 
 @NgModule({
-    declarations: [HoverEffect, ClickOutsideDirective],
+    declarations: [HoverEffect, ClickOutsideDirective, RippleDirective],
     imports: [ CommonModule ],
-    exports: [HoverEffect, ClickOutsideDirective],
+    exports: [HoverEffect, ClickOutsideDirective, RippleDirective],
     providers: [],
 })
 export class DirectiveModule {}
