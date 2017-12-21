@@ -5,7 +5,7 @@ import { AuthService } from "@services/backend/auth.service";
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginAdminComponent implements OnInit {
     constructor(private _auth: AuthService) {
     }
     ngOnInit(): void {
