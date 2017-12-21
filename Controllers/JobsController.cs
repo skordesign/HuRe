@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HuRe.Controllers
 {
     [Route("api/jobs")]
-    public class JobsController
+    public class JobsController:Controller
     {
         private readonly IRepository<CongViec> _jobRepo;
         public JobsController(IRepository<CongViec> jobRepo)

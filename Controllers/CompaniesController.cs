@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HuRe.Controllers
 {
     [Route("api/companies")]
-    public class CompaniesController
+    public class CompaniesController:Controller
     {
         private readonly IRepository<DoanhNghiep> _companiesRepo;
         public CompaniesController(IRepository<DoanhNghiep> companiesRepo)

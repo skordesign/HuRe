@@ -16,9 +16,9 @@ const router: Routes = [
             {
                 path: 'contact', loadChildren: './contact/contact.module#ContactModule'
             },
-            {
-                path: '**', component: ErrorComponent
-            }
+            // {
+            //     path: '**', component: ErrorComponent
+            // }
         ]
     }
 ];

@@ -8,11 +8,12 @@ import { HttpModule } from "@angular/http";
 import { DashboardComponent } from "@app/admin/dashboard/dashboard.component";
 import { AdminGuard } from "@guards/admin.guard";
 import { LoginAdminComponent } from '@app/admin/login/login.component';
+import { SharedModule } from '@shared/shared.module';
 @NgModule({
     imports: [
         adminRouter,
         CoreModule,
-        UIModule,
+        SharedModule,
         FormsModule
     ],
     exports: [],

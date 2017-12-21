@@ -9,8 +9,9 @@ import { ServiceModule } from '@services/service.module';
 import { UIModule } from '@ui/ui.module';
 import { DirectiveModule} from '@directives/directive.module';
 import { SharedModule } from '@shared/shared.module';
+import { ErrorComponent } from '@app/end-user/error/error.component';
 @NgModule({
-    declarations: [AppComponent
+    declarations: [AppComponent, ErrorComponent
     ],
     imports: [
         CommonModule,

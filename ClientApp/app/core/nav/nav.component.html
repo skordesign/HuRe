@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse navul-list" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto navul-list-item d-flex justify-content-center">
                     <li *ngFor="let item of navMenu" class="nav-item dropdown" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link text-uppercase  text-center" [routerLink]="item.link">{{ item.text }}</a>
+                        <a class="nav-link text-uppercase  text-center" [routerLink]="item.link" >{{ item.text }}</a>
                     </li>
                 </ul>
 
