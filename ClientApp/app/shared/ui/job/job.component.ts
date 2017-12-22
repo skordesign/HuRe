@@ -5,11 +5,11 @@ import{Component,Input} from '@angular/core';
     styleUrls:['./job.component.scss']
 })
 export class JobComponent{
-    @Input() link: string;
-    @Input() image: string;
-    @Input() linhvuc: string;
-    @Input() location: string;
-    @Input() job: string;
-    @Input() linkjobtype: string;
-    @Input() jobtype: string;
+    @Input() link: string  = "Fuckin" ;
+    @Input() image: string = "Fuckin";
+    @Input() linhvuc: string = "Fuckin";
+    @Input() location: string = "Fuckin";
+    @Input() job: string = "Fuckin";
+    @Input() linkjobtype: string = "Fuckin";
+    @Input() jobtype: string = "Fuckin";
 }

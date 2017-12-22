@@ -1,0 +1,11 @@
+.hures-carousel {
+    position: relative;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    border-width: .2rem;
+    .w-100{
+        object-fit: cover;
+        max-height: 500px;
+    }
+}

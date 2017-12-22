@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'hure-jobs-container',
-    templateUrl: 'jobs-container.component.html'
+    templateUrl: 'jobs-container.component.html',
+    styleUrls:['./jobs-container.component.scss']
 })
 
 export class JobsContainerComponent implements OnInit {
+    @Input() jobs: any[] =[{},{}]
+    @Input() title:string = "Jobs";
     constructor() { }
     ngOnInit() { }
 }

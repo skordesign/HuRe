@@ -1,17 +1,29 @@
  a,
- input[type], button[type] {
-     font-family: Montserrat;
+ input[type],
+ button[type],
+ h3,
+ h1,
+ h2,
+ h5, h4 {
+     font-family: Montserrat !important;
  }
 
  .btn {
      border-radius: 40px !important;
      min-width: 100px;
  }
-
+label, textarea{
+    font-family: Montserrat-Thin !important;
+}
  html,
  body {
      overflow-x: hidden;
  }
+
+ @font-face {
+    font-family: Montserrat-Thin;
+    src: url(fonts/Montserrat-Thin.otf);
+}
 
  @font-face {
      font-family: Montserrat;
