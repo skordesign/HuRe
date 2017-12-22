@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Service.Repositories
 {
-    public interface ITaiKhoanRepository
+    public interface IAccountRepository
     {
         Task<bool> AddAsync(Account o);
         Task<bool> RemoveAsync(Guid id);
@@ -20,10 +20,10 @@ namespace Service.Repositories
 
 
     }
-    public class TaiKhoanRepository :ITaiKhoanRepository
+    public class AccountRepository : IAccountRepository
     {
         private readonly JobDbContext _context;
-        public TaiKhoanRepository(JobDbContext context)
+        public AccountRepository(JobDbContext context)
         {
             _context = context;
         }
@@ -33,9 +33,9 @@ namespace Service.Repositories
             {
                 try
                 {
-                    var userExist = await _context.TaiKhoans.FirstOrDefaultAsync(e => e.Username == o.Username);
+                    var userExist = await _context.Accounts.FirstOrDefaultAsync(e => e.Username == o.Username);
                     if (userExist != null) return false;
-                    await _context.TaiKhoans.AddAsync(o);
+                    await _context.Accounts.AddAsync(o);
                     await _context.SaveChangesAsync();
                     return true;
                 }
@@ -48,13 +48,13 @@ namespace Service.Repositories
 
         public async Task<Account> GetAsync(Guid id)
         {
-            var user = await _context.TaiKhoans.FirstOrDefaultAsync(o => o.Guid == id);
+            var user = await _context.Accounts.FirstOrDefaultAsync(o => o.Guid == id);
             return user ?? new Account();
         }
 
         public async Task<ICollection<Account>> GetsAsync()
         {
-            return await _context.TaiKhoans.ToListAsync();
+            return await _context.Accounts.ToListAsync();
         }
 
 
@@ -62,11 +62,11 @@ namespace Service.Repositories
         {
             using (var transaction = await _context.Database.BeginTransactionAsync())
             {
-                var userExist = await _context.TaiKhoans.FirstOrDefaultAsync(o => o.Guid == id);
+                var userExist = await _context.Accounts.FirstOrDefaultAsync(o => o.Guid == id);
                 try
                 {
                     if (userExist is null) return false;
-                    _context.TaiKhoans.Remove(userExist);
+                    _context.Accounts.Remove(userExist);
                     return true;
                 }
                 catch
@@ -82,7 +82,7 @@ namespace Service.Repositories
             {
                 try
                 {
-                    _context.TaiKhoans.Update(o);
+                    _context.Accounts.Update(o);
                     await _context.SaveChangesAsync();
                     transaction.Commit();
                     return true;
@@ -98,7 +98,7 @@ namespace Service.Repositories
         {
             try
             {
-                return _context.TaiKhoans.FirstOrDefault(o => o.Username == TenTaiKhoan && o.PasswordHashed == Protector.HashPassword(MatKhau));
+                return _context.Accounts.FirstOrDefault(o => o.Username == TenTaiKhoan && o.PasswordHashed == Protector.HashPassword(MatKhau));
             }
             catch(Exception ex)
             {

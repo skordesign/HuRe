@@ -42,8 +42,8 @@ namespace HuRe
                     options.UseSqlServer(Configuration.GetConnectionString("JobDb")));
             // add singleton, scoped or transient here
             // This method gets called by the runtime. Use this method to add services to the container.
-            services.AddTransient<ITaiKhoanRepository, TaiKhoanRepository>();
-            services.AddTransient<IPhanQuyenRepository, PhanQuyenRepository>();
+            services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IRepository<Job>, Repository<Job>>();
             services.AddTransient<IRepository<Company>,Repository<Company>>();
             //

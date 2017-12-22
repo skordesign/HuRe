@@ -12,14 +12,14 @@ namespace HuRe.Db
         public JobDbContext(DbContextOptions<JobDbContext> options)
             : base(options)
         { }
-        public DbSet<Role> PhanQuyens { get; set; }
-        public DbSet<Account> TaiKhoans { get; set; }
-        public DbSet<CV> HoSoCaNhans { get; set; }
-        public DbSet<JobGroup> NhomViecs { get; set; }
-        public DbSet<WorkType> HinhThucLamViecs { get; set; }
-        public DbSet<Company> DoanhNghieps { get; set; }
-        public DbSet<Job> CongViecs { get; set; }
-        public DbSet<Event> SuKiens { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<CV> CVs { get; set; }
+        public DbSet<JobGroup> JobGroups { get; set; }
+        public DbSet<WorkType> WorkTypes { get; set; }
+        public DbSet<Company> Companys { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Event> Events { get; set; }
 
         //xử lí ràng buộc thông qua kế thừa hàm OnModelCreating, có thể xử lí trực tiếp trong model
         protected override void OnModelCreating(ModelBuilder builder)

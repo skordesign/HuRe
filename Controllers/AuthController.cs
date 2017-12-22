@@ -16,9 +16,9 @@ namespace HuRe.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly ITaiKhoanRepository _taiKhoanRepo;
-        private readonly IPhanQuyenRepository _phanQuyenRepo;
-        public AuthController(ITaiKhoanRepository taiKhoanRepo, IPhanQuyenRepository phanQuyenRepo)
+        private readonly IAccountRepository _taiKhoanRepo;
+        private readonly IRoleRepository _phanQuyenRepo;
+        public AuthController(IAccountRepository taiKhoanRepo, IRoleRepository phanQuyenRepo)
         {
             _taiKhoanRepo = taiKhoanRepo;
             _phanQuyenRepo = phanQuyenRepo;

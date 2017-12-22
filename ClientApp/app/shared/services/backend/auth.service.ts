@@ -49,6 +49,9 @@ export class AuthService {
         }
         return false;
     }
+    signOut() {
+        localStorage.clear();
+    }
 }
 export class TokenProvider {
     token: string;

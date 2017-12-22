@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace HuRe.Repositories
 {
-    public interface IPhanQuyenRepository : IRepository<Role>
+    public interface IRoleRepository : IRepository<Role>
     { 
     }
-    public class PhanQuyenRepository : Repository<Role>, IPhanQuyenRepository
+    public class RoleRepository : Repository<Role>, IRoleRepository
     {
         private readonly JobDbContext _context;
-        public PhanQuyenRepository(JobDbContext ctx) : base(ctx)
+        public RoleRepository(JobDbContext ctx) : base(ctx)
         {
             _context = ctx;
         }
