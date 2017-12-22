@@ -26,12 +26,15 @@
         .nav-item {
             padding: 4px;
             margin: 0px auto;
+            a{
+                color: #006CB5 !important;
+            }
         }
         .active {
             border-radius: 40em;
-            background: #006CB5;
+            background: #006CB5 !important;
             a {
-                color: #FFFFFF;
+                color: #FFFFFF !important;
             }
         }
         .hures-nav-toggle {
@@ -56,7 +59,7 @@
         width: 100%;
         transition: all 1s ease-out;
         a {
-            color: #FFFFFF;
+            color: #FFFFFF !important;
         }
     }
 }

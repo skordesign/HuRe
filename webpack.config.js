@@ -4,7 +4,11 @@ const merge = require('webpack-merge');
 const AotPlugin = require('@ngtools/webpack').AotPlugin;
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const extractCss = new ExtractTextPlugin({
+    filename: 'stylesheets/main.css',
+    allChunks: true,
+    disable: false
+});
 const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 module.exports = (env) => {
@@ -18,7 +22,7 @@ module.exports = (env) => {
             extensions: ['.js', '.ts'], plugins: [
                 new TsConfigPathsPlugin()
             ],
-            alias:{
+            alias: {
                 styles: path.join(__dirname, 'ClientApp', 'styles')
             }
         },
@@ -31,33 +35,19 @@ module.exports = (env) => {
                 { test: /\.ts$/, use: isDevBuild ? ['awesome-typescript-loader?silent=true', 'angular2-template-loader', 'angular2-router-loader'] : '@ngtools/webpack' },
                 { test: /\.html$/, use: 'html-loader?minimize=false' },
                 { test: /\.css$/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize'] },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
-                { test: /\.scss$/, use: ['raw-loader', 'sass-loader'] }
-                // {
-                //     test: /\.scss$/,
-                //     exclude: /node_modules/,
-                //     use: ['to-string-loader'].concat(ExtractTextPlugin.extract({
-                //         fallback:'style-loader',
-                //         use: [{
-                //             loader:'css-loader',
-                //             options: {
-                //                 // If you are having trouble with urls not resolving add this setting.
-                //                 // See https://github.com/webpack-contrib/css-loader#url
-                //                 url: false,
-                //                 minimize: true,
-                //                 sourceMap: true
-                //             }
-                //         },{
-                //             loader:'sass-loader',
-                //             options: {
-                //                 sourceMap: true
-                //             }
-                //         }]
-                //     })) // sass-loader not scss-loader
-                // }
+               // { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
+                {
+                    test: /\.scss$/,
+                    exclude: '/node_modules/',
+                    use: ['to-string-loader'].concat(extractCss.extract({
+                        fallback: 'style-loader',
+                        use: ['css-loader', 'sass-loader?sourceMap']
+                    }))
+                },
+                { test: /\.(png|woff|woff2|eot|ttf|svg|gif|jpg|jpeg)(\?|$)/, use: 'url-loader?limit=100000' }
             ]
         },
-        plugins: [new CheckerPlugin(), new ExtractTextPlugin("style.css")]
+        plugins: [new CheckerPlugin(), extractCss]
     };
 
     // Configuration for client-side bundle suitable for running in browsers
