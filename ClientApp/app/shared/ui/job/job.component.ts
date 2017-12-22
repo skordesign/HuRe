@@ -7,7 +7,7 @@ import{Component,Input} from '@angular/core';
 export class JobComponent{
     @Input() link: string;
     @Input() image: string;
-    @Input() post: string;
+    @Input() linhvuc: string;
     @Input() location: string;
     @Input() job: string;
     @Input() linkjobtype: string;
