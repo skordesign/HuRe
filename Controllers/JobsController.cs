@@ -10,30 +10,30 @@ namespace HuRe.Controllers
     [Route("api/jobs")]
     public class JobsController:Controller
     {
-        private readonly IRepository<CongViec> _jobRepo;
-        public JobsController(IRepository<CongViec> jobRepo)
+        private readonly IRepository<Job> _jobRepo;
+        public JobsController(IRepository<Job> jobRepo)
         {
             _jobRepo = jobRepo;
         }
         [HttpGet("{id}")]
-        public async Task<CongViec> Get(long id)
+        public async Task<Job> Get(long id)
         {
             var job = await _jobRepo.GetAsync(id);
             return job;
         }
         [HttpPost]
-        public async Task<List<CongViec>> Get()
+        public async Task<List<Job>> Get()
         {
             var jobs = await _jobRepo.GetsAsync();
             return jobs.ToList();
         }
-        public async Task<bool> Post([FromBody]CongViec model)
+        public async Task<bool> Post([FromBody]Job model)
         {
             bool isAdded = await _jobRepo.AddAsync(model);
             return isAdded;
         }
         [HttpPut("{id}")]
-        public async Task<bool> Put(long id,[FromBody] CongViec model)
+        public async Task<bool> Put(long id,[FromBody] Job model)
         {
             bool isUpdated = await _jobRepo.UpdateAsync(model.Id, model);
             return isUpdated;

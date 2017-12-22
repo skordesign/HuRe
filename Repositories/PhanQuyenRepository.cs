@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace HuRe.Repositories
 {
-    public interface IPhanQuyenRepository : IRepository<PhanQuyen>
+    public interface IPhanQuyenRepository : IRepository<Role>
     { 
     }
-    public class PhanQuyenRepository : Repository<PhanQuyen>, IPhanQuyenRepository
+    public class PhanQuyenRepository : Repository<Role>, IPhanQuyenRepository
     {
         private readonly JobDbContext _context;
         public PhanQuyenRepository(JobDbContext ctx) : base(ctx)

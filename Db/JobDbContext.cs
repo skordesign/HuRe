@@ -12,55 +12,55 @@ namespace HuRe.Db
         public JobDbContext(DbContextOptions<JobDbContext> options)
             : base(options)
         { }
-        public DbSet<PhanQuyen> PhanQuyens { get; set; }
-        public DbSet<TaiKhoan> TaiKhoans { get; set; }
-        public DbSet<HoSoCaNhan> HoSoCaNhans { get; set; }
-        public DbSet<NhomViec> NhomViecs { get; set; }
-        public DbSet<HinhThucLamViec> HinhThucLamViecs { get; set; }
-        public DbSet<DoanhNghiep> DoanhNghieps { get; set; }
-        public DbSet<CongViec> CongViecs { get; set; }
-        public DbSet<SuKien> SuKiens { get; set; }
+        public DbSet<Role> PhanQuyens { get; set; }
+        public DbSet<Account> TaiKhoans { get; set; }
+        public DbSet<CV> HoSoCaNhans { get; set; }
+        public DbSet<JobGroup> NhomViecs { get; set; }
+        public DbSet<WorkType> HinhThucLamViecs { get; set; }
+        public DbSet<Company> DoanhNghieps { get; set; }
+        public DbSet<Job> CongViecs { get; set; }
+        public DbSet<Event> SuKiens { get; set; }
 
         //xử lí ràng buộc thông qua kế thừa hàm OnModelCreating, có thể xử lí trực tiếp trong model
         protected override void OnModelCreating(ModelBuilder builder)
         {
             //set khóa chính
-            builder.Entity<PhanQuyen>().HasKey(k => k.Id);
-            builder.Entity<TaiKhoan>().HasKey(k => k.Guid);
-            builder.Entity<TaiKhoan>()
-              .HasOne(o => o.PhanQuyen)
+            builder.Entity<Role>().HasKey(k => k.Id);
+            builder.Entity<Account>().HasKey(k => k.Guid);
+            builder.Entity<Account>()
+              .HasOne(o => o.Role)
               .WithMany()
-              .HasForeignKey(o => o.PhanQuyenId);
-            builder.Entity<HoSoCaNhan>().HasKey(k => new { k.Id,k.TaiKhoanId});
-            builder.Entity<HoSoCaNhan>()
-               .HasOne(o => o.TaiKhoan)
+              .HasForeignKey(o => o.RoleId);
+            builder.Entity<CV>().HasKey(k => new { k.Id,k.AccountId});
+            builder.Entity<CV>()
+               .HasOne(o => o.Account)
                .WithMany()
-               .HasForeignKey(o => o.TaiKhoanId);
-            builder.Entity<HoSoCaNhan>()
-             .HasOne(o => o.NhomViec)
+               .HasForeignKey(o => o.AccountId);
+            builder.Entity<CV>()
+             .HasOne(o => o.JobGroup)
              .WithMany()
-             .HasForeignKey(o => o.NhomViecId);
-            builder.Entity<HoSoCaNhan>()
-             .HasOne(o => o.HinhThucLamViec)
+             .HasForeignKey(o => o.JobGrouoId);
+            builder.Entity<CV>()
+             .HasOne(o => o.WorkType)
              .WithMany()
-             .HasForeignKey(o => o.HinhThucLamViecId);
-            builder.Entity<NhomViec>().HasKey(k => k.Id);
-            builder.Entity<HinhThucLamViec>().HasKey(k => k.Id);
-            builder.Entity<SuKien>().HasKey(k => k.Id);
-            builder.Entity<DoanhNghiep>().HasKey(k => k.Id);
-            builder.Entity<DoanhNghiep>()
-              .HasOne(o => o.NhomViec)
+             .HasForeignKey(o => o.WorkTypeId);
+            builder.Entity<JobGroup>().HasKey(k => k.Id);
+            builder.Entity<WorkType>().HasKey(k => k.Id);
+            builder.Entity<Event>().HasKey(k => k.Id);
+            builder.Entity<Company>().HasKey(k => k.Id);
+            builder.Entity<Company>()
+              .HasOne(o => o.JobGroup)
               .WithMany()
-              .HasForeignKey(o => o.NhomViecId);
-            builder.Entity<CongViec>().HasKey(k => k.Id);
-            builder.Entity<CongViec>()
-            .HasOne(o => o.HinhThucLamViec)
+              .HasForeignKey(o => o.JobGroupId);
+            builder.Entity<Job>().HasKey(k => k.Id);
+            builder.Entity<Job>()
+            .HasOne(o => o.WorkType)
             .WithMany()
-            .HasForeignKey(o => o.HinhThucLamViecId);
-            builder.Entity<CongViec>()
-           .HasOne(o => o.DoanhNghiep)
+            .HasForeignKey(o => o.WorkTypeId);
+            builder.Entity<Job>()
+           .HasOne(o => o.Company)
            .WithMany()
-           .HasForeignKey(o => o.DoanhNghiepId);
+           .HasForeignKey(o => o.CompanyId);
         }
     }
 }

@@ -31,19 +31,19 @@ namespace HuRe.Controllers
             if (ModelState.IsValid)
             {
                 //This method returns user id from username and password.
-                var user = _taiKhoanRepo.Login(model.username, model.password);
+                var user = _taiKhoanRepo.Login(model.Username, model.Password);
                 if (user == null)
                 {
                     return BadRequest("Tài khoản không tồn tại");
                 }
                 var claims = new List<Claim>
                 {
-                    new Claim(JwtRegisteredClaimNames.Sub, model.username),
+                    new Claim(JwtRegisteredClaimNames.Sub, model.Username),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
                  };
-                var role = await _phanQuyenRepo.GetAsync(user.PhanQuyenId);
-                claims.Add(new Claim("Role", role.Ten.ToString()));
+                var role = await _phanQuyenRepo.GetAsync(user.RoleId);
+                claims.Add(new Claim("Role", role.Name.ToString()));
                 //get role bỏ vào token
                 var token = new JwtSecurityToken
                 (

@@ -10,20 +10,20 @@ namespace HuRe.Controllers
     [Route("api/companies")]
     public class CompaniesController:Controller
     {
-        private readonly IRepository<DoanhNghiep> _companiesRepo;
-        public CompaniesController(IRepository<DoanhNghiep> companiesRepo)
+        private readonly IRepository<Company> _companiesRepo;
+        public CompaniesController(IRepository<Company> companiesRepo)
         {
             _companiesRepo = companiesRepo;
         }
 
         [HttpGet("{id}")]
-        public async Task<DoanhNghiep> Get(long id)
+        public async Task<Company> Get(long id)
         {
-            DoanhNghiep doanhNghiep = await _companiesRepo.GetAsync(id);
+            Company doanhNghiep = await _companiesRepo.GetAsync(id);
             return doanhNghiep;
         }
         [HttpGet]
-        public async Task<List<DoanhNghiep>> Get()
+        public async Task<List<Company>> Get()
         {
             var doanhNghieps = await _companiesRepo.GetsAsync();
             return doanhNghieps.ToList();
@@ -36,14 +36,14 @@ namespace HuRe.Controllers
         }
 
         [HttpPost]
-        public async Task<bool> Post([FromBody] DoanhNghiep model)
+        public async Task<bool> Post([FromBody] Company model)
         {
             bool isAdded = await _companiesRepo.AddAsync(model);
             return isAdded;
         }
 
         [HttpPut("{id}")]
-        public async Task<bool> Put(long id, [FromBody] DoanhNghiep model)
+        public async Task<bool> Put(long id, [FromBody] Company model)
         {
             bool isUpdated = await _companiesRepo.UpdateAsync(id, model);
             return isUpdated;

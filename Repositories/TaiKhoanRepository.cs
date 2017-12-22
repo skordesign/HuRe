@@ -11,12 +11,12 @@ namespace Service.Repositories
 {
     public interface ITaiKhoanRepository
     {
-        Task<bool> AddAsync(TaiKhoan o);
+        Task<bool> AddAsync(Account o);
         Task<bool> RemoveAsync(Guid id);
-        Task<bool> UpdateAsync(TaiKhoan o);
-        Task<TaiKhoan> GetAsync(Guid id);
-        Task<ICollection<TaiKhoan>> GetsAsync();
-        TaiKhoan Login(string TenTaiKhoan, string MatKhau);
+        Task<bool> UpdateAsync(Account o);
+        Task<Account> GetAsync(Guid id);
+        Task<ICollection<Account>> GetsAsync();
+        Account Login(string TenTaiKhoan, string MatKhau);
 
 
     }
@@ -27,13 +27,13 @@ namespace Service.Repositories
         {
             _context = context;
         }
-        public async Task<bool> AddAsync(TaiKhoan o)
+        public async Task<bool> AddAsync(Account o)
         {
             using (var transaction = await _context.Database.BeginTransactionAsync())
             {
                 try
                 {
-                    var userExist = await _context.TaiKhoans.FirstOrDefaultAsync(e => e.TenTaiKhoan == o.TenTaiKhoan);
+                    var userExist = await _context.TaiKhoans.FirstOrDefaultAsync(e => e.Username == o.Username);
                     if (userExist != null) return false;
                     await _context.TaiKhoans.AddAsync(o);
                     await _context.SaveChangesAsync();
@@ -46,13 +46,13 @@ namespace Service.Repositories
             }
         }
 
-        public async Task<TaiKhoan> GetAsync(Guid id)
+        public async Task<Account> GetAsync(Guid id)
         {
             var user = await _context.TaiKhoans.FirstOrDefaultAsync(o => o.Guid == id);
-            return user ?? new TaiKhoan();
+            return user ?? new Account();
         }
 
-        public async Task<ICollection<TaiKhoan>> GetsAsync()
+        public async Task<ICollection<Account>> GetsAsync()
         {
             return await _context.TaiKhoans.ToListAsync();
         }
@@ -76,7 +76,7 @@ namespace Service.Repositories
             }
         }
 
-        public async Task<bool> UpdateAsync(TaiKhoan o)
+        public async Task<bool> UpdateAsync(Account o)
         {
             using (var transaction = await _context.Database.BeginTransactionAsync())
             {
@@ -94,11 +94,11 @@ namespace Service.Repositories
             }
         }
 
-        public TaiKhoan Login(string TenTaiKhoan,string MatKhau)
+        public Account Login(string TenTaiKhoan,string MatKhau)
         {
             try
             {
-                return _context.TaiKhoans.FirstOrDefault(o => o.TenTaiKhoan == TenTaiKhoan && o.MatKhau == Protector.HashPassword(MatKhau));
+                return _context.TaiKhoans.FirstOrDefault(o => o.Username == TenTaiKhoan && o.PasswordHashed == Protector.HashPassword(MatKhau));
             }
             catch(Exception ex)
             {
