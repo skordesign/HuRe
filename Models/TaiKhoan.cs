@@ -21,6 +21,8 @@ namespace HuRe.Models
         public string AnhDaiDien { get; set; }
         public long PhanQuyenId { get; set; }
         public virtual PhanQuyen PhanQuyen { get; set; }
+        public DateTime NgayTao { get; set; } = DateTime.Now;
+        public DateTime NgaySua { get; set; } = DateTime.Now;
 
     }
 }
