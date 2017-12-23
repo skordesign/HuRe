@@ -16,6 +16,12 @@ const router: Routes = [
             {
                 path: 'contact', loadChildren: './contact/contact.module#ContactModule'
             },
+            {
+                path: 'jobs', loadChildren: './job/job.module#JobModule'
+            },
+            {
+                path: 'internship', loadChildren: './job/job.module#JobModule'
+            },
             // {
             //     path: '**', component: ErrorComponent
             // }
