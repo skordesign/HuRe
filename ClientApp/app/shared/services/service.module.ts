@@ -8,6 +8,7 @@ import { LoadingService } from './frontend/loading.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonHttpService } from './backend/common-http.service';
 import { AuthService } from "@services/backend/auth.service";
+import { CoreModule } from '@core/core.module';
 
 @NgModule({
     declarations: [],

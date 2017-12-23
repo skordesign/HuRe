@@ -12,7 +12,7 @@
      border-radius: 40px !important;
      min-width: 100px;
  }
-label, textarea{
+label, textarea, p{
     font-family: Montserrat-Thin !important;
 }
  html,

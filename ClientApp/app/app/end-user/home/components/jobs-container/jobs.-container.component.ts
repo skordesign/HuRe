@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class JobsContainerComponent implements OnInit {
     @Input() jobs: any[] =[{},{}]
-    @Input() title:string = "Jobs";
+    @Input() title:string = "Công việc";
     constructor() { }
     ngOnInit() { }
 }

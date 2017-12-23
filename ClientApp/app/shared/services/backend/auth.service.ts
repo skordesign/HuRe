@@ -24,7 +24,7 @@ export class AuthService {
             .then(async response => {
                 if (response) {
                     var tokenAuth = (response as TokenProvider);
-                    localStorage.setItem('token', tokenAuth.token);
+                    localStorage.setItem('token_hure', tokenAuth.token);
                     localStorage.setItem('userId', tokenAuth.guid.toString());
                     return true;
                 } else {
@@ -39,7 +39,7 @@ export class AuthService {
         return body || {};
     }
     isLogged() {
-        var token = localStorage.getItem("token");
+        var token = localStorage.getItem("token_hure");
         if (token) {
             var jwt = new JwtHelper();
             if (!jwt.isTokenExpired(token)) {

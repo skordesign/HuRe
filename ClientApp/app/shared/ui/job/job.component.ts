@@ -1,15 +1,16 @@
-import{Component,Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
-    selector:'hure-job',
-    templateUrl:'./job.component.html',
-    styleUrls:['./job.component.scss']
+    selector: 'hure-job',
+    templateUrl: './job.component.html',
+    styleUrls: ['./job.component.scss']
 })
-export class JobComponent{
-    @Input() link: string  = "Fuckin" ;
-    @Input() image: string = "Fuckin";
-    @Input() linhvuc: string = "Fuckin";
-    @Input() location: string = "Fuckin";
-    @Input() job: string = "Fuckin";
-    @Input() linkjobtype: string = "Fuckin";
-    @Input() jobtype: string = "Fuckin";
+export class JobComponent {
+    constructor(private router: Router) { }
+    @Input() job: Job;
+    apply() {
+        if(this.job){
+            this.router.navigate(['jobs', this.job?this.job.id.toString():1]);
+        }
+    }
 }

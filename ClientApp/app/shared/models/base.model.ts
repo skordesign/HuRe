@@ -1,5 +1,5 @@
-interface Base{
-    id:number;
-    creatDate:Date;
-    modifiedDate:Date;
+interface Base {
+    id: number;
+    creatDate: Date;
+    modifiedDate: Date;
 }

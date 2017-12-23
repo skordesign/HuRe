@@ -16,7 +16,7 @@ import { DirectiveModule } from '@directives/directive.module';
         DropdownItemComponent, TabComponent, JobComponent, BlogComponent, 
         RatingBarComponent, ExpansibleCardComponent, PopoverComponent],
     imports: [CommonModule, DirectiveModule],
-    exports: [GroupComponent, TabbedComponent, DropdownComponent, 
+    exports: [GroupComponent, TabbedComponent, DropdownComponent,
         DropdownItemComponent, TabComponent, JobComponent, 
         BlogComponent, RatingBarComponent, ExpansibleCardComponent, PopoverComponent],
     providers: [],

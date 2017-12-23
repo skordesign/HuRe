@@ -6,8 +6,8 @@ import { ServiceModule } from '@services/service.module';
 
 
 @NgModule({
-    imports: [UIModule, DirectiveModule, GuardModule, ServiceModule],
-    exports: [DirectiveModule, UIModule, GuardModule, ServiceModule],
+    imports: [UIModule, DirectiveModule, GuardModule],
+    exports: [DirectiveModule, UIModule, GuardModule],
     declarations: [],
     providers: [],
 })

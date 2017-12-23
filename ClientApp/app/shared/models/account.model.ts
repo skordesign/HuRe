@@ -1,5 +1,5 @@
-interface Account{
-    guid: Guid;
+interface Account {
+    guid: string;
     username: string;
     class: string;
     lastname: string;
@@ -12,7 +12,7 @@ interface Account{
     passwordHashed: string;
     avatar: string;
     roleId: number;
-    role:Role;
+    role: Role;
     createdDate: Date;
     modifiedDate: Date;
 }
