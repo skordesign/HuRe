@@ -16,6 +16,7 @@ import { ErrorComponent } from '@app/end-user/error/error.component';
     imports: [
         CommonModule,
         HttpModule,
+        ServiceModule,
         SharedModule,
         FormsModule,
         routing,

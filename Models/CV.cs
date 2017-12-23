@@ -11,14 +11,11 @@ namespace HuRe.Models
         public string Place { get; set; }
         public string Level { get; set; }
         public string Experience { get; set; }
-        public Guid AccountId { get; set; }
+        public long AccountId { get; set; }
         public virtual Account Account { get; set; }
         public long WorkTypeId { get; set; }
         public virtual WorkType WorkType { get; set; }
-        public long JobGrouoId { get; set; }
+        public long JobGroupId { get; set; }
         public virtual JobGroup JobGroup { get; set; }
-
-
-
     }
 }

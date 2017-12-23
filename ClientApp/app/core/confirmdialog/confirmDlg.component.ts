@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
 import { ConfirmService } from '@services/frontend/confirm.service';
@@ -32,10 +32,7 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
     subcription: Subscription;
     title = "";
     message = "";
-    constructor(private confirm: ConfirmService) { }
-
-    ngOnInit() {
-
+    constructor(private confirm: ConfirmService) {
         this.subcription = this.confirm.confirmChanged.subscribe((body: any) => {
             this.actions = body.actions;
             this.title = body.title;
@@ -43,13 +40,23 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
             this.showDialog();
         });
     }
+
+    ngOnInit() {
+
+
+    }
     showDialog() {
         this.isActivated = true;
     }
-    exec(action: any) {
-        let act = action as Action;
-        act.func();
-        this.isActivated = false;
+    exec(action: any, accept: boolean = true) {
+        if (accept) {
+            let act = action as Action;
+            act.func();
+            this.isActivated = false;
+        } else {
+            this.actions = []
+            this.isActivated = false;
+        }
     }
 }
 

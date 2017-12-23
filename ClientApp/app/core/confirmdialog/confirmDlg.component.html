@@ -9,6 +9,7 @@
             </div>
             <div class="modal-footer">
                 <button *ngFor="let action of actions" type="button" class="btn btn-primary" (click)="exec(action)">{{ action.text }}</button>
+                <button type="button" class="btn btn-primary" (click)="exec(action, false)">Hủy</button>
             </div>
         </div>
     </div>

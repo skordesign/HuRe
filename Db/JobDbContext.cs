@@ -26,7 +26,7 @@ namespace HuRe.Db
         {
             //set khóa chính
             builder.Entity<Role>().HasKey(k => k.Id);
-            builder.Entity<Account>().HasKey(k => k.Guid);
+            builder.Entity<Account>().HasKey(k => k.Id);
             builder.Entity<Account>()
               .HasOne(o => o.Role)
               .WithMany()
@@ -39,7 +39,7 @@ namespace HuRe.Db
             builder.Entity<CV>()
              .HasOne(o => o.JobGroup)
              .WithMany()
-             .HasForeignKey(o => o.JobGrouoId);
+             .HasForeignKey(o => o.JobGroupId);
             builder.Entity<CV>()
              .HasOne(o => o.WorkType)
              .WithMany()

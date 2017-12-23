@@ -9,10 +9,10 @@ namespace HuRe.Models
 {
     public class WorkType :Base
     {
-        public string Ten { get; set; }
-        public string TenVietTat { get; set; }
+        public string Name { get; set; }
+        public string ShortName { get; set; }
         public string Tag { get; set; }
-        public ICollection<CV> HoSoCaNhans { get; set; }
-        public ICollection<Job> CongViecs { get; set; }
+        public virtual ICollection<CV> CVs { get; set; }
+        public virtual ICollection<Job> Jobs { get; set; }
     }
 }

@@ -10,7 +10,7 @@ export class DoanhNghiepGuard implements CanActivate {
     public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         if (typeof window !== "undefined") { // check if not localStorage is not defined
             var jwt = new JwtHelper();
-            var token = localStorage.getItem('token');
+            var token = localStorage.getItem('token_hure');
             if (token) {
                 if (jwt.isTokenExpired(token)) {
                     this._router.navigate(["doanhnghiep/login"]);

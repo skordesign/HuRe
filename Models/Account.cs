@@ -7,7 +7,8 @@ namespace HuRe.Models
 {
     public class Account
     {
-        public Guid Guid { get; set; }
+        public long Id { get; set; }
+        public Guid Guid { get; set; } = Guid.NewGuid();
         public string Username { get; set; }
         public string Class { get; set; }
         public string Lastname { get; set; }
