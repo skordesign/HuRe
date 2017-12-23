@@ -15,7 +15,7 @@ namespace HuRe.Models
         public virtual Account Account { get; set; }
         public long WorkTypeId { get; set; }
         public virtual WorkType WorkType { get; set; }
-        public long JobGrouoId { get; set; }
+        public long JobGroupId { get; set; }
         public virtual JobGroup JobGroup { get; set; }
 
 

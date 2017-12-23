@@ -39,7 +39,7 @@ namespace HuRe.Db
             builder.Entity<CV>()
              .HasOne(o => o.JobGroup)
              .WithMany()
-             .HasForeignKey(o => o.JobGrouoId);
+             .HasForeignKey(o => o.JobGroupId);
             builder.Entity<CV>()
              .HasOne(o => o.WorkType)
              .WithMany()
