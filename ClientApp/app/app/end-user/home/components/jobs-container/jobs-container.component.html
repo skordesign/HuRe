@@ -1,6 +1,7 @@
 <div class="hures-container">
     <h5 class="text-center m-2">{{title}}</h5>
-    <div class="d-flex flex-column">
-        <hure-job *ngFor="let job of jobs" class="m-1"></hure-job>
+    <div *ngIf="jobs$ | async; let jobs; else waiting" class="d-flex flex-column">
+        <hure-job *ngFor="let job of jobs" [job]="job" class="m-1"></hure-job>
     </div>
+    <ng-template #waiting> <hure-waiter></hure-waiter></ng-template>
 </div>

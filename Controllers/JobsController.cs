@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HuRe.Controllers
 {
     [Route("api/jobs")]
-    public class JobsController:Controller
+    public class JobsController : Controller
     {
         private readonly IRepository<Job> _jobRepo;
         public JobsController(IRepository<Job> jobRepo)
@@ -21,19 +21,20 @@ namespace HuRe.Controllers
             var job = await _jobRepo.GetAsync(id);
             return job;
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<List<Job>> Get()
         {
             var jobs = await _jobRepo.GetsAsync();
             return jobs.ToList();
         }
+        [HttpPost]
         public async Task<bool> Post([FromBody]Job model)
         {
             bool isAdded = await _jobRepo.AddAsync(model);
             return isAdded;
         }
         [HttpPut("{id}")]
-        public async Task<bool> Put(long id,[FromBody] Job model)
+        public async Task<bool> Put(long id, [FromBody] Job model)
         {
             bool isUpdated = await _jobRepo.UpdateAsync(model.Id, model);
             return isUpdated;
