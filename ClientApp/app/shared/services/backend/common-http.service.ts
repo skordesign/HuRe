@@ -1,29 +1,50 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { LoadingService } from '../frontend/loading.service';
 import { AlertService } from '../frontend/alert.service';
-import { HttpHeaders } from "@angular/common/http";
+import { Http, Headers, Response } from '@angular/http';
+import { share } from 'rxjs/operator/share';
+import { of } from "rxjs/observable/of";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class CommonHttpService<T> {
-    constructor(protected httpClient: HttpClient, protected loadingSvc: LoadingService, protected alertSvc: AlertService) { }
-    get<T>(url: string): Observable<T> {
+export class CommonHttpService<T>{
+    constructor(protected http: Http, protected loadingSvc: LoadingService, protected alertSvc: AlertService) { }
+    protected extractdata(res: Response) {
+        let body = res.json();
+        return body || {};
+    }
+    public  createHeader(): Headers {
+        const headers = new Headers();
+        headers.set("Content-Type", "application/json");
+        return headers;
+    }
+    gets<T>(url: string, headers?: Headers): Observable<T[]> {
         try {
             this.loadingSvc.showLoading(true);
-            return this.httpClient.get<T>(url);
+            return this.http.get(url, { headers: headers }).map(this.extractdata).catch(err => []);
+        } catch (err) {
+            return new Observable<T[]>(sub => sub.next());
+        }
+    }
+
+    get<T>(url: string, id: number, headers?: Headers): Observable<T> {
+        try {
+            this.loadingSvc.showLoading(true);
+            return this.http.get(url + id.toString(), { headers: headers }).map(this.extractdata).catch(err => new Observable<T>(sub => sub.next()));
         } catch (err) {
             return new Observable<T>(sub => sub.next());
         }
     }
-    post(url: string, body: any, headers?: HttpHeaders) {
-        return this.httpClient.post(url, JSON.stringify(body), { headers });
+    post(url: string, body: any, headers?: Headers) {
+        return this.http.post(url, JSON.stringify(body), { headers: headers });
     }
-    put(url: string, body: any) {
-        return this.httpClient.put(url, JSON.stringify(body));
+    put(url: string, id: number, body: any, headers?: Headers) {
+        return this.http.put(url + id.toString(), JSON.stringify(body), { headers: headers });
     }
-    delete(url: string) {
-        return this.httpClient.delete(url);
+    delete(url: string, id: number, headers?: Headers) {
+        return this.http.delete(url + id.toString());
     }
 }
