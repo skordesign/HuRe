@@ -11,13 +11,14 @@ import { RatingBarComponent } from './rating/rating.component';
 import { ExpansibleCardComponent } from './expansible-card/expansible-card.component';
 import { PopoverComponent } from './popover/popover.component';
 import { DirectiveModule } from '@directives/directive.module';
+import { CardComponent } from '@ui/card/card.component';
 @NgModule({
-    declarations: [GroupComponent, TabbedComponent, DropdownComponent, 
-        DropdownItemComponent, TabComponent, JobComponent, BlogComponent, 
-        RatingBarComponent, ExpansibleCardComponent, PopoverComponent],
+    declarations: [GroupComponent, TabbedComponent, DropdownComponent,
+        DropdownItemComponent, TabComponent, JobComponent, BlogComponent,
+        RatingBarComponent, ExpansibleCardComponent, PopoverComponent, CardComponent],
     imports: [CommonModule, DirectiveModule],
     exports: [GroupComponent, TabbedComponent, DropdownComponent,
-        DropdownItemComponent, TabComponent, JobComponent, 
+        DropdownItemComponent, TabComponent, JobComponent, CardComponent,
         BlogComponent, RatingBarComponent, ExpansibleCardComponent, PopoverComponent],
     providers: [],
 })

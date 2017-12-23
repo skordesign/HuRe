@@ -1,7 +1,9 @@
 .hures-brand-container{
     width: 100%;
     img{
-        max-width: 156px;
+        width: 156px;
+        height: 156px;
+        margin: 16px;
         object-fit: contain; 
     }
 }
