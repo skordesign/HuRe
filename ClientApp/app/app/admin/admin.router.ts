@@ -3,14 +3,13 @@ import { RouterModule } from '@angular/router';
 import { LoginAdminComponent } from "./login/login.component";
 import { AdminComponent } from "./admin.component";
 import { AdminGuard } from "@guards/admin.guard";
-import { DashboardComponent } from "@app/admin/dashboard/dashboard.component";
 const router: Routes = [
     {
         path: '',
         component: AdminComponent,
         canActivate: [AdminGuard],
         children: [
-            { path: '', component: DashboardComponent }
+            { path: '', loadChildren: './pages/home/home.module#HomeModule' }
         ]
     },
     {

@@ -49,7 +49,7 @@ export class AuthService {
         }
         return false;
     }
-    signOut() {
+    logout() {
         localStorage.clear();
     }
 }
