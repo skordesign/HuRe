@@ -14,6 +14,7 @@ export class JobsContainerComponent implements OnInit, OnDestroy {
     }
     jobs$: Observable<Job[]>
     @Input() title: string = "Công việc";
+    @Input() limit:number = 5;
     constructor(private jobSvc: JobService) {
         this.getDataAsync();
     }

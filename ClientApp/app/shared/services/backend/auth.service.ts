@@ -1,6 +1,6 @@
 
 
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { JwtHelper } from "angular2-jwt/angular2-jwt";
 import { UrlVariable } from "@shared/_variables";
 import { CommonHttpService } from "@services/backend/common-http.service";
@@ -8,6 +8,7 @@ import { Headers } from '@angular/http';
 
 @Injectable()
 export class AuthService {
+    login$: EventEmitter<boolean> = new EventEmitter();
     constructor(private httpClient: CommonHttpService<any>) { }
     createHeader(): Headers {
         const headers = new Headers();
@@ -27,6 +28,7 @@ export class AuthService {
                     var tokenAuth = (response.json() as TokenProvider);
                     localStorage.setItem('token_hure', tokenAuth.token);
                     localStorage.setItem('userId', tokenAuth.guid.toString());
+                    this.login$.emit(true);
                     return true;
                 } else {
                     return false;
@@ -52,6 +54,7 @@ export class AuthService {
     }
     logout() {
         localStorage.clear();
+        this.login$.emit(false);
     }
 }
 export class TokenProvider {
