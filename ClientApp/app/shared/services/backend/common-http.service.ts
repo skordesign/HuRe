@@ -16,7 +16,7 @@ export class CommonHttpService<T>{
         let body = res.json();
         return body || {};
     }
-    public  createHeader(): Headers {
+    public createHeader(): Headers {
         const headers = new Headers();
         headers.set("Content-Type", "application/json");
         return headers;
@@ -24,7 +24,8 @@ export class CommonHttpService<T>{
     gets<T>(url: string, headers?: Headers): Observable<T[]> {
         try {
             this.loadingSvc.showLoading(true);
-            return this.http.get(url, { headers: headers }).map(this.extractdata).catch(err => []);
+            return this.http.get(url, { headers: headers || this.createHeader() })
+                .map(this.extractdata).catch(err => []);
         } catch (err) {
             return new Observable<T[]>(sub => sub.next());
         }
@@ -33,18 +34,22 @@ export class CommonHttpService<T>{
     get<T>(url: string, id: number, headers?: Headers): Observable<T> {
         try {
             this.loadingSvc.showLoading(true);
-            return this.http.get(url + id.toString(), { headers: headers }).map(this.extractdata).catch(err => new Observable<T>(sub => sub.next()));
+            return this.http.get(url + id.toString(), { headers: headers || this.createHeader() })
+                .map(this.extractdata).catch(err => new Observable<T>(sub => sub.next()));
         } catch (err) {
             return new Observable<T>(sub => sub.next());
         }
     }
     post(url: string, body: any, headers?: Headers) {
-        return this.http.post(url, JSON.stringify(body), { headers: headers });
+        return this.http.post(url, JSON.stringify(body), { headers: headers || this.createHeader() })
+            .map(this.extractdata).catch(err => []);
     }
     put(url: string, id: number, body: any, headers?: Headers) {
-        return this.http.put(url + id.toString(), JSON.stringify(body), { headers: headers });
+        return this.http.put(url + id.toString(), JSON.stringify(body), { headers: headers || this.createHeader() })
+            .map(this.extractdata).catch(err => []);
     }
     delete(url: string, id: number, headers?: Headers) {
-        return this.http.delete(url + id.toString());
+        return this.http.delete(url + id.toString(), { headers: headers || this.createHeader() })
+            .map(this.extractdata).catch(err => []);
     }
 }

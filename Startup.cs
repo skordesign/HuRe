@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,12 @@ using HuRe.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Service.Repositories;
 
@@ -29,7 +32,7 @@ namespace HuRe
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
-          
+
         }
 
         public IConfiguration Configuration { get; }
@@ -45,7 +48,7 @@ namespace HuRe
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IRepository<Job>, Repository<Job>>();
-            services.AddTransient<IRepository<Company>,Repository<Company>>();
+            services.AddTransient<IRepository<Company>, Repository<Company>>();
             //
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(jwtBearerOptions =>
@@ -65,7 +68,7 @@ namespace HuRe
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env ,JobDbContext db)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, JobDbContext db)
         {
             if (env.IsDevelopment())
             {
@@ -81,7 +84,12 @@ namespace HuRe
             }
 
             app.UseStaticFiles();
-
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                       Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "resources")),
+                RequestPath = new PathString("/resources")
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -98,7 +106,7 @@ namespace HuRe
             });
             app.UseAuthentication();
             InitDb.Init(db);
-           
+
         }
     }
 }

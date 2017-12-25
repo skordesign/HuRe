@@ -12,8 +12,6 @@ import { HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class JobService {
     private readonly URL = URL.JOB_URL;
-    headers = new HttpHeaders()
-        .set("Content-Type", "application/json");
     constructor(private http: CommonHttpService<Job>) { }
     private getJobs$: Observable<Job[]>
     getJobs(): Observable<Job[]> {

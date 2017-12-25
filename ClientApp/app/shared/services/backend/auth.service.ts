@@ -13,29 +13,24 @@ export class AuthService {
     createHeader(): Headers {
         const headers = new Headers();
         headers.set("Content-Type", "application/json");
-           // .set("Content-Type", "application/json");
+        // .set("Content-Type", "application/json");
         return headers;
     }
-    login(user: any): Promise<boolean> {
+    async login(user: any): Promise<boolean> {
         let body = {
             username: user.username,
             password: user.password
         }
-        return this.httpClient.post(UrlVariable.URL_LOGIN, body, this.createHeader())
-            .toPromise()
-            .then(async response => {
-                if (response) {
-                    var tokenAuth = (response.json() as TokenProvider);
-                    localStorage.setItem('token_hure', tokenAuth.token);
-                    localStorage.setItem('userId', tokenAuth.guid.toString());
-                    this.login$.emit(true);
-                    return true;
-                } else {
-                    return false;
-                }
-            }).catch(err => {
-                return false;
-            });
+        try {
+            let token = await this.httpClient.post(UrlVariable.URL_LOGIN, body, this.createHeader()).toPromise();
+            var tokenAuth = (token as TokenProvider);
+            localStorage.setItem('token_hure', tokenAuth.token);
+            localStorage.setItem('userId', tokenAuth.guid.toString());
+            this.login$.emit(true);
+            return true;
+        } catch (err) {
+            return false;
+        }
     }
     private extractdata(res: Response) {
         let body = res.json();

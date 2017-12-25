@@ -10,12 +10,14 @@ import { AuthService } from "@services/backend/auth.service";
 import { CoreModule } from '@core/core.module';
 import { JobService } from '@services/backend/job.service';
 import { HttpModule } from '@angular/http';
+import { ProfileService } from '@services/backend/profile.service';
+import { LocalService } from '@services/backend/local.service';
 
 @NgModule({
     declarations: [],
     imports: [ CommonModule, HttpModule ],
     exports: [],
     providers: [ConfirmService, AlertService, ProgressService, LoadingService, CommonHttpService,AuthService,
-    JobService],
+    JobService, ProfileService, LocalService],
 })
 export class ServiceModule {}

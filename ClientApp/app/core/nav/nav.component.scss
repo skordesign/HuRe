@@ -41,12 +41,29 @@
             border: 0;
         }
     }
-    .hures-icon-container {
-        padding: 2px;
-        .hures-login-icon {
-            font-size: 1.2em;
-            cursor: pointer;
-            color: $background-color;
+    // .hures-icon-container {
+    //     padding: 2px;
+    //     .hures-login-icon {
+    //         font-size: 1.2em;
+    //         cursor: pointer;
+    //         color: $background-color;
+    //     }
+    // }
+    .hures-button-popover {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+        i, img {
+            width: 32px;
+            height: 32px;
+            margin: 4px;
+            border-radius: 20px;
+            align-items: center;
+            align-content: center;
+            align-self: center;
         }
     }
 }

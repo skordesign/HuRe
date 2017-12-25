@@ -19,7 +19,7 @@ namespace HuRe.Models
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string PasswordHashed { get; set; }
-        public string Avatar { get; set; }
+        public string Avatar { get; set; } = "/resources/default-avatar.jpg";
         public long RoleId { get; set; }
         public virtual Role Role { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
