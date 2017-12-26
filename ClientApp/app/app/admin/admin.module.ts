@@ -5,22 +5,23 @@ import { FormsModule } from "@angular/forms";
 import { CoreModule } from '@core/core.module';
 import { UIModule } from '@ui/ui.module';
 import { HttpModule } from "@angular/http";
-import { DashboardComponent } from "@app/admin/dashboard/dashboard.component";
 import { AdminGuard } from "@guards/admin.guard";
 import { LoginAdminComponent } from '@app/admin/login/login.component';
 import { SharedModule } from '@shared/shared.module';
+import { LayoutModule } from "@app/admin/layout/layout.module";
+import { HeaderAdminComponent } from "@app/admin/layout/header/header.component";
 @NgModule({
     imports: [
         adminRouter,
         CoreModule,
         SharedModule,
-        FormsModule
+        FormsModule,
+        LayoutModule,
     ],
     exports: [],
     declarations: [
         AdminComponent,
-        LoginAdminComponent,
-        DashboardComponent
+        LoginAdminComponent
     ],
     providers: [AdminGuard],
 })

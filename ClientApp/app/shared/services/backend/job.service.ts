@@ -7,16 +7,19 @@ import { AlertService } from '@services/frontend/alert.service';
 import { URL } from '@services/service.variables';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class JobService {
     private readonly URL = URL.JOB_URL;
-    constructor(private http: CommonHttpService<Job[]>) { }
-    private getJobsObserver: Observable<Job[]>
+    headers = new HttpHeaders()
+        .set("Content-Type", "application/json");
+    constructor(private http: CommonHttpService<Job>) { }
+    private getJobs$: Observable<Job[]>
     getJobs(): Observable<Job[]> {
-        if (!this.getJobsObserver) {
-            this.getJobsObserver = this.http.get<Job[]>(this.URL).share();
+        if (!this.getJobs$) {
+            this.getJobs$ = this.http.gets<Job>(this.URL, this.http.createHeader()).share();
         }
-        return this.getJobsObserver;
+        return this.getJobs$;
     }
 }

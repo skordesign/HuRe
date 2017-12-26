@@ -5,15 +5,17 @@ import { ConfirmService } from './frontend/confirm.service';
 import { AlertService } from './frontend/alert.service';
 import { ProgressService } from './frontend/progress.service';
 import { LoadingService } from './frontend/loading.service';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonHttpService } from './backend/common-http.service';
 import { AuthService } from "@services/backend/auth.service";
 import { CoreModule } from '@core/core.module';
+import { JobService } from '@services/backend/job.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
     declarations: [],
-    imports: [ CommonModule, HttpClientModule ],
+    imports: [ CommonModule, HttpModule ],
     exports: [],
-    providers: [ConfirmService, AlertService, ProgressService, LoadingService, CommonHttpService,AuthService],
+    providers: [ConfirmService, AlertService, ProgressService, LoadingService, CommonHttpService,AuthService,
+    JobService],
 })
 export class ServiceModule {}

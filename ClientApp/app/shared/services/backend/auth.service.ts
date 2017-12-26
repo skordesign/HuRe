@@ -1,17 +1,19 @@
 
 
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { JwtHelper } from "angular2-jwt/angular2-jwt";
 import { UrlVariable } from "@shared/_variables";
 import { CommonHttpService } from "@services/backend/common-http.service";
-import { HttpHeaders } from "@angular/common/http";
+import { Headers } from '@angular/http';
 
 @Injectable()
 export class AuthService {
+    login$: EventEmitter<boolean> = new EventEmitter();
     constructor(private httpClient: CommonHttpService<any>) { }
-    createHeader(): HttpHeaders {
-        const headers = new HttpHeaders()
-            .set("Content-Type", "application/json");
+    createHeader(): Headers {
+        const headers = new Headers();
+        headers.set("Content-Type", "application/json");
+           // .set("Content-Type", "application/json");
         return headers;
     }
     login(user: any): Promise<boolean> {
@@ -23,9 +25,10 @@ export class AuthService {
             .toPromise()
             .then(async response => {
                 if (response) {
-                    var tokenAuth = (response as TokenProvider);
+                    var tokenAuth = (response.json() as TokenProvider);
                     localStorage.setItem('token_hure', tokenAuth.token);
                     localStorage.setItem('userId', tokenAuth.guid.toString());
+                    this.login$.emit(true);
                     return true;
                 } else {
                     return false;
@@ -49,8 +52,9 @@ export class AuthService {
         }
         return false;
     }
-    signOut() {
+    logout() {
         localStorage.clear();
+        this.login$.emit(false);
     }
 }
 export class TokenProvider {

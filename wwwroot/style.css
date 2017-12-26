@@ -1,31 +1,27 @@
- a,
- input[type],
- button[type],
- h3,
- h1,
- h2,
- h5, h4 {
-     font-family: Montserrat !important;
- }
-
- .btn {
-     border-radius: 40px !important;
-     min-width: 100px;
- }
-label, textarea, p{
-    font-family: Montserrat-Thin !important;
-}
- html,
- body {
-     overflow-x: hidden;
- }
-
- @font-face {
-    font-family: Montserrat-Thin;
-    src: url(fonts/Montserrat-Thin.otf);
+a,
+input[type], button[type],h1, h2, h3, h4, h5 {
+    font-family: Montserrat !important;
 }
 
- @font-face {
-     font-family: Montserrat;
-     src: url(fonts/Montserrat-Regular.otf);
- }
+p, span {
+   font-family: Montserrat-Thin;
+}
+.btn {
+    border-radius: 40px !important;
+    min-width: 100px;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(fonts/Montserrat-Regular.otf);
+}
+
+@font-face {
+   font-family: Montserrat-Thin;
+   src: url(fonts/Montserrat-Light.otf);
+}
