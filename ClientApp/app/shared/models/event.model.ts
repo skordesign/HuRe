@@ -1,4 +1,4 @@
-interface Event extends Base{
+interface EventItem extends Base{
     name: string;
     title: string;
     shortDescription: string;

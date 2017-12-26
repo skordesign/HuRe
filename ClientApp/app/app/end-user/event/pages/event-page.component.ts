@@ -16,8 +16,8 @@ export class EventPageComponent implements OnInit, OnDestroy {
 
     }
     events$: Observable<EventItem[]>;
-    @Input() title: string = "Event nè";
-    @Input() limit: number = 9;
+    @Input() title: string ;
+    @Input() limit: number ;
     constructor(private eventSvc: EventService) {
         this.getDataAsync();
     }

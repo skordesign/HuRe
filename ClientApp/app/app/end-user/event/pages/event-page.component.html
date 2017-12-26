@@ -1,5 +1,5 @@
 <div class="container hures-event1">
-    <h1>HUTECH</h1>
+    <h3>{{title}}</h3>
     <hr>
     <div *ngIf="events$ | async; let events; else waiting" class="row hures-event2">
         <ng-container *ngFor="let event of events;let i=index" class="listbox">
