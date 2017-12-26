@@ -10,6 +10,7 @@ import { LoadingService } from '@services/frontend/loading.service';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+    private test = [1, 2, 3, 4, 5, 6, 7, 8];
     constructor(private confirmSvc: ConfirmService, private alertSvc: AlertService, private http: CommonHttpService<any>,
         private loadingSvc: LoadingService) { }
     ngOnInit() {

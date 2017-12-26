@@ -10,7 +10,11 @@ import { CommonModule } from '@angular/common';
 import { BrandContainerComponent } from '@app/end-user/home/components/brand-container/brand-container.component';
 
 @NgModule({
-    imports: [CommonModule, homeRouter, CoreModule,SharedModule],
+    imports: [
+        CommonModule,
+        homeRouter,
+        CoreModule,
+        SharedModule],
     exports: [],
     declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent, BrandContainerComponent],
     providers: [],
