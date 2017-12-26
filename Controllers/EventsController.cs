@@ -19,7 +19,7 @@ namespace HuRe.Controllers
          [HttpGet]
         public IEnumerable<Event> GetAll()
         {
-            return _eventRepo.ListNewEvent(5).ToList();
+            return _eventRepo.ListNewEvent(9).ToList();
         }
         // [HttpGet("{id}")]
         // // public async Task<Event> Get(long id)
