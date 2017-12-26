@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class BrandContainerComponent implements OnInit {
     listBrand: any[] = [{
-        img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+        img: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/baker-partner2.png",
         url: "https://www.apple.com",
         text: "Apple"
     }, {
@@ -23,10 +23,6 @@ export class BrandContainerComponent implements OnInit {
         img: "https://www.fpt-software.com/wp-content/uploads/sites/2/2017/11/FPT-Software-Ngang-2017.png",
         url: "https://career.fpt-software.com/vi/",
         text: "FPT Software"
-    }, {
-        img: "http://beetsoft.com.vn/wp-content/themes/beetsoft/images/blue-logo.png",
-        url: "http://beetsoft.com.vn",
-        text: "Beesoft"
     }, {
         img: "https://images.careerbuilder.vn/employer_folders/lot2/144332/144312logo-tma-hongtran.png",
         url: "http://www.tmasolutions.com/",

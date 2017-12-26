@@ -99,9 +99,6 @@ namespace HuRe
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
-                    routes.MapSpaFallbackRoute(
-                    name: "spa-fallback-admin",
-                    defaults: new { controller = "Admin", action = "Index" });
                 //routes.MapRoute(
                 //     name: "api",
                 //     template: "api/{controller}/{action}/{id?}"

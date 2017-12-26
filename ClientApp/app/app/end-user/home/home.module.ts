@@ -20,7 +20,7 @@ import { ActionBarComponent } from '@app/end-user/home/components/action-bar/act
         SharedModule],
     exports: [],
     declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent,
-         BrandContainerComponent, ActionBarComponent],
+         BrandContainerComponent, ActionBarComponent,JobGroupComponent],
     providers: [],
 })
 export class HomeModule { }
