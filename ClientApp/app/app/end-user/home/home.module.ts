@@ -8,11 +8,13 @@ import { IndexPageComponent } from '@app/end-user/home/pages/index/index-page.co
 import { SearchPageComponent } from '@app/end-user/home/pages/search/search-page.component';
 import { CommonModule } from '@angular/common';
 import { BrandContainerComponent } from '@app/end-user/home/components/brand-container/brand-container.component';
+import { ActionBarComponent } from '@app/end-user/home/components/action-bar/action-bar.component';
 
 @NgModule({
     imports: [CommonModule, homeRouter, CoreModule,SharedModule],
     exports: [],
-    declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent, BrandContainerComponent],
+    declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent,
+         BrandContainerComponent, ActionBarComponent],
     providers: [],
 })
 export class HomeModule { }
