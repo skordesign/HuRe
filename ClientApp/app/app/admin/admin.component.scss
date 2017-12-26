@@ -1,6 +1,7 @@
+@import './styles/_define.scss';
 .main-container {
     margin-top: 56px;
-    margin-left: 235px;
+    margin-left: $width-nav;
     padding: 15px;
     -ms-overflow-x: hidden;
     overflow-x: hidden;
