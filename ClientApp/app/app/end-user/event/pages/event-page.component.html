@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <h1 style="text-align:center">{{title}}</h1>
-    <div class="row event-list">
-        <hure-card class="col-md-4 event-list-box" *ngFor="let event of events"></hure-card>
+    <div *ngIf="events$ | async; let events; else waiting" class="d-flex flex-column">
+        <ng-container *ngFor="let event of events;let i=index">
+            <hure-card *ngIf="i<limit" [event]="event" class="m-1"></hure-card>
+        </ng-container>
     </div>
 </div>

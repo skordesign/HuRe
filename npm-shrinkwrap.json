@@ -124,6 +124,11 @@
         "tslib": "1.7.1"
       }
     },
+    "@ng-bootstrap/ng-bootstrap": {
+      "version": "1.0.0-beta.8",
+      "resolved": "https://registry.npmjs.org/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-beta.8.tgz",
+      "integrity": "sha1-BIceJNHIp4vPWgR27cJQRNKKuwk="
+    },
     "@ngtools/webpack": {
       "version": "1.5.0",
       "resolved": "https://registry.npmjs.org/@ngtools/webpack/-/webpack-1.5.0.tgz",
@@ -268,6 +273,11 @@
       "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-1.0.1.tgz",
       "integrity": "sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=",
       "dev": true
+    },
+    "angular2-jwt": {
+      "version": "0.2.3",
+      "resolved": "https://registry.npmjs.org/angular2-jwt/-/angular2-jwt-0.2.3.tgz",
+      "integrity": "sha1-VO/do87tuoX2o3sWXyKsIrit8CE="
     },
     "angular2-router-loader": {
       "version": "0.3.5",

@@ -10,12 +10,13 @@ import { AuthService } from "@services/backend/auth.service";
 import { CoreModule } from '@core/core.module';
 import { JobService } from '@services/backend/job.service';
 import { HttpModule } from '@angular/http';
+import { EventService } from '@services/backend/event.service';
 
 @NgModule({
     declarations: [],
     imports: [ CommonModule, HttpModule ],
     exports: [],
     providers: [ConfirmService, AlertService, ProgressService, LoadingService, CommonHttpService,AuthService,
-    JobService],
+    JobService, EventService],
 })
 export class ServiceModule {}
