@@ -1,6 +1,2 @@
 <h3>Chúng tôi hợp tác cùng ai?</h3>
-<div class="hures-brand-container d-flex justify-content-center flex-wrap">
-    <a class="align-middle" *ngFor="let logo of logos" [href]="logo.website">
-        <img [src]="logo.url" alt="Logo">
-    </a>
-</div>
+<hure-carousel-list [listItem]="listBrand"></hure-carousel-list>
