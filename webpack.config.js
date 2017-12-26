@@ -38,7 +38,7 @@ module.exports = (env) => {
                // { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
                 {
                     test: /\.scss$/,
-                    exclude: '/node_modules/',
+                    exclude: [/node_modules/],
                     use: ['to-string-loader'].concat(extractCss.extract({
                         fallback: 'style-loader',
                         use: ['css-loader', 'sass-loader?sourceMap']

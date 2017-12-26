@@ -99,7 +99,7 @@ namespace HuRe.Repositories
         {
             string[] props = typeof(T).GetProperties().Where(o => o.GetAccessors()[0].IsVirtual)
                 .Select(x => x.Name).ToArray();
-            List<T> result = null;
+            List<T> result = await _context.Set<T>().ToListAsync();
             foreach (var item in props)
             {
                 result = await _context.Set<T>().Include(item).ToListAsync();

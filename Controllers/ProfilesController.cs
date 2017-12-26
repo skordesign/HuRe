@@ -7,10 +7,10 @@ using Service.Repositories;
 namespace HuRe.Controllers
 {
     [Route("api/profiles")]
-    public class AccountsController : Controller
+    public class ProfilesController : Controller
     {
         private readonly IAccountRepository _accountRepo;
-        public AccountsController(IAccountRepository accountsRepo)
+        public ProfilesController(IAccountRepository accountsRepo)
         {
             _accountRepo = accountsRepo;
         }

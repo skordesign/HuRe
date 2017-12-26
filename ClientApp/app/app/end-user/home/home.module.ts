@@ -9,6 +9,8 @@ import { SearchPageComponent } from '@app/end-user/home/pages/search/search-page
 import { CommonModule } from '@angular/common';
 import { BrandContainerComponent } from '@app/end-user/home/components/brand-container/brand-container.component';
 import { JobGroupComponent } from '@app/end-user/home/components/job-group-container/job-group-container.component';
+import { ActionBarComponent } from '@app/end-user/home/components/action-bar/action-bar.component';
+
 
 @NgModule({
     imports: [
@@ -17,7 +19,8 @@ import { JobGroupComponent } from '@app/end-user/home/components/job-group-conta
         CoreModule,
         SharedModule],
     exports: [],
-    declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent, BrandContainerComponent,JobGroupComponent],
+    declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent,
+         BrandContainerComponent, ActionBarComponent],
     providers: [],
 })
 export class HomeModule { }
