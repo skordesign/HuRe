@@ -8,6 +8,7 @@ import { IndexPageComponent } from '@app/end-user/home/pages/index/index-page.co
 import { SearchPageComponent } from '@app/end-user/home/pages/search/search-page.component';
 import { CommonModule } from '@angular/common';
 import { BrandContainerComponent } from '@app/end-user/home/components/brand-container/brand-container.component';
+import { JobGroupComponent } from '@app/end-user/home/components/job-group-container/job-group-container.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,7 @@ import { BrandContainerComponent } from '@app/end-user/home/components/brand-con
         CoreModule,
         SharedModule],
     exports: [],
-    declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent, BrandContainerComponent],
+    declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent, BrandContainerComponent,JobGroupComponent],
     providers: [],
 })
 export class HomeModule { }
