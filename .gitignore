@@ -37,7 +37,7 @@ node_modules/
 jspm_packages/
 obj/
 bin/
-wwwroot/
+wwwroot/dist/
 ClientApp/dist/
 # Typescript v1 declaration files
 typings/
