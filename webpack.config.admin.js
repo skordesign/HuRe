@@ -5,7 +5,7 @@ const AotPlugin = require('@ngtools/webpack').AotPlugin;
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractCss = new ExtractTextPlugin({
-    filename: 'stylesheets/main.css',
+    filename: 'stylesheets/main-admin.css',
     allChunks: true,
     disable: false
 });
@@ -38,7 +38,7 @@ module.exports = (env) => {
                // { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
                 {
                     test: /\.scss$/,
-                    exclude: ['/node_modules/','/ClientApp/app/app/admin/'],
+                    exclude: ['/node_modules/','/ClientApp/app/app/end-user/'],
                     use: ['to-string-loader'].concat(extractCss.extract({
                         fallback: 'style-loader',
                         use: ['css-loader', 'sass-loader?sourceMap']
