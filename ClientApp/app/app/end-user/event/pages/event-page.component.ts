@@ -15,7 +15,7 @@ export class EventPageComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
 
     }
-    events$: Observable<Event[]>;
+    events$: Observable<EventItem[]>;
     @Input() title: string = "Event nè";
     @Input() limit: number = 5;
     constructor(private eventSvc: EventService) {

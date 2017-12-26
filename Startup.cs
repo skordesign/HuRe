@@ -46,7 +46,7 @@ namespace HuRe
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IRepository<Job>, Repository<Job>>();
             services.AddTransient<IRepository<Company>,Repository<Company>>();
-            services.AddTransient<IRepository<Event>,Repository<Event>>();
+            services.AddTransient<IEventRepository,EventRepository>();
             //
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(jwtBearerOptions =>

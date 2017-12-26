@@ -14,11 +14,11 @@ export class EventService {
     private readonly URL = URL.EVENT_URL;
     headers = new HttpHeaders()
         .set("Content-Type", "application/json");
-    constructor(private http: CommonHttpService<Event>) { }
-    private getEvents$: Observable<Event[]>
-    getEvents(): Observable<Event[]> {
+    constructor(private http: CommonHttpService<EventItem>) { }
+    private getEvents$: Observable<EventItem[]>
+    getEvents(): Observable<EventItem[]> {
         if (!this.getEvents$) {
-            this.getEvents$ = this.http.gets<Event>(this.URL, this.http.createHeader()).share();
+            this.getEvents$ = this.http.gets<EventItem>(this.URL, this.http.createHeader()).share();
             this.getEvents$.subscribe(result => {
                 console.log(result);
             })
