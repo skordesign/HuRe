@@ -13,12 +13,13 @@ import { LoginComponent } from '@core/login/login.component';
 import { SharedModule } from '@shared/shared.module';
 import { ConfirmDialogComponent } from '@core/confirmdialog/confirmDlg.component';
 import { LoginBoxComponent } from '@core/loginbox/loginbox.component';
+import { EventPageComponent } from '@app/end-user/event/pages/event-page.component';
 @NgModule({
     imports: [CommonModule,FormsModule, ReactiveFormsModule , RouterModule, SharedModule ],
     declarations: [NavComponent, SearchComponent, FooterComponent, AlertComponent,
-        SlideComponent, LoadingComponent, LoginComponent, ConfirmDialogComponent,LoginBoxComponent],
+        SlideComponent, LoadingComponent, LoginComponent, ConfirmDialogComponent,LoginBoxComponent,EventPageComponent],
     exports: [NavComponent, SearchComponent, FooterComponent, AlertComponent,SlideComponent,
-    LoadingComponent, LoginComponent, ConfirmDialogComponent,LoginBoxComponent]
+    LoadingComponent, LoginComponent, ConfirmDialogComponent,LoginBoxComponent,EventPageComponent]
 })
 export class CoreModule {
 
