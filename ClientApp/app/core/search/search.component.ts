@@ -1,38 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
 import { Router } from '@angular/router';
 @Component({
     selector: 'hure-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss'],
-    animations: [
-        trigger('searchChanged', [
-            state('true', style({
-                width: '100%',
-                'display': 'block'
-            })),
-            state('false', style({
-                width: 0,
-                'display': 'none'
-            })),
-            transition('0 => 1', [
-                style({ width: 0 }),
-                animate(250, style({ width: '*' }))
-            ]),
-            transition('1 => 0', [
-                style({ width: '*' }),
-                animate(250, style({ width: 0 }))
-            ])
-        ]),
-    ]
 })
-export class SearchComponent {
+export class SearchComponent implements OnChanges{
+    ngOnChanges(changes: any): void {
+        console.log(this.data);
+    }
     /**
      *
      */
     constructor(private router: Router) {
 
     }
+    @Input() data:any[]
     isActivated = false;
     keyword = "";
     onSubmit() {

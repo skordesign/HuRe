@@ -1,9 +1,16 @@
-<div class="btn-group">
-    <button class="btn btn-secondary btn-sm dropdown-toggle" (clickOutside)="isActivated=false" (click)="isActivated=!isActivated"
-        type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ placeholder }}
-    </button>
-    <div class="dropdown-menu" [class.show]="isActivated">
-        <ng-content></ng-content>
+<div class="w-100 hures-dropdown-container">
+    <div class="hures-dropdown w-100" (click)="isActivated=!isActivated">{{ selectItem.text || placeholder }}</div>
+    <div *ngIf="isActivated">
+        <div class="hures-picker-container">
+            <div class="hures-picker">
+                <div class="d-flex flex-column-reverse h-100" style="padding:8px">
+                    <button class="hures-dropdown-close-btn " (click)="isActivated=!isActivated">Close</button>
+                    <div class="h-100">
+                        <ng-content></ng-content>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

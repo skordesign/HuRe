@@ -11,6 +11,7 @@ import { BrandContainerComponent } from '@app/end-user/home/components/brand-con
 import { JobGroupComponent } from '@app/end-user/home/components/job-group-container/job-group-container.component';
 import { ActionBarComponent } from '@app/end-user/home/components/action-bar/action-bar.component';
 import { EventPageComponent } from "@app/end-user/event/pages/event-page.component";
+import { SearchBarComponent } from '@app/end-user/home/components/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { EventPageComponent } from "@app/end-user/event/pages/event-page.compone
         CoreModule,
         SharedModule],
     exports: [],
-    declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent,
+    declarations: [HomeComponent, JobsContainerComponent, IndexPageComponent, SearchPageComponent, SearchBarComponent,
          BrandContainerComponent, ActionBarComponent,JobGroupComponent,EventPageComponent],
     providers: [],
 })

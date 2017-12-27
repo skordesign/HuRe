@@ -3,15 +3,24 @@ $light-color: var(--light);
     background: #FFFFFF;
     padding: 8px;
     max-height: 128px;
-    &:hover{
+    &:hover {
         background: $light-color;
         border-radius: 16px;
     }
     .hures-job-content {
         padding: 8px;
         width: 100%;
-        .hures-job-info{
+        .hures-job-info {
             width: 100%;
+        }
+        .hures-job-apply-button {
+            border: solid 1px #478723;
+            color: #478723;
+            background: white;
+            display: inline-block;
+            min-width: 96px;
+            border-radius: 2px;
+            font-family: "Montserrat", sans-serif;
         }
     }
     img {
@@ -21,10 +30,11 @@ $light-color: var(--light);
     h4 {
         font-size: 1rem;
     }
-    p{
+    p {
         font-size: 0.8rem;
     }
-    h4, p{
+    h4,
+    p {
         margin: 4px 0;
     }
 }
