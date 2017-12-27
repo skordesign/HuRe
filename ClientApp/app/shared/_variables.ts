@@ -10,8 +10,6 @@ export const NAV_MENU = [
     }, {
         link: "/company", text: "doanh nghiệp"
     }, {
-        link: "/partner", text: "đối tác"
-    }, {
         link: "/events", text: "sự kiện"
     }, {
         link: "/skills", text: "kĩ năng"

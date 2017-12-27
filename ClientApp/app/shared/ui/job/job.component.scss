@@ -5,6 +5,7 @@ $light-color: var(--light);
     max-height: 128px;
     &:hover{
         background: $light-color;
+        border-radius: 16px;
     }
     .hures-job-content {
         padding: 8px;

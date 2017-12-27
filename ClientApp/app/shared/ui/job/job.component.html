@@ -8,7 +8,7 @@
       <!-- <h4 class="card-text text-uppercase">Hello</h4> -->
       <div class="d-flex flex-row">
         <div class="d-flex flex-column hures-job-info">
-          <p>@ {{ job?.shortDescription}}</p>
+          <p>{{ job?.shortDescription | limitText:40}}</p>
           <!-- <p>@ Guru Golzalet</p> -->
           <span>
             <i class="fa fa-map-marker"></i> {{ job?.place }}</span>

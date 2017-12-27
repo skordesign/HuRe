@@ -16,12 +16,13 @@ import { WaiterComponent } from '@ui/waiter/waiter.component';
 import { CarouselListComponent } from '@ui/carousel-list/carousel-list.component';
 import { ActionMenuComponent } from '@ui/action-menu/action-menu.component';
 import { ActionItemComponent } from '@ui/action-menu/action-item/action-item.component';
+import { PipeModule } from '@shared/pipes/pipe.module';
 @NgModule({
     declarations: [GroupComponent, TabbedComponent, DropdownComponent,
         DropdownItemComponent, TabComponent, JobComponent, BlogComponent, WaiterComponent,
         RatingBarComponent, ExpansibleCardComponent, PopoverComponent, CardComponent, CarouselListComponent,
     ActionMenuComponent, ActionItemComponent],
-    imports: [CommonModule, DirectiveModule],
+    imports: [CommonModule, DirectiveModule, PipeModule],
     exports: [GroupComponent, TabbedComponent, DropdownComponent,
         DropdownItemComponent, TabComponent, JobComponent, CardComponent,WaiterComponent,
         BlogComponent, RatingBarComponent, ExpansibleCardComponent, PopoverComponent,CarouselListComponent,
