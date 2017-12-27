@@ -10,7 +10,7 @@ const router: Routes = [
         component: EventComponent, children:[
             {
                 path:'', component: EventPageComponent
-            }
+            },
            
         ]
     }
