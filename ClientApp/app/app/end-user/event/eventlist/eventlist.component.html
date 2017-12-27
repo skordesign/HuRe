@@ -1,0 +1,12 @@
+<h3>{{title}}</h3>
+<div class="container hures-event1">
+
+    <div *ngIf="events$ | async; let events; else waiting" class="row hures-event2">
+        <ng-container *ngFor="let event of events;let i=index">
+            <hure-card *ngIf="i<limit" [event]="event" class="col-sm-6 col-md-6 col-lg-4 col-xl-4 hure-event-card-box"></hure-card>
+        </ng-container>
+    </div>
+</div>
+<div class="container" style="background-color:blue;">
+    aaaaaaa
+</div>
