@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { BrandContainerComponent } from '@app/end-user/home/components/brand-container/brand-container.component';
 import { JobGroupComponent } from '@app/end-user/home/components/job-group-container/job-group-container.component';
 import { ActionBarComponent } from '@app/end-user/home/components/action-bar/action-bar.component';
-
+// import { EventPageComponent } from "@app/end-user/event/pages/event-page.component";
 
 
 @NgModule({

@@ -7,11 +7,12 @@ import { SharedModule } from "@shared/shared.module";
 
 
 import { eventRouter } from "@app/end-user/event/event.router";
+import { EventPageComponent } from "@app/end-user/event/pages/event-page.component";
 
 @NgModule({
     imports: [CommonModule, eventRouter, CoreModule,SharedModule],
     exports: [],
-    declarations: [EventComponent],
+    declarations: [EventComponent,EventPageComponent],
     providers: [],
 })
 export class EventModule{
