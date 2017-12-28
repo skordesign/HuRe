@@ -5,12 +5,13 @@ import { CommonHttpService } from '@services/backend/common-http.service';
 import { LoadingService } from '@services/frontend/loading.service';
 @Component({
     selector: 'event',
-    templateUrl:'./event.component.html',
+    templateUrl: './event.component.html',
     styleUrls: ['./event.component.scss']
 })
-export class EventComponent{
+export class EventComponent {
     constructor(private confirmSvc: ConfirmService, private alertSvc: AlertService, private http: CommonHttpService<any>,
         private loadingSvc: LoadingService) { }
     ngOnInit() {
+        this.loadingSvc.showLoading(false);
     }
 }
