@@ -12571,11 +12571,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "d:\\NGHIENCUUKH\\HuRe\\HuRe.csproj",
       "projectName": "HuRe",
       "projectPath": "d:\\NGHIENCUUKH\\HuRe\\HuRe.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
       "outputPath": "d:\\NGHIENCUUKH\\HuRe\\obj\\",
+=======
+      "projectUniqueName": "D:\\NGHIENCUUKH\\HuRe\\HuRe.csproj",
+      "projectName": "HuRe",
+      "projectPath": "D:\\NGHIENCUUKH\\HuRe\\HuRe.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "D:\\NGHIENCUUKH\\HuRe\\obj\\",
+>>>>>>> 671a4524834c43d609c9e84bba7fcb63ae103bc6
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

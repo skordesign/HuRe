@@ -3,7 +3,8 @@ import { DropdownItemComponent } from './dropdownItem/dropdownItem.component';
 
 @Component({
     selector: 'hure-dropdown',
-    templateUrl: './dropdown.component.html'
+    templateUrl: './dropdown.component.html',
+    styleUrls:['./dropdown.component.scss']
 })
 export class DropdownComponent implements OnInit {
      // change return DropdownItemComponent => this.value to get value
@@ -20,6 +21,7 @@ export class DropdownComponent implements OnInit {
      selectItemEmit(item: DropdownItemComponent) {
          this.selectItem(item);
          this.change.emit(item);
+         this.isActivated = false;
      }
      selectItem(item: DropdownItemComponent) {
          this.items.forEach(i => i.isSelected = false);

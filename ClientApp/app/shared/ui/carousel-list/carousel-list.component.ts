@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ElementRef, Renderer, ViewChild, AfterViewInit, AfterViewChecked, PLATFORM_ID, Inject, Renderer2 } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { trigger, transition, style, animate, state } from '@angular/animations';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Component({
@@ -8,36 +8,35 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
     styleUrls: ['./carousel-list.component.scss'],
     animations: [
         trigger('itemDis', [
-            transition('void => *', [style({
-                opacity: '1'
-            }), animate(500)]),
-            transition('* => void', [style({
-                opacity: '0'
-            }), animate(500)])
+            state('void', style({ transform: 'translateX(0)'})),
+            transition('void => *', [
+                style({ transform: 'translateX(100%)'}),
+                animate('500ms ease-out')
+            ]),
+            transition('* => void', [
+                animate('500ms ease-in', style({ transform: 'translateX(-100%)' }))
+            ])
         ])
     ]
 })
 
-export class CarouselListComponent implements OnInit {
-    ngAfterViewChecked(): void {
+export class CarouselListComponent implements OnInit, AfterViewInit {
+    ngAfterViewInit(): void {
+        this.slide()
     }
+
     @Input() listItem: CarouselItem[]
     @Input() show: number = 4;
     @Input() size: number = 136;
-    @ViewChild('carousel') carousel: ElementRef;
     public static server: string;
-    constructor(private el: ElementRef, private render: Renderer, @Inject(PLATFORM_ID) platformId: object, private render2: Renderer2) {
-        if (isPlatformBrowser(platformId)) {
-            setTimeout(() => this.slide(), 3000);
-        }
+    constructor() {
+
     }
     ngOnInit() {
     }
     slide() {
-        let currentLeft = this.carousel.nativeElement.offsetLeft;
-        //this.render.setElementStyle(this.carousel.nativeElement, 'left', (currentLeft - this.size - 64) + 'px');
-        let first = this.carousel.nativeElement.querySelector('li');
-        this.render2.appendChild(this.carousel.nativeElement, first);
+        let item = this.listItem.shift();
+        this.listItem.push(item!);
         setTimeout(() => this.slide(), 3000)
     }
 }

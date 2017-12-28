@@ -1,21 +1,26 @@
 <div class="hures-event-card">
-    <div class="hures-event-img"><img alt="logo" src="https://images.careerbuilder.vn/employer_folders/lot2/144332/144312logo-tma-hongtran.png" class="imgne"/></div>
-      <div class="hures-event-relative">
-          <div class="hures-event-button">
-              <button class="btn btn-outline-danger" rippleEffect (click)="apply()">SỰ KIỆN</button>
-            </div>
-        <h4 class="hures-event-name">{{ event?.name }}</h4>
-            <hr>
-        <div class="hures-event-region">
-          <div class="row hures-event-region-row">
-            <span class="col-6 col-sm-12 col-md-6 ">
-              <i class="fa fa-map-marker"></i> {{ event?.place }}</span>
-              <span class="col-6 col-sm-12 col-md-6 hures-event-region-date">
-                  <i class="fa fa-calendar"></i> {{ event?.createdDate | date : format }}</span>
-          </div>
-          
-        </div>
-  
-  
-      </div>
+  <div class="checktime">CHƯA BIẾT @@</div>
+  <a href="#" class="hures-event-img">
+    <img alt="logo" src="https://static.topcv.vn/event/images/7cc2b33becb3fd4c82b85e26a368e9b6-5a37ee89e176c.jpg" class="imgne"
+    />
+    <div class="img-hover"></div>
+  </a>
+  <div class="hures-event-relative">
+    <div class="hures-event-button">
+      <div class="label">THỂ LOẠI</div>
+    </div>
+    <div href="#" class="hures-event-name"><a href="#">{{ event?.name }}</a></div>
+    <hr>
+    <div class="hures-event-region">
+
+      <div class="hures-event-region-place">
+        <i class="fa fa-map-marker"></i> {{ event?.place }}</div>
+      <div class="hures-event-region-date">
+        <i class="fa fa-calendar"></i> Hạn chót: {{ event?.endTime | date : format }}</div>
+
+
+    </div>
+
+
   </div>
+</div>
