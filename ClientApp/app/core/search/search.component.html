@@ -1,8 +1,0 @@
-<div (clickOutside)="isActivated=false" class="hures-search-bar d-flex flex-row-reverse">
-    <span class="hures-search-btn input-group-addon" (click)="isActivated =!isActivated">
-        <i class="fa fa-search"></i>
-    </span>
-    <form [@searchChanged]="isActivated"  class="hures-search-form" (ngSubmit)="onSubmit()" #searchForm="ngForm">
-        <input type="text" id="keyword" name="keyword" [(ngModel)]="keyword" class="hures-search-box" placeholder="Tìm kiếm">
-    </form>
-</div>

@@ -1,0 +1,25 @@
+.footer{
+  background-color:#58585A;
+}
+.footer-box{
+    margin:50px;
+}
+.footer-big-item{
+    font-size: 20px;
+    color:white;
+}
+.footer-mini-item{
+    list-style: none;
+    padding:10px;
+}
+.footer-mini-item a{
+    text-decoration: none;
+    color:#C8C8C8;
+}
+.footer-mini-item i{
+    padding-right:10px;
+    font-size: 20px;
+}
+.footer-intro{
+    color:#C8C8C8;
+}

@@ -1,9 +1,0 @@
-<div class="btn-group">
-    <button class="btn btn-secondary btn-sm dropdown-toggle" (clickOutside)="isActivated=false" (click)="isActivated=!isActivated"
-        type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ placeholder }}
-    </button>
-    <div class="dropdown-menu" [class.show]="isActivated">
-        <ng-content></ng-content>
-    </div>
-</div>

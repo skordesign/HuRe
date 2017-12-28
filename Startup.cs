@@ -1,38 +1,20 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using HuRe.Db;
-using HuRe.Models;
-using HuRe.Repositories;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.IdentityModel.Tokens;
-using Service.Repositories;
 
 namespace HuRe
 {
-    public partial class Startup
+    public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-
-            Configuration = builder.Build();
-
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -40,37 +22,11 @@ namespace HuRe
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //get chuoi ket noi va khoi tao db
-            services.AddDbContext<JobDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("JobDb")));
-            // add singleton, scoped or transient here
-            // This method gets called by the runtime. Use this method to add services to the container.
-            services.AddTransient<IAccountRepository, AccountRepository>();
-            services.AddTransient<IRoleRepository, RoleRepository>();
-            services.AddTransient<IRepository<Job>, Repository<Job>>();
-            services.AddTransient<IRepository<Company>,Repository<Company>>();
-            services.AddTransient<IEventRepository,EventRepository>();
-
-            //
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(jwtBearerOptions =>
-            {
-                jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    ValidateActor = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = "JobHutech",
-                    ValidAudience = "User",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("sadasdsadq4143213dsdadasdasdasdasdsads"))
-                };
-            });
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, JobDbContext db)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -86,12 +42,7 @@ namespace HuRe
             }
 
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(
-                       Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "resources")),
-                RequestPath = new PathString("/resources")
-            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -101,14 +52,7 @@ namespace HuRe
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
-                //routes.MapRoute(
-                //     name: "api",
-                //     template: "api/{controller}/{action}/{id?}"
-                // );
             });
-            app.UseAuthentication();
-            InitDb.Init(db);
-
         }
     }
 }

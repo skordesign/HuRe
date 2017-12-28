@@ -19,8 +19,6 @@ namespace HuRe
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseUrls("http://localhost:1234")
                 .UseStartup<Startup>()
                 .Build();
     }
