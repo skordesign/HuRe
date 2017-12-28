@@ -1,0 +1,32 @@
+.intro-label{
+    background-color: #6990AE;
+    padding:10px;
+    text-align: center;
+    color:white;
+}
+.intro-mini-label{
+    border:1px solid #6990AE;
+    border-radius: 20px;
+    padding:20px 20px;
+    text-align: center;
+    position: relative;
+}
+.intro-number-label{
+    position: absolute;
+    border-radius: 50px;
+    width:30px;
+    height:30px;
+    line-height: 1.7rem;
+    top: -10px;
+    left:-10px;
+    background-color:#6990AE;
+}
+.intro-box i{
+    color:red;
+}
+.intro-box{
+    padding:20px;
+}
+div{
+    margin-bottom: 5px;
+}

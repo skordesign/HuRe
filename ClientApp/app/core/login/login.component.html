@@ -1,0 +1,13 @@
+<form [formGroup]="loginForm">
+    <div class="form-group">
+        <label for="exampleInputEmail1"> Tên đăng nhập</label>
+        <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Tên đăng nhập của bạn">
+        <small id="emailHelp" class="form-text text-muted">Đừng bao giờ chia sẻ thông tin của bạn với người khác.</small>
+
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Mật khẩu</label>
+        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
+    </div>
+    <button type="submit" [disabled]="!loginForm.valid" (click)="submit()" class="btn btn-primary text-center" rippleEffect>Đăng nhập</button>
+</form>

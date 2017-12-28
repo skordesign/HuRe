@@ -1,0 +1,18 @@
+@import '../../styles/_define.scss';
+$topnav-background-color: #d6d6c2;
+    .logo{
+        height: $height-nav; 
+    }
+    .admin-header{
+        background: $topnav-background-color;
+         .navbar-brand {
+            color: #fff;
+        }
+        .nav-item > a {
+            color: $blue;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+

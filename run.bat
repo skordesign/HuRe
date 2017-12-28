@@ -1,2 +1,1 @@
-set ASPNETCORE_ENVIRONMENT=Development
-dotnet run
+webpack && set ASPNETCORE_ENVIRONMENT=Development && dotnet run

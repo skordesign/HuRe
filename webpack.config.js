@@ -3,14 +3,29 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const AotPlugin = require('@ngtools/webpack').AotPlugin;
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractCss = new ExtractTextPlugin({
+    filename: 'stylesheets/main.css',
+    allChunks: true,
+    disable: false
+});
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 module.exports = (env) => {
     // Configuration in common to both client-side and server-side bundles
     const isDevBuild = !(env && env.prod);
     const sharedConfig = {
+        //entry:['ClientApp'],
         stats: { modules: false },
         context: __dirname,
-        resolve: { extensions: [ '.js', '.ts' ] },
+        resolve: {
+            extensions: ['.js', '.ts'], plugins: [
+                new TsConfigPathsPlugin()
+            ],
+            alias: {
+                styles: path.join(__dirname, 'ClientApp', 'styles')
+            }
+        },
         output: {
             filename: '[name].js',
             publicPath: 'dist/' // Webpack dev middleware, if enabled, handles requests for this URL prefix
@@ -19,11 +34,20 @@ module.exports = (env) => {
             rules: [
                 { test: /\.ts$/, use: isDevBuild ? ['awesome-typescript-loader?silent=true', 'angular2-template-loader', 'angular2-router-loader'] : '@ngtools/webpack' },
                 { test: /\.html$/, use: 'html-loader?minimize=false' },
-                { test: /\.css$/, use: [ 'to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize' ] },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
+                { test: /\.css$/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize'] },
+               // { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
+                {
+                    test: /\.scss$/,
+                    exclude: [/node_modules/],
+                    use: ['to-string-loader'].concat(extractCss.extract({
+                        fallback: 'style-loader',
+                        use: ['css-loader', 'sass-loader?sourceMap']
+                    }))
+                },
+                { test: /\.(png|woff|woff2|eot|ttf|svg|gif|jpg|jpeg)(\?|$)/, use: 'url-loader?limit=100000' }
             ]
         },
-        plugins: [new CheckerPlugin()]
+        plugins: [new CheckerPlugin(), extractCss]
     };
 
     // Configuration for client-side bundle suitable for running in browsers
@@ -43,14 +67,14 @@ module.exports = (env) => {
                 moduleFilenameTemplate: path.relative(clientBundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
             })
         ] : [
-            // Plugins that apply in production builds only
-            new webpack.optimize.UglifyJsPlugin(),
-            new AotPlugin({
-                tsConfigPath: './tsconfig.json',
-                entryModule: path.join(__dirname, 'ClientApp/app/app.browser.module#AppModule'),
-                exclude: ['./**/*.server.ts']
-            })
-        ])
+                // Plugins that apply in production builds only
+                new webpack.optimize.UglifyJsPlugin(),
+                new AotPlugin({
+                    tsConfigPath: './tsconfig.json',
+                    entryModule: path.join(__dirname, 'ClientApp/app/app.browser.module#AppModule'),
+                    exclude: ['./**/*.server.ts']
+                })
+            ])
     });
 
     // Configuration for server-side (prerendering) bundle suitable for running in Node

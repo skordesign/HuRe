@@ -1,0 +1,7 @@
+<div  *ngIf="isActivated" class="flex-column-reverse alert-container">
+    <div [@alertShowChanged] *ngFor="let a of alertList" class="alert alert-box" role="alert">
+        <span (click)="close(a)" style="float:right;"><i class="fa fa-times"></i></span>
+        <h5>{{a.title}}</h5>
+        <p>{{a.message}}</p>
+    </div>
+</div>
