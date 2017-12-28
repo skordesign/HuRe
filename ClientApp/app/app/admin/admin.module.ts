@@ -10,6 +10,7 @@ import { LoginAdminComponent } from '@app/admin/login/login.component';
 import { SharedModule } from '@shared/shared.module';
 import { LayoutModule } from "@app/admin/layout/layout.module";
 import { HeaderAdminComponent } from "@app/admin/layout/header/header.component";
+import { ManagerUserService } from "@app/admin/service/manager-user.service";
 @NgModule({
     imports: [
         adminRouter,
@@ -23,6 +24,6 @@ import { HeaderAdminComponent } from "@app/admin/layout/header/header.component"
         AdminComponent,
         LoginAdminComponent
     ],
-    providers: [AdminGuard],
+    providers: [AdminGuard,ManagerUserService],
 })
 export class AdminModule { }

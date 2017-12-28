@@ -9,7 +9,8 @@ const router: Routes = [
         component: AdminComponent,
         canActivate: [AdminGuard],
         children: [
-            { path: '', loadChildren: './pages/home/home.module#HomeModule' }
+            { path: '', loadChildren: './pages/home/home.module#HomeModule' },
+            { path: 'manager-user', loadChildren: './pages/manager-user/manager-user.module#ManagerUserModule' }
         ]
     },
     {

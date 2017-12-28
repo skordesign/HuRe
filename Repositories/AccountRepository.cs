@@ -17,6 +17,7 @@ namespace Service.Repositories
         Task<Account> GetAsync(Guid id);
         Task<ICollection<Account>> GetsAsync();
         Account Login(string TenTaiKhoan, string MatKhau);
+        Task<ICollection<Account>> GetsAsyncPage(int offset, int limit);
 
 
     }
@@ -56,7 +57,10 @@ namespace Service.Repositories
         {
             return await _context.Accounts.ToListAsync();
         }
-
+        public async Task<ICollection<Account>> GetsAsyncPage(int offset, int limit)
+        {
+            return await _context.Accounts.Skip(offset).Take(limit).ToListAsync();
+        }
 
         public async Task<bool> RemoveAsync(Guid id)
         {
@@ -94,18 +98,18 @@ namespace Service.Repositories
             }
         }
 
-        public Account Login(string TenTaiKhoan,string MatKhau)
+        public Account Login(string TenTaiKhoan, string MatKhau)
         {
             try
             {
                 return _context.Accounts.FirstOrDefault(o => o.Username == TenTaiKhoan && o.PasswordHashed == Protector.HashPassword(MatKhau));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
             }
-            
+
         }
     }
 
