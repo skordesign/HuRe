@@ -9,13 +9,13 @@ import { SharedModule } from "@shared/shared.module";
 import { eventRouter } from "@app/end-user/event/event.router";
 import { EventPageComponent } from "@app/end-user/event/pages/event-page.component";
 import { EventBannerComponent } from "@app/end-user/event/eventbanner/eventbanner.component";
-import { EventListComponent } from "@app/end-user/event/eventlist/eventlist.component";
+// import { EventListComponent } from "@app/end-user/event/eventlist/eventlist.component";
 // import { EventListComponent } from "@app/end-user/event/eventlist/eventlist.component";
 
 @NgModule({
     imports: [CommonModule, eventRouter, CoreModule, SharedModule],
     exports: [],
-    declarations: [EventPageComponent, EventBannerComponent, EventListComponent, EventComponent],
+    declarations: [EventPageComponent, EventBannerComponent,EventComponent],
     providers: [],
 })
 export class EventModule {
