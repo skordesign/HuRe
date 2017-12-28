@@ -1,82 +1,62 @@
-@import "~styles/variables.scss";
-.hures-nav {
-    margin: 0;
-    align-items: center;
-    .hures-logo-container {
-        padding: 8px 48px;
-        .hures-logo {
-            margin: 0 auto;
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
+.hures-main-head {
+    padding: 20px !important;
+    .col-lg-10 {
+        display: inline-block;
+        float: none;
+        margin: 0 -4px 0 0;
+        position: static;
+        vertical-align: middle;
+    }
+    .hures-nav-toggle {
+        border-radius: 0;
+        padding: 8px;
+        border: 0;
+        background: rgb(85, 167, 71) !important;
+        color: white;
+        span {
+            color: white;
         }
+    }
+    .hures-logo {
+        display: flex;
+        justify-content: space-between;
     }
     .hures-nav-menu {
-        a {
-            color: $background-color;
-            font-weight: bold;
-            font-size: 0.65em;
-        }
-    }
-    .navul-list-item {
-        width: 100%;
-        margin: auto;
-    }
-    .hures-nav-menu {
-        .nav-item {
-            padding: 4px;
-            margin: 0px auto;
-            a{
-                color: #006CB5 !important;
+        padding: 0;
+        ul {
+            width: 100%;
+            justify-content: space-evenly;
+            li {
+                a {
+                    font-size: 12px;
+                    text-decoration-line: none;
+                    text-align: left;
+                }
+                a.active {
+                    color: rgb(85, 167, 71) !important;
+                }
+                div.hures-login-joinus {
+                    margin-top: .2rem;
+                    ul {
+                        padding-left: 4px;
+                        li {
+                            padding: 0.2rem;
+                        }
+                        .hures-login {
+                            color: rgb(85, 167, 71);
+                            font-size: 12px;
+                            display: inline-block;
+                        }
+                        .hures-signup {
+                            background: rgb(85, 167, 71);
+                            border-radius: 4px;
+                            font-size: 12px;
+                            display: inline-block;
+                            color: white;
+                        }
+                    }
+                }
             }
-        }
-        .active {
-            border-radius: 40em;
-            background: #006CB5 !important;
-            a {
-                color: #FFFFFF !important;
-            }
-        }
-        .hures-nav-toggle {
-            border: 0;
-        }
-    }
-    // .hures-icon-container {
-    //     padding: 2px;
-    //     .hures-login-icon {
-    //         font-size: 1.2em;
-    //         cursor: pointer;
-    //         color: $background-color;
-    //     }
-    // }
-    .hures-button-popover {
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
-        align-items: center;
-        align-content: center;
-        align-self: center;
-        i, img {
-            width: 32px;
-            height: 32px;
-            margin: 4px;
-            border-radius: 20px;
-            align-items: center;
-            align-content: center;
-            align-self: center;
-        }
-    }
-}
-
-@media screen and (max-width: 991px) {
-    .active {
-        background: #006CB5 !important;
-        margin: 0 !important;
-        border-radius: 0px !important;
-        width: 100%;
-        transition: all 1s ease-out;
-        a {
-            color: #FFFFFF !important;
         }
     }
 }

@@ -13,7 +13,7 @@ export class EventListComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
     }
     events$: Observable<EventItem[]>;
-    @Input() title: string ;
+    @Input() title: string;
     @Input() limit: number;
     constructor(private eventSvc: EventService) {
         this.getDataAsync();

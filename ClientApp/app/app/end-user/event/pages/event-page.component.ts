@@ -1,7 +1,8 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { EventService } from '@services/backend/event.service';
 import { share } from 'rxjs/operators';
+import { LoadingComponent } from "@core/loading/loading.component";
 
 @Component({
     selector: 'hure-event-page',
@@ -9,9 +10,8 @@ import { share } from 'rxjs/operators';
     styleUrls: ['./event-page.component.scss']
 })
 
-export class EventPageComponent implements OnInit {
+export class EventPageComponent {
 
     constructor() { }
 
-    ngOnInit() { }
 }

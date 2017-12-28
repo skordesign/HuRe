@@ -1,13 +1,12 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
 import { DropdownComponent } from '../dropdown.component';
 
 @Component({
-    selector: 'hure-dropdownItem',
+    selector: 'hure-dropdown-item',
     templateUrl: './dropdownItem.component.html'
 })
-export class DropdownItemComponent implements OnInit, AfterViewInit {
-    ngAfterViewInit(): void {
-    }
+export class DropdownItemComponent implements OnInit {
+
     // value is object;
     @Input() value: any;
     // content is option text in dropdown
@@ -16,8 +15,8 @@ export class DropdownItemComponent implements OnInit, AfterViewInit {
     constructor(private dropdown: DropdownComponent) {
         this.dropdown.addItem(this);
     }
-    selectItem(item: DropdownItemComponent) {
-        this.dropdown.selectItemEmit(item);
+    selectItem() {
+        this.dropdown.selectItemEmit(this);
     }
     ngOnInit() {
         if (this.isSelected) {
