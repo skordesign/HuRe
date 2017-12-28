@@ -13,7 +13,6 @@ import { ActionBarComponent } from '@app/end-user/home/components/action-bar/act
 import { EventPageComponent } from "@app/end-user/event/pages/event-page.component";
 import { SearchBarComponent } from '@app/end-user/home/components/search-bar/search-bar.component';
 
-
 @NgModule({
     imports: [
         CommonModule,

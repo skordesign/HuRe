@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { EventService } from '@services/backend/event.service';
 import { share } from 'rxjs/operators';
@@ -9,21 +9,9 @@ import { share } from 'rxjs/operators';
     styleUrls: ['./event-page.component.scss']
 })
 
-export class EventPageComponent implements OnInit, OnDestroy {
+export class EventPageComponent implements OnInit {
 
+    constructor() { }
 
-    ngOnDestroy(): void {
-
-    }
-    events$: Observable<EventItem[]>;
-    @Input() title: string ;
-    @Input() limit: number ;
-    constructor(private eventSvc: EventService) {
-        this.getDataAsync();
-    }
-    getDataAsync() {
-        this.events$ = this.eventSvc.getEvents().pipe(share());
-        console.log(this.events$);
-    }
     ngOnInit() { }
 }

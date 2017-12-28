@@ -12565,30 +12565,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\boyha\\.nuget\\packages\\": {},
+    "C:\\Users\\Dell\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work_1\\HuRe\\HuRe.csproj",
+      "projectUniqueName": "D:\\NGHIENCUUKH\\HuRe\\HuRe.csproj",
       "projectName": "HuRe",
-      "projectPath": "D:\\Work_1\\HuRe\\HuRe.csproj",
-      "packagesPath": "C:\\Users\\boyha\\.nuget\\packages\\",
-      "outputPath": "D:\\Work_1\\HuRe\\obj\\",
+      "projectPath": "D:\\NGHIENCUUKH\\HuRe\\HuRe.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "D:\\NGHIENCUUKH\\HuRe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\boyha\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12607,7 +12605,7 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0.0",
+            "version": "2.0",
             "autoReferenced": true
           },
           "Microsoft.AspNetCore.All": {
