@@ -19,23 +19,31 @@
             </div>
             <div class="col-12 col-lg-10 col-xl-10 ">
                 <nav class="navbar navbar-expand-lg align-middle navbar-light hures-nav-menu">
-
-
                     <div class="collapse navbar-collapse navul-list" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto navul-list-item">
                             <li *ngFor="let item of navMenu" class="nav-item dropdown" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a class="nav-link text-uppercase  text-center" [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ item.text }}</a>
                             </li>
-                            <li class="nav-item dropdonw">
+                            <li *ngIf="!isLoggedIn" class="nav-item dropdonw">
                                 <div class="hures-login-joinus">
                                     <ul>
-                                        <li class="hures-login">
+                                        <li class="hures-login" (click)="showForm(false, true)" rippleEffect>
                                             <span>
                                                 <i class="fa fa-pencil"></i> ĐĂNG KÍ </span>
                                         </li>
-                                        <li class="hures-signup">
+                                        <li class="hures-signup" (click)="showForm(true, false)" rippleEffect>
                                             <span>
                                                 <i class="fa fa-sign-in"></i> ĐĂNG NHẬP </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li *ngIf="isLoggedIn" class="nav-item dropdonw"  style="cursor:pointer">
+                                <div class="hures-login-joinus">
+                                    <ul>
+                                        <li class="hures-signup" (click)="logout()" rippleEffect>
+                                            <span>
+                                                <i class="fa fa-sign-out"></i> Thoát </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -50,3 +58,4 @@
         </div>
     </div>
 </div>
+<hure-login *ngIf="isFormShow" [isLogin]="isLogin" [isSignUp]="isSignUp" (close$)="closeLogin($event)"></hure-login>

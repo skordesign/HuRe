@@ -16,6 +16,18 @@ export class AuthService {
         // .set("Content-Type", "application/json");
         return headers;
     }
+    // async signUp(user:any):Promise<boolean>{
+    //     let body={
+    //         username:user.username,
+    //         email:user.email,
+    //         password:user.password
+    //     }
+    //     try{
+    //         let result = await this.httpClient.post()
+    //     }catch(err){
+
+    //     }
+    // }
     async login(user: any): Promise<boolean> {
         let body = {
             username: user.username,

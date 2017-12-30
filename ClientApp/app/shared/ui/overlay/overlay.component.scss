@@ -3,7 +3,7 @@
     display: block;
 }
 
-.overlay {
+.hures-overlay {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -12,13 +12,11 @@
     z-index: 9999;
     background: rgba($color: gray, $alpha: 0.4);
     transition: all .5s ease;
-    .overlay-container {
-        position: absolute;
-        margin: auto auto;
-        top: calc(50% - 200px);
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
+    display: flex;
+    justify-content: center;
+    .hures-overlay-container {
+        width: 300px;
+        min-height: 256px;
+        align-self: center;
     }
 }

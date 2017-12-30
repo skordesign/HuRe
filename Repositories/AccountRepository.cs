@@ -18,7 +18,7 @@ namespace Service.Repositories
         Task<ICollection<Account>> GetsAsync();
         Account Login(string TenTaiKhoan, string MatKhau);
 
-
+        Task<bool> CheckAsync(string email);
     }
     public class AccountRepository : IAccountRepository
     {
@@ -26,6 +26,11 @@ namespace Service.Repositories
         public AccountRepository(JobDbContext context)
         {
             _context = context;
+        }
+        public Task<bool> CheckAsync(string email)
+        {
+            var account = _context.Accounts.AllAsync(o=>o.Email.Equals(email.Trim()));
+            return account;
         }
         public async Task<bool> AddAsync(Account o)
         {
@@ -94,18 +99,18 @@ namespace Service.Repositories
             }
         }
 
-        public Account Login(string TenTaiKhoan,string MatKhau)
+        public Account Login(string TenTaiKhoan, string MatKhau)
         {
             try
             {
                 return _context.Accounts.FirstOrDefault(o => o.Username == TenTaiKhoan && o.PasswordHashed == Protector.HashPassword(MatKhau));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
             }
-            
+
         }
     }
 
