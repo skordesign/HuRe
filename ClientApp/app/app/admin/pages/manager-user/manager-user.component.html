@@ -1,0 +1,45 @@
+<div class="card mb-3">
+    <div class="card-header">Danh sách tài khoản</div>
+    <div class="card-body table-responsive">
+        <div class="form-group filter">
+            <select class="form-control" [(ngModel)]="numberItemPage" (change)="pageChange()" id="exampleSelect1">
+                    <option [ngValue]="1">1</option>
+                    <option [ngValue]="2">2</option>
+                    <option [ngValue]="3">3</option>
+                    <option [ngValue]="4">4</option>
+                    <option [ngValue]="5">5</option>
+            </select>
+        </div>
+        <table class="table table-bordered" *ngIf="_data">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Email</th>
+                    <th>Tên tài khoản</th>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>Điện thoại</th>
+                    <th>Lớp</th>
+                    <th>Phân quyền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of _data">
+                    <td>{{item.email}}</td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.lastname}} {{item.firstname}}</td>
+                    <td>{{item.dateOfBirth | date : 'dd/MM/yyyy'}}</td>
+                    <td>{{(item.sex) ? 'Nam' : 'Nữ'}}</td>
+                    <td>{{item.phoneNumber}}</td>
+                    <td>{{item.class}}</td>
+                    <td>{{item.phoneNumber}}</td>
+                    <td>{{item.roleName}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ngb-pagination [pageSize]="numberItemPage" [collectionSize]="totalItem" [(page)]="currentPage" [maxSize]="numberPageView"
+            [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
+    </div>
+
+</div>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HuRe.Db;
 using HuRe.Models;
+using HuRe.Models.ResultModels;
 using HuRe.Util;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,8 @@ namespace Service.Repositories
         Task<Account> GetAsync(Guid id);
         Task<ICollection<Account>> GetsAsync();
         Account Login(string TenTaiKhoan, string MatKhau);
+        Task<ICollection<AccountResult>> GetsAsyncPage(int offset, int limit);
+        int CountAll();
 
 
     }
@@ -56,7 +59,27 @@ namespace Service.Repositories
         {
             return await _context.Accounts.ToListAsync();
         }
-
+        public async Task<ICollection<AccountResult>> GetsAsyncPage(int offset, int limit)
+        {
+            return await _context.Accounts.Include(a=>a.Role).Skip(offset).Take(limit).Select(a=>
+                new AccountResult {
+                    Id=a.Id,
+                    Username=a.Username,
+                    Address=a.Address,
+                    Avatar=a.Avatar,
+                    Firstname=a.Firstname,
+                    Lastname=a.Lastname,
+                    DateOfBirth=a.DateOfBirth,
+                    Class=a.Class,
+                    Guid=a.Guid.ToString(),
+                    Sex=a.Sex,
+                    Email=a.Email,
+                    PhoneNumber=a.PhoneNumber,
+                    RoleName=a.Role.Name,
+                    RoleDescription=a.Role.Description,
+                    RoleId=a.RoleId
+                }).ToListAsync();
+        }
 
         public async Task<bool> RemoveAsync(Guid id)
         {
@@ -94,18 +117,22 @@ namespace Service.Repositories
             }
         }
 
-        public Account Login(string TenTaiKhoan,string MatKhau)
+        public Account Login(string TenTaiKhoan, string MatKhau)
         {
             try
             {
                 return _context.Accounts.FirstOrDefault(o => o.Username == TenTaiKhoan && o.PasswordHashed == Protector.HashPassword(MatKhau));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return null;
             }
-            
+
+        }
+        public int CountAll()
+        {
+            return _context.Accounts.Count();
         }
     }
 
