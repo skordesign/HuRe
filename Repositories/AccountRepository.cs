@@ -82,7 +82,7 @@ namespace Service.Repositories
                     PhoneNumber=a.PhoneNumber,
                     RoleName=a.Role.Name,
                     RoleDescription=a.Role.Description,
-                    RoleId=a.RoleId
+                    RoleId=(long)a.RoleId
                 }).ToListAsync();
         }
 

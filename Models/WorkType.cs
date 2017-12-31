@@ -12,7 +12,6 @@ namespace HuRe.Models
         public string Name { get; set; }
         public string ShortName { get; set; }
         public string Tag { get; set; }
-        public virtual ICollection<CV> CVs { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
     }
 }

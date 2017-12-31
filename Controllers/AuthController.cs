@@ -58,7 +58,7 @@ namespace HuRe.Controllers
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
                  };
-                var role = await _phanQuyenRepo.GetAsync(user.RoleId);
+                var role = await _phanQuyenRepo.GetAsync((long)user.RoleId);
                 claims.Add(new Claim("Role", role.Name.ToString()));
                 //get role bỏ vào token
                 var token = new JwtSecurityToken

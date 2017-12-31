@@ -32,9 +32,9 @@ namespace HuRe.Models
         public string More { get; set; }
         public long CompanyId { get; set; }
         public virtual Company Company { get; set; }
-        public long WorkTypeId { get; set; }
+        public long? WorkTypeId { get; set; }
         public virtual WorkType WorkType { get; set; }
-        public long JobGroupId { get; set; }
+        public long? JobGroupId { get; set; }
         public virtual JobGroup JobGroup { get; set; }
         public virtual ICollection<Apply> Applys { get; set; }
     }
