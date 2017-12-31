@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using QHDN_GIT.Models;
 
 namespace HuRe.Db
 {
@@ -20,6 +21,7 @@ namespace HuRe.Db
         public DbSet<Company> Companys { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Apply> Applys { get; set; }
 
         //xử lí ràng buộc thông qua kế thừa hàm OnModelCreating, có thể xử lí trực tiếp trong model
         protected override void OnModelCreating(ModelBuilder builder)
@@ -29,38 +31,50 @@ namespace HuRe.Db
             builder.Entity<Account>().HasKey(k => k.Id);
             builder.Entity<Account>()
               .HasOne(o => o.Role)
-              .WithMany()
-              .HasForeignKey(o => o.RoleId);
-            builder.Entity<CV>().HasKey(k => new { k.Id,k.AccountId});
+              .WithMany(o => o.Accounts)
+              .HasForeignKey(o => o.RoleId)
+              .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Account>()
+                .HasOne(o => o.Company)
+                .WithMany(o => o.Accounts)
+                .HasForeignKey(o => o.CompanyId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<CV>().HasKey(k => new { k.Id, k.AccountId });
             builder.Entity<CV>()
                .HasOne(o => o.Account)
                .WithMany()
-               .HasForeignKey(o => o.AccountId);
-            builder.Entity<CV>()
-             .HasOne(o => o.JobGroup)
-             .WithMany()
-             .HasForeignKey(o => o.JobGroupId);
-            builder.Entity<CV>()
-             .HasOne(o => o.WorkType)
-             .WithMany()
-             .HasForeignKey(o => o.WorkTypeId);
+               .HasForeignKey(o => o.AccountId)
+               .OnDelete(DeleteBehavior.Cascade);
             builder.Entity<JobGroup>().HasKey(k => k.Id);
             builder.Entity<WorkType>().HasKey(k => k.Id);
             builder.Entity<Event>().HasKey(k => k.Id);
             builder.Entity<Company>().HasKey(k => k.Id);
-            builder.Entity<Company>()
-              .HasOne(o => o.JobGroup)
-              .WithMany()
-              .HasForeignKey(o => o.JobGroupId);
             builder.Entity<Job>().HasKey(k => k.Id);
             builder.Entity<Job>()
             .HasOne(o => o.WorkType)
-            .WithMany()
-            .HasForeignKey(o => o.WorkTypeId);
+            .WithMany(o => o.Jobs)
+            .HasForeignKey(o => o.WorkTypeId)
+            .OnDelete(DeleteBehavior.Cascade);
             builder.Entity<Job>()
            .HasOne(o => o.Company)
-           .WithMany()
-           .HasForeignKey(o => o.CompanyId);
+           .WithMany(o => o.Jobs)
+           .HasForeignKey(o => o.CompanyId)
+           .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Job>()
+           .HasOne(o => o.JobGroup)
+           .WithMany(o => o.Jobs)
+           .HasForeignKey(o => o.JobGroupId)
+           .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Apply>()
+            .HasKey(k => new { k.AccountId, k.JobId });
+            builder.Entity<Apply>()
+            .HasOne(o => o.Account)
+            .WithMany(o => o.Applys)
+            .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Apply>()
+           .HasOne(o => o.Job)
+           .WithMany(o => o.Applys)
+           .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
