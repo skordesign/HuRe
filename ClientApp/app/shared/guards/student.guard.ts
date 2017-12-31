@@ -3,7 +3,7 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { JwtHelper } from 'angular2-jwt';
 
 @Injectable()
-export class DoanhNghiepGuard implements CanActivate {
+export class StudentGuard implements CanActivate {
 
     constructor(private _router: Router) { }
 
@@ -13,19 +13,19 @@ export class DoanhNghiepGuard implements CanActivate {
             var token = localStorage.getItem('token_hure');
             if (token) {
                 if (jwt.isTokenExpired(token)) {
-                    this._router.navigate(["doanhnghiep/login"]);
+                    this._router.navigate(["sinhvien/login"]);
                     return false;
                 } else {
                     var roleJson = jwt.decodeToken(token);
                     console.log(roleJson);
                     var role = roleJson.Role;
-                    if (role == "DoanhNghiep") {
+                    if (role == "Student") {
                         return true;
                     }
                     return false;
                 }
             } else {
-                this._router.navigate(["doanhnghiep/login"]);
+                this._router.navigate(["sinhvien/login"]);
             }
             return false;
         } else {

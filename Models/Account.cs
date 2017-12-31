@@ -24,6 +24,6 @@ namespace HuRe.Models
         public virtual Role Role { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime ModifiedDate { get; set; } = DateTime.Now;
-
+        public bool IsActivated { get; set; } = false;
     }
 }

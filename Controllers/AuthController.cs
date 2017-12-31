@@ -5,8 +5,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using HuRe.Models;
 using HuRe.Models.ActionModel;
 using HuRe.Repositories;
+using HuRe.Util;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -17,11 +19,25 @@ namespace HuRe.Controllers
     public class AuthController : Controller
     {
         private readonly IAccountRepository _taiKhoanRepo;
-        private readonly IRoleRepository _phanQuyenRepo;
-        public AuthController(IAccountRepository taiKhoanRepo, IRoleRepository phanQuyenRepo)
+        private readonly IRepository<Role> _phanQuyenRepo;
+        public AuthController(IAccountRepository taiKhoanRepo, IRepository<Role> phanQuyenRepo)
         {
             _taiKhoanRepo = taiKhoanRepo;
             _phanQuyenRepo = phanQuyenRepo;
+        }
+        [HttpPost("api/sign-up")]
+        public async Task<IActionResult> Post([FromBody] SignUpActionModel model)
+        {
+            var existAccount = await _taiKhoanRepo.CheckAsync(model.Email);
+            if(existAccount){
+                return BadRequest("This email has used");
+            }
+            Account account = new Account{
+                Email = model.Email,
+                PasswordHashed = Protector.HashPassword(model.Password),
+                Username = model.Username
+            };
+            return BadRequest("Not working");
         }
         [AllowAnonymous]
         [HttpPost]

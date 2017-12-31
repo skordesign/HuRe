@@ -21,7 +21,7 @@ namespace Service.Repositories
         Task<ICollection<AccountResult>> GetsAsyncPage(int offset, int limit);
         int CountAll();
 
-
+        Task<bool> CheckAsync(string email);
     }
     public class AccountRepository : IAccountRepository
     {
@@ -29,6 +29,11 @@ namespace Service.Repositories
         public AccountRepository(JobDbContext context)
         {
             _context = context;
+        }
+        public Task<bool> CheckAsync(string email)
+        {
+            var account = _context.Accounts.AllAsync(o=>o.Email.Equals(email.Trim()));
+            return account;
         }
         public async Task<bool> AddAsync(Account o)
         {
@@ -128,7 +133,6 @@ namespace Service.Repositories
                 Console.WriteLine(ex);
                 return null;
             }
-
         }
         public int CountAll()
         {

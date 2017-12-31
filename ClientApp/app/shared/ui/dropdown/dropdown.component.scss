@@ -6,40 +6,26 @@
         font-family: "Montserrat-Thin", sans-serif;
         color: gray;
     }
-    .hures-picker-container {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 9999;
-        background: rgba($color: gray, $alpha: 0.4);
-        .hures-picker {
-            position: absolute;
-            margin: auto auto;
-            top: calc(50% - 200px);
-            left: 0;
-            right: 0;
-            height: 400px;
-            max-width: 320px;
-            width: 100%;
-            background: white;
-            overflow-y: scroll;
-            a {
-                &:hover {
-                    background: gray;
-                    color: white;
-                }
+    .hures-picker {
+        height: 400px;
+        max-width: 320px;
+        width: 100%;
+        background: white;
+        overflow-y: scroll;
+        a {
+            &:hover {
+                background: gray;
+                color: white;
             }
         }
-        .hures-dropdown-close-btn {
-            background: rgb(85, 167, 71);
-            color: white;
-            height: 44px;
-            border: 0;
-            width: 100%;
-            font-family: "Montserrat", sans-serif;
-            padding: 4px 32px;
-        }
+    }
+    .hures-dropdown-close-btn {
+        background: rgb(85, 167, 71);
+        color: white;
+        height: 44px;
+        border: 0;
+        width: 100%;
+        font-family: "Montserrat", sans-serif;
+        padding: 4px 32px;
     }
 }
