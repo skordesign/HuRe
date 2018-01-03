@@ -17,11 +17,10 @@ namespace HuRe.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Role>> Get()
+        public async Task<IEnumerable<Role>> Get()
         {
             var roles = await _roleRepo.GetsAsync();
-            roles.Remove(roles.FirstOrDefault(i=>i.Name=="Admin"));
-            return roles.ToList();
+            return roles.Where(w=>!w.Name.ToUpper().Contains("ADMIN"));
         }
     }
 }

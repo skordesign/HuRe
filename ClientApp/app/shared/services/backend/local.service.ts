@@ -5,6 +5,8 @@ export class LocalService {
 
     constructor() { }
     getGuid() {
-        return localStorage.getItem('userId');
+        if (typeof window != "undefined") {
+            return localStorage.getItem('userId');
+        }
     }
 }

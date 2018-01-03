@@ -32,7 +32,9 @@ export class NavComponent implements OnInit, OnDestroy {
     profile: Profile;
     isLoggedIn: boolean;
     ngOnInit(): void {
-        this.checkLoggedIn();
+        if (typeof window != undefined) {
+            this.checkLoggedIn();
+        }
     }
     checkLoggedIn() {
         this.isLoggedIn = this.authSvc.isLogged();
