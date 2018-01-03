@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using QHDN_GIT.Models;
 
 namespace HuRe.Models
 {
@@ -28,7 +25,7 @@ namespace HuRe.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime ModifiedDate { get; set; } = DateTime.Now;
         public bool IsActivated { get; set; } = false;
-        public virtual ICollection<Apply> Applys { get; set; }
+        public virtual ICollection<Apply> Applys { get; set; } = new List<Apply>();
         public virtual CV CV { get; set; }
     }
 }

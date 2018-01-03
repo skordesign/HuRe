@@ -1,7 +1,7 @@
 using System;
 using HuRe.Models;
 
-namespace QHDN_GIT.Models
+namespace HuRe.Models
 {
     public class Apply
     {

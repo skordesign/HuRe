@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using QHDN_GIT.Models;
+
 
 namespace HuRe.Db
 {
@@ -12,7 +12,9 @@ namespace HuRe.Db
     {
         public JobDbContext(DbContextOptions<JobDbContext> options)
             : base(options)
-        { }
+        {
+          
+        }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<CV> CVs { get; set; }
@@ -55,11 +57,15 @@ namespace HuRe.Db
 
             builder.Entity<JobGroup>().HasKey(k => k.Id);
             builder.Entity<JobGroup>().HasMany(m => m.Jobs).WithOne(o => o.JobGroup)
-                .HasForeignKey(f => f.JobGroupId).OnDelete(DeleteBehavior.SetNull);
+                .HasForeignKey(f => f.JobGroupId).OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<WorkType>().HasKey(k => k.Id);
             builder.Entity<WorkType>().HasMany(m => m.Jobs).WithOne(o => o.WorkType)
-                .HasForeignKey(f => f.WorkTypeId).OnDelete(DeleteBehavior.SetNull);
+                .HasForeignKey(f => f.WorkTypeId).OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<JobGroup>().Ignore(i => i.Jobs);
+            builder.Entity<WorkType>().Ignore(i => i.Jobs);
+            builder.Entity<Company>().Ignore(i => i.Jobs);
         }
     }
 }

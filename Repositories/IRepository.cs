@@ -15,7 +15,7 @@ namespace HuRe.Repositories
         Task<bool> RemoveAsync(long id);
         Task<bool> UpdateAsync(long id,T o);
         Task<T> GetAsync(long id);
-        Task<ICollection<T>> GetsAsync();
+        Task<IEnumerable<T>> GetsAsync();
     }
 
     public class Repository<T> : IRepository<T> where T : class, new()
@@ -25,6 +25,7 @@ namespace HuRe.Repositories
         public Repository(JobDbContext ctx)
         {
             _context = ctx;
+            
         }
         public async Task<bool> AddAsync(T o)
         {
@@ -77,15 +78,7 @@ namespace HuRe.Repositories
         {
             try
             {
-                //working with dynamically include
-                string[] props = typeof(T).GetProperties().Where(o => o.GetAccessors()[0].IsVirtual)
-                .Select(x => x.Name).ToArray();
-                foreach (var item in props)
-                {
-                    await _context.Set<T>().Include(item).ToListAsync();
-                }
-                var result = await _context.Set<T>().FindAsync(id);
-                return result ?? new T();
+                return await _context.Set<T>().FindAsync(id) ?? new T();
             }
             catch (Exception ex)
             {
@@ -95,16 +88,19 @@ namespace HuRe.Repositories
             }
         }
 
-        public async Task<ICollection<T>> GetsAsync()
+        public async Task<IEnumerable<T>> GetsAsync()
         {
-            string[] props = typeof(T).GetProperties().Where(o => o.GetAccessors()[0].IsVirtual)
-                .Select(x => x.Name).ToArray();
-            List<T> result = await _context.Set<T>().ToListAsync();
-            foreach (var item in props)
-            {
-                result = await _context.Set<T>().Include(item).ToListAsync();
-            }
-            return result ?? new List<T>();
+            var result = Query();
+            await result.LoadAsync();
+            return await result.ToListAsync() ?? new List<T>();
+        }
+        public virtual IQueryable<T> Query()
+        {
+            var query = _context.Set<T>().AsQueryable();
+                foreach (var property in _context.Model.FindEntityType(typeof(T)).GetNavigations())
+                    if(!property.FieldInfo.FieldType.IsGenericType)
+                        query = query.Include(property.Name).AsQueryable();
+            return query;
         }
     }
 }
