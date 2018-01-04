@@ -18,26 +18,67 @@ namespace HuRe.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly IAccountRepository _taiKhoanRepo;
-        private readonly IRepository<Role> _phanQuyenRepo;
-        public AuthController(IAccountRepository taiKhoanRepo, IRepository<Role> phanQuyenRepo)
+        private readonly IAccountRepository _accountRepo;
+        private readonly IRepository<Role> _roleRepo;
+        private readonly IRepository<Company> _companyRepo;
+        public AuthController(IAccountRepository accountRepo, IRepository<Role> roleRepo,
+        IRepository<Company> companyRepo)
         {
-            _taiKhoanRepo = taiKhoanRepo;
-            _phanQuyenRepo = phanQuyenRepo;
+            _accountRepo = accountRepo;
+            _roleRepo = roleRepo;
+            _companyRepo = companyRepo;
         }
-        [HttpPost("api/sign-up")]
-        public async Task<IActionResult> Post([FromBody] SignUpActionModel model)
+        [HttpPost("api/sign-up/student")]
+        public async Task<IActionResult> SignUpForStudent([FromBody] SignUpActionModel model)
         {
-            var existAccount = await _taiKhoanRepo.CheckAsync(model.Email);
-            if(existAccount){
+            var existAccount = await _accountRepo.CheckAsync(model.Email);
+            if (existAccount)
+            {
                 return BadRequest("This email has used");
             }
-            Account account = new Account{
+            Account account = new Account
+            {
                 Email = model.Email,
                 PasswordHashed = Protector.HashPassword(model.Password),
                 Username = model.Username
             };
-            return BadRequest("Not working");
+            bool result = await _accountRepo.AddAsync(account);
+            if (result)
+            {
+                return Ok(true);
+            }
+            return BadRequest(false);
+        }
+        [HttpPost("api/sign-up/company")]
+        public async Task<IActionResult> SignUpForCompany([FromBody] SignUpActionModel model)
+        {
+            var existAccount = await _accountRepo.CheckAsync(model.Email);
+            if (existAccount)
+            {
+                return BadRequest(false);
+            }
+            Account account = new Account
+            {
+                Email = model.Email,
+                PasswordHashed = Protector.HashPassword(model.Password),
+                Username = model.Username
+            };
+            Company company = new Company
+            {
+                Name = model.CompanyName,
+                Website = model.CompanyWebsite
+            };
+            bool isCreateCompany = await _companyRepo.AddAsync(company);
+            if (isCreateCompany)
+            {
+                account.CompanyId = company.Id;
+                bool isCreatedAccount = await _accountRepo.AddAsync(account);
+                if (isCreatedAccount)
+                {
+                    return Ok(true);
+                }
+            }
+            return BadRequest(false);
         }
         [AllowAnonymous]
         [HttpPost]
@@ -47,7 +88,7 @@ namespace HuRe.Controllers
             if (ModelState.IsValid)
             {
                 //This method returns user id from username and password.
-                var user = _taiKhoanRepo.Login(model.Username, model.Password);
+                var user = _accountRepo.Login(model.Username, model.Password);
                 if (user == null)
                 {
                     return BadRequest("Tài khoản không tồn tại");
@@ -58,7 +99,7 @@ namespace HuRe.Controllers
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
                  };
-                var role = await _phanQuyenRepo.GetAsync((long)user.RoleId);
+                var role = await _roleRepo.GetAsync((long)user.RoleId);
                 claims.Add(new Claim("Role", role.Name.ToString()));
                 //get role bỏ vào token
                 var token = new JwtSecurityToken
