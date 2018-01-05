@@ -25,4 +25,12 @@ export class EventService {
         }
         return this.getEvents$;
     }
+
+    getEventsPage(currentPage: number, numberItemPage: number): Promise<any> {
+        let body = {
+            CurrentPage: currentPage,
+            NumberItemPage: numberItemPage
+        }
+        return this.http.post(URL.EVENT_URL, body, this.http.createHeader()).toPromise();
+    }
 }
