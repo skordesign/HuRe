@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Observable } from 'rxjs/Observable';
 import { RoleService } from '@services/backend/role.service';
 import { share } from 'rxjs/operators';
+import { AuthService } from '@services/backend/auth.service';
 
 @Component({
   selector: 'hure-sign-up',
@@ -20,7 +21,7 @@ export class SignUpComponent implements OnInit {
   private roles: Role[]
   signUpForm: FormGroup;
   constructor(private fb: FormBuilder,
-    private roleSvc: RoleService) {
+    private roleSvc: RoleService, private authSvc: AuthService) {
     this.createForm()
     this.getRoles()
   }
@@ -42,13 +43,18 @@ export class SignUpComponent implements OnInit {
       this.state = this.states[index + 1]
     }
   }
-  finish() {
+  async finish() {
+    var result: boolean;
     if (this.step[1] == 1) {
       // Do company stuff
+      result = await this.authSvc.signUp(this.signUpForm.value, true)
     } else {
       //Do student stuff
+      result = await this.authSvc.signUp(this.signUpForm.value)
     }
-    this.close.emit()
+    if (result == true) {
+      this.close.emit()
+    }
   }
   roleChange(item: any) {
     this.signUpForm.controls.roleId.setValue(item.value)
@@ -64,8 +70,8 @@ export class SignUpComponent implements OnInit {
       username: new FormControl('', [Validators.required, Validators.minLength(6)]),
       password: new FormControl('', [Validators.required, Validators.minLength(10)]),
       password2: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      company_name: new FormControl('', Validators.required),
-      company_website: new FormControl('', [Validators.required,
+      companyName: new FormControl('', Validators.required),
+      companyWebsite: new FormControl('', [Validators.required,
       Validators.pattern('^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$')])
     })
   }
