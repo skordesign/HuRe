@@ -40,7 +40,8 @@ namespace HuRe.Controllers
             {
                 Email = model.Email,
                 PasswordHashed = Protector.HashPassword(model.Password),
-                Username = model.Username
+                Username = model.Username,
+                RoleId = model.RoleId
             };
             bool result = await _accountRepo.AddAsync(account);
             if (result)
@@ -61,7 +62,8 @@ namespace HuRe.Controllers
             {
                 Email = model.Email,
                 PasswordHashed = Protector.HashPassword(model.Password),
-                Username = model.Username
+                Username = model.Username,
+                RoleId = model.RoleId
             };
             Company company = new Company
             {

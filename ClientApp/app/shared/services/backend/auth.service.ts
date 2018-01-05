@@ -24,7 +24,8 @@ export class AuthService {
             email: user.email,
             password: user.password,
             companyName: user.companyName,
-            companyWebsite: user.companyWebsite
+            companyWebsite: user.companyWebsite,
+            roleId:user.roleId
         }
         try {
             let result: any
@@ -35,7 +36,9 @@ export class AuthService {
                 result = await this.httpClient.post("/api/sign-up/student", body, this.createHeader())
                     .toPromise()
             }
-            if (result) {
+            console.log(result);
+            if (result==true) {
+
                 this.toaster.show("Đăng kí thành công", "Đăng nhập để sử dụng.");
             } else {
                 this.toaster.show("Đăng kí thất bại", "Vui lòng thử lại sau.");

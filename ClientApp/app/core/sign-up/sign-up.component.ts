@@ -43,15 +43,18 @@ export class SignUpComponent implements OnInit {
       this.state = this.states[index + 1]
     }
   }
-  finish() {
+  async finish() {
+    var result: boolean;
     if (this.step[1] == 1) {
       // Do company stuff
-      this.authSvc.signUp(this.signUpForm.value, true)
+      result = await this.authSvc.signUp(this.signUpForm.value, true)
     } else {
       //Do student stuff
-      this.authSvc.signUp(this.signUpForm.value, true)
+      result = await this.authSvc.signUp(this.signUpForm.value)
     }
-    this.close.emit()
+    if (result == true) {
+      this.close.emit()
+    }
   }
   roleChange(item: any) {
     this.signUpForm.controls.roleId.setValue(item.value)

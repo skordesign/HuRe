@@ -45,6 +45,7 @@ namespace Service.Repositories
                     if (userExist != null) return false;
                     await _context.Accounts.AddAsync(o);
                     await _context.SaveChangesAsync();
+                    transaction.Commit();
                     return true;
                 }
                 catch
@@ -95,6 +96,7 @@ namespace Service.Repositories
                 {
                     if (userExist is null) return false;
                     _context.Accounts.Remove(userExist);
+                    transaction.Commit();
                     return true;
                 }
                 catch
