@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener,OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { NAV_MENU } from '@shared/_variables';
 import { AuthService } from '@services/backend/auth.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -10,27 +10,40 @@ import { ProfileService } from '@services/backend/profile.service';
     styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, OnDestroy {
+    isLogin = false;
+    isSignUp = false;
+    isFormShow = false;
     ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
-    constructor(private authSvc: AuthService, private profileSvc:ProfileService) {
+    closeLogin($event: boolean) {
+        this.isFormShow = false;
+    }
+    showForm(isLogin: boolean, isSignUp: boolean) {
+        this.isLogin = isLogin;
+        this.isSignUp = isSignUp;
+        this.isFormShow = true;
+    }
+    constructor(private authSvc: AuthService, private profileSvc: ProfileService) {
         this.sub = this.authSvc.login$.subscribe((login: boolean) => this.checkLoggedIn());
     }
     sub: Subscription;
     navMenu = NAV_MENU;
-    profile:Profile;
+    profile: Profile;
     isLoggedIn: boolean;
     ngOnInit(): void {
-        this.checkLoggedIn();
+        if (typeof window != undefined) {
+            this.checkLoggedIn();
+        }
     }
     checkLoggedIn() {
         this.isLoggedIn = this.authSvc.isLogged();
-        if(this.isLoggedIn){
-            this.profileSvc.getProfile().subscribe(profile =>this.profile = profile);
+        if (this.isLoggedIn) {
+            this.profileSvc.getProfile().subscribe(profile => this.profile = profile);
         }
     }
     logout() {
         this.authSvc.logout();
-        this.isLoggedIn =false;
+        this.isLoggedIn = false;
     }
 }

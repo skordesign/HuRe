@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace HuRe.Models
 {
-    public class Job :Base
+    public class Job : Base
     {
         public string Place { get; set; }
         public string Title { get; set; }
@@ -33,5 +34,8 @@ namespace HuRe.Models
         public virtual Company Company { get; set; }
         public long WorkTypeId { get; set; }
         public virtual WorkType WorkType { get; set; }
+        public long JobGroupId { get; set; }
+        public virtual JobGroup JobGroup { get; set; }
+        public virtual ICollection<Apply> Applys { get; set; }
     }
 }

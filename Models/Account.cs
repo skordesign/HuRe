@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HuRe.Models
 {
@@ -20,10 +18,14 @@ namespace HuRe.Models
         public string Address { get; set; }
         public string PasswordHashed { get; set; }
         public string Avatar { get; set; } = "/resources/default-avatar.jpg";
-        public long RoleId { get; set; }
+        public long? RoleId { get; set; }
         public virtual Role Role { get; set; }
+        public long? CompanyId { get; set; }
+        public virtual Company Company { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime ModifiedDate { get; set; } = DateTime.Now;
-
+        public bool IsActivated { get; set; } = false;
+        public virtual ICollection<Apply> Applys { get; set; } = new List<Apply>();
+        public virtual CV CV { get; set; }
     }
 }

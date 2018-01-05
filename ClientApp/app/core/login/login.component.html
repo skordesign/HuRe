@@ -1,13 +1,56 @@
-<form [formGroup]="loginForm">
-    <div class="form-group">
-        <label for="exampleInputEmail1"> Tên đăng nhập</label>
-        <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Tên đăng nhập của bạn">
-        <small id="emailHelp" class="form-text text-muted">Đừng bao giờ chia sẻ thông tin của bạn với người khác.</small>
+<hure-overlay [isActivated]="true">
 
+    <div class="hures-login-container">
+        <span (click)="close()" style="cursor:pointer; margin-top:-24px; float:right;">
+            <i class="fa fa-times"></i>
+        </span>
+        <form *ngIf="isLogin&&!isSignUp" [formGroup]="loginForm" class="d-flex flex-column">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                </span>
+                <input type="text" formControlName="username" placeholder="Tên đăng nhập">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-lock"></i>
+                </span>
+                <input type="password" formControlName="password" placeholder="Mật khẩu">
+            </div>
+            <button type="submit" rippleEffect [disabled]="!loginForm.valid" (click)="submit()" class="hures-search-btn" rippleEffect>Đăng nhập</button>
+            <a (click)="changeView(false, false)" style="cursor:pointer">
+                <span>
+                    <i class="fa fa-unlock"></i> Quên mật khẩu</span>
+            </a>
+            <a (click)="changeView(false, true)" style="cursor:pointer">
+                <span>
+                    <i class="fa fa-user-plus"></i> Chưa có tài khoản</span>
+            </a>
+        </form>
+        <form *ngIf="!isLogin&&!isSignUp" [formGroup]="forgetForm" class="d-flex flex-column">
+            <div class="input-group" [class.invalid]="forgetForm.controls.email.invalid">
+                <span class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                </span>
+                <input type="text" formControlName="email" placeholder="Email của bạn">
+            </div>
+            <small *ngIf="forgetForm.controls.email.invalid">Địa chỉ email không hợp lệ</small>
+            <button type="submit" rippleEffect [disabled]="!forgetForm.valid" (click)="submitForget()" class="hures-search-btn" rippleEffect>Gửi mail</button>
+            <a (click)="changeView(true, false)" style="cursor:pointer">
+                <span>
+                    <i class="fa fa-unlock-alt"></i> Đăng nhập</span>
+            </a>
+        </form>
+        <div *ngIf="!isLogin&&isSignUp">
+            <hure-sign-up (close)="closeEmitter($event)"></hure-sign-up>
+            <a (click)="changeView(false, false)" style="cursor:pointer;display:block;">
+                <span>
+                    <i class="fa fa-unlock"></i> Quên mật khẩu</span>
+            </a>
+            <a (click)="changeView(true,false)" style="cursor:pointer;display:block;">
+                <span>
+                    <i class="fa fa-sign-in"></i> Đã có tài khoản</span>
+            </a>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Mật khẩu</label>
-        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
-    </div>
-    <button type="submit" [disabled]="!loginForm.valid" (click)="submit()" class="btn btn-primary text-center" rippleEffect>Đăng nhập</button>
-</form>
+</hure-overlay>

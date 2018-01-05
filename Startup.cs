@@ -1,4 +1,5 @@
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,12 +12,16 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Service.Repositories;
 
 namespace HuRe
@@ -32,7 +37,6 @@ namespace HuRe
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
-
         }
 
         public IConfiguration Configuration { get; }
@@ -41,16 +45,19 @@ namespace HuRe
         public void ConfigureServices(IServiceCollection services)
         {
             //get chuoi ket noi va khoi tao db
-            services.AddDbContext<JobDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("JobDb")));
+            
+            services.AddEntityFrameworkSqlServer().AddDbContext<JobDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JobDb"))
+                    .ConfigureWarnings(warnings => warnings.Throw(CoreEventId.IncludeIgnoredWarning)));
             // add singleton, scoped or transient here
             // This method gets called by the runtime. Use this method to add services to the container.
             services.AddTransient<IAccountRepository, AccountRepository>();
-            services.AddTransient<IRoleRepository, RoleRepository>();
+            services.AddTransient<IRepository<Role>, Repository<Role>>();
             services.AddTransient<IRepository<Job>, Repository<Job>>();
             services.AddTransient<IRepository<Company>, Repository<Company>>();
             services.AddTransient<IEventRepository, EventRepository>();
             services.AddTransient<IRepository<JobGroup>, Repository<JobGroup>>();
+            services.AddTransient<IRepository<Apply>, Repository<Apply>>();
             //
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(jwtBearerOptions =>
@@ -66,8 +73,17 @@ namespace HuRe
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("sadasdsadq4143213dsdadasdasdasdasdsads"))
                 };
             });
-            services.AddMvc();
-        }
+            services.AddMvc()
+            .AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.Formatting = Formatting.Indented;
+            });
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, JobDbContext db)
@@ -101,10 +117,10 @@ namespace HuRe
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
-                //routes.MapRoute(
-                //     name: "api",
-                //     template: "api/{controller}/{action}/{id?}"
-                // );
+                routes.MapRoute(
+                    name: "api",
+                    template: "api/{controller}/{action}/{id?}"
+                );
             });
             app.UseAuthentication();
             InitDb.Init(db);

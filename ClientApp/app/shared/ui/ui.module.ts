@@ -17,16 +17,20 @@ import { CarouselListComponent } from '@ui/carousel-list/carousel-list.component
 import { ActionMenuComponent } from '@ui/action-menu/action-menu.component';
 import { ActionItemComponent } from '@ui/action-menu/action-item/action-item.component';
 import { PipeModule } from '@shared/pipes/pipe.module';
+import { OverlayComponent } from './overlay/overlay.component';
 @NgModule({
     declarations: [GroupComponent, TabbedComponent, DropdownComponent,
         DropdownItemComponent, TabComponent, JobComponent, BlogComponent, WaiterComponent,
         RatingBarComponent, ExpansibleCardComponent, PopoverComponent, CardComponent, CarouselListComponent,
-    ActionMenuComponent, ActionItemComponent],
+        ActionMenuComponent, ActionItemComponent,
+        OverlayComponent
+    ],
     imports: [CommonModule, DirectiveModule, PipeModule],
     exports: [GroupComponent, TabbedComponent, DropdownComponent,
-        DropdownItemComponent, TabComponent, JobComponent, CardComponent,WaiterComponent,
-        BlogComponent, RatingBarComponent, ExpansibleCardComponent, PopoverComponent,CarouselListComponent,
-    ActionMenuComponent, ActionItemComponent],
+        DropdownItemComponent, TabComponent, JobComponent, CardComponent, WaiterComponent,
+        OverlayComponent,
+        BlogComponent, RatingBarComponent, ExpansibleCardComponent, PopoverComponent, CarouselListComponent,
+        ActionMenuComponent, ActionItemComponent],
     providers: [],
 })
 export class UIModule { }

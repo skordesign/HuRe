@@ -1,12 +1,6 @@
-<div [@confirmDialogChanged] *ngIf="isActivated" class="overlay">
-    <div [@confirmDialogChanged] tabindex="-1" role="dialog">
-        <!-- <div id="loader">
-            <div id="shadow"></div>
-            <div id="box"></div>
-          </div> -->
-        <div id="loader-2">
-            <div id="box"></div>
-            <div id="hill"></div>
-          </div>
+<hure-overlay [isActivated]="isActivated">
+    <div id="loader-2">
+        <div id="box"></div>
+        <div id="hill"></div>
     </div>
-</div>
+</hure-overlay>
