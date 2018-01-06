@@ -25,7 +25,6 @@ import { EventModule } from "@app/end-user/event/event.module";
         HomeComponent,
         JobsContainerComponent,
         IndexPageComponent,
-        SearchBarComponent,
         BrandContainerComponent,
         ActionBarComponent,
         JobGroupComponent],
