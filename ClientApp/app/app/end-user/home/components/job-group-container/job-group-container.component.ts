@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobGroupComponent implements OnInit {
     private array_typework = [
-        { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc A' },
-        { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc B' },
-        { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc C' }, { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc D' }, { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc E' }, { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc F' },
-        { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc G' }, { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc H' },
+        { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Kinh doanh các mặt hàng' },
+        { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Kinh doanh các mặt hàng' },
+        { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Kinh doanh các mặt hàng' }, { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'AAAAAAAA' }, { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc E' }, { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc F' },
+        { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Kinh doanh các mặt hàng' }, { url: "http://jobcareer.chimpgroup.com/careerbakery/wp-content/uploads/category-list-img7.png", text: 'Nhóm việc H' },
     ];
     ngOnInit() { }
 }
