@@ -15,15 +15,16 @@ import { ConfirmDialogComponent } from '@core/confirmdialog/confirmDlg.component
 import { LoginBoxComponent } from '@core/loginbox/loginbox.component';
 import { EventListComponent } from '@core/eventlist/eventlist.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { SearchBarComponent } from '@app/end-user/home/components/search-bar/search-bar.component';
 @NgModule({
     imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, SharedModule],
     declarations: [NavComponent, SearchComponent, FooterComponent, AlertComponent,
         SlideComponent, LoadingComponent, LoginComponent, ConfirmDialogComponent, LoginBoxComponent, EventListComponent
-        ,
+        ,SearchBarComponent,
         SignUpComponent
     ],
     exports: [NavComponent, SearchComponent, FooterComponent, AlertComponent, SlideComponent, SignUpComponent,
-        LoadingComponent, LoginComponent, ConfirmDialogComponent, LoginBoxComponent, EventListComponent]
+        LoadingComponent, LoginComponent, ConfirmDialogComponent, LoginBoxComponent, EventListComponent,SearchBarComponent]
 })
 export class CoreModule {
 

@@ -8,6 +8,4 @@ interface Company extends Base{
     urlLogo: string;
     representor: string;
     description: string;
-    jobGroupId: number;
-    jobGroup: JobGroup;
 }

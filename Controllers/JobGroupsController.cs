@@ -16,7 +16,7 @@ namespace HuRe.Controllers
             _jobGroupRepo = jobGroupRepo;
         }
         [HttpGet]
-        public async Task<List<JobGroup>> Get()
+        public async Task<List<JobGroup>> Gets()
         {
             var jobGroups = await _jobGroupRepo.GetsAsync();
             return jobGroups.ToList();
