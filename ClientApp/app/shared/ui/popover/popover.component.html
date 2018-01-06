@@ -6,8 +6,6 @@
     </div>
     <div [@menuChanged]="state" class="popover bs-popover-bottom bs-popover-bottom-docs app-popover" #popover 
     (clickOutside)="closeIt()">
-        <div class="arrow" #arrow></div>
-        <h3 class="popover-header text-center">{{ header | uppercase }}</h3>
         <div class="popover-body">
             <ng-content select="[popover]"></ng-content>
         </div>

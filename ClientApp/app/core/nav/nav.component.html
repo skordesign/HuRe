@@ -38,9 +38,24 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li *ngIf="isLoggedIn" class="nav-item dropdonw"  style="cursor:pointer">
+                            <li *ngIf="isLoggedIn" class="nav-item dropdonw" style="cursor:pointer">
                                 <div class="hures-login-joinus">
                                     <ul>
+                                        <li class="hures-login" style="margin-top:-50%;">
+                                            <hure-popover>
+                                                <img [src]="profile?.avatar" alt="" button>
+                                                <div popover>
+                                                    <ul>
+                                                        <li>
+                                                            Cài đặt
+                                                        </li>
+                                                        <li>
+                                                            Thông tin
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </hure-popover>
+                                        </li>
                                         <li class="hures-signup" (click)="logout()" rippleEffect>
                                             <span>
                                                 <i class="fa fa-sign-out"></i> Thoát </span>
