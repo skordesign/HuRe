@@ -14,18 +14,6 @@ export class HomeComponent implements OnInit {
     constructor(private confirmSvc: ConfirmService, private alertSvc: AlertService, private http: CommonHttpService<any>,
         private loadingSvc: LoadingService) { }
     ngOnInit() {
-        // this.http.get<any>("api/test").subscribe(data => {
-        //     console.log(data)
-        //     this.loadingSvc.showLoading(false);
-        // })
     }
 
-    public showDlg() {
-        this.confirmSvc.showConfirm("Help", "Me", [{
-            text: "OK", func: () => { console.log("OK") }
-        }])
-    }
-    public showAlert() {
-        this.alertSvc.show("Hello", "What is your name?");
-    }
 }

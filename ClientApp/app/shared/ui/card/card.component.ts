@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 })
 export class CardComponent implements OnInit {
     ngOnInit(): void {
-        console.log(this.event);
-
     }
     constructor(private router: Router) { }
     @Input() event: EventItem; 

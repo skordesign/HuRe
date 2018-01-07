@@ -12,15 +12,20 @@ import { share } from 'rxjs/operators';
 export class JobsContainerComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
     }
-    jobs$: Observable<Job[]>
+    jobs$: Observable<Job[]> 
+    @Input() jobsObserver: Observable<Job[]> = new Observable<Job[]>(sub=> sub.next([]))
     @Input() title: string = "Công việc";
-    @Input() limit:number = 5;
-    constructor(private jobSvc: JobService) {
-        this.getDataAsync();
+    @Input() limit: number = 5;
+    constructor() {
+
     }
-    ngOnInit() { }
+    ngOnInit() {
+        this.getDataAsync()
+    }
     getDataAsync() {
-        this.jobs$ = this.jobSvc.getJobs().pipe(share());
+        if (!this.jobs$) {
+            this.jobs$ = this.jobsObserver.pipe(share())
+        }
     }
 
 }

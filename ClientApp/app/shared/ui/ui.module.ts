@@ -18,17 +18,18 @@ import { ActionMenuComponent } from '@ui/action-menu/action-menu.component';
 import { ActionItemComponent } from '@ui/action-menu/action-item/action-item.component';
 import { PipeModule } from '@shared/pipes/pipe.module';
 import { OverlayComponent } from './overlay/overlay.component';
+import { JobsContainerComponent } from '@app/end-user/home/components/jobs-container/jobs-container.component';
 @NgModule({
     declarations: [GroupComponent, TabbedComponent, DropdownComponent,
         DropdownItemComponent, TabComponent, JobComponent, BlogComponent, WaiterComponent,
         RatingBarComponent, ExpansibleCardComponent, PopoverComponent, CardComponent, CarouselListComponent,
         ActionMenuComponent, ActionItemComponent,
-        OverlayComponent
+        OverlayComponent, JobsContainerComponent
     ],
     imports: [CommonModule, DirectiveModule, PipeModule],
     exports: [GroupComponent, TabbedComponent, DropdownComponent,
         DropdownItemComponent, TabComponent, JobComponent, CardComponent, WaiterComponent,
-        OverlayComponent,
+        OverlayComponent,JobsContainerComponent,
         BlogComponent, RatingBarComponent, ExpansibleCardComponent, PopoverComponent, CarouselListComponent,
         ActionMenuComponent, ActionItemComponent],
     providers: [],

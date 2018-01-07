@@ -4,7 +4,7 @@ export const NAV_MENU = [
     }, {
         link: "/about", text: "giới thiệu"
     }, {
-        link: "/internship", text: "thực tập"
+        link: "/jobs/internship", text: "thực tập"
     }, {
         link: "/jobs", text: "việc làm"
     }, {

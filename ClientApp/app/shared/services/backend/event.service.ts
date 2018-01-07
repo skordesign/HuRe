@@ -19,9 +19,6 @@ export class EventService {
     getEvents(): Observable<EventItem[]> {
         if (!this.getEvents$) {
             this.getEvents$ = this.http.gets<EventItem>(this.URL, this.http.createHeader()).share();
-            this.getEvents$.subscribe(result => {
-                console.log(result);
-            })
         }
         return this.getEvents$;
     }

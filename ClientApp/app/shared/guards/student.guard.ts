@@ -17,7 +17,6 @@ export class StudentGuard implements CanActivate {
                     return false;
                 } else {
                     var roleJson = jwt.decodeToken(token);
-                    console.log(roleJson);
                     var role = roleJson.Role;
                     if (role == "Student") {
                         return true;

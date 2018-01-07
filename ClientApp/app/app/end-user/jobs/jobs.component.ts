@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'hure-jobs',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-
-  constructor() { }
+  isIntership: boolean = false
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    let param = this.route.snapshot.paramMap.get('internship')
+    if (param == 'internship') {
+      this.isIntership = true;
+    }
   }
 
 }
