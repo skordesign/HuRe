@@ -21,14 +21,14 @@ namespace HuRe.Controllers
         [HttpPost]
         public async Task<ModelPaging<AccountResult>> Post([FromBody]AccountActionModel form)
         {
-            var ofsset = (form.CurrentPage * form.NumberItemPage) - form.NumberItemPage;
-            var total = _accountRepo.CountAll();
-            var accounts = await _accountRepo.GetsAsyncPage(ofsset, form.NumberItemPage);
-            return new ModelPaging<AccountResult>
-            {
-                total = total,
-                data = accounts
-            };
+                var ofsset = (form.CurrentPage * form.NumberItemPage) - form.NumberItemPage;
+                var total = _accountRepo.CountAll();
+                var accounts = await _accountRepo.GetsAsyncPage(ofsset, form.NumberItemPage);
+                return new ModelPaging<AccountResult>
+                {
+                    total = total,
+                    data = accounts
+                };       
         }
     }
 }

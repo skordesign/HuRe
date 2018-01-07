@@ -1,0 +1,44 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Tạo Tài Khoản Mới</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form role="form">
+            <div class="form-group has-success">
+                <label class="form-control-label" for="inputSuccess">Tên tài khoản</label>
+                <input type="text" class="form-control form-control-success" id="inputSuccess">
+            </div>
+
+            <div class="form-group has-warning">
+                <label class="form-control-label" for="inputWarning">Họ </label>
+                <input type="text" class="form-control form-control-warning" id="inputWarning">
+            </div>
+            <div class="form-group has-warning">
+                <label class="form-control-label" for="inputWarning">Tên</label>
+                <input type="text" class="form-control form-control-warning" id="inputWarning">
+            </div>
+            <div class="form-group has-danger">
+                <label class="form-control-label" for="inputError">Email</label>
+                <input type="text" class="form-control form-control-danger" id="inputError">
+            </div>
+            <div class="form-group has-danger">
+                <label class="form-control-label">Ngày sinh</label>
+                <admin-date-picker #brithday ></admin-date-picker>
+            </div>
+            <div class="form-group has-danger">
+                <label class="form-control-label">Giới Tính</label>
+                <admin-sex-select (sexSelected)="sexChange($event)"></admin-sex-select>
+            </div>
+            <div>
+                * Mật khẩu mặc định : 123456
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn-admin btn-primary" (click)="save()">Lưu</button>
+        <button type="button" class="btn-admin btn-secondary" (click)="c('Close click')">Hủy</button>
+    </div>
+</ng-template>

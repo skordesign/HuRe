@@ -161,7 +161,7 @@
   @each $breakpoint in map-keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
-
+    overflow-x: auto;
     &#{$infix} {
       @include media-breakpoint-down($breakpoint) {
         display: block;

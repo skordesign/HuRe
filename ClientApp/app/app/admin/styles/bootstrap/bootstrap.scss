@@ -23,8 +23,8 @@
 @import "button-group";
 @import "input-group";
 @import "custom-forms";
-@import "nav";
-@import "navbar";
+// @import "nav";
+// @import "navbar";
 @import "card";
 @import "breadcrumb";
 @import "pagination";
@@ -40,3 +40,9 @@
 @import "popover";
 @import "carousel";
 @import "utilities";
+@import "navbar/navbar_global.scss";
+@import "navbar/navbar_fixed.scss";
+@import "navbar/navbar_static.scss";
+@import "navbar/navbar_toggle.scss";
+@import "navbar/navbar_colors.scss";
+@import "icons";

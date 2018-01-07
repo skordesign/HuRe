@@ -13,4 +13,7 @@ export class ManagerUserService {
         }
         return this.http.post(URL_ADMIN.GET_PAGE_ACCOUNT, body, this.http.createHeader()).toPromise();
     }
+    getAllRole(){
+        
+    }
 }
