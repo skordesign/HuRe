@@ -24,3 +24,17 @@
         }
     }
 }
+@media screen and (max-width: 350px) {
+    .container{
+        .app-carousel {
+            .slides {
+                padding: 0px;
+                width:100% !important;
+                li{
+                    margin: 0px;
+                    padding:0px;
+                }
+            }
+        }
+    }
+}
