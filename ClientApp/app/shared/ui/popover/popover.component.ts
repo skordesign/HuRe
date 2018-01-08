@@ -40,12 +40,12 @@ export class PopoverComponent implements OnInit {
             // let arrowSize = this.arrow.nativeElement.offsetWidth;
             if (sizeOutLeft > 0) {
                 let valToTransform = sizeOutLeft + 8;
-                this.renderer.setElementStyle(this.popover.nativeElement, 'transform', 'translateX(' +  (popoverWidth / 2 + valToTransform)+ 'px)');
+                this.renderer.setElementStyle(this.popover.nativeElement, 'transform', 'translateY(' + 10 + 'px)');
                 // this.renderer.setElementStyle(this.arrow.nativeElement, 'transform', 'translateX(' + (-((popoverWidth / 2 + valToTransform) / 2 + arrowSize/2)) + 'px)');
             } else if (sizeOutRight > 0) {
                 let valToTransform = sizeOutRight + 8;
                 // this.renderer.setElementStyle(this.arrow.nativeElement, 'transform', 'translateX(' + ((popoverWidth / 2 + valToTransform) / 2 + arrowSize/2) + 'px)');
-                this.renderer.setElementStyle(this.popover.nativeElement, 'transform', 'translateX(' + (-popoverWidth / 2 - valToTransform) + 'px)');
+                this.renderer.setElementStyle(this.popover.nativeElement, 'transform', 'translateY(' + 10 + 'px)');
             }
             // if (parentLeft < (32 - parentWidth / 2) || parentRight < (32 - parentWidth / 2)) {
             //     this.renderer.setElementStyle(this.arrow.nativeElement, 'display','none');
