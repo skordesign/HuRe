@@ -10,29 +10,25 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class JobsFilterComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
-    this.jobG$.unsubscribe()
   }
-  jobG$:Subscription
-  jobG:JobGroup[]
+
+  jobG$: Subscription
+  workTypes$: Subscription
+  jobG: JobGroup[]
+  workTypes: WorkType[]
   @Output() change: EventEmitter<JobsFilter> = new EventEmitter();
   data = []
   filterObj: {
-    workTypeId?: number,
-    jobGroupId?: number,
     lowestSalary?: number,
     highestSalary?: number
-  }={}
-  constructor(private jobGSvc:JobGroupService, private workTSvc:WorkTypeService) { }
+  } = {}
+  constructor() { }
 
   ngOnInit() {
-    this.jobG$ = this.jobGSvc.getJobs().subscribe(jg=> this.jobG = jg);
   }
 
   filter() {
 
-  }
-  onJobGroupChange(job:any){
-    this.filterObj.jobGroupId = job.value;
   }
 }
 

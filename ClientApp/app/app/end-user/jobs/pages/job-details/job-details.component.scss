@@ -1,0 +1,42 @@
+.hures-jobs-details-header {
+    min-height: 200px;
+    background: gray;
+    padding: 32px;
+    text-align: left;
+    h1,p {
+        font-weight: 800;
+        color: whitesmoke;
+    }
+}
+
+.hures-jobs-details-body {
+    padding-top:32px;
+    ul {
+        list-style: none;
+        list-style-type: none;
+        padding: 0;
+        li {
+            align-content: center;
+            min-height: 40px;
+            padding: 8px;
+        }
+        hr{
+            margin: 0;
+        }
+    }
+    .hures-jobs-company-logo-container{
+        max-width: 200px;
+        max-height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        img{
+            object-fit: contain;
+            width: 100%;
+        }
+    }
+    .hures-job-content-html{
+        p{
+            text-align: justify;
+        }
+    }
+}

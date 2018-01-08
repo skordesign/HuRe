@@ -16,12 +16,14 @@ import { EventService } from "@services/backend/event.service";
 import { JobGroupService } from '@services/backend/job-group.service';
 import { RoleService } from '@services/backend/role.service';
 import { WorkTypeService } from '@services/backend/work-type.service';
+import { CompanyService } from '@services/backend/company.service';
+import { DataService } from '@services/frontend/data.service';
 
 @NgModule({
     declarations: [],
     imports: [ CommonModule, HttpModule ],
     exports: [],
-    providers: [ConfirmService, AlertService, ProgressService, LoadingService, CommonHttpService,AuthService,
-    JobService, ProfileService, LocalService,EventService, JobGroupService, RoleService, WorkTypeService],
+    providers: [ConfirmService, AlertService, ProgressService, LoadingService, CommonHttpService,AuthService,DataService,
+    JobService, ProfileService, LocalService,EventService, JobGroupService, RoleService, WorkTypeService, CompanyService],
 })
 export class ServiceModule {}

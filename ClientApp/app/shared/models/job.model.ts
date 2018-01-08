@@ -27,4 +27,5 @@ interface Job extends Base {
     workType: WorkType;
     jobGroupId:number;
     jobGroup:JobGroup;
+    contentURL:string;
 }

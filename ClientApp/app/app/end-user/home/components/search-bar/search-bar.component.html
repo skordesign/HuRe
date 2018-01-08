@@ -1,30 +1,44 @@
 <div class="hures-search-outer">
   <div class="container hures-search-container">
     <div class="row hures-search">
-      <div class="col-12 col-xl-5 col-lg-4 col-md-6">
+      <div class="col-12">
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">
             <i class="fa fa-search"></i>
           </span>
           <input type="text" placeholder="Từ khóa..."(input)="keyword=$event.target.value" [value]="keyword" >
         </div>
+        <small class="text-muted m-1">Web design, .NET,....</small>
       </div>
-      <div class="col-12 col-xl-5 col-lg-4 col-md-6">
+      <div class="col-12 col-lg-4 col-md-6">
         <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">
+          <span class="input-group-addon">
             <i class="fa fa-chevron-down"></i>
           </span>
           <hure-dropdown class="w-100" placeholder="Ngành nghề..." (change)="onJobGroupChange($event)">
-            <ng-container *ngFor="let item of data">
+            <ng-container *ngFor="let item of jobs">
               <hure-dropdown-item [text]="item.name" [value]="item.id" ></hure-dropdown-item>
             </ng-container>
           </hure-dropdown>
-
         </div>
+        <small class="text-muted m-1">Kinh doanh, Lập trình,...</small>
       </div>
-      <div class="col-12 col-xl-2 col-lg-4">
+      <div class="col-12 col-lg-4 col-md-6">
+          <div class="input-group">
+            <span class="input-group-addon" >
+              <i class="fa fa-chevron-down"></i>
+            </span>
+            <hure-dropdown class="w-100" placeholder="Hình thức.." (change)="onJobGroupChange($event)">
+              <ng-container *ngFor="let item of works">
+                <hure-dropdown-item [text]="item.name" [value]="item.id" ></hure-dropdown-item>
+              </ng-container>
+            </hure-dropdown>
+          </div>
+          <small class="text-muted m-1">Thực tập, Bán thời gian,...</small>
+        </div>
+      <div class="col-12 col-lg-4">
         <button class="hures-search-btn" (click)="search()" rippleEffect>TÌM KIẾM</button>
-        <small class="form-text text-muted hures-search-advanced" (click)="gotoSearchPage()">+ Tìm kiếm nâng cao</small>
+        <!-- <small class="form-text text-muted hures-search-advanced" (click)="gotoSearchPage()">+ Tìm kiếm nâng cao</small> -->
       </div>
     </div>
   </div>

@@ -1,4 +1,6 @@
 <div style="padding-top:24px;">
-    <hure-jobs-filter></hure-jobs-filter>
-    <div class="container"></div>
+    <hure-search-bar></hure-search-bar>
+    <div class="container">
+        <hure-jobs-container [jobsObserver]="jobs$" limit="10"></hure-jobs-container>
+    </div>
 </div>
