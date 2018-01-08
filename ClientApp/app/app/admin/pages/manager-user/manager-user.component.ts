@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ManagerUserService } from "@app/admin/service/manager-user.service";
 import { CreateUserComponent } from "@app/admin/pages/manager-user/create-user/create-user.component";
 @Component({

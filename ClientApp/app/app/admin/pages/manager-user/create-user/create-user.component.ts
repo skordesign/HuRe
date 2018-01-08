@@ -1,16 +1,27 @@
-import { Component, ViewChild, TemplateRef, ViewChildren } from '@angular/core';
+import { Component, ViewChild, TemplateRef, ViewChildren, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { DatePickerComponent } from '@app/admin/shared/components/date-picker/date-picker.component';
+import { ManagerUserService } from '@app/admin/service/manager-user.service';
 @Component({
     selector: 'create-user',
     templateUrl: './create-user.component.html',
     styleUrls: ['./create-user.component.scss']
 })
-export class CreateUserComponent {
+export class CreateUserComponent implements OnInit {
+    ngOnInit(): void {
+        this.getAllRole();
+    }
     closeResult: string;
+    //save list role
+    roles: any;
+    //value role
+    roleSelected: number;
+    birthday: string;
+    sex: boolean;
     @ViewChild('content') content: TemplateRef<any>;
-    @ViewChildren('brithday') private birthday: DatePickerComponent;
-    constructor(private modalService: NgbModal) { }
+    constructor(
+        private modalService: NgbModal,
+        private userService: ManagerUserService
+    ) { }
     open() {
         this.modalService.open(this.content).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
@@ -29,15 +40,35 @@ export class CreateUserComponent {
         }
     }
     timeChange(time: any) {
-        console.log(time);
-
+        this.birthday = time;
     }
     sexChange(sex: boolean) {
-        console.log(sex);
+        this.sex = sex;
+    }
+    roleChange(roleID: any) {
+        this.roleSelected = roleID;
     }
     save() {
-        // console.log(this.birthday.model);ss
-        console.log(this.birthday.getTime());
 
+    }
+    getAllRole() {
+        this.userService.getAllRole().then(result => {
+            this.roles = result;
+        })
+    }
+    create(form: any) {
+        let body = {
+            Email: form.value.Email,
+            Firstname: form.value.Firstname,
+            Lastname: form.value.Lastname,
+            Username: form.value.Username,
+            Sex: this.sex,
+            DateOfBirth: this.birthday,
+            RoleId: this.roleSelected
+        }
+        console.log(body);
+        this.userService.createUser(body).then(result => {
+            console.log(result);
+        })
     }
 }

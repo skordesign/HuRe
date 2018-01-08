@@ -13,7 +13,10 @@ export class ManagerUserService {
         }
         return this.http.post(URL_ADMIN.GET_PAGE_ACCOUNT, body, this.http.createHeader()).toPromise();
     }
-    getAllRole(){
-        
+    getAllRole() {
+        return this.http.gets(URL_ADMIN.GET_ALL_ROLE, this.http.createHeader()).toPromise();
+    }
+    createUser(body: any) {
+        return this.http.post(URL_ADMIN.CREATE_USER, body, this.http.createHeader()).toPromise();
     }
 }

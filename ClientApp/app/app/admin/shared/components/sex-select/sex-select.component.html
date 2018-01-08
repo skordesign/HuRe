@@ -1,12 +1,7 @@
-<form class="form-inline">
-    <div class="form-group">
-        <div class="btn-group mb-3" ngbRadioGroup name="radioBasic" [(ngModel)]="sex">
-            <label ngbButtonLabel class="btn-primary" (click)="change()">
-                <input ngbButton type="radio" [value]="true"> Nam
-            </label>
-            <label ngbButtonLabel class="btn-primary" (click)="change()">
-                <input ngbButton type="radio" [value]="false"> Nữ
-            </label>
-        </div>
-    </div>
-</form>
+<div class="form-group">
+    <select [(ngModel)]="sex" class="btn-admin btn-default dropdown-toggle" (change)="change()">
+        <option selected disabled [value]="undefined">Giới Tính</option>
+        <option [value]="true">Nam</option>
+        <option [value]="false">Nữ</option>
+    </select>
+</div>

@@ -7,6 +7,7 @@ using HuRe.ResultModels;
 using Microsoft.AspNetCore.Mvc;
 using Service.Repositories;
 using HuRe.Models.ResultModels;
+using HuRe.Util;
 
 namespace HuRe.Controllers
 {
@@ -21,14 +22,21 @@ namespace HuRe.Controllers
         [HttpPost]
         public async Task<ModelPaging<AccountResult>> Post([FromBody]AccountActionModel form)
         {
-                var ofsset = (form.CurrentPage * form.NumberItemPage) - form.NumberItemPage;
-                var total = _accountRepo.CountAll();
-                var accounts = await _accountRepo.GetsAsyncPage(ofsset, form.NumberItemPage);
-                return new ModelPaging<AccountResult>
-                {
-                    total = total,
-                    data = accounts
-                };       
+            var ofsset = (form.CurrentPage * form.NumberItemPage) - form.NumberItemPage;
+            var total = _accountRepo.CountAll();
+            var accounts = await _accountRepo.GetsAsyncPage(ofsset, form.NumberItemPage);
+            return new ModelPaging<AccountResult>
+            {
+                total = total,
+                data = accounts
+            };
+        }
+        [HttpPost("create")]
+        public async Task<bool> Create([FromBody]Account form)
+        {
+            //set pass default 
+            form.PasswordHashed = Protector.HashPassword("123456");
+            return await _accountRepo.AddAsync(form);
         }
     }
 }

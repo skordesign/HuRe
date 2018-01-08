@@ -6,7 +6,7 @@ const now = new Date();
     styleUrls: ['./sex-select.component.scss']
 })
 export class SexSeletComponent implements OnInit {
-    sex: boolean = true;
+    private sex: boolean;
     @Output() sexSelected: EventEmitter<any> = new EventEmitter();
     constructor() { }
     ngOnInit() {
