@@ -18,6 +18,13 @@ const router: Routes = [
             },
             {
                 path: 'events', loadChildren: './event/event.module#EventModule'
+            }, {
+                path: 'jobs', loadChildren: './jobs/jobs.module#JobsModule'
+            },
+            {
+                path: 'search', loadChildren: './search/search.module#SearchModule'
+            }, {
+                path: 'internship', redirectTo: 'jobs'
             }
             // {
             //     path: '**', component: ErrorComponent

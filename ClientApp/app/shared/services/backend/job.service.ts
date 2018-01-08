@@ -20,4 +20,30 @@ export class JobService {
         }
         return this.getJobs$;
     }
+    getSearchJobs(keyword: string, jobGroupId: number = 0, workTypeId: number = 0) {
+        if (!this.getJobs$) {
+            this.getJobs()
+        }
+        return this.getJobs$.map(jobs => {
+            let jobFilterKeyword = jobs.filter(job => {
+                return job.contactAddress.toUpperCase().includes(keyword.toUpperCase()) || job.majorTag.toUpperCase().includes(keyword.toUpperCase())
+                    || job.title.toUpperCase().includes(keyword.toUpperCase()) || job.shortDescription.toUpperCase().includes(keyword.toUpperCase())
+                    || job.benefit.toUpperCase().includes(keyword.toUpperCase()) || job.place.toUpperCase().includes(keyword.toUpperCase())
+                    || job.requirement.toUpperCase().includes(keyword.toUpperCase()) || job.position.toUpperCase().includes(keyword.toUpperCase())
+                    || job.company.address.toUpperCase().includes(keyword.toUpperCase()) || job.company.description.toUpperCase().includes(keyword.toUpperCase())
+                    || job.company.name.toUpperCase().includes(keyword.toUpperCase()) || job.company.shortName.toUpperCase().includes(keyword.toUpperCase())
+                    || job.workType.name.toUpperCase().includes(keyword.toUpperCase()) || job.workType.shortName.toUpperCase().includes(keyword.toUpperCase())
+                    || job.jobGroup.name.toUpperCase().includes(keyword.toUpperCase()) || job.jobGroup.shortName.toUpperCase().includes(keyword.toUpperCase())
+            });
+            if (jobGroupId != 0 && workTypeId != 0) {
+                return jobFilterKeyword.filter(j => j.workTypeId == workTypeId && j.jobGroupId == jobGroupId)
+            } else if (jobGroupId == 0 && workTypeId != 0) {
+                return jobFilterKeyword.filter(j => j.workTypeId == workTypeId)
+            } else if (jobGroupId != 0 && workTypeId == 0) {
+                return jobFilterKeyword.filter(j => j.jobGroupId == jobGroupId)
+            } else {
+                return jobFilterKeyword;
+            }
+        })
+    }
 }

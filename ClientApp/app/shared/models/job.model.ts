@@ -25,5 +25,6 @@ interface Job extends Base {
     company: Company;
     workTypeId:number;
     workType: WorkType;
-
+    jobGroupId:number;
+    jobGroup:JobGroup;
 }

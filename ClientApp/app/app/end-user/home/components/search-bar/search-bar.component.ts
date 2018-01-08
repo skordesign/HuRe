@@ -14,21 +14,24 @@ export class SearchBarComponent implements OnInit, OnDestroy {
       this.sub.unsubscribe()
     }
   }
-  data: any[]
+  keyword: string = ""
+  data: JobGroup[]
   sub: Subscription
+  selectedJobG: number = 0
   constructor(private jobGSvc: JobGroupService, private router: Router) {
     this.sub = this.jobGSvc.getJobs().subscribe(data => {
-      var arr: any[] = []
-      if (data) {
-        data.forEach(t => arr.push({ value: t.id, text: t.name, isSelected: false }))
-      }
-      this.data = arr;
+      this.data = data;
     });
   }
   gotoSearchPage() {
     this.router.navigate(['/search'])
   }
+  search(){
+    this.router.navigate(['/search', { jobType: this.selectedJobG, keyword: this.keyword }])
+  }
   ngOnInit() {
   }
-
+  onJobGroupChange(jobG: any) {
+     this.selectedJobG = jobG.value;
+  }
 }
