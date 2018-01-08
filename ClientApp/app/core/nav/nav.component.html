@@ -39,11 +39,11 @@
                                 </div>
                             </li>
                             <li *ngIf="isLoggedIn" class="nav-item dropdonw" style="cursor:pointer">
-                                <div class="hures-login-joinus">
-                                    <ul>
-                                        <li class="hures-login" style="margin-top:-50%;">
-                                            <hure-popover>
-                                                <img [src]="profile?.avatar" alt="" button>
+                                <div class="hures-login-joinus-user">
+                                    <ul class="hures-login-joinus-user-ul">
+                                        <li class="hures-login">
+                                            <hure-popover style="z-index:9999999999999;">
+                                                <img [src]="profile?.avatar" alt="" button style="border-radius: 50px;">
                                                 <div popover>
                                                     <ul>
                                                         <li>

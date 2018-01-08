@@ -28,6 +28,16 @@
                 border-radius: 0;
                 font-family: "Montserrat-Thin", sans-serif;
             }
+            .w-100{
+                white-space: nowrap; 
+                overflow: hidden;
+                text-overflow: ellipsis; 
+                .hures-dropdown{
+                    white-space: nowrap; 
+                    overflow: hidden;
+                    text-overflow: ellipsis; 
+                }
+            }
         }
         .hures-search-btn {
             background: rgb(85, 167, 71);
@@ -38,9 +48,99 @@
             width: 100%;
             font-family: "Montserrat", sans-serif;
             padding: 4px 32px;
+            white-space: nowrap; 
         }
         .hures-search-advanced{
             cursor: pointer;
+        }
+    }
+}
+@media screen and (max-width: 306px) {
+    .hures-search-outer {
+        .hures-search {
+            .input-group {
+                .input-group-addon {
+                    i {
+                    }
+                }
+                input[type] {
+                }
+                input:-moz-placeholder{
+                    font-size:10px;
+                    font-weight: bold;
+                }
+                input::-moz-placeholder{
+                    font-size:10px;
+                    font-weight: bold;
+                }
+                input:-ms-input-placeholder{
+                    font-size:10px;
+                    font-weight: bold;
+                }
+                input::-webkit-input-placeholder{
+                    font-size:10px;
+                    font-weight: bold;
+                }
+                //dropdown placeholder
+                .w-100{
+                    .hures-dropdown-container{
+                        margin-left:0px;
+                    }
+                    .hures-dropdown{
+                     
+                        font-size: 10px;
+                        font-weight: bold;
+                       line-height: 25px;
+                    }
+                }
+            }
+            .hures-search-btn {
+                font-size:14px;
+            }
+            .hures-search-advanced{
+            }
+        }
+    }
+}
+@media screen and (max-width: 270px) {
+    .hures-search-outer {
+        .hures-search {
+            .input-group {
+                .input-group-addon {
+                    i {
+                    }
+                }
+                input[type] {
+                }
+                input:-moz-placeholder{
+            
+                }
+                input::-moz-placeholder{
+                
+                }
+                input:-ms-input-placeholder{
+                   
+                }
+                input::-webkit-input-placeholder{
+                 
+                }
+                //dropdown placeholder
+                .w-100{
+                    .hures-dropdown-container{
+                        margin-left:0px;
+                    }
+                    .hures-dropdown{
+                     
+                     
+                    }
+                }
+            }
+            .hures-search-btn {
+                font-size:12px;
+                padding: 4px !important;
+            }
+            .hures-search-advanced{
+            }
         }
     }
 }

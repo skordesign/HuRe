@@ -2,3 +2,5 @@
     <hure-eventbanner></hure-eventbanner>
     <hure-eventlist [limit]="9"></hure-eventlist>    
 </div> 
+<ngb-pagination [pageSize]="numberItemPage" [collectionSize]="totalItem" [(page)]="currentPage" [maxSize]="numberPageView"
+[boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>

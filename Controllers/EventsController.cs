@@ -21,6 +21,18 @@ namespace HuRe.Controllers
         {
             return _eventRepo.ListNewEvent(9).ToList();
         }
+        //  [HttpPost]
+        // public async Task<ModelPaging<AccountResult>> Post([FromBody]AccountActionModel form)
+        // {
+        //     var ofsset = (form.CurrentPage * form.NumberItemPage) - form.NumberItemPage;
+        //     var total = _accountRepo.CountAll();
+        //     var accounts = await _accountRepo.GetsAsyncPage(ofsset, form.NumberItemPage);
+        //     return new ModelPaging<AccountResult>
+        //     {
+        //         total = total,
+        //         data = accounts
+        //     };
+        // }
         // [HttpGet("{id}")]
         // // public async Task<Event> Get(long id)
         // // {
