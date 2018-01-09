@@ -4,9 +4,18 @@ input[type], button[type],h1, h2, h3, h4, h5,strong {
 }
 h1,h2,h3{
     text-transform: uppercase;
+    cursor: default;
 }
 p, span,li {
    font-family: "Montserrat", sans-serif !important;
+   cursor: default;
+}
+.jumbotron{
+    border: solid 1px rgba(00, 00, 00, 0.1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    background: white !important;
+    border-radius: 2px !important;
+
 }
 .btn {
     border-radius: 40px !important;

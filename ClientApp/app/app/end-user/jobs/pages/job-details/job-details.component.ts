@@ -19,40 +19,17 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   }
   sub$: Subscription
   job: Job
-  jobRelated$:Observable<Job[]>
-  constructor(private route: ActivatedRoute, private jobSvc: JobService, private companySvc:CompanyService) { }
+  jobRelated$: Observable<Job[]>
+  constructor(private route: ActivatedRoute, private jobSvc: JobService, private companySvc: CompanyService) { }
   contentHTML: Observable<string>
   ngOnInit() {
-    let jobId = this.route.snapshot.paramMap.get('id');
-    this.sub$ = this.jobSvc.getJobDetail(+jobId!).subscribe(result => {
-      this.job = result;
-      this.jobRelated$ = this.companySvc.getJobOfCompany(this.job.companyId).pipe(share())
+    this.route.params.subscribe(param => {
+      let jobId = param['id']
+      this.sub$ = this.jobSvc.getJobDetail(+jobId!).subscribe(result => {
+        this.job = result;
+        this.jobRelated$ = this.companySvc.getJobOfCompany(this.job.companyId).pipe(share())
+      })
     })
-  }
-  // ngOnDestroy(): void {
-  //   this.sub$.unsubscribe()
-  // }
-  // sub$: Subscription
-  // job: Job
-  // jobRelated$: Observable<Job[]>
-  // constructor(private route: ActivatedRoute, private jobSvc: JobService,
-  //   private companySvc: CompanyService, private data: DataService) { }
-  // contentHTML: Observable<string>
-  // ngOnInit() {
 
-  //   let jobId = this.route.snapshot.paramMap.get('id');
-  //   if (this.data.data) {
-  //     this.job = this.data.data as Job;
-  //     this.getJobsRelated(this.job.companyId);
-  //   }
-  //   else {
-  //     this.sub$ = this.jobSvc.getJobDetail(+jobId!).subscribe(result => {
-  //       this.job = result;
-  //     })
-  //     this.jobRelated$ = new Observable<Job[]>(sub => sub.next([]))
-  //   }
-  // }
-  // getJobsRelated(comanyId: number) {
-  //   this.jobRelated$ = this.companySvc.getJobOfCompany(this.job.companyId).pipe(share())
-  // }
+  }
 }
