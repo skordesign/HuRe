@@ -2,7 +2,7 @@
     <h5 class="text-center m-2">{{title}}</h5>
     <div *ngIf="jobs$ | async; let jobs; else waiting" class="d-flex flex-column">
         <ng-container *ngFor="let job of jobs;let i=index">
-            <hure-job *ngIf="i<limit" [job]="job" class="m-1"></hure-job>
+            <hure-job *ngIf="i<limit" [job]="job" class="m-1" [size]="size"></hure-job>
             <hr *ngIf="i<jobs.length-1 && i<limit-1" style="width:100%;">
         </ng-container>
     </div>
