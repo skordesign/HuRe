@@ -4,6 +4,7 @@ interface EventItem extends Base{
     shortDescription: string;
     content: string;
     place: string;
+    imageURL:string;
     startTime: Date;
     endTime: Date;
 }
