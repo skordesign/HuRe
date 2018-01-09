@@ -20,8 +20,8 @@ namespace Service.Repositories
         Account Login(string TenTaiKhoan, string MatKhau);
         Task<ICollection<AccountResult>> GetsAsyncPage(int offset, int limit);
         int CountAll();
-
         Task<bool> CheckAsync(string email);
+        Task<bool> ActivateAccount(int id,Account o);
     }
     public class AccountRepository : IAccountRepository
     {
@@ -125,12 +125,36 @@ namespace Service.Repositories
                 }
             }
         }
+        public async Task<bool> ActivateAccount(int id,Account o)
+        {
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    //get info account
+                    var account = await _context.Accounts.FirstOrDefaultAsync(x => x.Id == id);
+                    if (account != null)
+                    {
+                        //only update status active
+                        account.IsActivated = o.IsActivated;
+                    }
+                    _context.Accounts.Update(account);
+                    await _context.SaveChangesAsync();
+                    transaction.Commit();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
         public Account Login(string TenTaiKhoan, string MatKhau)
         {
             try
             {
-                return _context.Accounts.FirstOrDefault(o => o.Username == TenTaiKhoan && o.PasswordHashed == Protector.HashPassword(MatKhau));
+                return _context.Accounts.FirstOrDefault(o => o.Username == TenTaiKhoan && o.PasswordHashed == Protector.HashPassword(MatKhau) && o.IsActivated);
             }
             catch (Exception ex)
             {

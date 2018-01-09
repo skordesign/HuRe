@@ -19,4 +19,7 @@ export class ManagerUserService {
     createUser(body: any) {
         return this.http.post(URL_ADMIN.CREATE_USER, body, this.http.createHeader()).toPromise();
     }
+    activateUser(id: number, body: any) {
+        return this.http.put(URL_ADMIN.ACTIVATE_USER, id, body, this.http.createHeader()).toPromise();
+    }
 }
