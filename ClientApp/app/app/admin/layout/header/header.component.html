@@ -1,17 +1,14 @@
-<nav class="navbar navbar-expand-lg fixed-top admin-header">
+<!-- <nav class="navbar navbar-expand-lg fixed-top admin-header">
     <img src="./img/logo.png" class="logo">
     <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
-        <!-- <span class="navbar-toggler-icon"></span> -->
         <i class="fa fa-bars text-muted" aria-hidden="true"></i>
     </button>
     <div class="collapse navbar-collapse">
-        <!--<form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Nhập nội dung tìm kiếm">
-        </form>-->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-user"></i> Quản trị viên <b class="caret"></b>
+                    <i class="fa fa-user"></i> Quản trị viên
+                    <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="#">
@@ -20,10 +17,131 @@
                     <a class="dropdown-item" href="#">
                         <i class="fa fa-fw fa-gear"></i> Cài đặt
                     </a>
-                    <a class="dropdown-item" [routerLink]="['/admin/login']" (click)="onLogout()">
+                    <a class="dropdown-item"[routerLink]="['/admin/login']" (click)="onLogout()">
                         <i class="fa fa-fw fa-power-off"></i>Đăng xuất
                     </a>
                 </div>
+            </li>
+        </ul>
+    </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-custom bg-white fixed-top" id="mainNav">
+    <a class="navbar-brand">
+        HUTECH
+        <!-- <img src="./img/logo.png" class="logo"> -->
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a routerLink="/admin/dashboard" [routerLinkActive]="['router-link-active']" class="nav-link">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Trang chủ</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <a [routerLink]="['/admin/manager-user']" [routerLinkActive]="['router-link-active']" class="nav-link">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">Quản lí người dùng</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="nav-link">
+                    <i class="fa fa-fw fa-edit"></i>
+                    <span class="nav-link-text">Quản lí doanh nghiệp</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+                <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="nav-link">
+                    <i class="fa fa-fw fa-desktop"></i>
+                    <span class="nav-link-text">Quản lí việc làm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#QLCH" data-parent="#exampleAccordion" (click)="expand()">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Quản lí cấu hình</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="QLCH">
+                    <li>
+                        <a href="#">
+                            <span>Nhóm ngành nghề</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Loại hình làm việc</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-file"></i>
+                    <span class="nav-link-text">Example Pages</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                    <li>
+                        <a href="login.html">Login Page</a>
+                    </li>
+                    <li>
+                        <a href="register.html">Registration Page</a>
+                    </li>
+                    <li>
+                        <a href="forgot-password.html">Forgot Password Page</a>
+                    </li>
+                    <li>
+                        <a href="blank.html">Blank Page</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-sitemap"></i>
+                    <span class="nav-link-text">Menu Levels</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseMulti">
+                    <li>
+                        <a href="#">Second Level Item</a>
+                    </li>
+                    <li>
+                        <a href="#">Second Level Item</a>
+                    </li>
+                    <li>
+                        <a href="#">Second Level Item</a>
+                    </li>
+                    <li>
+                        <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
+                        <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                            <li>
+                                <a href="#">Third Level Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li> -->
+
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler" (click)="toggleSidebar()">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" (click)="logout()">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
             </li>
         </ul>
     </div>

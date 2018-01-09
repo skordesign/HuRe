@@ -22,5 +22,10 @@ namespace HuRe.Controllers
             var roles = await _roleRepo.GetsAsync();
             return roles.Where(w=>!w.Name.ToUpper().Contains("ADMIN"));
         }
+        [HttpGet("all")]
+        public async Task<IEnumerable<Role>> GetAll()
+        {
+            return await _roleRepo.GetsAsync();
+        }
     }
 }

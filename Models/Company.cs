@@ -16,6 +16,7 @@ namespace HuRe.Models
         public string URLLogo { get; set; }
         public string Representor { get; set; }
         public string Description { get; set; }
+        public bool IsPartner { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
     }

@@ -7,6 +7,7 @@ using HuRe.ResultModels;
 using Microsoft.AspNetCore.Mvc;
 using Service.Repositories;
 using HuRe.Models.ResultModels;
+using HuRe.Util;
 
 namespace HuRe.Controllers
 {
@@ -29,6 +30,13 @@ namespace HuRe.Controllers
                 total = total,
                 data = accounts
             };
+        }
+        [HttpPost("create")]
+        public async Task<bool> Create([FromBody]Account form)
+        {
+            //set pass default 
+            form.PasswordHashed = Protector.HashPassword("123456");
+            return await _accountRepo.AddAsync(form);
         }
     }
 }

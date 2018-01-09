@@ -8,10 +8,10 @@ h1,h2,h3{
 p, span,li {
    font-family: "Montserrat", sans-serif !important;
 }
-.btn {
+/* .btn {
     border-radius: 40px !important;
     min-width: 100px;
-}
+} */
 
 html,
 body {
