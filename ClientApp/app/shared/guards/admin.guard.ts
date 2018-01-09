@@ -17,7 +17,6 @@ export class AdminGuard implements CanActivate {
                     return false;
                 } else {
                     var roleJson = jwt.decodeToken(token);
-                    console.log(roleJson);
                     var role = roleJson.Role;
                     if (role == "Admin") {
                         return true;

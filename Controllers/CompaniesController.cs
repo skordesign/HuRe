@@ -11,9 +11,11 @@ namespace HuRe.Controllers
     public class CompaniesController:Controller
     {
         private readonly IRepository<Company> _companiesRepo;
-        public CompaniesController(IRepository<Company> companiesRepo)
+        private readonly IRepository<Job> _jobRepo;
+        public CompaniesController(IRepository<Company> companiesRepo, IRepository<Job> jobRepo)
         {
             _companiesRepo = companiesRepo;
+            _jobRepo = jobRepo;
         }
 
         [HttpGet("{id}")]
@@ -21,6 +23,12 @@ namespace HuRe.Controllers
         {
             Company doanhNghiep = await _companiesRepo.GetAsync(id);
             return doanhNghiep;
+        }
+        [HttpGet("{id}/jobs")]
+        public async Task<IEnumerable<Job>> GetJob(long id)
+        {
+            var jobs = await _jobRepo.GetsAsync();
+            return jobs.Where(o=>o.CompanyId==id);
         }
         [HttpGet]
         public async Task<List<Company>> Get()

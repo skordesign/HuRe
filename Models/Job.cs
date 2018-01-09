@@ -17,6 +17,7 @@ namespace HuRe.Models
         public string Certificate { get; set; }
         public string Benefit { get; set; }
         public string Number { get; set; }
+        public string ContentURL { get; set; }
         public string TimePre { get; set; } //thời gian thử việc 
         public string MajorTag { get; set; }
         public string Sex { get; set; }

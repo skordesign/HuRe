@@ -23,5 +23,7 @@ namespace HuRe.Models.ResultModels
 
         public string RoleName { get; set; }
         public string RoleDescription { get; set; }
+
+        public bool IsActivated { get; set; }
     }
 }

@@ -21,7 +21,7 @@ export class LoginAdminComponent implements OnInit {
             let loginModel = form.value;
             this._auth.login(loginModel).then(result => {
                 if (result) {
-                    this.router.navigate(['/admin'])
+                    this.router.navigate(['/admin/dashboards'])
                 } else {
                     this.alert.show('Cảnh báo', 'Tài khoản hoặc mật khẩu không đúng');
                 }

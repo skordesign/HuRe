@@ -4,5 +4,7 @@ export const URL = {
     EVENT_URL: "/api/events",
     PROFILE_URL:"/api/profiles",
     JOB_GROUP_URL:"/api/job-groups",
-    ROLE_URL:"/api/roles"
+    ROLE_URL:"/api/roles",
+    WORKTYPE_URL:"/api/work-types",
+    COMPANY_URL:"/api/companies"
 }

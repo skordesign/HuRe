@@ -17,7 +17,6 @@ export class CompanyGuard implements CanActivate {
                     return false;
                 } else {
                     var roleJson = jwt.decodeToken(token);
-                    console.log(roleJson);
                     var role = roleJson.Role;
                     if (role == "Company") {
                         return true;

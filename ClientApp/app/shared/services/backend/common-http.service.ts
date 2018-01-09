@@ -28,18 +28,20 @@ export class CommonHttpService<T>{
                 .map(this.extractdata).catch(err => []);
         } catch (err) {
             return new Observable<T[]>(sub => sub.next());
-        }finally{
+        } finally {
             this.loadingSvc.showLoading(false);
         }
     }
 
-    get<T>(url: string, id: number, headers?: Headers): Observable<T> {
+    get<T>(url: string, id?: number, headers?: Headers): Observable<T> {
         try {
             this.loadingSvc.showLoading(true);
-            return this.http.get(url + id.toString(), { headers: headers || this.createHeader() })
+            return this.http.get(url + ("/"+ id!.toString())||"", { headers: headers || this.createHeader() })
                 .map(this.extractdata).catch(err => new Observable<T>(sub => sub.next()));
         } catch (err) {
             return new Observable<T>(sub => sub.next());
+        } finally {
+            this.loadingSvc.showLoading(false);
         }
     }
     post(url: string, body: any, headers?: Headers) {

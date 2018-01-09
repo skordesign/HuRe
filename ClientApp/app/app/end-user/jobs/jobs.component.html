@@ -1,3 +1,6 @@
-<p>
-  jobs works!
-</p>
+<div style="padding-top:24px;">
+    <hure-search-bar></hure-search-bar>
+    <div class="container">
+        <hure-jobs-container [jobsObserver]="jobs$" limit="10"></hure-jobs-container>
+    </div>
+</div>

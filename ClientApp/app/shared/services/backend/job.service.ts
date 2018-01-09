@@ -12,8 +12,13 @@ import { HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class JobService {
     private readonly URL = URL.JOB_URL;
+    private readonly OJOB_URL = URL.JOB_URL + '/only-jobs'
+    private readonly OINTERN_URL = URL.JOB_URL + '/only-interns'
     constructor(private http: CommonHttpService<Job>) { }
     private getJobs$: Observable<Job[]>
+    getJobDetail(id: number) {
+        return this.http.get<Job>(this.URL, id, this.http.createHeader()).share()
+    }
     getJobs(): Observable<Job[]> {
         if (!this.getJobs$) {
             this.getJobs$ = this.http.gets<Job>(this.URL, this.http.createHeader()).share();
@@ -45,5 +50,11 @@ export class JobService {
                 return jobFilterKeyword;
             }
         })
+    }
+    getOnlyJobs() {
+        return this.http.gets<Job>(this.OJOB_URL, this.http.createHeader()).share()
+    }
+    getOnlyInterns() {
+        return this.http.gets<Job>(this.OINTERN_URL, this.http.createHeader()).share()
     }
 }

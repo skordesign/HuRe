@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, AfterViewInit } from '@angular/core';
 import { JobService } from '@services/backend/job.service';
 import { Observable } from 'rxjs/Observable';
 import { share } from 'rxjs/operators';
@@ -9,18 +9,31 @@ import { share } from 'rxjs/operators';
     styleUrls: ['./jobs-container.component.scss']
 })
 
-export class JobsContainerComponent implements OnInit, OnDestroy {
+export class JobsContainerComponent implements OnInit, OnDestroy, AfterViewInit {
+    
     ngOnDestroy(): void {
     }
-    jobs$: Observable<Job[]>
+    jobs$: Observable<Job[]> 
+    @Input() jobsObserver: Observable<Job[]>// = new Observable<Job[]>(sub=> sub.next([]))
     @Input() title: string = "Công việc";
-    @Input() limit:number = 5;
-    constructor(private jobSvc: JobService) {
-        this.getDataAsync();
+    @Input() limit: number = 5;
+    constructor() {
+
     }
-    ngOnInit() { }
+    ngOnInit() {
+        
+    }
+    ngAfterViewInit():void{
+        this.getDataAsync()
+    }
     getDataAsync() {
-        this.jobs$ = this.jobSvc.getJobs().pipe(share());
+       try{
+        if (!this.jobs$) {
+            this.jobs$ = this.jobsObserver.pipe(share())
+        }
+       }catch(err){
+           console.log(err)
+       }
     }
 
 }

@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent implements OnChanges{
     ngOnChanges(changes: any): void {
-        console.log(this.data);
     }
     /**
      *

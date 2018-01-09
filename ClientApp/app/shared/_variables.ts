@@ -4,9 +4,9 @@ export const NAV_MENU = [
     }, {
         link: "/about", text: "giới thiệu"
     }, {
-        link: "/internship", text: "thực tập"
+        link: "/jobs/list/internship", text: "thực tập"
     }, {
-        link: "/jobs", text: "việc làm"
+        link: "/jobs/list", text: "việc làm"
     }, {
         link: "/company", text: "doanh nghiệp"
     }, {

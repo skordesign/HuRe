@@ -1,17 +1,17 @@
 a,
-input[type], button[type],h1, h2, h3, h4, h5 {
-    font-family: "Montserrat", sans-serif;
+input[type], button[type],h1, h2, h3, h4, h5,strong {
+    font-family: "Montserrat", sans-serif !important;
 }
 h1,h2,h3{
     text-transform: uppercase;
 }
-p, span {
-   font-family: "Montserrat", sans-serif;
+p, span,li {
+   font-family: "Montserrat", sans-serif !important;
 }
-.btn {
+/* .btn {
     border-radius: 40px !important;
     min-width: 100px;
-}
+} */
 
 html,
 body {

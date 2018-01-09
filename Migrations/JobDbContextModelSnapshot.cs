@@ -31,6 +31,8 @@ namespace HuRe.Migrations
 
                     b.Property<string>("Class");
 
+                    b.Property<long?>("CompanyId");
+
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<DateTime>("DateOfBirth");
@@ -51,9 +53,7 @@ namespace HuRe.Migrations
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<long>("RoleId");
-
-                    b.Property<long?>("RoleId1");
+                    b.Property<long?>("RoleId");
 
                     b.Property<bool>("Sex");
 
@@ -61,11 +61,28 @@ namespace HuRe.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompanyId");
+
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("RoleId1");
-
                     b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("HuRe.Models.Apply", b =>
+                {
+                    b.Property<long>("AccountId");
+
+                    b.Property<long>("JobId");
+
+                    b.Property<string>("Status");
+
+                    b.Property<DateTime>("TimeApply");
+
+                    b.HasKey("AccountId", "JobId");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("Applys");
                 });
 
             modelBuilder.Entity("HuRe.Models.Company", b =>
@@ -78,10 +95,6 @@ namespace HuRe.Migrations
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Description");
-
-                    b.Property<long>("JobGroupId");
-
-                    b.Property<long?>("JobGroupId1");
 
                     b.Property<DateTime>("ModifiedDate");
 
@@ -103,26 +116,19 @@ namespace HuRe.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobGroupId");
-
-                    b.HasIndex("JobGroupId1");
-
                     b.ToTable("Companys");
                 });
 
             modelBuilder.Entity("HuRe.Models.CV", b =>
                 {
-                    b.Property<long>("Id");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<long>("AccountId");
 
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Experience");
-
-                    b.Property<long>("JobGroupId");
-
-                    b.Property<long?>("JobGroupId1");
 
                     b.Property<string>("Level");
 
@@ -134,23 +140,10 @@ namespace HuRe.Migrations
 
                     b.Property<string>("Status");
 
-                    b.Property<long>("WorkTypeId");
+                    b.HasKey("Id");
 
-                    b.Property<long?>("WorkTypeId1");
-
-                    b.HasKey("Id", "AccountId");
-
-                    b.HasAlternateKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.HasIndex("JobGroupId");
-
-                    b.HasIndex("JobGroupId1");
-
-                    b.HasIndex("WorkTypeId");
-
-                    b.HasIndex("WorkTypeId1");
+                    b.HasIndex("AccountId")
+                        .IsUnique();
 
                     b.ToTable("CVs");
                 });
@@ -165,6 +158,8 @@ namespace HuRe.Migrations
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<DateTime>("EndTime");
+
+                    b.Property<string>("ImageURL");
 
                     b.Property<DateTime>("ModifiedDate");
 
@@ -206,6 +201,8 @@ namespace HuRe.Migrations
 
                     b.Property<string>("Contactor");
 
+                    b.Property<string>("ContentURL");
+
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<DateTime>("DeadlineApply");
@@ -213,6 +210,8 @@ namespace HuRe.Migrations
                     b.Property<string>("Experience");
 
                     b.Property<decimal>("HighestSalary");
+
+                    b.Property<long>("JobGroupId");
 
                     b.Property<decimal>("LowestSalary");
 
@@ -244,15 +243,13 @@ namespace HuRe.Migrations
 
                     b.Property<long>("WorkTypeId");
 
-                    b.Property<long?>("WorkTypeId1");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("WorkTypeId");
+                    b.HasIndex("JobGroupId");
 
-                    b.HasIndex("WorkTypeId1");
+                    b.HasIndex("WorkTypeId");
 
                     b.ToTable("Jobs");
                 });
@@ -275,8 +272,6 @@ namespace HuRe.Migrations
                     b.Property<string>("ShortName");
 
                     b.Property<string>("Status");
-
-                    b.Property<string>("Tag");
 
                     b.HasKey("Id");
 
@@ -318,8 +313,6 @@ namespace HuRe.Migrations
 
                     b.Property<string>("Status");
 
-                    b.Property<string>("Tag");
-
                     b.HasKey("Id");
 
                     b.ToTable("WorkTypes");
@@ -327,52 +320,36 @@ namespace HuRe.Migrations
 
             modelBuilder.Entity("HuRe.Models.Account", b =>
                 {
-                    b.HasOne("HuRe.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HuRe.Models.Role")
+                    b.HasOne("HuRe.Models.Company", "Company")
                         .WithMany("Accounts")
-                        .HasForeignKey("RoleId1");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("HuRe.Models.Role", "Role")
+                        .WithMany("Accounts")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
-            modelBuilder.Entity("HuRe.Models.Company", b =>
+            modelBuilder.Entity("HuRe.Models.Apply", b =>
                 {
-                    b.HasOne("HuRe.Models.JobGroup", "JobGroup")
-                        .WithMany()
-                        .HasForeignKey("JobGroupId")
+                    b.HasOne("HuRe.Models.Account", "Account")
+                        .WithMany("Applys")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HuRe.Models.JobGroup")
-                        .WithMany("Companies")
-                        .HasForeignKey("JobGroupId1");
+                    b.HasOne("HuRe.Models.Job", "Job")
+                        .WithMany("Applys")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HuRe.Models.CV", b =>
                 {
                     b.HasOne("HuRe.Models.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId")
+                        .WithOne("CV")
+                        .HasForeignKey("HuRe.Models.CV", "AccountId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HuRe.Models.JobGroup", "JobGroup")
-                        .WithMany()
-                        .HasForeignKey("JobGroupId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HuRe.Models.JobGroup")
-                        .WithMany("CVs")
-                        .HasForeignKey("JobGroupId1");
-
-                    b.HasOne("HuRe.Models.WorkType", "WorkType")
-                        .WithMany()
-                        .HasForeignKey("WorkTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HuRe.Models.WorkType")
-                        .WithMany("CVs")
-                        .HasForeignKey("WorkTypeId1");
                 });
 
             modelBuilder.Entity("HuRe.Models.Job", b =>
@@ -382,14 +359,15 @@ namespace HuRe.Migrations
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("HuRe.Models.JobGroup", "JobGroup")
+                        .WithMany()
+                        .HasForeignKey("JobGroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("HuRe.Models.WorkType", "WorkType")
                         .WithMany()
                         .HasForeignKey("WorkTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HuRe.Models.WorkType")
-                        .WithMany("Jobs")
-                        .HasForeignKey("WorkTypeId1");
                 });
 #pragma warning restore 612, 618
         }

@@ -20,7 +20,6 @@ export class EventListComponent implements OnInit, OnDestroy {
     }
     getDataAsync() {
         this.events$ = this.eventSvc.getEvents().pipe(share());
-        console.log(this.events$);
     }
     ngOnInit() { }
 }

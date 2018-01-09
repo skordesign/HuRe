@@ -13,7 +13,7 @@ namespace HuRe.Repositories
     {
         Task<bool> AddAsync(T o);
         Task<bool> RemoveAsync(long id);
-        Task<bool> UpdateAsync(long id,T o);
+        Task<bool> UpdateAsync(long id, T o);
         Task<T> GetAsync(long id);
         Task<IEnumerable<T>> GetsAsync();
     }
@@ -21,11 +21,11 @@ namespace HuRe.Repositories
     public class Repository<T> : IRepository<T> where T : class, new()
     {
         private readonly JobDbContext _context;
-        private  const string PrimaryKey = "Id";
+        private const string PrimaryKey = "Id";
         public Repository(JobDbContext ctx)
         {
             _context = ctx;
-            
+
         }
         public async Task<bool> AddAsync(T o)
         {
@@ -56,14 +56,14 @@ namespace HuRe.Repositories
             }
         }
 
-        public async Task<bool> UpdateAsync(long id,T o)
+        public async Task<bool> UpdateAsync(long id, T o)
         {
             using (var transaction = await _context.Database.BeginTransactionAsync())
             {
                 try
                 {
                     _context.Set<T>().Update(o);
-                     _context.SaveChanges();
+                    _context.SaveChanges();
                     transaction.Commit();
                     return true;
                 }
@@ -78,11 +78,12 @@ namespace HuRe.Repositories
         {
             try
             {
-                return await _context.Set<T>().FindAsync(id) ?? new T();
+                var query = Query();
+                await query.LoadAsync();
+                return await _context.Set<T>().FindAsync(id);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Catch you bitch");
                 Console.WriteLine(ex.Message);
                 return new T();
             }
@@ -97,9 +98,9 @@ namespace HuRe.Repositories
         public virtual IQueryable<T> Query()
         {
             var query = _context.Set<T>().AsQueryable();
-                foreach (var property in _context.Model.FindEntityType(typeof(T)).GetNavigations())
-                    if(!property.FieldInfo.FieldType.IsGenericType)
-                        query = query.Include(property.Name).AsQueryable();
+            foreach (var property in _context.Model.FindEntityType(typeof(T)).GetNavigations())
+                if (!property.FieldInfo.FieldType.IsGenericType)
+                    query = query.Include(property.Name).AsQueryable();
             return query;
         }
     }

@@ -41,7 +41,8 @@ namespace HuRe.Controllers
                 Email = model.Email,
                 PasswordHashed = Protector.HashPassword(model.Password),
                 Username = model.Username,
-                RoleId = model.RoleId
+                RoleId = model.RoleId,
+                IsActivated = true
             };
             bool result = await _accountRepo.AddAsync(account);
             if (result)

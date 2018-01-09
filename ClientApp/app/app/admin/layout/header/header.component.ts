@@ -8,7 +8,7 @@ import { AuthService } from "@services/backend/auth.service";
     styleUrls: ['./header.component.scss']
 })
 export class HeaderAdminComponent implements OnInit {
-    pushRightClass: string = 'push-right';
+    toggleClass: string = 'sidenav-toggled';
     constructor(public router: Router, private _auth: AuthService) {
         this.router.events.subscribe(val => {
             if (
@@ -25,20 +25,23 @@ export class HeaderAdminComponent implements OnInit {
 
     isToggled(): boolean {
         const dom: any = document.querySelector('body');
-        return dom.classList.contains(this.pushRightClass);
+        return dom.classList.contains(this.toggleClass);
     }
-
     toggleSidebar() {
+        //thu nho nav
         const dom: any = document.querySelector('body');
-        dom.classList.toggle(this.pushRightClass);
+        dom.classList.toggle(this.toggleClass);
+        //dong cac menu con
+        const dom1: any = document.querySelector('.navbar-sidenav .nav-link-collapse');
+        dom1.classList.add("collapsed");
+        const dom2: any = document.querySelector('.navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level');
+        dom2.classList.remove("show");
     }
-
-    rltAndLtr() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle('rtl');
-    }
-
-    onLogout() {
+    logout() {
         this._auth.logout();
+    }
+    expand() {
+        const dom: any = document.querySelector('body');
+        dom.classList.remove(this.toggleClass);
     }
 }

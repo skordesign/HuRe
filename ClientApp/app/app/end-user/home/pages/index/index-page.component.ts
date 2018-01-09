@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { JobService } from '@services/backend/job.service';
+import { share } from 'rxjs/operators';
 
 @Component({
     selector: 'hure-index-page',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class IndexPageComponent implements OnInit {
-    constructor() { }
+    jobsObserver:Observable<Job[]>
+    constructor(private jobSvc:JobService) { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.getDataAsync()
+    }
+    getDataAsync() {
+        this.jobsObserver = this.jobSvc.getJobs().pipe(share())
+    }
 }

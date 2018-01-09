@@ -23,8 +23,6 @@ const router: Routes = [
             },
             {
                 path: 'search', loadChildren: './search/search.module#SearchModule'
-            }, {
-                path: 'internship', redirectTo: 'jobs'
             }
             // {
             //     path: '**', component: ErrorComponent

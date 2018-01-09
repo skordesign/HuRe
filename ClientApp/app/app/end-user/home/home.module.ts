@@ -23,7 +23,6 @@ import { EventModule } from "@app/end-user/event/event.module";
     exports: [],
     declarations: [
         HomeComponent,
-        JobsContainerComponent,
         IndexPageComponent,
         BrandContainerComponent,
         ActionBarComponent,
