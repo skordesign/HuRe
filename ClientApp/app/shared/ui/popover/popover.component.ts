@@ -31,13 +31,13 @@ export class PopoverComponent implements OnInit {
             let parentWidth = this.element.nativeElement.offsetWidth;
             let parentRight = this.element.nativeElement.offsetRight || window.innerWidth - this.element.nativeElement.offsetLeft - this.element.nativeElement.offsetWidth;
             let popoverWidth = this.popover.nativeElement.offsetWidth;
-            this.renderer.setElementStyle(this.popover.nativeElement, 'top', parentHeight+ 10 + 'px');
+            this.renderer.setElementStyle(this.popover.nativeElement, 'top', parentHeight+ 22 + 'px');
             this.renderer.setElementStyle(this.popover.nativeElement, 'left', '0');
             let sizeOutRight = parentLeft + parentWidth / 2 + popoverWidth / 2 - window.innerWidth;
             let sizeOutLeft = parentRight + parentWidth / 2 + popoverWidth / 2 - window.innerWidth;
             if (sizeOutLeft > 0) {
                 let valToTransform = sizeOutLeft + 8;
-                this.renderer.setElementStyle(this.popover.nativeElement, 'transform', 'translateX(' +  (popoverWidth / 2 + valToTransform)+ 'px)');
+                this.renderer.setElementStyle(this.popover.nativeElement, 'transform', 'translateX(' +  1 + 'px)');
             } else if (sizeOutRight > 0) {
                 let valToTransform = sizeOutRight + 8;
                 
