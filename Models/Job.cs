@@ -26,8 +26,8 @@ namespace HuRe.Models
         public string Contactor { get; set; }
         public string ContactAddress { get; set; }
         public string ContactPhone { get; set; }
-        public string AppliedCount { get; set; }
-        public string ViewCount { get; set; }
+        public long AppliedCount { get; set; }
+        public long ViewCount { get; set; }
         public decimal LowestSalary { get; set; }
         public decimal HighestSalary { get; set; }
         public string More { get; set; }

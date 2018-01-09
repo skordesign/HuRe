@@ -3,6 +3,5 @@ interface JobGroup extends Base{
     description: string;
     shortName: string;
     imageUrl:string;
-    cVs: CV[];
-    companies: Company[];
+    jobs:Job[]
 }
