@@ -84,8 +84,10 @@
           </li>
         </ul>
       </div>
-      <div *ngIf="jobRelated$">
-        <hure-jobs-container [jobsObserver]="jobRelated$"></hure-jobs-container>
+      <div class="jumbotron">
+        <div *ngIf="jobRelated$">
+          <hure-jobs-container [jobsObserver]="jobRelated$" limit="3" size="small" title="Công ty đang tuyển"></hure-jobs-container>
+        </div>
       </div>
     </div>
   </div>

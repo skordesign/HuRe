@@ -3,10 +3,6 @@ interface CV extends Base{
     place: string;
     level: string;
     experience: string;
-    accountId: string;
+    accountId: number;
     account: Account;
-    workTypeId: number;
-    workType: WorkType;
-    jobGroupId:number;
-    jobGroup: JobGroup;
 }

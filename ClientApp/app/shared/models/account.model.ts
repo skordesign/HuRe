@@ -1,4 +1,5 @@
 interface Account {
+    id:any;
     guid: string;
     username: string;
     class: string;
@@ -13,6 +14,11 @@ interface Account {
     avatar: string;
     roleId: number;
     role: Role;
+    companyId:number;
+    company:Company;
+    isActivated:boolean;
     createdDate: Date;
     modifiedDate: Date;
+    applys:Apply[];
+    cv:CV;
 }

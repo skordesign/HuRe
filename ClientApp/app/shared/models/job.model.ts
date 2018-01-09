@@ -16,8 +16,8 @@ interface Job extends Base {
     contactor: string;
     contactAddress: string;
     contactPhone: string;
-    appliedCount: string;
-    viewCount: string;
+    appliedCount: number;
+    viewCount: number;
     lowestSalary: number;
     highestSalary:number;
     more:string;
@@ -28,4 +28,5 @@ interface Job extends Base {
     jobGroupId:number;
     jobGroup:JobGroup;
     contentURL:string;
+    applys:Apply[]
 }

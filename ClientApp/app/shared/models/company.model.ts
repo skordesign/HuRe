@@ -8,4 +8,7 @@ interface Company extends Base{
     urlLogo: string;
     representor: string;
     description: string;
+    isPartner:boolean;
+    jobs:Job[]
+    accounts:Account[]
 }
