@@ -1,9 +1,19 @@
-
+.hures-intro-banner{
+    height:250px;
+    background-image: url('https://www.img.in.th/images/f7d4626b4ca723de8598e44f782e7ebe.png');
+    width:100%;
+    position: relative;
+    margin-bottom: 20px;
+}
 .intro-label{
-    background-color: #55a747;
+    background-image: url('https://www.img.in.th/images/c8ca1c27a87cec562f2213e5eb362a32.png');
     padding:10px;
     text-align: center;
     color:white;
+   
+}
+.intro-label2{
+    border-top-right-radius: 10px;
 }
 .intro-mini-label{
     border:1px solid #55a747;
@@ -11,6 +21,8 @@
     padding:20px 20px;
     text-align: center;
     position: relative;
+    color:green;
+    font-weight: 500;
 }
 .intro-number-label{
     position: absolute;
@@ -27,4 +39,20 @@
 }
 .intro-box{
     padding:20px;
+}
+
+.intro-img{
+    img{
+        border-top-left-radius: 10px;
+    }
+}
+@media screen and (max-width:767px){
+    .intro-img{
+        img{
+            border-top-right-radius: 10px;
+        }
+    }
+    .intro-label2{
+        border-top-right-radius: 0px;
+    }
 }
