@@ -39,6 +39,7 @@ export class HeaderAdminComponent implements OnInit {
     }
     logout() {
         this._auth.logout();
+        this.router.navigate(['/admin/login'])
     }
     expand() {
         const dom: any = document.querySelector('body');

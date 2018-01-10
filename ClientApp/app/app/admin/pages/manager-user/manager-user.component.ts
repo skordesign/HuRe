@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ManagerUserService } from "@app/admin/service/manager-user.service";
 import { CreateUserComponent } from "@app/admin/pages/manager-user/create-user/create-user.component";
+import { ActivateUserComponent } from "@app/admin/pages/manager-user/activate-user/activate-user.component";
 @Component({
     selector: 'manager-user',
     templateUrl: './manager-user.component.html',
@@ -13,6 +14,7 @@ export class ManagerUserComponent implements OnInit {
     private numberPageView: number = 5;
     private _data: any;
     @ViewChild(CreateUserComponent) _modalCreateUser: CreateUserComponent;
+    @ViewChild(ActivateUserComponent) _modalActivate: ActivateUserComponent;
     constructor(private _serviceManagerUser: ManagerUserService) {
 
     }
@@ -32,5 +34,9 @@ export class ManagerUserComponent implements OnInit {
     }
     openCreateUser() {
         this._modalCreateUser.open();
+    }
+    activate(id: number, currentStatus: boolean) {
+        this._modalActivate.open(id, currentStatus)
+
     }
 }

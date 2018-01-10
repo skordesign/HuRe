@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef, ViewChildren, OnInit } from '@angular/core';
+import { Component, ViewChild, TemplateRef, ViewChildren, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ManagerUserService } from '@app/admin/service/manager-user.service';
 @Component({
@@ -17,17 +17,20 @@ export class CreateUserComponent implements OnInit {
     roleSelected: number;
     birthday: string;
     sex: boolean;
+    modalRef: any;
+    @Output() submitData: EventEmitter<any> = new EventEmitter();
     @ViewChild('content') content: TemplateRef<any>;
     constructor(
         private modalService: NgbModal,
         private userService: ManagerUserService
     ) { }
     open() {
-        this.modalService.open(this.content).result.then((result) => {
-            this.closeResult = `Closed with: ${result}`;
-        }, (reason) => {
-            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        });
+        this.modalRef = this.modalService.open(this.content);
+        // this.modalService.open(this.content).result.then((result) => {
+        //     this.closeResult = `Closed with: ${result}`;
+        // }, (reason) => {
+        //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        // });
     }
 
     private getDismissReason(reason: any): string {
@@ -66,9 +69,10 @@ export class CreateUserComponent implements OnInit {
             DateOfBirth: this.birthday,
             RoleId: this.roleSelected
         }
-        console.log(body);
         this.userService.createUser(body).then(result => {
-            console.log(result);
+            if (result) {
+                this.modalRef.close();
+            }
         })
     }
 }

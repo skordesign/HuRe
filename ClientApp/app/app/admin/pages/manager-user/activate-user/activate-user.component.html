@@ -1,0 +1,15 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Kích hoạt tài khoản</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Bạn chắc chắn muốn {{ (!currentStatus) ? 'kích hoạt' : 'khóa' }} tài khoản này ?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn-admin btn-primary" (click)="save()">Chắn chắc</button>
+        <button type="button" class="btn-admin btn-secondary" (click)="c('Close click')">Suy nghĩ lại</button>
+    </div>
+</ng-template>
