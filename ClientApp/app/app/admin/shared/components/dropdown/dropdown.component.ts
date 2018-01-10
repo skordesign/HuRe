@@ -15,7 +15,6 @@ export class AdminDropdownComponent implements OnInit {
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     constructor() { }
     ngOnInit() {
-        console.log(this.firstSelected);
     }
     change() {
         this.valueChange.emit(this.valueSelected);
