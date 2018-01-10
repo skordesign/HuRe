@@ -104,6 +104,7 @@ namespace HuRe.Controllers
                  };
                 var role = await _roleRepo.GetAsync((long)user.RoleId);
                 claims.Add(new Claim("Role", role.Name.ToString()));
+                claims.Add(new Claim("Id", user.Id.ToString()));
                 //get role bỏ vào token
                 var token = new JwtSecurityToken
                 (

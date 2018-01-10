@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HuRe.Db;
 using HuRe.Models;
+using HuRe.Models.ActionModel;
 using HuRe.Models.ResultModels;
 using HuRe.Util;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ namespace Service.Repositories
         Task<Account> GetAsync(Guid id);
         Task<ICollection<Account>> GetsAsync();
         Account Login(string TenTaiKhoan, string MatKhau);
-        Task<ICollection<AccountResult>> GetsAsyncPage(int offset, int limit);
+        Task<ICollection<AccountResult>> GetsAsyncPage( AccountActionModel body);
         int CountAll();
         Task<bool> CheckAsync(string email);
         Task<bool> ActivateAccount(int id,Account o);
@@ -65,28 +66,43 @@ namespace Service.Repositories
         {
             return await _context.Accounts.ToListAsync();
         }
-        public async Task<ICollection<AccountResult>> GetsAsyncPage(int offset, int limit)
+        public async Task<ICollection<AccountResult>> GetsAsyncPage(AccountActionModel body)
         {
-            return await _context.Accounts.Skip(offset).Take(limit).Select(a =>
-                new AccountResult
-                {
-                    Id = a.Id,
-                    Username = a.Username,
-                    Address = a.Address,
-                    Avatar = a.Avatar,
-                    Firstname = a.Firstname,
-                    Lastname = a.Lastname,
-                    DateOfBirth = a.DateOfBirth,
-                    Class = a.Class,
-                    Guid = a.Guid.ToString(),
-                    Sex = a.Sex,
-                    Email = a.Email,
-                    PhoneNumber = a.PhoneNumber,
-                    RoleName = a.Role.Name,
-                    RoleDescription = a.Role.Description,
-                    RoleId = (long)a.RoleId,
-                    IsActivated = a.IsActivated
-                }).ToListAsync();
+            var ofsset = (body.CurrentPage * body.NumberItemPage) - body.NumberItemPage;
+            var list = await _context.Accounts.Skip(ofsset).Take(body.NumberItemPage).Select(a =>
+                 new AccountResult
+                 {
+                     Id = a.Id,
+                     Username = a.Username,
+                     Address = a.Address,
+                     Avatar = a.Avatar,
+                     Firstname = a.Firstname,
+                     Lastname = a.Lastname,
+                     DateOfBirth = a.DateOfBirth,
+                     Class = a.Class,
+                     Guid = a.Guid.ToString(),
+                     Sex = a.Sex,
+                     Email = a.Email,
+                     PhoneNumber = a.PhoneNumber,
+                     RoleName = a.Role.Name,
+                     RoleDescription = a.Role.Description,
+                     RoleId = (long)a.RoleId,
+                     IsActivated = a.IsActivated
+                 }).ToListAsync();
+            //loai bo du lieu tuong ung vs cac dieu kien
+            if(body.IsActivated != 0)
+            {
+                list = list.Where(a => a.IsActivated == (body.IsActivated ==1) ? true :false).ToList();
+            }
+            if (body.RoleId != 0)
+            {
+                list = list.Where(a => a.RoleId == body.RoleId).ToList();
+            }
+            if(body.KeySearch != null)
+            {
+                list = list.Where(a => a.Username.Contains(body.KeySearch)).ToList();
+            }
+            return list;
         }
 
         public async Task<bool> RemoveAsync(Guid id)

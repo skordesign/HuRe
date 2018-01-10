@@ -6,11 +6,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class ManagerUserService {
     constructor(private http: CommonHttpService<Account>) { }
-    getAccountsPage(currentPage: number, numberItemPage: number): Promise<any> {
-        let body = {
-            CurrentPage: currentPage,
-            NumberItemPage: numberItemPage
-        }
+    getAccountsPage(body: any): Promise<any> {
         return this.http.post(URL_ADMIN.GET_PAGE_ACCOUNT, body, this.http.createHeader()).toPromise();
     }
     getAllRole() {

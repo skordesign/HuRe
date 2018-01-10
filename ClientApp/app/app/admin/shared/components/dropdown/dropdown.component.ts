@@ -11,10 +11,11 @@ export class AdminDropdownComponent implements OnInit {
     @Input() Models: string;
     @Input() ValueShow: string;
     @Input() ValueSelect: string;
+    @Input() firstSelected: boolean;
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     constructor() { }
     ngOnInit() {
-
+        console.log(this.firstSelected);
     }
     change() {
         this.valueChange.emit(this.valueSelected);

@@ -22,9 +22,8 @@ namespace HuRe.Controllers
         [HttpPost]
         public async Task<ModelPaging<AccountResult>> Post([FromBody]AccountActionModel form)
         {
-            var ofsset = (form.CurrentPage * form.NumberItemPage) - form.NumberItemPage;
             var total = _accountRepo.CountAll();
-            var accounts = await _accountRepo.GetsAsyncPage(ofsset, form.NumberItemPage);
+            var accounts = await _accountRepo.GetsAsyncPage(form);
             return new ModelPaging<AccountResult>
             {
                 total = total,
@@ -39,9 +38,14 @@ namespace HuRe.Controllers
             return await _accountRepo.AddAsync(form);
         }
         [HttpPut("{id}")]
-        public async Task<bool> Update(int id,[FromBody]Account form)
+        public async Task<bool> Update(int id, [FromBody]Account form)
         {
-            return await _accountRepo.ActivateAccount(id,form);
+            return await _accountRepo.ActivateAccount(id, form);
+        }
+        [HttpGet("Guid")]
+        public async Task<Account> Get(Guid Guid)
+        {
+            return await _accountRepo.GetAsync(Guid);
         }
     }
 }

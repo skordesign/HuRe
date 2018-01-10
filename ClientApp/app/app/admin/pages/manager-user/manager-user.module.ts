@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { CreateUserComponent } from "@app/admin/pages/manager-user/create-user/create-user.component";
 import { ShareAdminModule } from "@app/admin/shared/components/share-admin.module";
 import { ActivateUserComponent } from "@app/admin/pages/manager-user/activate-user/activate-user.component";
+import { EditUserComponent } from "@app/admin/pages/manager-user/edit-user/edit-user.component";
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { ActivateUserComponent } from "@app/admin/pages/manager-user/activate-us
     declarations: [
         ManagerUserComponent,
         CreateUserComponent,
-        ActivateUserComponent
+        ActivateUserComponent,
+        EditUserComponent
     ]
 })
 export class ManagerUserModule { }

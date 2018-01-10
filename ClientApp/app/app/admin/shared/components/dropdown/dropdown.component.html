@@ -1,4 +1,4 @@
 <select [(ngModel)]="valueSelected" class="btn-admin btn-default dropdown-toggle" (change)="change()">
-    <option disabled  [value]="''">{{Title}}</option>
+    <option [disabled]="firstSelected" [value]="''">{{Title}}</option>
     <option *ngFor="let item of Models" [value]="item[ValueSelect]">{{item[ValueShow]}}</option>
 </select>

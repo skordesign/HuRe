@@ -1,13 +1,12 @@
 import { Component, ViewChild, TemplateRef, ViewChildren, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ManagerUserService } from '@app/admin/service/manager-user.service';
-import { AdminAlertComponent } from '@app/admin/shared/components/alert/alert.component';
 @Component({
-    selector: 'create-user',
-    templateUrl: './create-user.component.html',
-    styleUrls: ['./create-user.component.scss']
+    selector: 'edit-user',
+    templateUrl: './edit-user.component.html',
+    styleUrls: ['./edit-user.component.scss']
 })
-export class CreateUserComponent implements OnInit {
+export class EditUserComponent implements OnInit {
     ngOnInit(): void {
         this.getAllRole();
     }
@@ -19,8 +18,6 @@ export class CreateUserComponent implements OnInit {
     birthday: string;
     sex: boolean;
     modalRef: any;
-    //luu loi
-    private error: string = '';
     @Output() submitData: EventEmitter<any> = new EventEmitter();
     @ViewChild('content') content: TemplateRef<any>;
     constructor(
@@ -29,21 +26,6 @@ export class CreateUserComponent implements OnInit {
     ) { }
     open() {
         this.modalRef = this.modalService.open(this.content);
-        // this.modalService.open(this.content).result.then((result) => {
-        //     this.closeResult = `Closed with: ${result}`;
-        // }, (reason) => {
-        //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        // });
-    }
-
-    private getDismissReason(reason: any): string {
-        if (reason === ModalDismissReasons.ESC) {
-            return 'by pressing ESC';
-        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-            return 'by clicking on a backdrop';
-        } else {
-            return `with: ${reason}`;
-        }
     }
     timeChange(time: any) {
         this.birthday = time;
@@ -63,11 +45,6 @@ export class CreateUserComponent implements OnInit {
         })
     }
     create(form: any) {
-        if (this.roleSelected == undefined) {
-            this.error = 'Chưa chọn phân quyền';
-            this.autoHide()
-            return;
-        }
         let body = {
             Email: form.value.Email,
             Firstname: form.value.Firstname,
@@ -83,9 +60,7 @@ export class CreateUserComponent implements OnInit {
             }
         })
     }
-    autoHide() {
-        setTimeout(() => {
-            this.error = '';
-        }, 1000)
+    getInfoUser(idUser: number) {
+        
     }
 }

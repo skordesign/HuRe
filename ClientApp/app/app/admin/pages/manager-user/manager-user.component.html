@@ -3,6 +3,12 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-2">
+                <button class="btn btn-primary" (click)="openCreateUser()">Thêm tài khoản</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
                 <div class="form-group filter">
                     <select class="form-control" [(ngModel)]="numberItemPage" (change)="pageChange()" id="exampleSelect1">
                         <option [ngValue]="5">5</option>
@@ -12,10 +18,25 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-primary" (click)="openCreateUser()">Thêm tài khoản</button>
+                <select [(ngModel)]="filterStatus" class="btn-admin btn-default dropdown-toggle" (change)="getData()">
+                    <option selected [value]="0">Trạng thái</option>
+                    <option [value]="1">Kích hoạt</option>
+                    <option [value]="2">Chưa kích hoạt</option>
+                </select>
             </div>
-            <div class="col-md-8">
-
+            <div class="col-md-2">
+                <admin-dropdown [Title]="'Lọc theo quyền'" [firstSelected]="false" [Models]="roles" [ValueShow]="'name'" [ValueSelect]="'id'"
+                    (valueChange)="roleChange($event)"></admin-dropdown>
+            </div>
+            <div class="col-md-7">
+                <div class="form-group input-group">
+                    <input type="text" class="form-control" [(ngModel)]="keySearch">
+                    <span class="input-group-btn">
+                        <button class="btn-admin btn-secondary" type="button" (click)="getData()">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
             </div>
         </div>
         <div class="table-responsive">

@@ -5,6 +5,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { CommonModule } from "@angular/common";
 import { SexSeletComponent } from "@app/admin/shared/components/sex-select/sex-select.component";
 import { AdminDropdownComponent } from "@app/admin/shared/components/dropdown/dropdown.component";
+import { AdminAlertComponent } from "@app/admin/shared/components/alert/alert.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -15,12 +16,14 @@ import { AdminDropdownComponent } from "@app/admin/shared/components/dropdown/dr
     exports: [
         DatePickerComponent,
         SexSeletComponent,
-        AdminDropdownComponent
+        AdminDropdownComponent,
+        AdminAlertComponent
     ],
     declarations: [
         DatePickerComponent,
         SexSeletComponent,
-        AdminDropdownComponent
+        AdminDropdownComponent,
+        AdminAlertComponent
     ],
 })
 export class ShareAdminModule { }
