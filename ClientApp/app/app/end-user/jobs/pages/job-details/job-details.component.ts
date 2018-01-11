@@ -11,6 +11,7 @@ import { ConfirmService } from '@services/frontend/confirm.service';
 import { LocalService } from '@services/backend/local.service';
 import { AlertService } from '@services/frontend/alert.service';
 import { ApplyService } from '@services/backend/apply.service';
+import { AuthService } from '@services/backend/auth.service';
 
 @Component({
   selector: 'hure-job-details',
@@ -23,10 +24,11 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   }
   sub$: Subscription
   job: Job
+  isLogged:boolean
   jobRelated$: Observable<Job[]>
   constructor(private route: ActivatedRoute, private jobSvc: JobService, private companySvc: CompanyService,
-    private confirmSvc: ConfirmService, private localSvc:LocalService, private alertSvc:AlertService,
-  private applySvc:ApplyService) { }
+    private confirmSvc: ConfirmService, private localSvc: LocalService, private alertSvc: AlertService,
+    private applySvc: ApplyService, private authSvc: AuthService) { }
   contentHTML: Observable<string>
   ngOnInit() {
     this.route.params.subscribe(param => {
@@ -36,32 +38,36 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
         this.jobRelated$ = this.companySvc.getJobOfCompany(this.job.companyId).pipe(share())
       })
     })
-
+    this.isLogged =  this.authSvc.isLogged()
   }
   apply(job: Job) {
-    this.confirmSvc.showConfirm("Nộp đơn xin việc", 
-    `Xác nhận nộp đơn xin việc tại công ty 
+    if(this.isLogged){
+      this.confirmSvc.showConfirm("Nộp đơn xin việc",
+      `Xác nhận nộp đơn xin việc tại công ty 
     ${job.company.name}.
     `, [{
         text: "Đồng ý", func: () => this.requestApply(job)
       }])
+    }else{
+      this.authSvc.login$.emit(false)
+    }
   }
   private requestApply(job: Job) {
     let accountId = this.localSvc.getAccountId()
-    if(accountId){
-        let model= {
-          accountId : +accountId,
-          jobId : job.id,
+    if (accountId) {
+      let model = {
+        accountId: +accountId,
+        jobId: job.id,
+      }
+      this.applySvc.postApply(model).subscribe(result => {
+        if (result == true) {
+          //do stuff
+        } else {
+          //raise error
         }
-        this.applySvc.postApply(model).subscribe(result=>{
-          if(result==true){
-            //do stuff
-          }else{
-            //raise error
-          }
-        })
-    }else{
-      this.alertSvc.show("Error","This feature is not implement yet");
+      })
+    } else {
+      this.alertSvc.show("Error", "This feature is not implement yet");
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { JobGroupService } from '@services/backend/job-group.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { WorkTypeService } from '@services/backend/work-type.service';
 
 @Component({
@@ -12,31 +12,42 @@ import { WorkTypeService } from '@services/backend/work-type.service';
 export class SearchBarComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.job$) {
-      this.job$.unsubscribe()
-      this.work$.unsubscribe()
+      this.job$!.unsubscribe()
+      this.work$!.unsubscribe()
+      this.route$!.unsubscribe()
     }
   }
   keyword: string = ""
   jobs: JobGroup[]
-  works:WorkType[]
+  works: WorkType[]
   job$: Subscription
-  work$:Subscription
+  work$: Subscription
   selectedJobG: number = 0
-  constructor(private jobGSvc: JobGroupService, private router: Router, private workTSvc:WorkTypeService) {
+  selectedWorkT: number = 0
+  route$:Subscription
+  constructor(private jobGSvc: JobGroupService, private router: Router, private workTSvc: WorkTypeService, private routeActive: ActivatedRoute, ) {
     this.job$ = this.jobGSvc.getJobs().subscribe(data => {
       this.jobs = data;
     });
-    this.work$ = this.workTSvc.getWorkTypes().subscribe(data=> this.works = data);
+    this.work$ = this.workTSvc.getWorkTypes().subscribe(data => this.works = data);
   }
-  gotoSearchPage() {
-    this.router.navigate(['/search'])
+  clear() {
+    this.router.navigate(['/search', { jobGroup: 0, keyword: "", workType: 0 }])
   }
-  search(){
-    this.router.navigate(['/search', { jobType: this.selectedJobG, keyword: this.keyword }])
+  search() {
+    this.router.navigate(['/search', { jobGroup: this.selectedJobG, keyword: this.keyword, workType: this.selectedWorkT }])
   }
   ngOnInit() {
+    this.route$ = this.routeActive.paramMap.subscribe(s => {
+      this.selectedJobG = +s.get('jobGroup')! || 0;
+      this.selectedWorkT = +s.get('workType')! || 0;
+      this.keyword = s.get('keyword') || "";
+    })
   }
-  onJobGroupChange(jobG: any) {
-     this.selectedJobG = jobG.value;
+  onJobGroupChange(jobG: any|null) {
+    this.selectedJobG = jobG!.value||0;
+  }
+  onWorkTypeChange(work: any|null) {
+    this.selectedWorkT = work!.value||0;
   }
 }

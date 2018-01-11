@@ -31,10 +31,10 @@ namespace HuRe.Controllers
             return jobs.Where(o=>o.CompanyId==id);
         }
         [HttpGet]
-        public async Task<List<Company>> Get()
+        public async Task<IEnumerable<Company>> Get()
         {
             var doanhNghieps = await _companiesRepo.GetsAsync();
-            return doanhNghieps.ToList();
+            return doanhNghieps.OrderByDescending(o=>o.Scales).Take(10).ToList();
         }
         [HttpDelete("{id}")]
         public async Task<bool> Delete(long id)

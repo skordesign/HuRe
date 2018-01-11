@@ -25,6 +25,12 @@ export class JobService {
         }
         return this.getJobs$;
     }
+    getHotJobs(){
+        return this.http.gets<Job>(this.URL+"/hot-jobs", this.http.createHeader()).share()
+    }
+    getHotInterns(){
+        return this.http.gets<Job>(this.URL+"/hot-interns", this.http.createHeader()).share()
+    }
     getSearchJobs(keyword: string, jobGroupId: number = 0, workTypeId: number = 0) {
         if (!this.getJobs$) {
             this.getJobs()
