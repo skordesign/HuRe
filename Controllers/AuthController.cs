@@ -126,6 +126,7 @@ namespace HuRe.Controllers
                 {
                     token = encodedJwt,
                     guid = user.Guid,
+                    id = user.Id,
                     expires_in = (int)TimeSpan.FromDays(1).TotalSeconds
                 };
                 return Ok(response);
