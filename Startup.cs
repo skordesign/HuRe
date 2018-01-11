@@ -57,9 +57,8 @@ namespace HuRe
             services.AddTransient<IRepository<Company>, Repository<Company>>();
             services.AddTransient<IEventRepository, EventRepository>();
             services.AddTransient<IRepository<JobGroup>, Repository<JobGroup>>();
-            services.AddTransient<IRepository<Apply>, Repository<Apply>>();
             services.AddTransient<IRepository<WorkType>,Repository<WorkType>>();
-            //
+            services.AddTransient<IApplyRepository, ApplyRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(jwtBearerOptions =>
             {

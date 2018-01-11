@@ -6,5 +6,6 @@ export const URL = {
     JOB_GROUP_URL:"/api/job-groups",
     ROLE_URL:"/api/roles",
     WORKTYPE_URL:"/api/work-types",
-    COMPANY_URL:"/api/companies"
+    COMPANY_URL:"/api/companies",
+    APPLY_URL:"/api/applies"
 }
