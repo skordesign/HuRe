@@ -21,7 +21,7 @@ namespace HuRe.Controllers
         [HttpPost]
         public async Task<ModelPaging<AccountResult>> Post([FromBody]AccountActionModel form)
         {
-            var total = _accountRepo.CountAll();
+            var total = _accountRepo.CountAll(form);
             var accounts = await _accountRepo.GetsAsyncPage(form);
             return new ModelPaging<AccountResult>
             {

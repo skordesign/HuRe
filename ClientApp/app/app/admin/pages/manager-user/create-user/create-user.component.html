@@ -36,6 +36,9 @@
                 <!-- <label class="form-control-label">Ngày sinh</label> -->
                 <admin-date-picker (timeChange)="timeChange($event)"></admin-date-picker>
             </div>
+            <div class="form-group has-danger">
+                <admin-switch-button [Title]="'Kích hoạt'" [value]="true" (valueChanged)="statusChange($event)"></admin-switch-button>
+            </div>
             <div>
                 * Mật khẩu mặc định : 123456
             </div>

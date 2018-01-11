@@ -18,6 +18,7 @@ export class CreateUserComponent implements OnInit {
     roleSelected: number;
     birthday: string;
     sex: boolean;
+    isActivated: boolean;
     modalRef: any;
     //luu loi
     private error: string = '';
@@ -51,6 +52,9 @@ export class CreateUserComponent implements OnInit {
     sexChange(sex: boolean) {
         this.sex = sex;
     }
+    statusChange(IsActivated: boolean) {
+        this.isActivated = IsActivated;
+    }
     roleChange(roleID: any) {
         this.roleSelected = roleID;
     }
@@ -75,7 +79,8 @@ export class CreateUserComponent implements OnInit {
             Username: form.value.Username,
             Sex: this.sex,
             DateOfBirth: this.birthday,
-            RoleId: this.roleSelected
+            RoleId: this.roleSelected,
+            IsActivated: this.isActivated
         }
         this.userService.createUser(body).then(result => {
             if (result) {
