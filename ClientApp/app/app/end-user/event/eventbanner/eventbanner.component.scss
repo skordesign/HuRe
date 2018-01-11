@@ -33,7 +33,19 @@
         }
     }
 }
-@media screen and (max-width: 377px){
+@media screen and (max-width: 517px){
+    .hures-event-bg{  
+        .hures-event-bg-info{
+            .big-info{
+                font-size:25px;
+            }
+            .mini-info{
+                font-size: 18px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 450px){
     .hures-event-bg{  
         .hures-event-bg-info{
             .big-info{
