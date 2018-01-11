@@ -1,19 +1,18 @@
-<div [@confirmDialogChanged] class=" modal " *ngIf="isActivated" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title font-weight-light">{{ title | uppercase }}</h5>
-            </div>
-            <div class="modal-body">
-                <p>{{ message }}</p>
-            </div>
-            <div class="modal-footer">
-                <button *ngFor="let action of actions" rippleEffect type="button" class="btn btn-primary" (click)="exec(action)">{{ action.text }}</button>
-                <button type="button" rippleEffect class="btn btn-primary" (click)="exec(action, false)">Hủy</button>
+<hure-overlay [@confirmDialogChanged] *ngIf="isActivated" isActivated="true">
+    <div [@confirmDialogChanged] class=" modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-light">{{ title | uppercase }}</h5>
+                </div>
+                <div class="modal-body">
+                    <p>{{ message }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button *ngFor="let action of actions" rippleEffect type="button" class="hures-btn" (click)="exec(action)">{{ action.text }}</button>
+                    <button type="button" rippleEffect class="hures-btn" (click)="exec(action, false)">Hủy</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div [@confirmDialogChanged] *ngIf="isActivated" class="overlay">
-
-</div>
+</hure-overlay>

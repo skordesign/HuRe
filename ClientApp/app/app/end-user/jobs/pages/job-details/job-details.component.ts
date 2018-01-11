@@ -7,6 +7,10 @@ import { Http } from '@angular/http';
 import { CommonHttpService } from '@services/backend/common-http.service';
 import { Subscription } from 'rxjs/Subscription';
 import { CompanyService } from '@services/backend/company.service';
+import { ConfirmService } from '@services/frontend/confirm.service';
+import { LocalService } from '@services/backend/local.service';
+import { AlertService } from '@services/frontend/alert.service';
+import { ApplyService } from '@services/backend/apply.service';
 
 @Component({
   selector: 'hure-job-details',
@@ -20,7 +24,9 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   sub$: Subscription
   job: Job
   jobRelated$: Observable<Job[]>
-  constructor(private route: ActivatedRoute, private jobSvc: JobService, private companySvc: CompanyService) { }
+  constructor(private route: ActivatedRoute, private jobSvc: JobService, private companySvc: CompanyService,
+    private confirmSvc: ConfirmService, private localSvc:LocalService, private alertSvc:AlertService,
+  private applySvc:ApplyService) { }
   contentHTML: Observable<string>
   ngOnInit() {
     this.route.params.subscribe(param => {
@@ -31,5 +37,31 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
       })
     })
 
+  }
+  apply(job: Job) {
+    this.confirmSvc.showConfirm("Nộp đơn xin việc", 
+    `Xác nhận nộp đơn xin việc tại công ty 
+    ${job.company.name}.
+    `, [{
+        text: "Đồng ý", func: () => this.requestApply(job)
+      }])
+  }
+  private requestApply(job: Job) {
+    let accountId = this.localSvc.getAccountId()
+    if(accountId){
+        let model= {
+          accountId : +accountId,
+          jobId : job.id,
+        }
+        this.applySvc.postApply(model).subscribe(result=>{
+          if(result==true){
+            //do stuff
+          }else{
+            //raise error
+          }
+        })
+    }else{
+      this.alertSvc.show("Error","This feature is not implement yet");
+    }
   }
 }

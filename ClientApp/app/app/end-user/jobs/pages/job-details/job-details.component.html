@@ -10,7 +10,7 @@
     <!-- left -->
     <div class="col-12 col-lg-8">
       <div class="jumbotron">
-        <h2 >Thông tin</h2>
+        <h2>Thông tin</h2>
         <div class="row">
           <div class="col-12 col-md-6">
             <ul>
@@ -50,12 +50,19 @@
               </li>
             </ul>
           </div>
-
+          <div class="col-12 col-md-4 col-xl-3">
+            <button class="hures-btn" (click)="apply(job)" rippleEffect>APPLY</button>
+          </div>
         </div>
       </div>
       <div class="jumbotron">
-        <h2 >Chi tiết</h2>
+        <h2>Chi tiết</h2>
         <div class="hures-job-content-html" [innerHTML]="job?.contentURL"></div>
+        <div class="row">
+          <div class="col-12 col-md-4 col-xl-3">
+            <button class="hures-btn" (click)="apply(job)" rippleEffect>APPLY</button>
+          </div>
+        </div>
       </div>
     </div>
     <!-- right -->

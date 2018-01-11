@@ -17,6 +17,18 @@ p, span,li {
     border-radius: 2px !important;
 
 }
+.hures-btn {
+    background: rgb(85, 167, 71);
+    color: white;
+    height: 44px;
+    margin: 4px;
+    border: 0;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+    padding: 4px 32px;
+    white-space: nowrap; 
+    outline: 0;
+}
 /* .btn {
     border-radius: 40px !important;
     min-width: 100px;

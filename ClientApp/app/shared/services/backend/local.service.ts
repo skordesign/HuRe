@@ -9,4 +9,9 @@ export class LocalService {
             return localStorage.getItem('userId');
         }
     }
+    getAccountId(){
+        if(typeof window != "undefined"){
+            return localStorage.getItem('accountId')
+        }
+    }
 }
