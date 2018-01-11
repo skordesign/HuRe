@@ -22,7 +22,7 @@ namespace HuRe.Controllers
         [HttpPost]
         public async Task<ModelPaging<AccountResult>> Post([FromBody]AccountActionModel form)
         {
-            var total = _accountRepo.CountAll();
+            var total = _accountRepo.CountAll(form);
             var accounts = await _accountRepo.GetsAsyncPage(form);
             return new ModelPaging<AccountResult>
             {
@@ -42,7 +42,7 @@ namespace HuRe.Controllers
         {
             return await _accountRepo.ActivateAccount(id, form);
         }
-        [HttpGet("Guid")]
+        [HttpGet("{Guid}")]
         public async Task<Account> Get(Guid Guid)
         {
             return await _accountRepo.GetAsync(Guid);

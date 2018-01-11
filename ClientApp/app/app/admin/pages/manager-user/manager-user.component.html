@@ -39,6 +39,9 @@
                 </div>
             </div>
         </div>
+        <div class="view-total">
+            Tổng cộng {{totalItem}} dòng được tìm thấy
+        </div>
         <div class="table-responsive">
             <table class="table table-hover table-striped " *ngIf="_data">
                 <thead>
@@ -93,6 +96,8 @@
         </div>
         <ngb-pagination [pageSize]="numberItemPage" [collectionSize]="totalItem" [(page)]="currentPage" [maxSize]="numberPageView"
             [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
+
+
     </div>
 
 </div>
