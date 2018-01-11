@@ -14,9 +14,7 @@ export class EditUserComponent implements OnInit {
     //save list role
     roles: any;
     //value role
-    roleSelected: number;
     birthday: string;
-    sex: boolean;
     modalRef: any;
     userModel: any;
     @Output() submitData: EventEmitter<any> = new EventEmitter();
@@ -34,33 +32,11 @@ export class EditUserComponent implements OnInit {
         })
     }
     timeChange(time: any) {
-        this.birthday = time;
-    }
-    sexChange(sex: boolean) {
-        this.sex = sex;
-    }
-    roleChange(roleID: any) {
-        this.roleSelected = roleID;
+        //loi cho nay 2 kieu du lieu truoc sau khac nhau
+        // this.userModel.dateOfBirth = new Date(time);
     }
     save() {
-
-    }
-
-    create(form: any) {
-        let body = {
-            Email: form.value.Email,
-            Firstname: form.value.Firstname,
-            Lastname: form.value.Lastname,
-            Username: form.value.Username,
-            Sex: this.sex,
-            DateOfBirth: this.birthday,
-            RoleId: this.roleSelected
-        }
-        this.userService.createUser(body).then(result => {
-            if (result) {
-                this.modalRef.close();
-            }
-        })
+        console.log(this.userModel);
     }
     getAllRole() {
         this.userService.getAllRole().then(result => {

@@ -6,11 +6,14 @@
         </button>
     </div>
     <div class="modal-body">
-        <form role="form" #formCreate="ngForm" (ngSubmit)="create(formCreate)" ngNativeValidate>
+        <form role="form" ngNativeValidate>
             <div class="form-group has-danger">
                 <label class="form-control-label">Phân quyền</label>
                 <admin-dropdown [Title]="'Chọn phân quyền'" [currentValue]="userModel.roleId" [Models]="roles" [ValueShow]="'name'" [ValueSelect]="'id'"
-                    (valueChange)="roleChange($event)"></admin-dropdown>
+                    (valueChange)="userModel.roleId=$events"></admin-dropdown>
+            </div>
+            <div class="form-group has-danger">
+                <admin-switch-button [Title]="'Kích hoạt'" [value]="userModel.isActivated" (valueChanged)="userModel.isActivated=$event"></admin-switch-button>
             </div>
             <div class="form-group ">
                 <label class="form-control-label" for="username">Tên tài khoản</label>
@@ -33,28 +36,27 @@
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="email">Số điện thoại</label>
-                <input type="Email" [(ngModel)]="userModel.email" name="sdt" class="form-control form-control-danger" id="sdt" required>
+                <input type="Email" [(ngModel)]="userModel.email" name="sdt" class="form-control form-control-danger" id="sdt">
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="email">Lớp</label>
-                <input type="Email" [(ngModel)]="userModel.class" name="class" class="form-control form-control-danger" id="class" required>
+                <input type="text" [(ngModel)]="userModel.class" name="class" class="form-control form-control-danger" id="class">
             </div>
 
             <div class="form-group">
                 <label class="form-control-label" for="email">Địa chỉ</label>
-                <input type="Email" [(ngModel)]="userModel.address" name="address" class="form-control form-control-danger" id="address"
-                    required>
+                <input type="text" [(ngModel)]="userModel.address" name="address" class="form-control form-control-danger" id="address">
             </div>
             <div class="form-group">
                 <label class="form-control-label">Giới tính</label>
-                <admin-sex-select [valueDefault]="userModel.sex" (sexSelected)="sexChange($event)"></admin-sex-select>
+                <admin-sex-select [valueDefault]="userModel.sex" (sexSelected)="userModel.sex=$event"></admin-sex-select>
             </div>
             <div class="form-group">
                 <label class="form-control-label">Ngày sinh</label>
                 <admin-date-picker [currentValue]="userModel.dateOfBirth" (timeChange)="timeChange($event)"></admin-date-picker>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn-admin btn-primary">Lưu</button>
+                <button type="submit" class="btn-admin btn-primary" (click)="save()">Lưu</button>
                 <button type="button" class="btn-admin btn-secondary" (click)="c('Close click')">Hủy</button>
             </div>
         </form>
