@@ -59,7 +59,7 @@ namespace Service.Repositories
         public async Task<Account> GetAsync(Guid id)
         {
             var user = await _context.Accounts.FirstOrDefaultAsync(o => o.Guid == id);
-            return user ?? new Account();
+            return user;
         }
 
         public async Task<ICollection<Account>> GetsAsync()

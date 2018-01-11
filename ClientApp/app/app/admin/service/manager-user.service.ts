@@ -18,4 +18,7 @@ export class ManagerUserService {
     activateUser(id: number, body: any) {
         return this.http.put(URL_ADMIN.ACTIVATE_USER, id, body, this.http.createHeader()).toPromise();
     }
+    getUser(guid: string) {
+        return this.http.get(URL_ADMIN.GET_PAGE_ACCOUNT, guid, this.http.createHeader()).toPromise();
+    }
 }

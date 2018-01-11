@@ -6,17 +6,19 @@ const now = new Date();
     styleUrls: ['./dropdown.component.scss']
 })
 export class AdminDropdownComponent implements OnInit {
-    private valueSelected: any = '';
     @Input() Title: string;
     @Input() Models: string;
     @Input() ValueShow: string;
     @Input() ValueSelect: string;
-    @Input() firstSelected: boolean;
+    @Input() currentValue: string;
     @Output() valueChange: EventEmitter<any> = new EventEmitter();
     constructor() { }
     ngOnInit() {
+        if (this.currentValue == undefined) {
+            this.currentValue = '';
+        }
     }
     change() {
-        this.valueChange.emit(this.valueSelected);
+        this.valueChange.emit(this.currentValue);
     }
 }

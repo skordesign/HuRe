@@ -6,7 +6,6 @@
         </button>
     </div>
     <div class="modal-body">
-        <ngb-alert [type]="'warning'" (close)="error =''" *ngIf="error != ''">{{ error }}</ngb-alert>
         <form role="form" #formCreate="ngForm" (ngSubmit)="create(formCreate)" ngNativeValidate>
             <div class="form-group has-danger">
                 <label class="form-control-label">Phân quyền</label>
@@ -40,6 +39,7 @@
             <div>
                 * Mật khẩu mặc định : 123456
             </div>
+            <ngb-alert [type]="'warning'" (close)="error =''" *ngIf="error != ''">{{ error }}</ngb-alert>
             <div class="modal-footer">
                 <button type="submit" class="btn-admin btn-primary">Lưu</button>
                 <button type="button" class="btn-admin btn-secondary" (click)="c('Close click')">Hủy</button>

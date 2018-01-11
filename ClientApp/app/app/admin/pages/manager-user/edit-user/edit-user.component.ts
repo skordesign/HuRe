@@ -2,13 +2,13 @@ import { Component, ViewChild, TemplateRef, ViewChildren, OnInit, Output, EventE
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ManagerUserService } from '@app/admin/service/manager-user.service';
 @Component({
-    selector: 'edit-user',
+    selector: 'admin-edit-user',
     templateUrl: './edit-user.component.html',
     styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
     ngOnInit(): void {
-        this.getAllRole();
+
     }
     closeResult: string;
     //save list role
@@ -18,14 +18,20 @@ export class EditUserComponent implements OnInit {
     birthday: string;
     sex: boolean;
     modalRef: any;
+    userModel: any;
     @Output() submitData: EventEmitter<any> = new EventEmitter();
-    @ViewChild('content') content: TemplateRef<any>;
+    @ViewChild('edit') content: TemplateRef<any>;
     constructor(
         private modalService: NgbModal,
         private userService: ManagerUserService
     ) { }
-    open() {
-        this.modalRef = this.modalService.open(this.content);
+    open(guid: string) {
+        this.getInfoUser(guid).then(result => {
+            this.userModel = result;
+            console.log(this.userModel.username);
+            this.getAllRole();
+            this.modalRef = this.modalService.open(this.content);
+        })
     }
     timeChange(time: any) {
         this.birthday = time;
@@ -39,11 +45,7 @@ export class EditUserComponent implements OnInit {
     save() {
 
     }
-    getAllRole() {
-        this.userService.getAllRole().then(result => {
-            this.roles = result;
-        })
-    }
+
     create(form: any) {
         let body = {
             Email: form.value.Email,
@@ -60,7 +62,15 @@ export class EditUserComponent implements OnInit {
             }
         })
     }
-    getInfoUser(idUser: number) {
-        
+    getAllRole() {
+        this.userService.getAllRole().then(result => {
+            this.roles = result;
+        })
+    }
+    getInfoUser(guid: string) {
+        return this.userService.getUser(guid).then(result => {
+            console.log(result);
+            return result
+        })
     }
 }

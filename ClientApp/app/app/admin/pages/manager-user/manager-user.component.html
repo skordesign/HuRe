@@ -25,7 +25,7 @@
                 </select>
             </div>
             <div class="col-md-2">
-                <admin-dropdown [Title]="'Lọc theo quyền'" [firstSelected]="false" [Models]="roles" [ValueShow]="'name'" [ValueSelect]="'id'"
+                <admin-dropdown [Title]="'Lọc theo quyền'" [currentValue]="''" [Models]="roles" [ValueShow]="'name'" [ValueSelect]="'id'"
                     (valueChange)="roleChange($event)"></admin-dropdown>
             </div>
             <div class="col-md-7">
@@ -78,23 +78,24 @@
                             </a>
                         </td>
                         <td>
-                            <a>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <a (click)="openEdit(item.guid)">
+                                <i class=" fa fa-pencil-square-o " aria-hidden="true "></i>
                             </a>
                         </td>
                         <td>
                             <a>
-                                <i class="fa fa-times" aria-hidden="true"></i>
+                                <i class="fa fa-times " aria-hidden="true "></i>
                             </a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <ngb-pagination [pageSize]="numberItemPage" [collectionSize]="totalItem" [(page)]="currentPage" [maxSize]="numberPageView"
-            [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
+        <ngb-pagination [pageSize]="numberItemPage " [collectionSize]="totalItem " [(page)]="currentPage " [maxSize]="numberPageView "
+            [boundaryLinks]="true " (pageChange)="pageChange() "></ngb-pagination>
     </div>
 
 </div>
-<create-user (submitData)="getData()"></create-user>
+<create-user (submitData)="getData() "></create-user>
 <admin-activate-user (submitData)="getData()"></admin-activate-user>
+<admin-edit-user (submitData)="getData()"></admin-edit-user>

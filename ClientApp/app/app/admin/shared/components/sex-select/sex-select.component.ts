@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 const now = new Date();
 @Component({
     selector: 'admin-sex-select',
@@ -6,13 +6,12 @@ const now = new Date();
     styleUrls: ['./sex-select.component.scss']
 })
 export class SexSeletComponent implements OnInit {
-    private sex: boolean;
+    @Input() valueDefault: boolean;
     @Output() sexSelected: EventEmitter<any> = new EventEmitter();
     constructor() { }
     ngOnInit() {
-
     }
     change() {
-        this.sexSelected.emit(this.sex)
+        this.sexSelected.emit(this.valueDefault)
     }
 }

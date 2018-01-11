@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Service.Repositories;
 using HuRe.Models.ResultModels;
 using HuRe.Util;
-
 namespace HuRe.Controllers
 {
     [Route("api/accounts")]
@@ -42,7 +41,7 @@ namespace HuRe.Controllers
         {
             return await _accountRepo.ActivateAccount(id, form);
         }
-        [HttpGet("Guid")]
+        [HttpGet("{Guid}")]
         public async Task<Account> Get(Guid Guid)
         {
             return await _accountRepo.GetAsync(Guid);

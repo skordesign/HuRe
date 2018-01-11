@@ -4,6 +4,7 @@ import { CreateUserComponent } from "@app/admin/pages/manager-user/create-user/c
 import { ActivateUserComponent } from "@app/admin/pages/manager-user/activate-user/activate-user.component";
 import { Body } from "@angular/http/src/body";
 import { noUndefined } from "@angular/compiler/src/util";
+import { EditUserComponent } from "@app/admin/pages/manager-user/edit-user/edit-user.component";
 @Component({
     selector: 'manager-user',
     templateUrl: './manager-user.component.html',
@@ -22,6 +23,7 @@ export class ManagerUserComponent implements OnInit {
     private roles: any;
     @ViewChild(CreateUserComponent) _modalCreateUser: CreateUserComponent;
     @ViewChild(ActivateUserComponent) _modalActivate: ActivateUserComponent;
+    @ViewChild(EditUserComponent) _modalEdit: EditUserComponent;
     constructor(
         private _serviceManagerUser: ManagerUserService) {
     }
@@ -68,5 +70,8 @@ export class ManagerUserComponent implements OnInit {
         this._serviceManagerUser.getAllRole().then(result => {
             this.roles = result;
         })
+    }
+    openEdit(guid: string) {
+        this._modalEdit.open(guid);
     }
 }
