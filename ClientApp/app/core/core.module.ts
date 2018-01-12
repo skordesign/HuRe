@@ -16,8 +16,10 @@ import { LoginBoxComponent } from '@core/loginbox/loginbox.component';
 import { EventListComponent } from '@core/eventlist/eventlist.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SearchBarComponent } from '@app/end-user/home/components/search-bar/search-bar.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+
 @NgModule({
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, SharedModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, SharedModule,NgxPaginationModule],
     declarations: [NavComponent, SearchComponent, FooterComponent, AlertComponent,
         SlideComponent, LoadingComponent, LoginComponent, ConfirmDialogComponent, LoginBoxComponent, EventListComponent
         ,SearchBarComponent,
