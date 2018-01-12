@@ -1,13 +1,13 @@
 <div class="hures-event-card">
   <div class="checktime">CHƯA BIẾT @@</div>
   <a href="#" class="hures-event-img">
-    <img alt="logo" src="https://static.topcv.vn/event/images/7cc2b33becb3fd4c82b85e26a368e9b6-5a37ee89e176c.jpg" class="imgne"
+    <img alt="logo" src="{{ event?.imageURL }}" class="imgne"
     />
     <div class="img-hover"></div>
   </a>
   <div class="hures-event-relative">
     <div class="hures-event-button">
-      <div class="label">THỂ LOẠI</div>
+      <div class="label">{{ event?.title }}</div>
     </div>
     <div href="#" class="hures-event-name"><a href="#">{{ event?.name }}</a></div>
     <hr>

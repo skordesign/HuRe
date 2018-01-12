@@ -26,6 +26,7 @@ namespace HuRe.Repositories
                 Name = a.Name,
                 Content=a.Content,
                 EndTime=a.EndTime,
+                ImageURL=a.ImageURL,
                 ModifiedDate=a.ModifiedDate,
                 Place=a.Place,
                 ShortDescription=a.ShortDescription,
