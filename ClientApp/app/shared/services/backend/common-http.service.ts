@@ -48,11 +48,11 @@ export class CommonHttpService<T>{
         return this.http.post(url, JSON.stringify(body), { headers: headers || this.createHeader() })
             .map(this.extractdata).catch(err => []);
     }
-    put(url: string, id: number, body: any, headers?: Headers) {
+    put(url: string, id: any, body: any, headers?: Headers) {
         return this.http.put(url + id.toString(), JSON.stringify(body), { headers: headers || this.createHeader() })
             .map(this.extractdata).catch(err => []);
     }
-    delete(url: string, id: number, headers?: Headers) {
+    delete(url: string, id: any, headers?: Headers) {
         return this.http.delete(url + id.toString(), { headers: headers || this.createHeader() })
             .map(this.extractdata).catch(err => []);
     }

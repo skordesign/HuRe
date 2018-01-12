@@ -36,15 +36,25 @@ namespace HuRe.Controllers
             form.PasswordHashed = Protector.HashPassword("123456");
             return await _accountRepo.AddAsync(form);
         }
-        [HttpPut("{id}")]
-        public async Task<bool> Update(int id, [FromBody]Account form)
+        [HttpPut("activate/{guid}")]
+        public async Task<bool> Activate(Guid guid, [FromBody]Account form)
         {
-            return await _accountRepo.ActivateAccount(id, form);
+            return await _accountRepo.ActivateAccount(guid, form);
+        }
+        [HttpPost("update")]
+        public async Task<bool> Update([FromBody]Account form)
+        {
+            return await _accountRepo.UpdateAsync(form);
         }
         [HttpGet("{Guid}")]
         public async Task<Account> Get(Guid Guid)
         {
             return await _accountRepo.GetAsync(Guid);
+        }
+        [HttpDelete("{guid}")]
+        public async Task<bool> Delete(Guid guid)
+        {
+            return await _accountRepo.RemoveAsync(guid);
         }
     }
 }

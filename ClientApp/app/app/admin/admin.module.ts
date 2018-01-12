@@ -11,11 +11,14 @@ import { SharedModule } from '@shared/shared.module';
 import { LayoutModule } from "@app/admin/layout/layout.module";
 import { HeaderAdminComponent } from "@app/admin/layout/header/header.component";
 import { ManagerUserService } from "@app/admin/service/manager-user.service";
+import { ShareAdminModule } from "@app/admin/shared/components/share-admin.module";
+import { AdminDialogService } from "@app/admin/service/front-end/dialog.service";
 @NgModule({
     imports: [
         adminRouter,
         CoreModule,
         SharedModule,
+        ShareAdminModule,
         FormsModule,
         LayoutModule,
     ],
@@ -24,6 +27,10 @@ import { ManagerUserService } from "@app/admin/service/manager-user.service";
         AdminComponent,
         LoginAdminComponent
     ],
-    providers: [AdminGuard,ManagerUserService],
+    providers: [
+        AdminGuard,
+        ManagerUserService,
+        AdminDialogService
+    ],
 })
 export class AdminModule { }

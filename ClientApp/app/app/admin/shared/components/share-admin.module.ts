@@ -7,6 +7,7 @@ import { SexSeletComponent } from "@app/admin/shared/components/sex-select/sex-s
 import { AdminDropdownComponent } from "@app/admin/shared/components/dropdown/dropdown.component";
 import { AdminAlertComponent } from "@app/admin/shared/components/alert/alert.component";
 import { AdminSwitchButtonComponent } from "@app/admin/shared/components/switch-button/switch-button.component";
+import { AdminDialogComponent } from "@app/admin/shared/components/dialog/dialog.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -19,14 +20,16 @@ import { AdminSwitchButtonComponent } from "@app/admin/shared/components/switch-
         SexSeletComponent,
         AdminDropdownComponent,
         AdminAlertComponent,
-        AdminSwitchButtonComponent
+        AdminSwitchButtonComponent,
+        AdminDialogComponent
     ],
     declarations: [
         DatePickerComponent,
         SexSeletComponent,
         AdminDropdownComponent,
         AdminAlertComponent,
-        AdminSwitchButtonComponent
+        AdminSwitchButtonComponent,
+        AdminDialogComponent
     ],
 })
 export class ShareAdminModule { }

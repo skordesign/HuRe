@@ -2,6 +2,7 @@ import { Component, ViewChild, TemplateRef, ViewChildren, OnInit, Output, EventE
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ManagerUserService } from '@app/admin/service/manager-user.service';
 import { AdminAlertComponent } from '@app/admin/shared/components/alert/alert.component';
+import { Variables } from "@app/admin/shared/variables";
 @Component({
     selector: 'create-user',
     templateUrl: './create-user.component.html',
@@ -10,41 +11,38 @@ import { AdminAlertComponent } from '@app/admin/shared/components/alert/alert.co
 export class CreateUserComponent implements OnInit {
     ngOnInit(): void {
         this.getAllRole();
+        this.getAllCompany();
     }
     closeResult: string;
     //save list role
     roles: any;
+    //save list company;
+    companies: any;
     //value role
     roleSelected: number;
+    //value company
+    companySelected: number;
     birthday: string;
     sex: boolean;
     isActivated: boolean;
     modalRef: any;
     //luu loi
-    private error: string = '';
+    private error = {
+        mess: '',
+        type: ''
+    }
+    //show dropdown company
+    private isShowCompany: boolean = false;
     @Output() submitData: EventEmitter<any> = new EventEmitter();
     @ViewChild('content') content: TemplateRef<any>;
     constructor(
         private modalService: NgbModal,
-        private userService: ManagerUserService
-    ) { }
+        private userService: ManagerUserService,
+    ) {
+
+    }
     open() {
         this.modalRef = this.modalService.open(this.content);
-        // this.modalService.open(this.content).result.then((result) => {
-        //     this.closeResult = `Closed with: ${result}`;
-        // }, (reason) => {
-        //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        // });
-    }
-
-    private getDismissReason(reason: any): string {
-        if (reason === ModalDismissReasons.ESC) {
-            return 'by pressing ESC';
-        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-            return 'by clicking on a backdrop';
-        } else {
-            return `with: ${reason}`;
-        }
     }
     timeChange(time: any) {
         this.birthday = time;
@@ -57,19 +55,28 @@ export class CreateUserComponent implements OnInit {
     }
     roleChange(roleID: any) {
         this.roleSelected = roleID;
+        if (this.roleSelected == Variables.ID_ROLE_DOANH_NGHIEP) {
+            this.isShowCompany = true;
+        } else {
+            this.isShowCompany = false;
+        }
     }
-    save() {
-
+    companyChange(companyId: any) {
+        this.companySelected = companyId;
     }
     getAllRole() {
         this.userService.getAllRole().then(result => {
             this.roles = result;
         })
     }
+    getAllCompany() {
+        this.userService.getAllCompany().then(result => {
+            this.companies = result;
+        })
+    }
     create(form: any) {
         if (this.roleSelected == undefined) {
-            this.error = 'Chưa chọn phân quyền';
-            this.autoHide()
+            this.showToast('Chưa chọn phân quyền', 'warning', false)
             return;
         }
         let body = {
@@ -80,17 +87,38 @@ export class CreateUserComponent implements OnInit {
             Sex: this.sex,
             DateOfBirth: this.birthday,
             RoleId: this.roleSelected,
-            IsActivated: this.isActivated
+            IsActivated: this.isActivated,
+            CompanyId: this.companySelected
         }
         this.userService.createUser(body).then(result => {
-            if (result) {
-                this.modalRef.close();
+            if (result == true) {
+                this.showToast('Thành công', 'success', true)
+                this.close();
+            } else {
+                this.showToast('Tài khoản đã tồn tại', 'danger', false)
             }
         })
     }
-    autoHide() {
-        setTimeout(() => {
-            this.error = '';
+    showToast(mess: string, type: string, isClose: boolean) {
+        this.error.mess = mess;
+        this.error.type = type;
+        setTimeout((time) => {
+            this.error.mess = '';
+            this.error.type = '';
+            if (isClose) {
+                this.close()
+            }
+            return null
         }, 1000)
+    }
+    close() {
+        this.reset();
+        this.submitData.emit();;
+        this.modalRef.close();
+    }
+    reset() {
+        this.error.mess = '';
+        this.error.type = '';
+        this.isShowCompany = false;
     }
 }

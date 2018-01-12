@@ -13,18 +13,33 @@ export class DatePickerComponent implements OnInit {
 
     ngOnInit() {
         //can buoc nay k se loi
-        this.currentValue = new Date(this.currentValue)
         if (this.currentValue) {
+            this.currentValue = new Date(this.currentValue)
             this.model = { year: this.currentValue.getFullYear(), month: this.currentValue.getMonth() + 1, day: this.currentValue.getDate() };
         } else {
             this.model = { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };
         }
-        this.timeChange.emit(this.model.year + '/' + this.model.month + '/' + this.model.day)
+        this.timeChange.emit(this.submitTime())
     }
     getTime() {
         return this.model;
     }
     change() {
-        this.timeChange.emit(this.model.year + '/' + this.model.month + '/' + this.model.day)
+        this.timeChange.emit(this.submitTime())
+    }
+    submitTime() {
+        let array = []
+        array.push(this.model.year)
+        if (this.model.month < 9) {
+            array.push('0' + this.model.month);
+        } else {
+            array.push(this.model.month);
+        }
+        if (this.model.day < 9) {
+            array.push('0' + this.model.day);
+        } else {
+            array.push(this.model.day);
+        }
+        return array.join('/')
     }
 }

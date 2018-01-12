@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ManagerUserService } from "@app/admin/service/manager-user.service";
 import { CreateUserComponent } from "@app/admin/pages/manager-user/create-user/create-user.component";
-import { ActivateUserComponent } from "@app/admin/pages/manager-user/activate-user/activate-user.component";
 import { Body } from "@angular/http/src/body";
 import { noUndefined } from "@angular/compiler/src/util";
 import { EditUserComponent } from "@app/admin/pages/manager-user/edit-user/edit-user.component";
+import { AdminDialogComponent } from "@app/admin/shared/components/dialog/dialog.component";
+import { AdminDialogService } from "@app/admin/service/front-end/dialog.service";
 @Component({
     selector: 'manager-user',
     templateUrl: './manager-user.component.html',
@@ -22,11 +23,11 @@ export class ManagerUserComponent implements OnInit {
     //save list role
     private roles: any;
     @ViewChild(CreateUserComponent) _modalCreateUser: CreateUserComponent;
-    @ViewChild(ActivateUserComponent) _modalActivate: ActivateUserComponent;
     @ViewChild(EditUserComponent) _modalEdit: EditUserComponent;
     constructor(
-        private _serviceManagerUser: ManagerUserService) {
-    }
+        private _serviceManagerUser: ManagerUserService,
+        private _serviceDialog: AdminDialogService
+    ) { }
     ngOnInit() {
         this.getAllRole();
         this.getData();
@@ -45,9 +46,7 @@ export class ManagerUserComponent implements OnInit {
         if (this.keySearch) {
             Object.assign(body, { KeySearch: this.keySearch });
         }
-        console.log(body);
         this._serviceManagerUser.getAccountsPage(body).then(data => {
-            console.log(data);
             this._data = data.data;
             this.totalItem = data.total;
         })
@@ -58,9 +57,27 @@ export class ManagerUserComponent implements OnInit {
     openCreateUser() {
         this._modalCreateUser.open();
     }
-    activate(id: number, currentStatus: boolean) {
-        this._modalActivate.open(id, currentStatus)
-
+    showConfirmActivate(guid: string, currentStatus: boolean) {
+        this._serviceDialog.show('Xác Nhận', 'Bạn có muốn kích hoạt/hủy kích hoạt tài khoản này',
+            () => {
+                let body = {
+                    isActivated: !currentStatus
+                }
+                this._serviceManagerUser.activateUser(guid, body).then(result => {
+                    this.getData();
+                })
+            }
+        )
+    }
+    showConfirmDelete(guid: string) {
+        this._serviceDialog.show('Xác Nhận', 'Bạn có xóa tài khoản này',
+            () => {
+                this._serviceManagerUser.deleteUser(guid).then(result => {
+                    console.log('xóa thành công');
+                    this.getData();
+                })
+            }
+        )
     }
     roleChange(idRole: any) {
         this.filterRoleAccount = idRole;

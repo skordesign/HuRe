@@ -22,7 +22,7 @@ namespace Service.Repositories
         Task<ICollection<AccountResult>> GetsAsyncPage(AccountActionModel body);
         int CountAll(AccountActionModel body);
         Task<bool> CheckAsync(string email);
-        Task<bool> ActivateAccount(int id, Account o);
+        Task<bool> ActivateAccount(Guid guid, Account o);
     }
     public class AccountRepository : IAccountRepository
     {
@@ -114,6 +114,7 @@ namespace Service.Repositories
                 {
                     if (userExist is null) return false;
                     _context.Accounts.Remove(userExist);
+                    await _context.SaveChangesAsync();
                     transaction.Commit();
                     return true;
                 }
@@ -141,14 +142,14 @@ namespace Service.Repositories
                 }
             }
         }
-        public async Task<bool> ActivateAccount(int id, Account o)
+        public async Task<bool> ActivateAccount(Guid guid, Account o)
         {
             using (var transaction = await _context.Database.BeginTransactionAsync())
             {
                 try
                 {
                     //get info account
-                    var account = await _context.Accounts.FirstOrDefaultAsync(x => x.Id == id);
+                    var account = await _context.Accounts.FirstOrDefaultAsync(x => x.Guid == guid);
                     if (account != null)
                     {
                         //only update status active

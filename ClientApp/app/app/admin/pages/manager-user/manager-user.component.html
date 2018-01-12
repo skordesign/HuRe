@@ -3,7 +3,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-2">
-                <button class="btn btn-primary" (click)="openCreateUser()">Thêm tài khoản</button>
+                <button class="btn-admin btn-primary" (click)="openCreateUser()">Thêm tài khoản</button>
             </div>
         </div>
         <br>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-7">
                 <div class="form-group input-group">
-                    <input type="text" class="form-control" [(ngModel)]="keySearch">
+                    <input type="text" class="form-control" [(ngModel)]="keySearch" (keyup.enter)="getData()">
                     <span class="input-group-btn">
                         <button class="btn-admin btn-secondary" type="button" (click)="getData()">
                             <i class="fa fa-search"></i>
@@ -75,18 +75,18 @@
                             <span *ngIf="!item.isActivated" class="badge badge-warning">Đang chờ</span>
                         </td>
                         <td>
-                            <a (click)="activate(item.id,item.isActivated)">
+                            <a (click)="showConfirmActivate(item.guid,item.isActivated)" placement="top" ngbTooltip="Kích hoạt/Hủy kích hoạt">
                                 <i class="fa fa-unlock-alt" *ngIf="!item.isActivated" aria-hidden="true"></i>
                                 <i class="fa fa-lock" *ngIf="item.isActivated" aria-hidden="true"></i>
                             </a>
                         </td>
                         <td>
-                            <a (click)="openEdit(item.guid)">
+                            <a (click)="openEdit(item.guid)" placement="top" ngbTooltip="Sửa thông tin">
                                 <i class=" fa fa-pencil-square-o " aria-hidden="true "></i>
                             </a>
                         </td>
                         <td>
-                            <a>
+                            <a (click)="showConfirmDelete(item.guid)" placement="top" ngbTooltip="Xóa tài khoản">
                                 <i class="fa fa-times " aria-hidden="true "></i>
                             </a>
                         </td>
@@ -100,5 +100,4 @@
 
 </div>
 <create-user (submitData)="getData() "></create-user>
-<admin-activate-user (submitData)="getData()"></admin-activate-user>
 <admin-edit-user (submitData)="getData()"></admin-edit-user>

@@ -11,6 +11,7 @@ export class AdminSwitchButtonComponent implements OnInit {
     @Output() valueChanged: EventEmitter<any> = new EventEmitter();
     constructor() { }
     ngOnInit() {
+        this.change();
     }
     change() {
         this.valueChanged.emit(this.value)

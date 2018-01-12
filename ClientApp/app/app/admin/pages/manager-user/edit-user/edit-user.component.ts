@@ -1,6 +1,8 @@
 import { Component, ViewChild, TemplateRef, ViewChildren, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ManagerUserService } from '@app/admin/service/manager-user.service';
+import * as moment from 'moment';
+import { Variables, Type_Alert } from "@app/admin/shared/variables";
 @Component({
     selector: 'admin-edit-user',
     templateUrl: './edit-user.component.html',
@@ -13,10 +15,19 @@ export class EditUserComponent implements OnInit {
     closeResult: string;
     //save list role
     roles: any;
+    //save list company;
+    companies: any;
     //value role
     birthday: string;
     modalRef: any;
     userModel: any;
+    //show dropdown company
+    private isShowCompany: boolean = false;
+    //luu loi
+    private error = {
+        mess: '',
+        type: ''
+    }
     @Output() submitData: EventEmitter<any> = new EventEmitter();
     @ViewChild('edit') content: TemplateRef<any>;
     constructor(
@@ -26,27 +37,61 @@ export class EditUserComponent implements OnInit {
     open(guid: string) {
         this.getInfoUser(guid).then(result => {
             this.userModel = result;
-            console.log(this.userModel.username);
+            this.userModel.dateOfBirth = moment(this.userModel.dateOfBirth).format("YYYY/MM/DD");
             this.getAllRole();
+            if (this.userModel.roleId == Variables.ID_ROLE_DOANH_NGHIEP) {
+                this.getAllCompany();
+                this.isShowCompany = true;
+            }
             this.modalRef = this.modalService.open(this.content);
         })
     }
     timeChange(time: any) {
-        //loi cho nay 2 kieu du lieu truoc sau khac nhau
-        // this.userModel.dateOfBirth = new Date(time);
+        this.userModel.dateOfBirth = time;
     }
     save() {
         console.log(this.userModel);
+        this.userService.updateUser(this.userModel).then(result => {
+            if (result == true) {
+                this.showToast('Cập nhật thành công', Type_Alert.SUCCESS, true)
+            } else {
+                this.showToast('Cập nhật không thành công', Type_Alert.DANGER, false)
+            }
+        })
+    }
+    getInfoUser(guid: string) {
+        return this.userService.getUser(guid).then(result => {
+            return result
+        })
     }
     getAllRole() {
         this.userService.getAllRole().then(result => {
             this.roles = result;
         })
     }
-    getInfoUser(guid: string) {
-        return this.userService.getUser(guid).then(result => {
-            console.log(result);
-            return result
+    getAllCompany() {
+        this.userService.getAllCompany().then(result => {
+            this.companies = result;
         })
+    }
+    reset() {
+        this.isShowCompany = false;
+    }
+    close() {
+        this.reset();
+        this.submitData.emit();;
+        this.modalRef.close();
+    }
+    showToast(mess: string, type: string, isClose: boolean) {
+        this.error.mess = mess;
+        this.error.type = type;
+        setTimeout((time) => {
+            this.error.mess = '';
+            this.error.type = '';
+            if (isClose) {
+                this.close()
+            }
+            return null
+        }, 1000)
     }
 }

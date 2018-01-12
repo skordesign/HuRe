@@ -17,7 +17,11 @@ namespace HuRe.Controllers
             _companiesRepo = companiesRepo;
             _jobRepo = jobRepo;
         }
-
+        [HttpGet("all")]
+        public async Task<IEnumerable<Company>> Gets()
+        {
+            return await _companiesRepo.GetsAsync(); ;
+        }
         [HttpGet("{id}")]
         public async Task<Company> Get(long id)
         {

@@ -11,18 +11,22 @@
                 <label class="form-control-label">Phân quyền</label>
                 <admin-dropdown [Title]="'Chọn phân quyền'" [Models]="roles" [ValueShow]="'name'" [ValueSelect]="'id'" (valueChange)="roleChange($event)"></admin-dropdown>
             </div>
+            <div class="form-group has-danger" *ngIf="isShowCompany">
+                <label class="form-control-label">Tài khoản cho doanh nghiệp</label>
+                <admin-dropdown [Title]="'Chọn doanh nghiệp'" [Models]="companies" [ValueShow]="'shortName'" [ValueSelect]="'id'" (valueChange)="companyChange($event)"></admin-dropdown>
+            </div>
             <div class="form-group has-success">
                 <label class="form-control-label" for="username">Tên tài khoản</label>
                 <input type="text" ngModel name="Username" class="form-control form-control-success" id="username" required>
             </div>
 
             <div class="form-group has-warning">
-                <label class="form-control-label" for="firstname">Họ </label>
-                <input type="text" ngModel name="Firstname" class="form-control form-control-warning" id="firstname" required>
+                <label class="form-control-label" for="lastname">Họ </label>
+                <input type="text" ngModel name="Lastname" class="form-control form-control-warning" id="lastname" required>
             </div>
             <div class="form-group has-warning">
-                <label class="form-control-label" for="lastname">Tên</label>
-                <input type="text" ngModel name="Lastname" class="form-control form-control-warning" id="lastname" required>
+                <label class="form-control-label" for="firstname">Tên</label>
+                <input type="text" ngModel name="Firstname" class="form-control form-control-warning" id="firstname" required>
             </div>
             <div class="form-group has-danger">
                 <label class="form-control-label" for="email">Email</label>
@@ -42,10 +46,11 @@
             <div>
                 * Mật khẩu mặc định : 123456
             </div>
-            <ngb-alert [type]="'warning'" (close)="error =''" *ngIf="error != ''">{{ error }}</ngb-alert>
+            <hr>
+            <ngb-alert [type]="error.type" (close)="error.mess =''" *ngIf="error.mess != ''">{{ error.mess }}</ngb-alert>
             <div class="modal-footer">
                 <button type="submit" class="btn-admin btn-primary">Lưu</button>
-                <button type="button" class="btn-admin btn-secondary" (click)="c('Close click')">Hủy</button>
+                <button type="button" class="btn-admin btn-secondary" (click)="close() ">Hủy</button>
             </div>
         </form>
     </div>

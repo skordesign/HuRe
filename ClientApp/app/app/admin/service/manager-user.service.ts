@@ -15,10 +15,19 @@ export class ManagerUserService {
     createUser(body: any) {
         return this.http.post(URL_ADMIN.CREATE_USER, body, this.http.createHeader()).toPromise();
     }
-    activateUser(id: number, body: any) {
-        return this.http.put(URL_ADMIN.ACTIVATE_USER, id, body, this.http.createHeader()).toPromise();
+    activateUser(guid: string, body: any) {
+        return this.http.put(URL_ADMIN.ACTIVATE_USER, guid, body, this.http.createHeader()).toPromise();
     }
     getUser(guid: string) {
         return this.http.get(URL_ADMIN.GET_PAGE_ACCOUNT, guid, this.http.createHeader()).toPromise();
+    }
+    getAllCompany() {
+        return this.http.gets(URL_ADMIN.GET_ALL_COMPANY, this.http.createHeader()).toPromise();
+    }
+    updateUser(body: any) {
+        return this.http.post(URL_ADMIN.UPDATE_USER, body, this.http.createHeader()).toPromise();
+    }
+    deleteUser(guid: string) {
+        return this.http.delete(URL_ADMIN.DETELE_USER, guid, this.http.createHeader()).toPromise();
     }
 }
