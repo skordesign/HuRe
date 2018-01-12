@@ -8,3 +8,14 @@
             }
     }
 }
+.has-text-centered{
+    margin-top:10px;
+    text-align: center;
+    padding:0px !important;
+    .ngx-pagination 
+    {   padding:0px !important;
+        .current {
+            background: #014C7F !important;
+        }
+    }
+}

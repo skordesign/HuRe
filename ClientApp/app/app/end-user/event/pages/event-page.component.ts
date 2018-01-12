@@ -16,6 +16,7 @@ export class EventPageComponent {
     private numberItemPage: number = 1;
     private numberPageView: number = 5;
     private _data: any;
+    
     constructor(private _serviceEvent:EventService) { }
     ngOnInit() {
         this.getData();

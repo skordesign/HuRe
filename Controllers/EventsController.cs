@@ -19,7 +19,7 @@ namespace HuRe.Controllers
          [HttpGet]
         public IEnumerable<Event> GetAll()
         {
-            return _eventRepo.ListNewEvent(9).ToList();
+            return _eventRepo.ListNewEvent(100).ToList();
         }
         //  [HttpPost]
         // public async Task<ModelPaging<AccountResult>> Post([FromBody]AccountActionModel form)

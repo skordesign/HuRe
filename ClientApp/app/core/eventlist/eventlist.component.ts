@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { EventService } from '@services/backend/event.service';
 import { share } from 'rxjs/operators';
@@ -6,7 +6,8 @@ import { share } from 'rxjs/operators';
 @Component({
     selector: 'hure-eventlist',
     templateUrl: 'eventlist.component.html',
-    styleUrls: ['./eventlist.component.scss']
+    styleUrls: ['./eventlist.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class EventListComponent implements OnInit, OnDestroy {
@@ -14,7 +15,7 @@ export class EventListComponent implements OnInit, OnDestroy {
     }
     events$: Observable<EventItem[]>;
     @Input() title: string;
-    @Input() limit: number;
+    page: number = 1;
     constructor(private eventSvc: EventService) {
         this.getDataAsync();
     }
