@@ -6,7 +6,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <form role="form" ngNativeValidate>
+        <form role="form" (ngSubmit)="save()" ngNativeValidate>
             <div class="form-group has-danger">
                 <label class="form-control-label">Phân quyền</label>
                 <admin-dropdown [Title]="'Chọn phân quyền'" [currentValue]="userModel.roleId" [Models]="roles" [ValueShow]="'name'" [ValueSelect]="'id'"
@@ -40,16 +40,16 @@
                 <input type="Email" [(ngModel)]="userModel.email" name="Email" class="form-control form-control-danger" id="email" required>
             </div>
             <div class="form-group">
-                <label class="form-control-label" for="sdt">Số điện thoại</label>
-                <input type="text" [(ngModel)]="userModel.phoneNumber" name="sdt" class="form-control form-control-danger" id="sdt">
+                <label class="form-control-label" for="email">Số điện thoại</label>
+                <input type="number" [(ngModel)]="userModel.phoneNumber" name="sdt" class="form-control form-control-danger" id="sdt">
             </div>
             <div class="form-group">
-                <label class="form-control-label" for="class">Lớp</label>
+                <label class="form-control-label" for="email">Lớp</label>
                 <input type="text" [(ngModel)]="userModel.class" name="class" class="form-control form-control-danger" id="class">
             </div>
 
             <div class="form-group">
-                <label class="form-control-label" for="address">Địa chỉ</label>
+                <label class="form-control-label" for="email">Địa chỉ</label>
                 <input type="text" [(ngModel)]="userModel.address" name="address" class="form-control form-control-danger" id="address">
             </div>
             <div class="form-group">
@@ -63,8 +63,8 @@
             <hr>
             <ngb-alert [type]="error.type" (close)="error.mess =''" *ngIf="error.mess != ''">{{ error.mess }}</ngb-alert>
             <div class="modal-footer">
-                <button type="submit" class="btn-admin btn-primary" (click)="save()">Lưu</button>
-                <button type="button" class="btn-admin btn-secondary" (click)="c('Close click')">Hủy</button>
+                <button type="submit" class="btn-admin btn-primary">Lưu</button>
+                <button type="button" class="btn-admin btn-secondary" (click)="close()">Hủy</button>
             </div>
         </form>
     </div>

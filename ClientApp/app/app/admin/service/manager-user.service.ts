@@ -19,7 +19,7 @@ export class ManagerUserService {
         return this.http.put(URL_ADMIN.ACTIVATE_USER, guid, body, this.http.createHeader()).toPromise();
     }
     getUser(guid: string) {
-        return this.http.get(URL_ADMIN.GET_PAGE_ACCOUNT, guid, this.http.createHeader()).toPromise();
+        return this.http.get(URL_ADMIN.GET_INFO_USER, guid, this.http.createHeader()).toPromise();
     }
     getAllCompany() {
         return this.http.gets(URL_ADMIN.GET_ALL_COMPANY, this.http.createHeader()).toPromise();

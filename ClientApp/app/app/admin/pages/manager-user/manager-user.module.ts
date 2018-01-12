@@ -7,7 +7,6 @@ import { FormsModule } from "@angular/forms";
 import { CreateUserComponent } from "@app/admin/pages/manager-user/create-user/create-user.component";
 import { ShareAdminModule } from "@app/admin/shared/components/share-admin.module";
 import { EditUserComponent } from "@app/admin/pages/manager-user/edit-user/edit-user.component";
-import { ToastModule } from "ng2-toastr/ng2-toastr";
 
 @NgModule({
     imports: [
@@ -16,9 +15,7 @@ import { ToastModule } from "ng2-toastr/ng2-toastr";
         ManagerUserRoutingModule,
         FormsModule,
         //add module dung chung
-        ShareAdminModule,
-        //add module toast
-        ToastModule.forRoot()
+        ShareAdminModule
     ],
     declarations: [
         ManagerUserComponent,

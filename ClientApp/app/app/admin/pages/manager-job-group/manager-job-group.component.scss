@@ -1,0 +1,23 @@
+.filter{
+    width: 70px !important;
+    max-width: 70px !important;
+    text-align: center;
+}
+.badge {
+    width: 100%;
+}
+td,th{
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+select{
+    width: 100%;
+}
+.view-total{
+    font-weight: bold;
+}
+a{
+    cursor:pointer!important;
+}

@@ -13,6 +13,7 @@ import { HeaderAdminComponent } from "@app/admin/layout/header/header.component"
 import { ManagerUserService } from "@app/admin/service/manager-user.service";
 import { ShareAdminModule } from "@app/admin/shared/components/share-admin.module";
 import { AdminDialogService } from "@app/admin/service/front-end/dialog.service";
+import { ManagerJobGroupService } from '@app/admin/service/manager-job-group.service';
 @NgModule({
     imports: [
         adminRouter,
@@ -30,7 +31,8 @@ import { AdminDialogService } from "@app/admin/service/front-end/dialog.service"
     providers: [
         AdminGuard,
         ManagerUserService,
-        AdminDialogService
+        AdminDialogService,
+        ManagerJobGroupService
     ],
 })
 export class AdminModule { }

@@ -19,8 +19,8 @@ namespace Service.Repositories
         Task<Account> GetAsync(Guid id);
         Task<ICollection<Account>> GetsAsync();
         Account Login(string TenTaiKhoan, string MatKhau);
-        Task<ICollection<AccountResult>> GetsAsyncPage(AccountActionModel body);
-        int CountAll(AccountActionModel body);
+        Task<ICollection<AccountResult>> GetsAsyncPage(FilterPageActionModel body);
+        int CountAll(FilterPageActionModel body);
         Task<bool> CheckAsync(string email);
         Task<bool> ActivateAccount(Guid guid, Account o);
     }
@@ -66,7 +66,7 @@ namespace Service.Repositories
         {
             return await _context.Accounts.ToListAsync();
         }
-        public async Task<ICollection<AccountResult>> GetsAsyncPage(AccountActionModel body)
+        public async Task<ICollection<AccountResult>> GetsAsyncPage(FilterPageActionModel body)
         {
             var list = await _context.Accounts.Select(a =>
              new AccountResult
@@ -179,7 +179,7 @@ namespace Service.Repositories
                 return null;
             }
         }
-        public int CountAll(AccountActionModel body)
+        public int CountAll(FilterPageActionModel body)
         {
             var list = _context.Accounts.ToList();
             //loai bo du lieu tuong ung vs cac dieu kien

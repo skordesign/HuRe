@@ -9,8 +9,10 @@ const router: Routes = [
         component: AdminComponent,
         canActivate: [AdminGuard],
         children: [
+            { path: '', redirectTo: 'dashboard' },
             { path: 'dashboard', loadChildren: './pages/home/home.module#HomeModule' },
-            { path: 'manager-user', loadChildren: './pages/manager-user/manager-user.module#ManagerUserModule' }
+            { path: 'manager-user', loadChildren: './pages/manager-user/manager-user.module#ManagerUserModule' },
+            { path: 'manager-job-group', loadChildren: './pages/manager-job-group/manager-job-group.module#ManagerJobGroupModule' }
         ]
     },
     {

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Service.Repositories;
 using HuRe.Models.ResultModels;
 using HuRe.Util;
+
 namespace HuRe.Controllers
 {
     [Route("api/accounts")]
@@ -19,7 +20,7 @@ namespace HuRe.Controllers
             _accountRepo = accountsRepo;
         }
         [HttpPost]
-        public async Task<ModelPaging<AccountResult>> Post([FromBody]AccountActionModel form)
+        public async Task<ModelPaging<AccountResult>> Post([FromBody]FilterPageActionModel form)
         {
             var total = _accountRepo.CountAll(form);
             var accounts = await _accountRepo.GetsAsyncPage(form);
