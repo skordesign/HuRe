@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   constructor(private router: ActivatedRoute, private jobSvc: JobService) { }
   jobs$: Observable<Job[]>
   limit = 10
+  page: number = 1;
   params: {
     keyword: string | null , jobGroupId?: number , workTypeId?:number
   }={keyword:""}

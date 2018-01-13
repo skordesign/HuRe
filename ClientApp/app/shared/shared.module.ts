@@ -4,10 +4,11 @@ import { DirectiveModule } from '@directives/directive.module';
 import { GuardModule } from '@guards/guard.module';
 import { ServiceModule } from '@services/service.module';
 import { PipeModule } from '@shared/pipes/pipe.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
-    imports: [UIModule, DirectiveModule, GuardModule, PipeModule],
+    imports: [CommonModule,UIModule, DirectiveModule, GuardModule, PipeModule],
     exports: [DirectiveModule, UIModule, GuardModule, PipeModule],
     declarations: [],
     providers: [],

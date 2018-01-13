@@ -17,7 +17,9 @@ export class JobsContainerComponent implements OnInit, OnDestroy, AfterViewInit 
     @Input() jobsObserver: Observable<Job[]>// = new Observable<Job[]>(sub=> sub.next([]))
     @Input() title: string = "Công việc";
     @Input() limit: number = 5;
+    page:number=1;
     @Input() size:string = 'medium';
+    @Input() paging:string = 'yes'
     constructor() {
 
     }

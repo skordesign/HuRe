@@ -20,6 +20,7 @@ import { PipeModule } from '@shared/pipes/pipe.module';
 import { OverlayComponent } from './overlay/overlay.component';
 import { JobsContainerComponent } from '@app/end-user/home/components/jobs-container/jobs-container.component';
 import { ServiceModule } from '@services/service.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
     declarations: [GroupComponent, TabbedComponent, DropdownComponent,
         DropdownItemComponent, TabComponent, JobComponent, BlogComponent, WaiterComponent,
@@ -27,7 +28,7 @@ import { ServiceModule } from '@services/service.module';
         ActionMenuComponent, ActionItemComponent,
         OverlayComponent, JobsContainerComponent
     ],
-    imports: [CommonModule, DirectiveModule, PipeModule],
+    imports: [CommonModule, DirectiveModule, PipeModule, NgxPaginationModule],
     exports: [GroupComponent, TabbedComponent, DropdownComponent,
         DropdownItemComponent, TabComponent, JobComponent, CardComponent, WaiterComponent,
         OverlayComponent,JobsContainerComponent,

@@ -42,8 +42,6 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-
-
     }
     showDialog() {
         this.isActivated = true;

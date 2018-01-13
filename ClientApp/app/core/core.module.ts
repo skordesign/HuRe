@@ -25,7 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
         ,SearchBarComponent,
         SignUpComponent
     ],
-    exports: [NavComponent, SearchComponent, FooterComponent, AlertComponent, SlideComponent, SignUpComponent,
+    exports: [NavComponent, SearchComponent, FooterComponent, AlertComponent, SlideComponent, SignUpComponent, NgxPaginationModule,
         LoadingComponent, LoginComponent, ConfirmDialogComponent, LoginBoxComponent, EventListComponent,SearchBarComponent]
 })
 export class CoreModule {

@@ -38,7 +38,7 @@
         </div>
       <div class="col-12 col-lg-4">
         <button class="hures-search-btn" (click)="search()" rippleEffect>TÌM KIẾM</button>
-        <small class="form-text text-muted hures-search-advanced" (click)="clear()">Tẩy bộ lọc</small>
+        <small [hidden]="keyword==''&& selectedWorkT==0 && selectedJobG==0" class="form-text text-muted hures-search-advanced" (click)="clear()">Tẩy bộ lọc</small>
       </div>
     </div>
   </div>
