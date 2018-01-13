@@ -19,19 +19,18 @@ export class NavComponent implements OnInit, OnDestroy {
     closeLogin($event: boolean) {
         this.isFormShow = false;
     }
-    showForm(isLogin: boolean=true, isSignUp: boolean=false) {
+    showForm(isLogin: boolean = true, isSignUp: boolean = false) {
         this.isLogin = isLogin;
         this.isSignUp = isSignUp;
         this.isFormShow = true;
     }
     constructor(private authSvc: AuthService, private profileSvc: ProfileService) {
         this.sub = this.authSvc.login$.subscribe((login: boolean) => {
-            if(login){
-                this.checkLoggedIn()
-            }else{
-                this.showForm()
-            }
+            this.checkLoggedIn()
         });
+        this.sub.add(this.authSvc.loginRequest$.subscribe((login:boolean)=>{
+            this.showForm()
+        }))
     }
     sub: Subscription;
     navMenu = NAV_MENU;

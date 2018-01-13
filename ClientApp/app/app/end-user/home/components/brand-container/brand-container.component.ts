@@ -27,6 +27,13 @@ export class BrandContainerComponent implements OnInit, OnDestroy {
                     url:o.website
                 }
             });
+            if(this.listBrand.length<10){
+                s.forEach(k=>this.listBrand.push({
+                    img:k.urlLogo,
+                    text:k.name,
+                    url:k.website
+                }))
+            }
        });
      }
 }

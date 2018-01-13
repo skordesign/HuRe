@@ -12,6 +12,7 @@ import { toString } from "@ng-bootstrap/ng-bootstrap/util/util";
 @Injectable()
 export class AuthService {
     login$: EventEmitter<boolean> = new EventEmitter();
+    loginRequest$:EventEmitter<boolean> = new EventEmitter();
     constructor(private httpClient: CommonHttpService<any>, private toaster: AlertService) { }
     createHeader(): Headers {
         const headers = new Headers();
@@ -41,7 +42,7 @@ export class AuthService {
 
                 this.toaster.show("Đăng kí thành công", "Đăng nhập để sử dụng.");
             } else {
-                this.toaster.show("Đăng kí thất bại", "Vui lòng thử lại sau.");
+                this.toaster.show("Đăng kí thất bại", "Vui lòng thử lại sau.", "danger");
             }
             return result;
         } catch (err) {
@@ -57,6 +58,7 @@ export class AuthService {
             let token = await this.httpClient.post(UrlVariable.URL_LOGIN, body, this.createHeader()).toPromise();
             var tokenAuth = (token as TokenProvider);
             if (typeof window != "undefined") {
+                this.toaster.show("Thông báo","Đăng nhập thành công")
                 localStorage.setItem('token_hure', tokenAuth.token);
                 localStorage.setItem('userId', tokenAuth.guid.toString());
                 localStorage.setItem('id', tokenAuth.id.toString());
@@ -90,6 +92,7 @@ export class AuthService {
     }
     logout() {
         if (typeof window != "undefined") {
+            this.toaster.show("Thông báo","Đăng xuất thành công")
             localStorage.clear();
             this.login$.emit(false);
         }

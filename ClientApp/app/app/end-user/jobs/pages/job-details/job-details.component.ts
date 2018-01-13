@@ -24,7 +24,6 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   }
   sub$: Subscription
   job: Job
-  isLogged:boolean
   jobRelated$: Observable<Job[]>
   constructor(private route: ActivatedRoute, private jobSvc: JobService, private companySvc: CompanyService,
     private confirmSvc: ConfirmService, private localSvc: LocalService, private alertSvc: AlertService,
@@ -38,10 +37,9 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
         this.jobRelated$ = this.companySvc.getJobOfCompany(this.job.companyId).pipe(share())
       })
     })
-    this.isLogged =  this.authSvc.isLogged()
   }
   apply(job: Job) {
-    if(this.isLogged){
+    if(this.authSvc.isLogged()){
       this.confirmSvc.showConfirm("Nộp đơn xin việc",
       `Xác nhận nộp đơn xin việc tại công ty 
     ${job.company.name}.
@@ -49,7 +47,8 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
         text: "Đồng ý", func: () => this.requestApply(job)
       }])
     }else{
-      this.authSvc.login$.emit(false)
+      this.alertSvc.show("Yêu cầu","Chức năng này cần phải đăng nhập",'danger')
+      this.authSvc.loginRequest$.emit(false)
     }
   }
   private requestApply(job: Job) {
@@ -58,16 +57,17 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
       let model = {
         accountId: +accountId,
         jobId: job.id,
+        status:"In progress"
       }
       this.applySvc.postApply(model).subscribe(result => {
         if (result == true) {
-          //do stuff
+          this.alertSvc.show("Thông báo","Apply thành công. Thông tin sẽ được gửi đến nhà tuyển dụng.")
         } else {
-          //raise error
+          this.alertSvc.show("Thông báo", "Apply thất bại. Có thể bạn đã apply vào công ty này rồi.","danger");
         }
       })
     } else {
-      this.alertSvc.show("Error", "This feature is not implement yet");
+      this.alertSvc.show("Thông báo", "Apply thất bại. Có thể bạn đã apply vào công ty này rồi.","danger");
     }
   }
 }

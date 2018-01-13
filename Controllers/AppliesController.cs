@@ -28,7 +28,11 @@ namespace HuRe.Controllers
         public async Task<IActionResult> Post([FromBody] Apply model)
         {
             var isAdded = await _appliesRepo.AddAsync(model);
-            return Created("", isAdded);
+            if(isAdded){
+                return Created("",true);
+            }else{
+                return BadRequest(false);
+            }
         }
     }
 }
