@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { CreateUserComponent } from "@app/admin/pages/manager-user/create-user/create-user.component";
 import { Body } from "@angular/http/src/body";
-import { noUndefined } from "@angular/compiler/src/util";
-import { EditUserComponent } from "@app/admin/pages/manager-user/edit-user/edit-user.component";
 import { AdminDialogComponent } from "@app/admin/shared/components/dialog/dialog.component";
 import { AdminDialogService } from "@app/admin/service/front-end/dialog.service";
 import { ManagerJobGroupService } from "@app/admin/service/manager-job-group.service";
+import { CreateJobGroupComponent } from "@app/admin/pages/manager-job-group/create-job-group/create-job-group.component";
+import { EditJobGroupComponent } from "@app/admin/pages/manager-job-group/edit-job-group/edit-job-group.component";
 @Component({
     selector: 'manager-job-group',
     templateUrl: './manager-job-group.component.html',
@@ -20,8 +19,8 @@ export class ManagerJobGroupComponent implements OnInit {
     private keySearch: string;
     //save list role
     private roles: any;
-    @ViewChild(CreateUserComponent) _modalCreateUser: CreateUserComponent;
-    @ViewChild(EditUserComponent) _modalEdit: EditUserComponent;
+    @ViewChild(CreateJobGroupComponent) _modalCreateJobGroup: CreateJobGroupComponent;
+    @ViewChild(EditJobGroupComponent) _modalEditJobGroup: EditJobGroupComponent;
     constructor(
         private _service: ManagerJobGroupService,
         private _serviceDialog: AdminDialogService
@@ -46,19 +45,18 @@ export class ManagerJobGroupComponent implements OnInit {
         this.getData();
     }
     openCreateUser() {
-        this._modalCreateUser.open();
+        this._modalCreateJobGroup.open();
     }
-    showConfirmDelete(guid: string) {
-        // this._serviceDialog.show('Xác Nhận', 'Bạn có xóa tài khoản này',
-        //     () => {
-        //         this._service.deleteUser(guid).then(result => {
-        //             console.log('xóa thành công');
-        //             this.getData();
-        //         })
-        //     }
-        // )
+    openEdit(id: number) {
+        this._modalEditJobGroup.open(id);
     }
-    openEdit(guid: string) {
-        this._modalEdit.open(guid);
+    showConfirmDelete(id: number) {
+        this._serviceDialog.show('Xác Nhận', 'Bạn có xóa nhóm nghề này',
+            () => {
+                this._service.deleteJobGroup(id).then(result => {
+                    this.getData();
+                })
+            }
+        )
     }
 }

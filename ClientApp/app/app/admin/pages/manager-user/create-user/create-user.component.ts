@@ -93,7 +93,6 @@ export class CreateUserComponent implements OnInit {
         this.userService.createUser(body).then(result => {
             if (result == true) {
                 this.showToast('Thành công', 'success', true)
-                this.close();
             } else {
                 this.showToast('Tài khoản đã tồn tại', 'danger', false)
             }

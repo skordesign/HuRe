@@ -3,7 +3,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-2">
-                <button class="btn-admin btn-primary" (click)="openCreateUser()">Thêm tài khoản</button>
+                <button class="btn-admin btn-primary" (click)="openCreateUser()">Thêm nhóm nghề</button>
             </div>
         </div>
         <br>
@@ -51,12 +51,12 @@
                         <td>{{item.description}}</td>
                         <td></td>
                         <td>
-                            <a (click)="openEdit(item.guid)" placement="top" ngbTooltip="Sửa thông tin">
+                            <a (click)="openEdit(item.id)" placement="top" ngbTooltip="Sửa thông tin">
                                 <i class=" fa fa-pencil-square-o " aria-hidden="true "></i>
                             </a>
                         </td>
                         <td>
-                            <a (click)="showConfirmDelete(item.guid)" placement="top" ngbTooltip="Xóa tài khoản">
+                            <a (click)="showConfirmDelete(item.id)" placement="top" ngbTooltip="Xóa">
                                 <i class="fa fa-times " aria-hidden="true "></i>
                             </a>
                         </td>

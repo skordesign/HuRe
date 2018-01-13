@@ -68,41 +68,39 @@ namespace Service.Repositories
         }
         public async Task<ICollection<AccountResult>> GetsAsyncPage(FilterPageActionModel body)
         {
-            var list = await _context.Accounts.Select(a =>
-             new AccountResult
-             {
-                 Id = a.Id,
-                 Username = a.Username,
-                 Address = a.Address,
-                 Avatar = a.Avatar,
-                 Firstname = a.Firstname,
-                 Lastname = a.Lastname,
-                 DateOfBirth = a.DateOfBirth,
-                 Class = a.Class,
-                 Guid = a.Guid.ToString(),
-                 Sex = a.Sex,
-                 Email = a.Email,
-                 PhoneNumber = a.PhoneNumber,
-                 RoleName = a.Role.Name,
-                 RoleDescription = a.Role.Description,
-                 RoleId = (long)a.RoleId,
-                 IsActivated = a.IsActivated
-             }).ToListAsync();
-            //loai bo du lieu tuong ung vs cac dieu kien
-            if (body.IsActivated != 0)
+                var list = await _context.Accounts.Select(a =>
+            new AccountResult
             {
-                list = list.Where(a => a.IsActivated == (body.IsActivated == 1) ? true : false).ToList();
-            }
-            if (body.RoleId != 0)
-            {
-                list = list.Where(a => a.RoleId == body.RoleId).ToList();
-            }
-            if (body.KeySearch != null)
-            {
-                list = list.Where(a => a.Username.Contains(body.KeySearch)).ToList();
-            }
-            var ofsset = (body.CurrentPage * body.NumberItemPage) - body.NumberItemPage;
-            return list.Skip(ofsset).Take(body.NumberItemPage).ToList();
+                Id = a.Id,
+                Username = a.Username,
+                Address = a.Address,
+                Avatar = a.Avatar,
+                Firstname = a.Firstname,
+                Lastname = a.Lastname,
+                DateOfBirth = a.DateOfBirth,
+                Class = a.Class,
+                Guid = a.Guid.ToString(),
+                Sex = a.Sex,
+                Email = a.Email,
+                PhoneNumber = a.PhoneNumber,
+                RoleName = a.Role.Name,
+                IsActivated = a.IsActivated
+            }).ToListAsync();
+                //loai bo du lieu tuong ung vs cac dieu kien
+                if (body.IsActivated != 0)
+                {
+                    list = list.Where(a => a.IsActivated == (body.IsActivated == 1) ? true : false).ToList();
+                }
+                if (body.RoleId != 0)
+                {
+                    list = list.Where(a => a.RoleId == body.RoleId).ToList();
+                }
+                if (body.KeySearch != null)
+                {
+                    list = list.Where(a => a.Username.Contains(body.KeySearch)).ToList();
+                }
+                var ofsset = (body.CurrentPage * body.NumberItemPage) - body.NumberItemPage;
+                return list.Skip(ofsset).Take(body.NumberItemPage).ToList();   
         }
 
         public async Task<bool> RemoveAsync(Guid id)

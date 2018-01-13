@@ -12,9 +12,9 @@ export const URL_ADMIN = {
     //page manager job group
     GET_PAGE_JOB_GROUP: "api/job-groups",
     CREATE_JOB_GROUP: "/api/job-groups/create",
-    INFO_JOB_GROUP: "/api/job-groups/info/",
-    UPDATE_JOB_GROUP: "/api/job-groups/update",
-    DETELE_JOB_GROUP: "/api/job-groups/delete",
+    INFO_JOB_GROUP: "/api/job-groups/info",
+    UPDATE_JOB_GROUP: "/api/job-groups/update/",
+    DETELE_JOB_GROUP: "/api/job-groups/delete/",
     //page manager work type
     GET_PAGE_WORK_TYPE: "api/work-types",
     CREATE_WORK_TYPE: "/api/work-types/create",
