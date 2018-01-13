@@ -1,6 +1,13 @@
 <div style="padding-top:24px;">
     <hure-search-bar></hure-search-bar>
     <div class="container">
-        <hure-jobs-container [jobsObserver]="jobs$" limit="10"></hure-jobs-container>
+        <div class="row">
+            <div class="col-12 col-xl-8 col-lg-8 jumbotron">
+                <hure-jobs-container [jobsObserver]="jobs$" limit="10"></hure-jobs-container>
+            </div>
+            <div class="col-12 col-xl-4 col-lg-4 jumbotron">
+                <hure-jobs-container [jobsObserver]="jobsHot$" title="HOT" size="small" limit="5"></hure-jobs-container>
+            </div>
+        </div>
     </div>
 </div>

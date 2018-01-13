@@ -12,6 +12,7 @@ import { share } from 'rxjs/operators';
 export class JobsComponent implements OnInit {
   isIntership: boolean = false
   jobs$: Observable<Job[]>
+  jobsHot$:Observable<Job[]>
   constructor(private route: ActivatedRoute, private jobSvc: JobService) { }
 
   ngOnInit() {
@@ -19,13 +20,18 @@ export class JobsComponent implements OnInit {
     if (param == 'internship') {
       this.isIntership = true;
     }
-    this.getDataAsync()
-  }
-  getDataAsync() {
-    if (this.isIntership) {
-      this.jobs$ = this.jobSvc.getOnlyInterns().pipe(share())
-    } else {
-      this.jobs$ = this.jobSvc.getOnlyJobs().pipe(share())
+    if(this.isIntership){
+      this.getInternAsync()
+    }else{
+      this.getJobAsync()
     }
+  }
+  getInternAsync() {
+      this.jobs$ = this.jobSvc.getOnlyInterns().pipe(share())
+      this.jobsHot$ = this.jobSvc.getHotInterns().pipe(share())
+  }
+  getJobAsync(){
+    this.jobs$ = this.jobSvc.getOnlyJobs().pipe(share())
+    this.jobsHot$  = this.jobSvc.getHotJobs().pipe(share())
   }
 }

@@ -15,13 +15,13 @@ export class SearchComponent implements OnInit {
   jobs$: Observable<Job[]>
   limit = 10
   params: {
-    keyword: string | null, jobGroupId: number , workTypeId?:number
-  }
+    keyword: string | null , jobGroupId?: number , workTypeId?:number
+  }={keyword:""}
   ngOnInit() {
     this.jobs$ = this.router.paramMap
       .switchMap((params: ParamMap) => {
-        this.params = { keyword: params.get('keyword')!, jobGroupId: +params.get('jobType')! }
-        return this.jobSvc.getSearchJobs(this.params.keyword!,this.params.jobGroupId! ).pipe(share());
+        this.params = { keyword: params.get('keyword')! || "", jobGroupId: +params.get('jobGroup')!||0, workTypeId:+params.get('workType')!||0 }
+        return this.jobSvc.getSearchJobs(this.params.keyword!,this.params.jobGroupId!, this.params.workTypeId! ).pipe(share());
       })
   }
 

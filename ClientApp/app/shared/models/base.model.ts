@@ -1,5 +1,6 @@
 interface Base {
     id: number;
-    creatDate: Date;
+    createdDate: Date;
     modifiedDate: Date;
+    status:string;
 }

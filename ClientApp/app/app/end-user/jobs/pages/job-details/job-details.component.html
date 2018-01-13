@@ -26,9 +26,19 @@
                 <strong>{{ job?.position}}</strong>
               </li>
               <hr>
-              <li>Phúc lợi:
-                <strong>{{ job?.benefit}}</strong>
+              <li>Ngày đăng:
+                <strong>{{ job?.createdDate | date: 'dd/MM/yyyy'}}</strong>
               </li>
+              <hr>
+              <li>Ngày hết hạn:
+                <strong>{{ job?.deadlineApply | date:'dd/MM/yyyy'}}</strong>
+              </li>
+              <hr>
+              <li>Mức lương: từ
+                  <strong>{{ job?.lowestSalary }}</strong> đến
+                  <strong>{{job?.highestSalary}}</strong> VND
+              </li>
+              <hr>
             </ul>
           </div>
           <div class="col-12 col-md-6">
@@ -48,6 +58,13 @@
               <li>Tuổi:
                 <strong>{{ job?.age }}</strong>
               </li>
+              <hr>
+              <li>Phúc lợi:
+                <strong>{{ job?.benefit}}</strong>
+              </li>
+              <hr>
+              <li>Thêm: {{ job?.more}}</li>
+              <hr>
             </ul>
           </div>
           <div class="col-12 col-md-4 col-xl-3">
@@ -61,6 +78,19 @@
         <div class="row">
           <div class="col-12 col-md-4 col-xl-3">
             <button class="hures-btn" (click)="apply(job)" rippleEffect>APPLY</button>
+          </div>
+          <div class="col-12">
+            <strong class="float-right m-1">Lượt xem:
+              <p class="d-inline-block" style="color:dodgerblue">{{ job?.viewCount }}</p>
+            </strong>
+            <strong class="float-right m-1">Ứng tuyển:
+              <p class="d-inline-block" style="color:dodgerblue"> {{ job?.appliedCount }}</p>
+            </strong>
+          </div>
+          <div class="col-12">
+            <strong class="float-right m-1">Tag:
+              <p class="d-inline-block" style="color:dodgerblue">{{ job?.majorTag }}</p>
+            </strong>
           </div>
         </div>
       </div>
@@ -90,10 +120,9 @@
             <a href="tel:{{ job?.company.phoneNumber }}">{{job?.company.phoneNumber}}</a>
           </li>
         </ul>
-      </div>
-      <div class="jumbotron">
+        <hr>
         <div *ngIf="jobRelated$">
-          <hure-jobs-container [jobsObserver]="jobRelated$" limit="3" size="small" title="Công ty đang tuyển"></hure-jobs-container>
+          <hure-jobs-container [jobsObserver]="jobRelated$" limit="3" size="small" title="Đang tuyển"></hure-jobs-container>
         </div>
       </div>
     </div>

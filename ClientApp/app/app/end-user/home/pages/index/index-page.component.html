@@ -1,21 +1,24 @@
 <slide> </slide>
 <hure-search-bar></hure-search-bar>
+<hr>
 <hure-action-bar></hure-action-bar>
-<section id="main" class="row">
+<section id="main">
     <div class="hure-job-group-list">
         <hure-job-group-container></hure-job-group-container>
     </div>
+    <hr>
     <div class="container">
         <div class="row">
             <div class="col-12 col-xl-6 col-lg-6">
                 <hure-jobs-container [jobsObserver]="jobsObserver"></hure-jobs-container>
             </div>
             <div class="col-12 col-xl-6 col-lg-6">
-                <hure-jobs-container [jobsObserver]="jobsObserver" title="Thực tập"></hure-jobs-container>
+                <hure-jobs-container [jobsObserver]="internObserver" title="Thực tập"></hure-jobs-container>
             </div>
         </div>
     </div>
-    <div class="col-12">
+    <hr>
+    <div>
         <hure-brand-container></hure-brand-container>
     </div>
 </section>

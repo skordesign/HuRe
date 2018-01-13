@@ -11,12 +11,14 @@ import { share } from 'rxjs/operators';
 
 export class IndexPageComponent implements OnInit {
     jobsObserver:Observable<Job[]>
+    internObserver:Observable<Job[]>
     constructor(private jobSvc:JobService) { }
 
     ngOnInit() { 
         this.getDataAsync()
     }
     getDataAsync() {
-        this.jobsObserver = this.jobSvc.getJobs().pipe(share())
+        this.jobsObserver = this.jobSvc.getOnlyJobs().pipe(share())
+        this.internObserver = this.jobSvc.getOnlyInterns().pipe(share())
     }
 }

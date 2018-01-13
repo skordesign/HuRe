@@ -37,6 +37,30 @@ namespace HuRe.Controllers
             }
             return jobs;
         }
+        [HttpGet("hot-interns")]
+        public async Task<IEnumerable<Job>> GetHotIntern()
+        {
+             var jobs = await _jobRepo.GetsAsync();
+            var onlyIntern = jobs.Where(o => o.WorkType.ShortName.Contains("TTS") || o.WorkType.ShortName.Contains("KT"))
+            .OrderByDescending(o=>o.AppliedCount).Take(5);
+            foreach (var job in onlyIntern)
+            {
+                job.ContentURL = System.IO.File.ReadAllText(Path.Combine(_hostingEnvironment.WebRootPath, job.ContentURL));
+            }
+            return onlyIntern;
+        }
+        [HttpGet("hot-jobs")]
+        public async Task<IEnumerable<Job>> GetHotJob()
+        {
+            var jobs = await _jobRepo.GetsAsync();
+            var onlyJobs = jobs.Where(o => o.WorkType.ShortName.Contains("BTG") || o.WorkType.ShortName.Contains("TTG"))
+            .OrderByDescending(k=>k.AppliedCount).Take(5);
+            foreach (var job in onlyJobs)
+            {
+                job.ContentURL = System.IO.File.ReadAllText(Path.Combine(_hostingEnvironment.WebRootPath, job.ContentURL));
+            }
+            return onlyJobs;
+        }
         [HttpGet("only-jobs")]
         public async Task<IEnumerable<Job>> GetOnlyJobs()
         {
