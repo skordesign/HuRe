@@ -2,18 +2,17 @@ import { Component, ViewChild, TemplateRef, ViewChildren, OnInit, Output, EventE
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AdminAlertComponent } from '@app/admin/shared/components/alert/alert.component';
 import { Variables } from "@app/admin/shared/variables";
-import { ManagerJobGroupService } from "@app/admin/service/manager-job-group.service";
+import { ManagerWorkTypeService } from '@app/admin/service/manager-work-type.service';
 @Component({
-    selector: 'create-job-group',
-    templateUrl: './create-job-group.component.html',
-    styleUrls: ['./create-job-group.component.scss']
+    selector: 'create-work-type',
+    templateUrl: './create-work-type.component.html',
+    styleUrls: ['./create-work-type.component.scss']
 })
-export class CreateJobGroupComponent implements OnInit {
+export class CreateWorkTypeComponent implements OnInit {
     ngOnInit(): void {
     }
     closeResult: string;
     modalRef: any;
-    private ImageURL: string;
     //luu loi
     private error = {
         mess: '',
@@ -23,7 +22,7 @@ export class CreateJobGroupComponent implements OnInit {
     @ViewChild('content') content: TemplateRef<any>;
     constructor(
         private modalService: NgbModal,
-        private service: ManagerJobGroupService,
+        private service: ManagerWorkTypeService,
     ) {
     }
     open() {
@@ -33,10 +32,8 @@ export class CreateJobGroupComponent implements OnInit {
         let body = {
             name: form.value.name,
             shortName: form.value.shortName,
-            description: form.value.description,
-            ImageURL :this.ImageURL
         }
-        this.service.createJobGroup(body).then(result => {
+        this.service.createWorkType(body).then(result => {
             if (result == true) {
                 this.showToast('Thành công', 'success', true)
             } else {

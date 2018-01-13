@@ -1,30 +1,29 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
+﻿using HuRe.Db;
 using HuRe.Models;
 using HuRe.Models.ActionModel;
-using HuRe.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using HuRe.Db;
+using System.Threading.Tasks;
 
-namespace Service.Repositories
+namespace HuRe.Repositories
 {
-    public interface IJobGroupRepository : IRepository<JobGroup>
+    public interface IWorkTypeRepository : IRepository<WorkType>
     {
-        Task<ICollection<JobGroup>> GetsAsyncPage(FilterPageActionModel body);
+        Task<ICollection<WorkType>> GetsAsyncPage(FilterPageActionModel body);
         int CountAll(FilterPageActionModel body);
     }
-    public class JobGroupRepository : Repository<JobGroup>, IJobGroupRepository
+    public class WorkTypeRepository : Repository<WorkType>, IWorkTypeRepository
     {
         private readonly JobDbContext _context;
-        public JobGroupRepository(JobDbContext ctx) : base(ctx)
+        public WorkTypeRepository(JobDbContext ctx) : base(ctx)
         {
             _context = ctx;
         }
         public int CountAll(FilterPageActionModel body)
         {
-            var list = _context.JobGroups.ToList();
+            var list = _context.WorkTypes.ToList();
             if (body.KeySearch != null)
             {
                 list = list.Where(a => a.Name.Contains(body.KeySearch) || a.ShortName.Contains(body.KeySearch)).ToList();
@@ -32,9 +31,9 @@ namespace Service.Repositories
             return list.Count;
         }
 
-        public async Task<ICollection<JobGroup>> GetsAsyncPage(FilterPageActionModel body)
+        public async Task<ICollection<WorkType>> GetsAsyncPage(FilterPageActionModel body)
         {
-            var list = await _context.JobGroups.ToListAsync();
+            var list = await _context.WorkTypes.ToListAsync();
             if (body.KeySearch != null)
             {
                 list = list.Where(a => a.Name.Contains(body.KeySearch) || a.ShortName.Contains(body.KeySearch)).ToList();

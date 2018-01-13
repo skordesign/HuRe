@@ -8,6 +8,7 @@ import { AdminDropdownComponent } from "@app/admin/shared/components/dropdown/dr
 import { AdminAlertComponent } from "@app/admin/shared/components/alert/alert.component";
 import { AdminSwitchButtonComponent } from "@app/admin/shared/components/switch-button/switch-button.component";
 import { AdminDialogComponent } from "@app/admin/shared/components/dialog/dialog.component";
+import { AdminUploadFileComponent } from "@app/admin/shared/components/upload-file/upload-file.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -21,7 +22,8 @@ import { AdminDialogComponent } from "@app/admin/shared/components/dialog/dialog
         AdminDropdownComponent,
         AdminAlertComponent,
         AdminSwitchButtonComponent,
-        AdminDialogComponent
+        AdminDialogComponent,
+        AdminUploadFileComponent
     ],
     declarations: [
         DatePickerComponent,
@@ -29,7 +31,8 @@ import { AdminDialogComponent } from "@app/admin/shared/components/dialog/dialog
         AdminDropdownComponent,
         AdminAlertComponent,
         AdminSwitchButtonComponent,
-        AdminDialogComponent
+        AdminDialogComponent,
+        AdminUploadFileComponent
     ],
 })
 export class ShareAdminModule { }

@@ -2,12 +2,12 @@ using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HuRe.Db;
 using HuRe.Models;
 using HuRe.Repositories;
+using HuRe.Util;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,7 +21,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Service.Repositories;
 
 namespace HuRe
@@ -54,12 +53,15 @@ namespace HuRe
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<IRepository<Role>, Repository<Role>>();
             services.AddTransient<IRepository<Job>, Repository<Job>>();
-            services.AddTransient<IRepository<Company>, Repository<Company>>();
             services.AddTransient<IEventRepository, EventRepository>();
+            //services.AddTransient<IRepository<Company>, Repository<Company>>();
             //services.AddTransient<IRepository<JobGroup>, Repository<JobGroup>>();
-            services.AddTransient<IRepository<WorkType>,Repository<WorkType>>();
+            //services.AddTransient<IRepository<WorkType>,Repository<WorkType>>();
             services.AddTransient<IApplyRepository, ApplyRepository>();
             services.AddTransient<IJobGroupRepository, JobGroupRepository>();
+            services.AddTransient<IWorkTypeRepository, WorkTypeRepository>();
+            services.AddTransient<ICompanyRepository, CompaniesRepository>();
+            services.AddTransient<IFileService, FileService>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(jwtBearerOptions =>
             {
@@ -103,12 +105,12 @@ namespace HuRe
             }
 
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(
-                       Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "resources")),
-                RequestPath = new PathString("/resources")
-            });
+            // app.UseStaticFiles(new StaticFileOptions()
+            // {
+            //     FileProvider = new PhysicalFileProvider(
+            //            Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "resources")),
+            //     RequestPath = new PathString("/resources")
+            // });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

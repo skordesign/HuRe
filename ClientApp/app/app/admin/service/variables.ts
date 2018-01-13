@@ -18,7 +18,15 @@ export const URL_ADMIN = {
     //page manager work type
     GET_PAGE_WORK_TYPE: "api/work-types",
     CREATE_WORK_TYPE: "/api/work-types/create",
-    INFO_WORK_TYPE: "/api/work-types/info/",
+    INFO_WORK_TYPE: "/api/work-types/info",
     UPDATE_WORK_TYPE: "/api/work-types/update/",
     DETELE_WORK_TYPE: "/api/work-types/delete/",
+    //page manager company
+    GET_PAGE_COMPANY: "api/companies/page",
+    CREATE_COMPANY: "/api/companies/create",
+    INFO_COMPANY: "/api/companies/info",
+    UPDATE_COMPANY: "/api/companies/update/",
+    DETELE_COMPANY: "/api/companies/delete/",
+    //upload file
+    UPLOAD_FILE: "api/upload-file"
 }

@@ -20,9 +20,9 @@ namespace HuRe.Controllers
     {
         private readonly IAccountRepository _accountRepo;
         private readonly IRepository<Role> _roleRepo;
-        private readonly IRepository<Company> _companyRepo;
+        private readonly ICompanyRepository _companyRepo;
         public AuthController(IAccountRepository accountRepo, IRepository<Role> roleRepo,
-        IRepository<Company> companyRepo)
+        ICompanyRepository companyRepo)
         {
             _accountRepo = accountRepo;
             _roleRepo = roleRepo;

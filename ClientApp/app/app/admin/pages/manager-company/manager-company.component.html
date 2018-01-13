@@ -36,10 +36,15 @@
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Tên nhóm nghề</th>
+                        <th>Tên công ty</th>
                         <th>Tên viết tắt</th>
                         <th>Mô tả</th>
-                        <th>Hình ảnh</th>
+                        <th>Quy mô</th>
+                        <th>Người đại diện</th>
+                        <th>Số điện thoại</th>
+                        <th>Website</th>
+                        <th>Logo</th>
+                        <th>Đối tác</th>
                         <th colspan="2" class="text-center">Tác vụ</th>
                     </tr>
                 </thead>
@@ -48,9 +53,18 @@
                         <td>{{i+1}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.shortName}}</td>
-                        <td>{{item.description}}</td>
+                        <td class="text-nowrap text-truncate">{{item.description}}</td>
+                        <td>{{item.scales}}</td>
+                        <td>{{item.representor}}</td>
+                        <td>{{item.phoneNumber}}</td>
+                        <td>{{item.website}}</td>
                         <td>
-                            <img class="image" [src]="item.imageURL">
+                            <img class="image" [src]="item.urlLogo">
+                        </td>
+                        <td class="text-center">
+                            <span>
+                                <i [class.fa-check]="item?.isPartner" class="fa"></i>
+                            </span>
                         </td>
                         <td class="tac-vu">
                             <a (click)="openEdit(item.id)" placement="top" ngbTooltip="Sửa thông tin">
@@ -71,5 +85,5 @@
     </div>
 
 </div>
-<create-job-group (submitData)="getData() "></create-job-group>
-<edit-job-group (submitData)="getData()"></edit-job-group>
+<create-company (submitData)="getData() "></create-company>
+<edit-company (submitData)="getData()"></edit-company>
