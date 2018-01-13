@@ -15,9 +15,9 @@
           <span class="input-group-addon">
             <i class="fa fa-chevron-down"></i>
           </span>
-          <hure-dropdown class="w-100" placeholder="Ngành nghề..." (change)="onJobGroupChange($event)">
+          <hure-dropdown  class="w-100" placeholder="Ngành nghề..." (change)="onJobGroupChange($event)">
             <ng-container *ngFor="let item of jobs">
-              <hure-dropdown-item [text]="item.name" [value]="item.id" ></hure-dropdown-item>
+              <hure-dropdown-item [text]="item?.name" [value]="item?.id" [isSelected]="item?.id==selectedJobG" ></hure-dropdown-item>
             </ng-container>
           </hure-dropdown>
         </div>
@@ -28,9 +28,9 @@
             <span class="input-group-addon" >
               <i class="fa fa-chevron-down"></i>
             </span>
-            <hure-dropdown class="w-100" placeholder="Hình thức.." (change)="onJobGroupChange($event)">
+            <hure-dropdown class="w-100" placeholder="Hình thức.." (change)="onWorkTypeChange($event)">
               <ng-container *ngFor="let item of works">
-                <hure-dropdown-item [text]="item.name" [value]="item.id" ></hure-dropdown-item>
+                <hure-dropdown-item [text]="item?.name" [value]="item?.id" [isSelected]="item?.id==selectedWorkT" ></hure-dropdown-item>
               </ng-container>
             </hure-dropdown>
           </div>
@@ -38,7 +38,7 @@
         </div>
       <div class="col-12 col-lg-4">
         <button class="hures-search-btn" (click)="search()" rippleEffect>TÌM KIẾM</button>
-        <!-- <small class="form-text text-muted hures-search-advanced" (click)="gotoSearchPage()">+ Tìm kiếm nâng cao</small> -->
+        <small class="form-text text-muted hures-search-advanced" (click)="clear()">Tẩy bộ lọc</small>
       </div>
     </div>
   </div>

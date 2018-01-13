@@ -9,4 +9,7 @@ export class CompanyService {
     getJobOfCompany(id:number){
         return this.http.gets<Job>(this.URL + `/${id}/jobs`, this.http.createHeader()).share();
     }
+    getCompanies(){
+        return this.http.gets<Company>(this.URL, this.http.createHeader()).share();
+    }
 }

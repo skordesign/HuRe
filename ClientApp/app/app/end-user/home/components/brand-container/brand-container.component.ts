@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CompanyService } from '@services/backend/company.service';
+import { Observable } from 'rxjs/Observable';
+import { share } from 'rxjs/operators';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'hure-brand-container',
@@ -6,42 +10,23 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./brand-container.component.scss']
 })
 
-export class BrandContainerComponent implements OnInit {
-    listBrand: any[] = [ {
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",
-        url: "https://www.microsoft.com",
-        text: "Microsoft"
-    }, {
-        img: "http://www.dts.com.vn/images/logo-dts.png",
-        url: "http://www.dts.com.vn",
-        text: "DTS"
-    }, {
-        img: "https://www.fpt-software.com/wp-content/uploads/sites/2/2017/11/FPT-Software-Ngang-2017.png",
-        url: "https://career.fpt-software.com/vi/",
-        text: "FPT Software"
-    }, {
-        img: "https://images.careerbuilder.vn/employer_folders/lot2/144332/144312logo-tma-hongtran.png",
-        url: "http://www.tmasolutions.com/",
-        text: "TMA"
-    },  {
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",
-        url: "https://www.microsoft.com",
-        text: "Microsoft"
-    }, {
-        img: "http://www.dts.com.vn/images/logo-dts.png",
-        url: "http://www.dts.com.vn",
-        text: "DTS"
-    }, {
-        img: "https://www.fpt-software.com/wp-content/uploads/sites/2/2017/11/FPT-Software-Ngang-2017.png",
-        url: "https://career.fpt-software.com/vi/",
-        text: "FPT Software"
-    }, {
-        img: "https://images.careerbuilder.vn/employer_folders/lot2/144332/144312logo-tma-hongtran.png",
-        url: "http://www.tmasolutions.com/",
-        text: "TMA"
+export class BrandContainerComponent implements OnInit, OnDestroy {
+    ngOnDestroy(): void {
+        this.sub!.unsubscribe()
     }
-    ]
-    constructor() { }
+    listBrand: any[]
+    sub:Subscription
+    constructor(private companySvc:CompanyService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+       this.sub =  this.companySvc.getCompanies().subscribe(s=>{
+            this.listBrand = s.map(o=>{
+                return {
+                    img:o.urlLogo,
+                    text:o.name,
+                    url:o.website
+                }
+            });
+       });
+     }
 }
