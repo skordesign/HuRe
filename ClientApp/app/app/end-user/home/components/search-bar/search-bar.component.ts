@@ -50,9 +50,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     })
   }
   onJobGroupChange(jobG: any|null) {
+    this.selectedJobGItem = jobG;
     this.selectedJobG = jobG!.value||0;
   }
   onWorkTypeChange(work: any|null) {
+    this.selectedWorkTItem = work;
     this.selectedWorkT = work!.value||0;
   }
 }

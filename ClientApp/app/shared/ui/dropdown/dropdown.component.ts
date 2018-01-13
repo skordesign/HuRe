@@ -8,7 +8,7 @@ import { DropdownItemComponent } from './dropdownItem/dropdownItem.component';
 })
 export class DropdownComponent implements OnInit, OnChanges {
     ngOnChanges(changes: any): void {
-        if(changes.selectedItem==null){
+        if(changes.selectedItem.currentValue==null){
             this.selectedItem = null;
         }
     }
@@ -18,8 +18,7 @@ export class DropdownComponent implements OnInit, OnChanges {
     // isActivated = true => dropdown show items
     isActivated = false;
     items: DropdownItemComponent[] = [];
-    @Input() selectedItem: any;
-    defaultPlaceholder = ""
+    @Input() @Output() selectedItem: any;
     constructor() { }
     addItem(item: DropdownItemComponent) {
         this.items.push(item);
@@ -32,12 +31,10 @@ export class DropdownComponent implements OnInit, OnChanges {
         }
     }
     selectItem(item: DropdownItemComponent) {
-        console.log(item)
         this.items.forEach(i => i.isSelected = false);
         if (item) {
             item.isSelected = true;
         }
-        
         this.selectedItem = item;
     }
     ngOnInit() {
