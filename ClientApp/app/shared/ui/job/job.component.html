@@ -2,7 +2,7 @@
   <img alt="logo" [src]="job.company.urlLogo" />
   <div class="hures-job-content">
     <div class="d-flex-column">
-      <h4 class="card-text text-uppercase">{{ job?.title }}</h4>
+      <h4 class="card-text text-uppercase">{{ job?.title| limitText:50 }}</h4>
       <div class="d-flex flex-row unflexxx">
         <div class="d-flex flex-column hures-job-info">
           <p>{{ job?.shortDescription | limitText:39}}</p>

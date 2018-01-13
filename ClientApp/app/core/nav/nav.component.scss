@@ -79,6 +79,13 @@
                             border-radius: 2px;
                             position: absolute;
                             top:-7px;
+                            ul{
+                                li{
+                                    &:hover{
+                                        background: var(--light);
+                                    }
+                                }
+                            }
                         }
                         .hures-signup {
                             position: absolute;

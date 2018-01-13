@@ -1,6 +1,6 @@
 .app-carousel {
     height: 136px;
-    width: 100%;
+    width:calc( 100% + 200px);
     overflow: hidden;
     .slides {
         list-style: none;
@@ -8,13 +8,9 @@
         overflow: hidden;
         height: 136px;
         padding:0px;
-        // transition: all 0.5s ease-in;
-        // -moz-transition: all 0.5s ease-in;
-        // -webkit-transition: all 0.5s ease-in;
         .app-carousel-img-container {
             height: 100%;
             display: block;
-            // margin: 8px 32px;
             float: left;
             img {
                 height: 100%;

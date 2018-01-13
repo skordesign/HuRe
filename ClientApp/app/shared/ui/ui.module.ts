@@ -19,7 +19,6 @@ import { ActionItemComponent } from '@ui/action-menu/action-item/action-item.com
 import { PipeModule } from '@shared/pipes/pipe.module';
 import { OverlayComponent } from './overlay/overlay.component';
 import { JobsContainerComponent } from '@app/end-user/home/components/jobs-container/jobs-container.component';
-import { ServiceModule } from '@services/service.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
     declarations: [GroupComponent, TabbedComponent, DropdownComponent,

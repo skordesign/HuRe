@@ -45,15 +45,37 @@ export class CommonHttpService<T>{
         }
     }
     post(url: string, body: any, headers?: Headers) {
-        return this.http.post(url, JSON.stringify(body), { headers: headers || this.createHeader() })
-            .map(this.extractdata).catch(err => []);
+
+        try {
+            this.loadingSvc.showLoading(true);
+            return this.http.post(url, JSON.stringify(body), { headers: headers || this.createHeader() })
+                .map(this.extractdata).catch(err => []);
+        } catch (err) {
+            return new Observable(s => s.next())
+        } finally {
+            this.loadingSvc.showLoading(false);
+        }
     }
     put(url: string, id: any, body: any, headers?: Headers) {
-        return this.http.put(url + id.toString(), JSON.stringify(body), { headers: headers || this.createHeader() })
-            .map(this.extractdata).catch(err => []);
+        try {
+            this.loadingSvc.showLoading(true);
+            return this.http.put(url + id.toString(), JSON.stringify(body), { headers: headers || this.createHeader() })
+                .map(this.extractdata).catch(err => []);
+        } catch (err) {
+            return new Observable(s => s.next())
+        } finally {
+            this.loadingSvc.showLoading(false);
+        }
     }
     delete(url: string, id: any, headers?: Headers) {
-        return this.http.delete(url + id.toString(), { headers: headers || this.createHeader() })
-            .map(this.extractdata).catch(err => []);
+        try {
+            this.loadingSvc.showLoading(true);
+            return this.http.delete(url + id.toString(), { headers: headers || this.createHeader() })
+                .map(this.extractdata).catch(err => []);
+        } catch (err) {
+            return new Observable(s => s.next())
+        } finally {
+            this.loadingSvc.showLoading(false);
+        }
     }
 }

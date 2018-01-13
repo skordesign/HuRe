@@ -2,10 +2,10 @@ $light-color: var(--light);
 .hures-job-card {
     background: #FFFFFF;
     padding: 8px;
-    max-height: 128px;
+    height: 138px;
     &:hover {
         background: $light-color;
-        border-radius: 16px;
+        border-radius: 4px;
     }
     .hures-job-content {
         padding: 8px;
@@ -60,7 +60,7 @@ $light-color: var(--light);
 
 @media screen and (max-width: 1200px) and (min-width: 992px) {
     .hures-job-card {
-     
+        height: 128px;
         &:hover {
        
         }
