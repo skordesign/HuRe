@@ -1,6 +1,7 @@
 <div class="w-100 hures-dropdown-container">
     <div class="hures-dropdown w-100" (click)="isActivated=!isActivated">
-        <p>{{ selectItem.text || placeholder | limitText:25 }}</p>
+        <p *ngIf="selectedItem">{{ selectedItem.text | limitText:25 }}</p>
+        <p *ngIf="!selectedItem">{{ placeholder | limitText:25 }}</p>
     </div>
     <hure-overlay [isActivated]="isActivated">
         <div class="hures-picker">

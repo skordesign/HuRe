@@ -15,9 +15,9 @@ namespace HuRe.Controllers
             _accountRepo = accountsRepo;
         }
         [HttpPost]
-        public async Task<AccountInfo> Post([FromBody]Guid guid)
+        public async Task<AccountInfo> Post([FromBody]string guid)
         {
-            var accountExist = await _accountRepo.GetAsync(guid);
+            var accountExist = await _accountRepo.GetAsync(Guid.Parse(guid));
             return new AccountInfo
             {
                 Username = accountExist.Username,

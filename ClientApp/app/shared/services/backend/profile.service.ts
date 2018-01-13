@@ -14,6 +14,6 @@ export class ProfileService {
     constructor(private http: CommonHttpService<Profile>, private localSvc:LocalService) { }
     getProfile(): Observable<Profile> {
         let guid = this.localSvc.getGuid();
-        return this.http.post(this.URL, { guid: guid });
+        return this.http.post(this.URL, guid, this.http.createHeader());
     }
 }

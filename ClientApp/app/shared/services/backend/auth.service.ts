@@ -7,6 +7,7 @@ import { CommonHttpService } from "@services/backend/common-http.service";
 import { Headers } from '@angular/http';
 import { window } from "rxjs/operators/window";
 import { AlertService } from "@services/frontend/alert.service";
+import { toString } from "@ng-bootstrap/ng-bootstrap/util/util";
 
 @Injectable()
 export class AuthService {
@@ -25,7 +26,7 @@ export class AuthService {
             password: user.password,
             companyName: user.companyName,
             companyWebsite: user.companyWebsite,
-            roleId:user.roleId
+            roleId: user.roleId
         }
         try {
             let result: any
@@ -36,7 +37,7 @@ export class AuthService {
                 result = await this.httpClient.post("/api/sign-up/student", body, this.createHeader())
                     .toPromise()
             }
-            if (result==true) {
+            if (result == true) {
 
                 this.toaster.show("Đăng kí thành công", "Đăng nhập để sử dụng.");
             } else {
@@ -58,6 +59,7 @@ export class AuthService {
             if (typeof window != "undefined") {
                 localStorage.setItem('token_hure', tokenAuth.token);
                 localStorage.setItem('userId', tokenAuth.guid.toString());
+                localStorage.setItem('id', tokenAuth.id.toString());
             }
             this.login$.emit(true);
             return true;
@@ -96,10 +98,12 @@ export class AuthService {
 export class TokenProvider {
     token: string;
     expires_in: Date;
-    guid: number;
-    constructor(token: string, guid: number, expiresin: Date) {
+    guid: any;
+    id:number
+    constructor(token: string, guid: any, expiresin: Date, id:number) {
         this.token = token;
         this.guid = guid;
         this.expires_in = expiresin;
+        this.id = id;
     }
 }

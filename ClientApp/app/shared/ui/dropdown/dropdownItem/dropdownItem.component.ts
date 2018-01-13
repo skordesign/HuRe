@@ -5,15 +5,8 @@ import { DropdownComponent } from '../dropdown.component';
     selector: 'hure-dropdown-item',
     templateUrl: './dropdownItem.component.html'
 })
-export class DropdownItemComponent implements OnInit, OnChanges {
-    ngOnChanges(changes: any): void {
-        let isSelected = changes.isSelected
-        if (isSelected == true) {
-            this.dropdown.selectItemEmit(this);
-        } else {
-            this.dropdown.selectItemEmit(null);
-        }
-    }
+export class DropdownItemComponent implements OnInit {
+    
 
     // value is object;
     @Input() value: any;

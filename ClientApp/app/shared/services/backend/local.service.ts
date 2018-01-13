@@ -11,7 +11,7 @@ export class LocalService {
     }
     getAccountId(){
         if(typeof window != "undefined"){
-            return localStorage.getItem('accountId')
+            return localStorage.getItem('id')
         }
     }
 }

@@ -25,6 +25,8 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   selectedJobG: number = 0
   selectedWorkT: number = 0
   route$:Subscription
+  selectedWorkTItem:any
+  selectedJobGItem:any
   constructor(private jobGSvc: JobGroupService, private router: Router, private workTSvc: WorkTypeService, private routeActive: ActivatedRoute, ) {
     this.job$ = this.jobGSvc.getJobs().subscribe(data => {
       this.jobs = data;
@@ -33,6 +35,9 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   }
   clear() {
     this.router.navigate(['/search', { jobGroup: 0, keyword: "", workType: 0 }])
+    this.selectedWorkTItem = null
+    this.selectedJobGItem = null
+    this.keyword = ""
   }
   search() {
     this.router.navigate(['/search', { jobGroup: this.selectedJobG, keyword: this.keyword, workType: this.selectedWorkT }])

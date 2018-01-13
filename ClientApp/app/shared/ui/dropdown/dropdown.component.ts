@@ -6,14 +6,20 @@ import { DropdownItemComponent } from './dropdownItem/dropdownItem.component';
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent implements OnInit, OnChanges {
+    ngOnChanges(changes: any): void {
+        if(changes.selectedItem==null){
+            this.selectedItem = null;
+        }
+    }
     // change return DropdownItemComponent => this.value to get value
     @Output() change = new EventEmitter<any>();
     @Input() placeholder = "Hello"
     // isActivated = true => dropdown show items
     isActivated = false;
     items: DropdownItemComponent[] = [];
-    selectedItem: any;
+    @Input() selectedItem: any;
+    defaultPlaceholder = ""
     constructor() { }
     addItem(item: DropdownItemComponent) {
         this.items.push(item);
@@ -26,12 +32,14 @@ export class DropdownComponent implements OnInit {
         }
     }
     selectItem(item: DropdownItemComponent) {
+        console.log(item)
         this.items.forEach(i => i.isSelected = false);
         if (item) {
             item.isSelected = true;
-            this.placeholder = item.text;
-            this.selectedItem = item;
         }
+        
+        this.selectedItem = item;
     }
-    ngOnInit() { }
+    ngOnInit() {
+    }
 }
