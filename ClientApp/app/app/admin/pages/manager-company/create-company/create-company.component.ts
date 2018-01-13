@@ -2,13 +2,13 @@ import { Component, ViewChild, TemplateRef, ViewChildren, OnInit, Output, EventE
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AdminAlertComponent } from '@app/admin/shared/components/alert/alert.component';
 import { Variables } from "@app/admin/shared/variables";
-import { ManagerJobGroupService } from "@app/admin/service/manager-job-group.service";
+import { ManagerCompanyService } from '@app/admin/service/manager-company.service';
 @Component({
-    selector: 'create-job-group',
-    templateUrl: './create-job-group.component.html',
-    styleUrls: ['./create-job-group.component.scss']
+    selector: 'create-company',
+    templateUrl: './create-company.component.html',
+    styleUrls: ['./create-company.component.scss']
 })
-export class CreateJobGroupComponent implements OnInit {
+export class CreateCompanyComponent implements OnInit {
     ngOnInit(): void {
     }
     closeResult: string;
@@ -23,7 +23,7 @@ export class CreateJobGroupComponent implements OnInit {
     @ViewChild('content') content: TemplateRef<any>;
     constructor(
         private modalService: NgbModal,
-        private service: ManagerJobGroupService,
+        private service: ManagerCompanyService,
     ) {
     }
     open() {
@@ -36,7 +36,7 @@ export class CreateJobGroupComponent implements OnInit {
             description: form.value.description,
             ImageURL :this.ImageURL
         }
-        this.service.createJobGroup(body).then(result => {
+        this.service.createCompany(body).then(result => {
             if (result == true) {
                 this.showToast('Thành công', 'success', true)
             } else {

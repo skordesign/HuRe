@@ -12,7 +12,9 @@ const router: Routes = [
             { path: '', redirectTo: 'dashboard' },
             { path: 'dashboard', loadChildren: './pages/home/home.module#HomeModule' },
             { path: 'manager-user', loadChildren: './pages/manager-user/manager-user.module#ManagerUserModule' },
-            { path: 'manager-job-group', loadChildren: './pages/manager-job-group/manager-job-group.module#ManagerJobGroupModule' }
+            { path: 'manager-job-group', loadChildren: './pages/manager-job-group/manager-job-group.module#ManagerJobGroupModule' },
+            { path: 'manager-work-type', loadChildren: './pages/manager-work-type/manager-work-type.module#ManagerWorkTypeModule' },
+            { path: 'manager-company', loadChildren: './pages/manager-company/manager-company.module#ManagerCompanyModule' }
         ]
     },
     {

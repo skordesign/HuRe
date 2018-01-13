@@ -38,8 +38,6 @@
                         <th>STT</th>
                         <th>Tên nhóm nghề</th>
                         <th>Tên viết tắt</th>
-                        <th>Mô tả</th>
-                        <th>Hình ảnh</th>
                         <th colspan="2" class="text-center">Tác vụ</th>
                     </tr>
                 </thead>
@@ -48,10 +46,6 @@
                         <td>{{i+1}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.shortName}}</td>
-                        <td>{{item.description}}</td>
-                        <td>
-                            <img class="image" [src]="item.imageURL">
-                        </td>
                         <td class="tac-vu">
                             <a (click)="openEdit(item.id)" placement="top" ngbTooltip="Sửa thông tin">
                                 <i class=" fa fa-pencil-square-o " aria-hidden="true "></i>
@@ -71,5 +65,5 @@
     </div>
 
 </div>
-<create-job-group (submitData)="getData() "></create-job-group>
-<edit-job-group (submitData)="getData()"></edit-job-group>
+<create-work-type (submitData)="getData() "></create-work-type>
+<edit-work-type (submitData)="getData()"></edit-work-type>

@@ -6,6 +6,12 @@
 .badge {
     width: 100%;
 }
+.cut-text{
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 select{
     width: 100%;
 }
@@ -14,4 +20,12 @@ select{
 }
 a{
     cursor:pointer!important;
+}
+.image{
+    width: 64px;
+    height: 64px;
+}
+.tac-vu{
+    width: 15px;
+    text-align: center;
 }

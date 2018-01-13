@@ -14,6 +14,9 @@ import { ManagerUserService } from "@app/admin/service/manager-user.service";
 import { ShareAdminModule } from "@app/admin/shared/components/share-admin.module";
 import { AdminDialogService } from "@app/admin/service/front-end/dialog.service";
 import { ManagerJobGroupService } from '@app/admin/service/manager-job-group.service';
+import { UploadFileService } from '@app/admin/service/front-end/upload-file.service';
+import { ManagerWorkTypeService } from '@app/admin/service/manager-work-type.service';
+import { ManagerCompanyService } from '@app/admin/service/manager-company.service';
 @NgModule({
     imports: [
         adminRouter,
@@ -32,7 +35,10 @@ import { ManagerJobGroupService } from '@app/admin/service/manager-job-group.ser
         AdminGuard,
         ManagerUserService,
         AdminDialogService,
-        ManagerJobGroupService
+        ManagerJobGroupService,
+        UploadFileService,
+        ManagerWorkTypeService,
+        ManagerCompanyService
     ],
 })
 export class AdminModule { }

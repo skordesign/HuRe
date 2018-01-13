@@ -17,7 +17,6 @@ export class AuthService {
     createHeader(): Headers {
         const headers = new Headers();
         headers.set("Content-Type", "application/json");
-        // .set("Content-Type", "application/json");
         return headers;
     }
     async signUp(user: any, isCompany: boolean = false): Promise<boolean> {
